@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A46E56801BA1498700FBA3FE /* PlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46E567F1BA1498700FBA3FE /* PlayList.swift */; };
+		A46E56831BA14BA300FBA3FE /* MusicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46E56821BA14BA300FBA3FE /* MusicData.swift */; };
+		A46E56861BA14C7300FBA3FE /* PlayMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46E56851BA14C7300FBA3FE /* PlayMusicViewController.swift */; };
 		A49CA0B71BA111A5009446A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CA0B61BA111A5009446A9 /* AppDelegate.swift */; };
 		A49CA0B91BA111A5009446A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CA0B81BA111A5009446A9 /* ViewController.swift */; };
 		A49CA0BC1BA111A5009446A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A49CA0BA1BA111A5009446A9 /* Main.storyboard */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A46E567F1BA1498700FBA3FE /* PlayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayList.swift; sourceTree = "<group>"; };
+		A46E56821BA14BA300FBA3FE /* MusicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicData.swift; sourceTree = "<group>"; };
+		A46E56851BA14C7300FBA3FE /* PlayMusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayMusicViewController.swift; sourceTree = "<group>"; };
 		A49CA0B31BA111A5009446A9 /* CaIntern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaIntern.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49CA0B61BA111A5009446A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A49CA0B81BA111A5009446A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +80,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A46E56811BA1498D00FBA3FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A46E567F1BA1498700FBA3FE /* PlayList.swift */,
+				A46E56821BA14BA300FBA3FE /* MusicData.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A46E56841BA14C5600FBA3FE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A49CA0B81BA111A5009446A9 /* ViewController.swift */,
+				A46E56851BA14C7300FBA3FE /* PlayMusicViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		A49CA0AA1BA111A5009446A9 = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +121,9 @@
 		A49CA0B51BA111A5009446A9 /* CaIntern */ = {
 			isa = PBXGroup;
 			children = (
+				A46E56841BA14C5600FBA3FE /* ViewController */,
+				A46E56811BA1498D00FBA3FE /* Model */,
 				A49CA0B61BA111A5009446A9 /* AppDelegate.swift */,
-				A49CA0B81BA111A5009446A9 /* ViewController.swift */,
 				A49CA0BA1BA111A5009446A9 /* Main.storyboard */,
 				A49CA0BD1BA111A5009446A9 /* Assets.xcassets */,
 				A49CA0BF1BA111A5009446A9 /* LaunchScreen.storyboard */,
@@ -255,8 +280,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46E56801BA1498700FBA3FE /* PlayList.swift in Sources */,
+				A46E56831BA14BA300FBA3FE /* MusicData.swift in Sources */,
 				A49CA0B91BA111A5009446A9 /* ViewController.swift in Sources */,
 				A49CA0B71BA111A5009446A9 /* AppDelegate.swift in Sources */,
+				A46E56861BA14C7300FBA3FE /* PlayMusicViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +511,7 @@
 				A49CA0DD1BA111A5009446A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A49CA0DE1BA111A5009446A9 /* Build configuration list for PBXNativeTarget "CaInternTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +520,7 @@
 				A49CA0E01BA111A5009446A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A49CA0E11BA111A5009446A9 /* Build configuration list for PBXNativeTarget "CaInternUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +529,7 @@
 				A49CA0E31BA111A5009446A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
