@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Playlist: NSObject {
+class Playlist {
     private var id: Int         //id
     private var title: String!  //タイトル
     private var desc: String!   //説明
@@ -18,7 +18,7 @@ class Playlist: NSObject {
         self.id = id
     }
     
-    private var list: Array<MusicData!>!
+    private var list: Array<Song!>!
     
     func getTitle() -> String! {
         return self.title
@@ -32,7 +32,7 @@ class Playlist: NSObject {
         return self.desc
     }
     
-    func getList() -> Array<MusicData!> {
+    func getList() -> Array<Song!> {
         return self.list
     }
 }

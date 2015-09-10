@@ -8,10 +8,10 @@
 
 import Foundation
 
-class MyPlaylistList: NSObject {
-    private var list: Array<Playlist>!
+class MyPlaylistList {
+    private var playlists: Array<Playlist>!
     
-    func getList() -> Array<Playlist>! {
-        return self.list
+    func getPlayLists() -> Array<Playlist>! {
+        return self.playlists
     }
 }

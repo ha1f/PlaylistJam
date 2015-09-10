@@ -9,7 +9,8 @@
 import Foundation
 
 class Song {
+    var id: Int!    
     var jacket: String!
     var title: String!
-    
+    var itunes_id: Int!
 }
