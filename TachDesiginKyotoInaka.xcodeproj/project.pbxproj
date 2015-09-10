@@ -13,6 +13,17 @@
 		A4B20C5C1BA1926E00BA531F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4B20C5B1BA1926E00BA531F /* Images.xcassets */; };
 		A4B20C5F1BA1926E00BA531F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B20C5D1BA1926E00BA531F /* LaunchScreen.xib */; };
 		A4B20C6B1BA1926E00BA531F /* TachDesiginKyotoInakaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C6A1BA1926E00BA531F /* TachDesiginKyotoInakaTests.swift */; };
+		A4B20C7F1BA192A600BA531F /* AwaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C741BA192A600BA531F /* AwaApi.swift */; };
+		A4B20C801BA192A600BA531F /* FavoritePlaylistList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C751BA192A600BA531F /* FavoritePlaylistList.swift */; };
+		A4B20C811BA192A600BA531F /* ItunesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C761BA192A600BA531F /* ItunesApi.swift */; };
+		A4B20C821BA192A600BA531F /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C771BA192A600BA531F /* ModelManager.swift */; };
+		A4B20C831BA192A600BA531F /* MusicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C781BA192A600BA531F /* MusicData.swift */; };
+		A4B20C841BA192A600BA531F /* MyPlaylistList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C791BA192A600BA531F /* MyPlaylistList.swift */; };
+		A4B20C851BA192A600BA531F /* MyPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C7A1BA192A600BA531F /* MyPlaylistViewController.swift */; };
+		A4B20C861BA192A600BA531F /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C7B1BA192A600BA531F /* Playlist.swift */; };
+		A4B20C871BA192A600BA531F /* PlaySongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C7C1BA192A600BA531F /* PlaySongViewController.swift */; };
+		A4B20C881BA192A600BA531F /* SelectEightSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C7D1BA192A600BA531F /* SelectEightSongViewController.swift */; };
+		A4B20C891BA192A600BA531F /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C7E1BA192A600BA531F /* Song.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +47,17 @@
 		A4B20C641BA1926E00BA531F /* TachDesiginKyotoInakaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TachDesiginKyotoInakaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4B20C691BA1926E00BA531F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4B20C6A1BA1926E00BA531F /* TachDesiginKyotoInakaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TachDesiginKyotoInakaTests.swift; sourceTree = "<group>"; };
+		A4B20C741BA192A600BA531F /* AwaApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwaApi.swift; sourceTree = "<group>"; };
+		A4B20C751BA192A600BA531F /* FavoritePlaylistList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePlaylistList.swift; sourceTree = "<group>"; };
+		A4B20C761BA192A600BA531F /* ItunesApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItunesApi.swift; sourceTree = "<group>"; };
+		A4B20C771BA192A600BA531F /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		A4B20C781BA192A600BA531F /* MusicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicData.swift; sourceTree = "<group>"; };
+		A4B20C791BA192A600BA531F /* MyPlaylistList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPlaylistList.swift; sourceTree = "<group>"; };
+		A4B20C7A1BA192A600BA531F /* MyPlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPlaylistViewController.swift; sourceTree = "<group>"; };
+		A4B20C7B1BA192A600BA531F /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		A4B20C7C1BA192A600BA531F /* PlaySongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySongViewController.swift; sourceTree = "<group>"; };
+		A4B20C7D1BA192A600BA531F /* SelectEightSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectEightSongViewController.swift; sourceTree = "<group>"; };
+		A4B20C7E1BA192A600BA531F /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +99,11 @@
 		A4B20C511BA1926E00BA531F /* TachDesiginKyotoInaka */ = {
 			isa = PBXGroup;
 			children = (
+				A4B20C8C1BA192E600BA531F /* ViewController */,
+				A4B20C8B1BA192D200BA531F /* Model */,
+				A4B20C8A1BA192C700BA531F /* Api */,
+				A4B20C771BA192A600BA531F /* ModelManager.swift */,
 				A4B20C541BA1926E00BA531F /* AppDelegate.swift */,
-				A4B20C561BA1926E00BA531F /* ViewController.swift */,
 				A4B20C581BA1926E00BA531F /* Main.storyboard */,
 				A4B20C5B1BA1926E00BA531F /* Images.xcassets */,
 				A4B20C5D1BA1926E00BA531F /* LaunchScreen.xib */,
@@ -110,6 +135,38 @@
 				A4B20C691BA1926E00BA531F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4B20C8A1BA192C700BA531F /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				A4B20C761BA192A600BA531F /* ItunesApi.swift */,
+				A4B20C741BA192A600BA531F /* AwaApi.swift */,
+			);
+			name = Api;
+			sourceTree = "<group>";
+		};
+		A4B20C8B1BA192D200BA531F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4B20C7E1BA192A600BA531F /* Song.swift */,
+				A4B20C751BA192A600BA531F /* FavoritePlaylistList.swift */,
+				A4B20C781BA192A600BA531F /* MusicData.swift */,
+				A4B20C791BA192A600BA531F /* MyPlaylistList.swift */,
+				A4B20C7A1BA192A600BA531F /* MyPlaylistViewController.swift */,
+				A4B20C7B1BA192A600BA531F /* Playlist.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A4B20C8C1BA192E600BA531F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4B20C7C1BA192A600BA531F /* PlaySongViewController.swift */,
+				A4B20C7D1BA192A600BA531F /* SelectEightSongViewController.swift */,
+				A4B20C561BA1926E00BA531F /* ViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +271,17 @@
 			files = (
 				A4B20C571BA1926E00BA531F /* ViewController.swift in Sources */,
 				A4B20C551BA1926E00BA531F /* AppDelegate.swift in Sources */,
+				A4B20C7F1BA192A600BA531F /* AwaApi.swift in Sources */,
+				A4B20C841BA192A600BA531F /* MyPlaylistList.swift in Sources */,
+				A4B20C811BA192A600BA531F /* ItunesApi.swift in Sources */,
+				A4B20C801BA192A600BA531F /* FavoritePlaylistList.swift in Sources */,
+				A4B20C831BA192A600BA531F /* MusicData.swift in Sources */,
+				A4B20C851BA192A600BA531F /* MyPlaylistViewController.swift in Sources */,
+				A4B20C871BA192A600BA531F /* PlaySongViewController.swift in Sources */,
+				A4B20C881BA192A600BA531F /* SelectEightSongViewController.swift in Sources */,
+				A4B20C821BA192A600BA531F /* ModelManager.swift in Sources */,
+				A4B20C891BA192A600BA531F /* Song.swift in Sources */,
+				A4B20C861BA192A600BA531F /* Playlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +411,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TachDesiginKyotoInaka/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -353,6 +422,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TachDesiginKyotoInaka/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
