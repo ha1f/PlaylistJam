@@ -31,12 +31,13 @@ class SongListViewController: PageCellViewController{
         self.view.backgroundColor = UIColor.blackColor()
         
         //tableViewの作成、delegate,dataSourceを設定
-        /*self.songTableView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height-100)
-        self.songTableView.backgroundColor = UIColor.darkGrayColor()
-        self.songTableView.allowsSelection = false
-        self.songTableView.alwaysBounceVertical = true*/
         self.songTableView.delegate = self
         self.songTableView.dataSource = self
+        
+        self.songTableView.backgroundColor = UIColor.blackColor()
+        self.songTableView.separatorColor = UIColor.blackColor()
+        
+        self.songTableView.tableFooterView = UIView()
         
         //songTableView.registerClass(SongCell.self, forCellReuseIdentifier: "SongCell")
         
@@ -58,7 +59,7 @@ class SongListViewController: PageCellViewController{
 extension SongListViewController: UITableViewDataSource, UITableViewDelegate{
     //選択された時
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("Num: \(indexPath.row)")
+        println("selected: \(indexPath.row)")
         //self.performSegueWithIdentifier("tosend",sender: nil)
     }
     
@@ -70,11 +71,14 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongCell
         
+        //ここのsongからがんばってcellをつくる
         let song = self.songList[indexPath.row]
         
         cell.titleLabel.text = song.title
+        cell.backgroundColor = UIColor.darkGrayColor()
+        cell.titleLabel.textColor = UIColor.whiteColor()
         
-        println("cell:\(indexPath.row)")
+        println("create:\(indexPath.row)")
         
         return cell
     }
@@ -83,7 +87,7 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         //let song = self.songList[indexPath.row]
         
-        let height :CGFloat! = nil
+        let height :CGFloat! = 80.0
         
         if height != nil{
             return height

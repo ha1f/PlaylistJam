@@ -23,7 +23,11 @@ class PreSelectViewController: PagingViewController {
         
         var song = Song()
         song.title = "たいとー"
-        self.pageData = [[song], [song, song, song], [song, song]]
+        
+        var song2 = Song()
+        song2.title = "たいとる"
+        //いまはダミーデータだがここにデータをセット
+        self.pageData = [[song], [song2, song, song2], [song, song]]
         
         self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
         self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
