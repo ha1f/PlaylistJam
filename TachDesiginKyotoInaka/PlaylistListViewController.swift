@@ -34,6 +34,7 @@ class PlaylistListViewController: PageCellViewController{
         self.playlistCollectionView.dataSource = self
         
         self.playlistCollectionView.backgroundColor = UIColor.blackColor()
+        self.playlistCollectionView.allowsMultipleSelection = true
         
         self.view.addSubview(self.playlistCollectionView)
     }
