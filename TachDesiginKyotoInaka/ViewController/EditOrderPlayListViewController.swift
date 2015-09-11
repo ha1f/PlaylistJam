@@ -41,7 +41,7 @@ class EditOrderSongViewController: UIViewController {
     override func loadView() {
         super.loadView()
         // カスタムセルを登録
-        self.songListTableView.registerNib(UINib(nibName:"EditOrderSongTableViewCell", bundle: nil), forCellReuseIdentifier: "EditOrderSongTableViewCell")
+    self.songListTableView.registerNib(UINib(nibName:"EditOrderSongTableViewCell", bundle: nil), forCellReuseIdentifier: "EditOrderSongTableViewCell")
     }
     
     //Viewのプロパティ初期化
