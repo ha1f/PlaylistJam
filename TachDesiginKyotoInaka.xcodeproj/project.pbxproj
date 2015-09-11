@@ -32,6 +32,8 @@
 		A4B20C981BA269A600BA531F /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C971BA269A600BA531F /* SongCell.swift */; };
 		A4B20C9B1BA2998500BA531F /* PlaylistListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C9A1BA2998500BA531F /* PlaylistListViewController.swift */; };
 		A4B20C9D1BA29B6E00BA531F /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C9C1BA29B6E00BA531F /* PlaylistCell.swift */; };
+		A4B20CA11BA2A35B00BA531F /* PlaylistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20CA01BA2A35B00BA531F /* PlaylistDetailViewController.swift */; };
+		A4B20CA41BA2ADF000BA531F /* PlaylistDetailSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20CA31BA2ADF000BA531F /* PlaylistDetailSongCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		A4B20C971BA269A600BA531F /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		A4B20C9A1BA2998500BA531F /* PlaylistListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistListViewController.swift; sourceTree = "<group>"; };
 		A4B20C9C1BA29B6E00BA531F /* PlaylistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
+		A4B20CA01BA2A35B00BA531F /* PlaylistDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistDetailViewController.swift; sourceTree = "<group>"; };
+		A4B20CA31BA2ADF000BA531F /* PlaylistDetailSongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistDetailSongCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,15 +194,33 @@
 		A4B20C991BA269AD00BA531F /* SongList */ = {
 			isa = PBXGroup;
 			children = (
-				A4B20C9A1BA2998500BA531F /* PlaylistListViewController.swift */,
+				A4B20CA51BA2ADF600BA531F /* PlaylistList */,
 				A4B20C941BA2608C00BA531F /* SongListViewController.swift */,
 				A4B20C971BA269A600BA531F /* SongCell.swift */,
-				A4B20C9C1BA29B6E00BA531F /* PlaylistCell.swift */,
+				A4B20CA21BA2A37100BA531F /* lib */,
+			);
+			name = SongList;
+			sourceTree = "<group>";
+		};
+		A4B20CA21BA2A37100BA531F /* lib */ = {
+			isa = PBXGroup;
+			children = (
 				A4B20C8D1BA25F5E00BA531F /* PagingDataController.swift */,
 				A4B20C8E1BA25F5E00BA531F /* PagingViewController.swift */,
 				A4B20C8F1BA25F5E00BA531F /* PageCellViewController.swift */,
 			);
-			name = SongList;
+			name = lib;
+			sourceTree = "<group>";
+		};
+		A4B20CA51BA2ADF600BA531F /* PlaylistList */ = {
+			isa = PBXGroup;
+			children = (
+				A4B20C9A1BA2998500BA531F /* PlaylistListViewController.swift */,
+				A4B20C9C1BA29B6E00BA531F /* PlaylistCell.swift */,
+				A4B20CA01BA2A35B00BA531F /* PlaylistDetailViewController.swift */,
+				A4B20CA31BA2ADF000BA531F /* PlaylistDetailSongCell.swift */,
+			);
+			name = PlaylistList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +328,7 @@
 				A4B20C571BA1926E00BA531F /* ViewController.swift in Sources */,
 				A4B20C551BA1926E00BA531F /* AppDelegate.swift in Sources */,
 				A4B20C7F1BA192A600BA531F /* AwaApi.swift in Sources */,
+				A4B20CA11BA2A35B00BA531F /* PlaylistDetailViewController.swift in Sources */,
 				A4B20C961BA2608C00BA531F /* SongListViewController.swift in Sources */,
 				A4B20C841BA192A600BA531F /* MyPlaylistList.swift in Sources */,
 				A4B20C811BA192A600BA531F /* ItunesApi.swift in Sources */,
@@ -318,6 +341,7 @@
 				A4B20C951BA2608C00BA531F /* PreSelectViewController.swift in Sources */,
 				A4B20C881BA192A600BA531F /* SelectEightSongViewController.swift in Sources */,
 				A4B20C821BA192A600BA531F /* ModelManager.swift in Sources */,
+				A4B20CA41BA2ADF000BA531F /* PlaylistDetailSongCell.swift in Sources */,
 				A4B20C891BA192A600BA531F /* Song.swift in Sources */,
 				A4B20C911BA25F5E00BA531F /* PagingViewController.swift in Sources */,
 				A4B20C981BA269A600BA531F /* SongCell.swift in Sources */,
