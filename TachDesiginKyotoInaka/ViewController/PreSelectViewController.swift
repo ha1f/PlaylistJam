@@ -32,7 +32,11 @@ class PreSelectViewController: PagingViewController {
         var playlist = Playlist()
         playlist.title = "プレイリスト1"
         
-        self.pageData = [[playlist], [song], [song2, song]]
+        var playlist2 = Playlist()
+        playlist2.title = "プレ2"
+        
+        
+        self.pageData = [[playlist, playlist2, playlist, playlist2, playlist], [song], [song2, song]]
         
         
         self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
