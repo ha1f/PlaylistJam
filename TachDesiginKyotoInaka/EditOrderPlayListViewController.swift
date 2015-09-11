@@ -8,13 +8,6 @@
 import UIKit
 
 class EditOrderPlayListViewController: UIViewController {
-    //
-    //  ViewController.swift
-    //  StoryBoardPractice
-    //
-    //  Created by 坂本時緒 on 9/11/15.
-    //  Copyright (c) 2015 坂本時緒. All rights reserved.
-    //
 
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descField: UITextField!
@@ -41,7 +34,6 @@ class EditOrderPlayListViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //Viewのプロパティ初期化
@@ -56,9 +48,10 @@ class EditOrderPlayListViewController: UIViewController {
         for(var i=0;i<dataLen;i++){
             var song = Song()
             song.id = i
-            song.jacket = "sample"
             song.title = "song"+String(i)
-            song.itunes_id = i
+            song.artworkUrl = ""
+            song.itunesTrackId = ""
+            song.previewUrl = "samplePreviewURL"
             testList.append(song)
         }
         return testList
@@ -67,10 +60,9 @@ class EditOrderPlayListViewController: UIViewController {
 }
 
 //tableViewに対するdelegate
-extension ViewController: UITableViewDataSource, UITableViewDelegate{
+extension EditOrderPlayListViewController: UITableViewDataSource, UITableViewDelegate{
     //選択された時
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //self.performSegueWithIdentifier("tosend",sender: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,15 +83,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     //高さを計算したいけどとりあえず放置
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        //let song = self.songList[indexPath.row]
         
         let height :CGFloat! = nil
         
-        NSLog("height => %d",tableView.estimatedRowHeight)
-        
-        if height != nil{
+        if let h = height {
             return height
-        } else {
+        }else {
             return 40//tableView.estimatedRowHeight
         }
     }
@@ -113,6 +102,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
 }
 
+//
 extension UIColor {
     class func colorFromRGB(rgb: String, alpha: CGFloat) -> UIColor {
         let scanner = NSScanner(string: rgb)
