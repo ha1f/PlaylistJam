@@ -3,15 +3,19 @@ import ObjectMapper
 class ItunesApi {
     static let domain = "http://ax.itunes.apple.com/"
     static let url = "\(domain)WebObjects/MZStoreServices.woa/wa/wsSearch"
-    static let client = ApiClient()
+    let client = ApiClient()
+    static let api = ItunesApi()
 
-    static func songs() {
+    private init() {}
+
+    func fetchSongs(completion: (songs: [Song]) -> Void) {
         let params = ["term": "let", "country": "JP", "entity": "musicTrack"]
 
-        client.get(url, parameters: params, completion: { (response: MusicTrackResponse?, error: NSError?) in
+        client.get(ItunesApi.url, parameters: params, completion: { (response: MusicTrackResponse?, error: NSError?) in
             if let songs = response?.songs {
-                println(songs)
+                completion(songs: songs)
             }
         })
+
     }
 }
