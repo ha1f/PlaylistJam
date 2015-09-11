@@ -71,7 +71,7 @@ extension PlaylistListViewController: UITableViewDataSource, UITableViewDelegate
         //TODO ここのplaylistからがんばってcellをつくる
         let playlist = self.playlistList[indexPath.row]
         
-        cell.titleLabel.text = playlist.getTitle()
+        cell.titleLabel.text = playlist.title
         cell.backgroundColor = UIColor.darkGrayColor()
         cell.titleLabel.textColor = UIColor.whiteColor()
         
