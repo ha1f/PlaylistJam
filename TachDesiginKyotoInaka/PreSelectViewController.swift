@@ -29,8 +29,8 @@ class PreSelectViewController: PagingViewController {
         var song2 = Song()
         song2.title = "たいとる"
         
-        var playlist = Playlist(id: 0)
-        playlist.setTitle("プレイリスト1")
+        var playlist = Playlist()
+        playlist.title = "プレイリスト1"
         
         self.pageData = [[playlist], [song], [song2, song]]
         
