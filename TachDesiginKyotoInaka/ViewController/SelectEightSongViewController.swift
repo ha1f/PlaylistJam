@@ -8,8 +8,12 @@
 
 import UIKit
 
+/** 
+* 8曲選ばせる
+* ソングリストは長いリスト
+*/
 class SelectEightSongViewController: UIViewController {
-    var songList: Array<Song>! = nil
+    var songList: [Song] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,5 @@ class SelectEightSongViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
 }
