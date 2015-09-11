@@ -13,7 +13,6 @@ class PlaylistListViewController: PageCellViewController{
     
     @IBOutlet var playlistCollectionView: UICollectionView!
     
-    
     //dataobjectのセット、要override
     override func setDataObject(dataObject: AnyObject?){
         if let tmpDataObject: AnyObject = dataObject {
