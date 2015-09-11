@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1ECAA04E1BA2633000F9250B /* EditOrderPlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */; };
 		A4B20C551BA1926E00BA531F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C541BA1926E00BA531F /* AppDelegate.swift */; };
 		A4B20C571BA1926E00BA531F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C561BA1926E00BA531F /* ViewController.swift */; };
 		A4B20C5A1BA1926E00BA531F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B20C581BA1926E00BA531F /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOrderPlayListViewController.swift; sourceTree = "<group>"; };
 		A4B20C4F1BA1926E00BA531F /* TachDesiginKyotoInaka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TachDesiginKyotoInaka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4B20C531BA1926E00BA531F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4B20C541BA1926E00BA531F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				A4B20C7C1BA192A600BA531F /* PlaySongViewController.swift */,
 				A4B20C7D1BA192A600BA531F /* SelectEightSongViewController.swift */,
 				A4B20C561BA1926E00BA531F /* ViewController.swift */,
+				1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ECAA04E1BA2633000F9250B /* EditOrderPlayListViewController.swift in Sources */,
 				A4B20C571BA1926E00BA531F /* ViewController.swift in Sources */,
 				A4B20C551BA1926E00BA531F /* AppDelegate.swift in Sources */,
 				A4B20C7F1BA192A600BA531F /* AwaApi.swift in Sources */,
