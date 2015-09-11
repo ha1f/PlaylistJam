@@ -10,4 +10,8 @@ import UIKit
 
 class PlaylistDetailSongCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
+    
+    func setSong(song: Song) {
+        self.titleLabel.text = song.title
+    }
 }

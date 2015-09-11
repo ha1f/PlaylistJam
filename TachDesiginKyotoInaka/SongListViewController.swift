@@ -70,12 +70,7 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongCell
         
-        //TODO ここのsongからがんばってcellをつくる
-        let song = self.songList[indexPath.row]
-        
-        cell.titleLabel.text = song.title
-        cell.backgroundColor = UIColor.darkGrayColor()
-        cell.titleLabel.textColor = UIColor.whiteColor()
+        cell.setSong(self.songList[indexPath.row])
         
         println("create:\(indexPath.row)")
         

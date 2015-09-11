@@ -244,10 +244,10 @@
 		A4B20CA51BA2ADF600BA531F /* PlaylistList */ = {
 			isa = PBXGroup;
 			children = (
-				A4BC227E1BA2EF0900B588C9 /* PlaylistDetailSongCell.swift */,
 				A4B20C9A1BA2998500BA531F /* PlaylistListViewController.swift */,
 				A4B20C9C1BA29B6E00BA531F /* PlaylistCell.swift */,
 				A4B20CA01BA2A35B00BA531F /* PlaylistDetailViewController.swift */,
+				A4BC227E1BA2EF0900B588C9 /* PlaylistDetailSongCell.swift */,
 			);
 			name = PlaylistList;
 			sourceTree = "<group>";

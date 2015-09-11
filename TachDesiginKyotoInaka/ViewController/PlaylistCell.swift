@@ -11,4 +11,8 @@ import UIKit
 class PlaylistCell:UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     var jacekt: UIImageView!
+    
+    func setPlaylist(playlist: Playlist) {
+        self.titleLabel.text = playlist.title
+    }
 }
