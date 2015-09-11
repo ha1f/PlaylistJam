@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlaylistCell:UITableViewCell {
+class PlaylistCell:UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     var jacekt: UIImageView!
 }

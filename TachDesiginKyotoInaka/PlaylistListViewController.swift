@@ -11,7 +11,7 @@ import UIKit
 class PlaylistListViewController: PageCellViewController{
     var playlistList: [Playlist] = []
     
-    @IBOutlet var playlistTableView: UITableView!
+    @IBOutlet var playlistCollectionView: UICollectionView!
     
     
     //dataobjectのセット、要override
@@ -30,15 +30,12 @@ class PlaylistListViewController: PageCellViewController{
         self.view.backgroundColor = UIColor.blackColor()
         
         //tableViewの作成、delegate,dataSourceを設定
-        self.playlistTableView.delegate = self
-        self.playlistTableView.dataSource = self
+        self.playlistCollectionView.delegate = self
+        self.playlistCollectionView.dataSource = self
         
-        self.playlistTableView.backgroundColor = UIColor.blackColor()
-        self.playlistTableView.separatorColor = UIColor.blackColor()
+        self.playlistCollectionView.backgroundColor = UIColor.blackColor()
         
-        self.playlistTableView.tableFooterView = UIView()
-        
-        self.view.addSubview(self.playlistTableView)
+        self.view.addSubview(self.playlistCollectionView)
     }
     
     //画面の回転を検知
@@ -53,44 +50,38 @@ class PlaylistListViewController: PageCellViewController{
 }
 
 //tableViewに対するdelegate
-extension PlaylistListViewController: UITableViewDataSource, UITableViewDelegate{
+extension PlaylistListViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     //選択された時
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("selected: \(indexPath.row)")
-        //self.performSegueWithIdentifier("tosend",sender: nil)
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.playlistList.count
-    }
-    
-    //セルを作成
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PlaylistCell") as! PlaylistCell
+    // MARK: - UICollectionViewDelegate Protocol
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        //TODO ここのplaylistからがんばってcellをつくる
-        let playlist = self.playlistList[indexPath.row]
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlaylistCell", forIndexPath: indexPath) as! PlaylistCell
         
-        cell.titleLabel.text = playlist.title
+        let song = self.playlistList[indexPath.row]
+        
+        cell.titleLabel.text = song.title
+        
         cell.backgroundColor = UIColor.darkGrayColor()
-        cell.titleLabel.textColor = UIColor.whiteColor()
-        
-        println("create:\(indexPath.row)")
-        
         return cell
     }
     
-    //高さを計算したいけどとりあえず放置
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        //let song = self.playlistList[indexPath.row]
-        
-        let height :CGFloat! = 120.0
-        
-        if height != nil{
-            return height
-        } else {
-            return tableView.estimatedRowHeight
-        }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    {
+        println("select: \(indexPath.row)")
     }
+    
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath)
+    {
+        println("deselect: \(indexPath.row)")
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return playlistList.count;
+    }
+
     
 }
