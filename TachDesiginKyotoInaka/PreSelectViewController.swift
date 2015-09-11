@@ -21,13 +21,19 @@ class PreSelectViewController: PagingViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         
+        
+        //ダミーデータをセット
         var song = Song()
         song.title = "たいとー"
         
         var song2 = Song()
         song2.title = "たいとる"
-        //いまはダミーデータだがここにデータをセット
-        self.pageData = [[song], [song2, song, song2], [song, song]]
+        
+        var playlist = Playlist(id: 0)
+        playlist.setTitle("プレイリスト1")
+        
+        self.pageData = [[playlist], [song], [song2, song]]
+        
         
         self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
         self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
@@ -46,11 +52,20 @@ class SongListViewDataController: PagingDataController{
     override func viewControllerAtIndex(index: Int) -> PageCellViewController? {
         super.viewControllerAtIndex(index)
         
-        //let dataViewController = SongListViewController()
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let dataViewController = storyboard.instantiateViewControllerWithIdentifier("SongListViewController") as! SongListViewController
         
-        dataViewController.setDataObject(self.pageProperty[index])//dataObjectをセット
+        let dataViewController: PageCellViewController!
+        
+        let sendData: AnyObject = self.pageProperty[index]
+        
+        //SongかPlaylistか判定してViewControllerを切り替え
+        if let tmp = sendData[0] as? Song {
+            dataViewController = storyboard.instantiateViewControllerWithIdentifier("SongListViewController") as! SongListViewController
+        } else {
+            dataViewController = storyboard.instantiateViewControllerWithIdentifier("PlaylistListViewController") as! PlaylistListViewController
+        }
+        
+        dataViewController.setDataObject(sendData)//dataObjectをセット
         dataViewController.setIndex(index)//indexをセットしておく
         return dataViewController
     }

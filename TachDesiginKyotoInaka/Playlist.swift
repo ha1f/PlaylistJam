@@ -35,4 +35,8 @@ class Playlist {
     func getList() -> Array<Song!> {
         return self.list
     }
+    
+    func setTitle(title: String) {
+        self.title = title
+    }
 }
