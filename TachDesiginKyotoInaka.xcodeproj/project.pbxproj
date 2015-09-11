@@ -48,13 +48,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOrderPlayListViewController.swift; sourceTree = "<group>"; };
+		1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditOrderPlayListViewController.swift; path = ViewController/EditOrderPlayListViewController.swift; sourceTree = "<group>"; };
 		58B18F1FC211CE0D810643A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		865CBE057C0A2E8E514A3FC3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4B20C4F1BA1926E00BA531F /* TachDesiginKyotoInaka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TachDesiginKyotoInaka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4B20C531BA1926E00BA531F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4B20C541BA1926E00BA531F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A4B20C561BA1926E00BA531F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A4B20C561BA1926E00BA531F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ViewController/ViewController.swift; sourceTree = "<group>"; };
 		A4B20C591BA1926E00BA531F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A4B20C5B1BA1926E00BA531F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A4B20C5E1BA1926E00BA531F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -66,10 +66,10 @@
 		A4B20C761BA192A600BA531F /* ItunesApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItunesApi.swift; path = API/ItunesApi.swift; sourceTree = "<group>"; };
 		A4B20C771BA192A600BA531F /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		A4B20C791BA192A600BA531F /* MyPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPlaylist.swift; path = Model/MyPlaylist.swift; sourceTree = "<group>"; };
-		A4B20C7A1BA192A600BA531F /* MyPlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPlaylistViewController.swift; sourceTree = "<group>"; };
+		A4B20C7A1BA192A600BA531F /* MyPlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPlaylistViewController.swift; path = ViewController/MyPlaylistViewController.swift; sourceTree = "<group>"; };
 		A4B20C7B1BA192A600BA531F /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Playlist.swift; path = Model/Playlist.swift; sourceTree = "<group>"; };
-		A4B20C7C1BA192A600BA531F /* PlaySongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySongViewController.swift; sourceTree = "<group>"; };
-		A4B20C7D1BA192A600BA531F /* SelectEightSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectEightSongViewController.swift; sourceTree = "<group>"; };
+		A4B20C7C1BA192A600BA531F /* PlaySongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySongViewController.swift; path = ViewController/PlaySongViewController.swift; sourceTree = "<group>"; };
+		A4B20C7D1BA192A600BA531F /* SelectEightSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectEightSongViewController.swift; path = ViewController/SelectEightSongViewController.swift; sourceTree = "<group>"; };
 		A4B20C7E1BA192A600BA531F /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Song.swift; path = Model/Song.swift; sourceTree = "<group>"; };
 		A4B20C8D1BA25F5E00BA531F /* PagingDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingDataController.swift; sourceTree = "<group>"; };
 		A4B20C8E1BA25F5E00BA531F /* PagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
@@ -130,7 +130,6 @@
 				A4B20C8B1BA192D200BA531F /* Model */,
 				A4B20C8A1BA192C700BA531F /* Api */,
 				A4B20C771BA192A600BA531F /* ModelManager.swift */,
-				A4B20C7A1BA192A600BA531F /* MyPlaylistViewController.swift */,
 				A4B20C541BA1926E00BA531F /* AppDelegate.swift */,
 				A4B20C581BA1926E00BA531F /* Main.storyboard */,
 				A4B20C5B1BA1926E00BA531F /* Images.xcassets */,
@@ -192,6 +191,7 @@
 			children = (
 				A4B20C931BA2608C00BA531F /* PreSelectViewController.swift */,
 				A4B20C991BA269AD00BA531F /* SongList */,
+				A4B20C7A1BA192A600BA531F /* MyPlaylistViewController.swift */,
 				A4B20C7C1BA192A600BA531F /* PlaySongViewController.swift */,
 				A4B20C7D1BA192A600BA531F /* SelectEightSongViewController.swift */,
 				A4B20C561BA1926E00BA531F /* ViewController.swift */,
