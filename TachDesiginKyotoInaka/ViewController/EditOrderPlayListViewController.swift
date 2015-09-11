@@ -1,14 +1,15 @@
 //
-//  EditOrderPlayListViewController.swift
-//  TachDesiginKyotoInaka
+//  ViewController.swift
+//  StoryBoardPractice
 //
 //  Created by 坂本時緒 on 9/11/15.
-//  Copyright (c) 2015 NextVanguard. All rights reserved.
+//  Copyright (c) 2015 坂本時緒. All rights reserved.
 //
+
 import UIKit
 
-class EditOrderPlayListViewController: UIViewController {
-
+class EditOrderSongViewController: UIViewController {
+    
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descField: UITextField!
     @IBOutlet weak var songListTableView: UITableView!
@@ -34,6 +35,13 @@ class EditOrderPlayListViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func loadView() {
+        super.loadView()
+        // カスタムセルを登録
+        self.songListTableView.registerNib(UINib(nibName:"EditOrderSongTableViewCell", bundle: nil), forCellReuseIdentifier: "EditOrderSongTableViewCell")
     }
     
     //Viewのプロパティ初期化
@@ -48,10 +56,10 @@ class EditOrderPlayListViewController: UIViewController {
         for(var i=0;i<dataLen;i++){
             var song = Song()
             song.id = i
+            song.artworkUrl = "sample"
+            song.artist = "artist"+String(i)
             song.title = "song"+String(i)
-            song.artworkUrl = ""
             song.itunesTrackId = ""
-            song.previewUrl = "samplePreviewURL"
             testList.append(song)
         }
         return testList
@@ -60,9 +68,11 @@ class EditOrderPlayListViewController: UIViewController {
 }
 
 //tableViewに対するdelegate
-extension EditOrderPlayListViewController: UITableViewDataSource, UITableViewDelegate{
+extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegate{
     //選択された時
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("Num: \(indexPath.row)")
+        //self.performSegueWithIdentifier("tosend",sender: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,13 +80,16 @@ extension EditOrderPlayListViewController: UITableViewDataSource, UITableViewDel
         return self.songList.count
     }
     
+    
+    
     //セルを作成
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = songListTableView.dequeueReusableCellWithIdentifier("EditOrderSongTableViewCell", forIndexPath: indexPath) as! EditOrderSongTableViewCell
         
+        var songLen = self.songList.count
         let song = self.songList[indexPath.row]
-        
-        cell.textLabel?.text = song.title
+        NSLog("%s",song.title)
+        cell.setSong(song)
         
         return cell
     }
@@ -86,9 +99,11 @@ extension EditOrderPlayListViewController: UITableViewDataSource, UITableViewDel
         
         let height :CGFloat! = nil
         
-        if let h = height {
+        NSLog("height => %d",tableView.estimatedRowHeight)
+        
+        if height != nil{
             return height
-        }else {
+        } else {
             return 40//tableView.estimatedRowHeight
         }
     }
@@ -99,10 +114,16 @@ extension EditOrderPlayListViewController: UITableViewDataSource, UITableViewDel
         
     }
     
+    func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
+        
+    }
     
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.None
+    }
 }
 
-//
 extension UIColor {
     class func colorFromRGB(rgb: String, alpha: CGFloat) -> UIColor {
         let scanner = NSScanner(string: rgb)
