@@ -185,7 +185,7 @@
                         <viewControllerLayoutGuide type="bottom" id="gRd-xI-62U"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NGb-ye-aEX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP4-X8-rBq">

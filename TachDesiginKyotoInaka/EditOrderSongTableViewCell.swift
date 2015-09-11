@@ -26,5 +26,8 @@ class EditOrderSongTableViewCell: UITableViewCell {
         titleLabel.text = song.title
         artistLabel.text = song.artist
         //画像の取得と適用
+        //テスト画像
+        let myImage: UIImage = UIImage(named: "art.jpg")!
+        artworkImageView.image = myImage
     }
 }
