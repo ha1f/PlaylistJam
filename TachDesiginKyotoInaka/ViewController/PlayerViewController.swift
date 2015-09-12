@@ -7,50 +7,38 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     var player: PlayerManager!
     @IBOutlet weak var artwork: UIImageView!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupPlayerAnd { self.play() }
+    }
+
     @IBAction func touchUpPlayBotton(sender: AnyObject) {
         play()
     }
 
     @IBAction func touchUpPauseButton(sender: AnyObject) {
-        self.player.pause()
+        player.pause()
     }
 
     @IBAction func touchUpNextButton(sender: AnyObject) {
-        playNextTune()
+        player.playNextSong()
+        self.artwork.sd_setImageWithURL(self.player.artworkUrl())
     }
 
     @IBAction func touchUpPrevButton(sender: AnyObject) {
-        playPrevTune()
+        player.playPrevSong()
+        self.artwork.sd_setImageWithURL(self.player.artworkUrl())
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupPlayers()
-    }
-
-    private func setupPlayers() {
+    private func setupPlayerAnd(completion: (Void -> Void)) {
         ItunesApi.api.fetchSongs { (songs) in
             self.player = PlayerManager(songs: songs)
-            self.play()
+            completion()
         }
     }
 
-    private func playNextTune() {
-        self.player.pause()
-        self.player.reset()
-        self.player.nextTune()
-        self.artwork.sd_setImageWithURL(self.player.artworkUrl())
-    }
-
-    private func playPrevTune() {
-        self.player.pause()
-        self.player.reset()
-        self.player.prevTune()
-        self.artwork.sd_setImageWithURL(self.player.artworkUrl())
-    }
-
     private func play() {
-        self.player.play()
+        player.play()
         self.artwork.sd_setImageWithURL(self.player.artworkUrl())
     }
 }

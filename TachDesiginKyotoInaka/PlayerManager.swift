@@ -12,21 +12,17 @@ class PlayerManager {
         self.players = [Player?](count: songCount, repeatedValue: nil)
     }
 
-    func nextTune() {
-        if(i < (songCount - 1)) {
-            i += 1
-        } else {
-            i = 0
-        }
+    func playNextSong() {
+        pause()
+        selectNextSong()
+        reset()
         play()
     }
 
-    func prevTune()  {
-        if (i > 0) {
-            i -= 1
-        } else {
-            i = songCount - 1
-        }
+    func playPrevSong() {
+        pause()
+        selectPrevSong()
+        reset()
         play()
     }
 
@@ -46,6 +42,22 @@ class PlayerManager {
         return player().artworkUrl()
     }
 
+    private func selectNextSong() {
+        if(i < (songCount - 1)) {
+            i += 1
+        } else {
+            i = 0
+        }
+    }
+
+    private func selectPrevSong()  {
+        if (i > 0) {
+            i -= 1
+        } else {
+            i = songCount - 1
+        }
+    }
+
     private func player() -> Player {
         println(i)
         if let player = self.players[i] {
@@ -61,6 +73,7 @@ class PlayerManager {
 class Player {
     var player: AVPlayer!
     var song: Song
+    let zeroSec : CMTime = CMTimeMake(0, 1)
 
     init(song: Song) {
         self.song = song
@@ -76,8 +89,7 @@ class Player {
     }
 
     func reset() {
-        let zero : CMTime = CMTimeMake(0, 1)
-        player.seekToTime(zero)
+        player.seekToTime(zeroSec)
     }
 
     func artworkUrl() -> NSURL {
