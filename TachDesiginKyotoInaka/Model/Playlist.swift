@@ -7,6 +7,7 @@ class Playlist: Object {
     dynamic var id = 0
     dynamic var title = ""
     dynamic var desc = ""
+    dynamic var songs: [Song] = []
 
     override static func primaryKey() -> String? {
         return "id"
@@ -18,5 +19,11 @@ class Playlist: Object {
 
     static func create() -> Bool {
         return true
+    }
+}
+
+extension Playlist: Selectable {
+    func selected() -> [Selectable] {
+        return self.songs
     }
 }
