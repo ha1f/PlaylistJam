@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E8FAB271BA52FD000026055 /* SelectMoodModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FAB261BA52FD000026055 /* SelectMoodModalViewController.swift */; };
+		1E8FAB291BA5306D00026055 /* ConstantShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FAB281BA5306D00026055 /* ConstantShare.swift */; };
 		1EC692131BA2DBAC00621D53 /* EditOrderSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC692111BA2DBAC00621D53 /* EditOrderSongTableViewCell.swift */; };
 		1EC692141BA2DBAC00621D53 /* EditOrderSongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EC692121BA2DBAC00621D53 /* EditOrderSongTableViewCell.xib */; };
 		1EC692181BA2F1FE00621D53 /* art.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1EC692171BA2F1FE00621D53 /* art.jpg */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E8FAB261BA52FD000026055 /* SelectMoodModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMoodModalViewController.swift; sourceTree = "<group>"; };
+		1E8FAB281BA5306D00026055 /* ConstantShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantShare.swift; sourceTree = "<group>"; };
 		1EC692111BA2DBAC00621D53 /* EditOrderSongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOrderSongTableViewCell.swift; sourceTree = "<group>"; };
 		1EC692121BA2DBAC00621D53 /* EditOrderSongTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOrderSongTableViewCell.xib; sourceTree = "<group>"; };
 		1EC692171BA2F1FE00621D53 /* art.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = art.jpg; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				A4B20C5B1BA1926E00BA531F /* Images.xcassets */,
 				A4B20C5D1BA1926E00BA531F /* LaunchScreen.xib */,
 				A4B20C521BA1926E00BA531F /* Supporting Files */,
+				1E8FAB281BA5306D00026055 /* ConstantShare.swift */,
 			);
 			path = TachDesiginKyotoInaka;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 				A4B20C7D1BA192A600BA531F /* SelectEightSongViewController.swift */,
 				A4B20C561BA1926E00BA531F /* ViewController.swift */,
 				1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */,
+				1E8FAB261BA52FD000026055 /* SelectMoodModalViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -455,7 +461,9 @@
 				A4B20C821BA192A600BA531F /* ModelManager.swift in Sources */,
 				A4B20C891BA192A600BA531F /* Song.swift in Sources */,
 				1EC692131BA2DBAC00621D53 /* EditOrderSongTableViewCell.swift in Sources */,
+				1E8FAB291BA5306D00026055 /* ConstantShare.swift in Sources */,
 				A4B20C911BA25F5E00BA531F /* PagingViewController.swift in Sources */,
+				1E8FAB271BA52FD000026055 /* SelectMoodModalViewController.swift in Sources */,
 				A4B20C981BA269A600BA531F /* SongCell.swift in Sources */,
 				A4B20C861BA192A600BA531F /* Playlist.swift in Sources */,
 			);
