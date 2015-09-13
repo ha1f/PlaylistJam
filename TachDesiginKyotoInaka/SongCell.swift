@@ -11,4 +11,10 @@ import UIKit
 class SongCell:UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     var jacekt: UIImageView!
+    
+    func setSong(song: Song) {
+        self.titleLabel.text = song.title
+        self.backgroundColor = UIColor.darkGrayColor()
+        self.titleLabel.textColor = UIColor.whiteColor()
+    }
 }
