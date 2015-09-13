@@ -26,7 +26,7 @@ extension Song: Mappable {
         title <- map["trackName"]
         artist <- map["artistName"]
         previewUrl <- map["previewUrl"]
-        artworkUrl <- map["artworkUrl30"]
+        artworkUrl <- map["artworkUrl100"]
         itunesTrackId <- map["trackId"]
     }
 }

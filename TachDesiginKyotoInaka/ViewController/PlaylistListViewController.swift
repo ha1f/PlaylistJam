@@ -57,9 +57,7 @@ extension PlaylistListViewController: UICollectionViewDataSource,UICollectionVie
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlaylistCell", forIndexPath: indexPath) as! PlaylistCell
         
-        let song = self.playlistList[indexPath.row]
-        
-        cell.titleLabel.text = song.title
+        cell.setPlaylist(self.playlistList[indexPath.row])
         
         cell.backgroundColor = UIColor.darkGrayColor()
         return cell
