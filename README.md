@@ -17,3 +17,8 @@ $ bundle install
 $ bundle exec pod install
 $ open -a Xcode TachDesiginKyotoInaka.xcworkspace
 ```
+
+
+## DraggableCollectionView
+pod update
+してください
