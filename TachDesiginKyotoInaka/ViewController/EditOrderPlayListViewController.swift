@@ -67,9 +67,6 @@ class EditOrderSongViewController: UIViewController {
         }
         return testList
     }
-    
-    
-    
 }
 
 //tableViewに対するdelegate

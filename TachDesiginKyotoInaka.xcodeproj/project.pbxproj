@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		1E8FAB271BA52FD000026055 /* SelectMoodModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FAB261BA52FD000026055 /* SelectMoodModalViewController.swift */; };
 		1E8FAB291BA5306D00026055 /* ConstantShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FAB281BA5306D00026055 /* ConstantShare.swift */; };
+		1E8FAB2E1BA5425500026055 /* SelectSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FAB2C1BA5425500026055 /* SelectSongTableViewCell.swift */; };
+		1E8FAB2F1BA5425500026055 /* SelectSongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FAB2D1BA5425500026055 /* SelectSongTableViewCell.xib */; };
+		1E8FAB311BA543C300026055 /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FAB301BA543C300026055 /* CheckButton.swift */; };
+		1E8FAB331BA5470B00026055 /* SelectSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FAB321BA5470B00026055 /* SelectSongViewController.swift */; };
+		1E8FAB381BA548D900026055 /* SelectSongTableViewSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FAB361BA548D900026055 /* SelectSongTableViewSectionCell.swift */; };
+		1E8FAB391BA548D900026055 /* SelectSongTableViewSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FAB371BA548D900026055 /* SelectSongTableViewSectionCell.xib */; };
 		1EC692131BA2DBAC00621D53 /* EditOrderSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC692111BA2DBAC00621D53 /* EditOrderSongTableViewCell.swift */; };
 		1EC692141BA2DBAC00621D53 /* EditOrderSongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EC692121BA2DBAC00621D53 /* EditOrderSongTableViewCell.xib */; };
 		1EC692181BA2F1FE00621D53 /* art.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1EC692171BA2F1FE00621D53 /* art.jpg */; };
@@ -61,6 +67,12 @@
 /* Begin PBXFileReference section */
 		1E8FAB261BA52FD000026055 /* SelectMoodModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMoodModalViewController.swift; sourceTree = "<group>"; };
 		1E8FAB281BA5306D00026055 /* ConstantShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantShare.swift; sourceTree = "<group>"; };
+		1E8FAB2C1BA5425500026055 /* SelectSongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSongTableViewCell.swift; sourceTree = "<group>"; };
+		1E8FAB2D1BA5425500026055 /* SelectSongTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSongTableViewCell.xib; sourceTree = "<group>"; };
+		1E8FAB301BA543C300026055 /* CheckButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
+		1E8FAB321BA5470B00026055 /* SelectSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSongViewController.swift; sourceTree = "<group>"; };
+		1E8FAB361BA548D900026055 /* SelectSongTableViewSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSongTableViewSectionCell.swift; sourceTree = "<group>"; };
+		1E8FAB371BA548D900026055 /* SelectSongTableViewSectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSongTableViewSectionCell.xib; sourceTree = "<group>"; };
 		1EC692111BA2DBAC00621D53 /* EditOrderSongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOrderSongTableViewCell.swift; sourceTree = "<group>"; };
 		1EC692121BA2DBAC00621D53 /* EditOrderSongTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditOrderSongTableViewCell.xib; sourceTree = "<group>"; };
 		1EC692171BA2F1FE00621D53 /* art.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = art.jpg; sourceTree = "<group>"; };
@@ -235,6 +247,7 @@
 				1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */,
 				1E8FAB261BA52FD000026055 /* SelectMoodModalViewController.swift */,
 				B4BCD1771BA2C76600DD82F5 /* PlayerViewController.swift */,
+				1E8FAB321BA5470B00026055 /* SelectSongViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -266,6 +279,11 @@
 				A4B20C9C1BA29B6E00BA531F /* PlaylistCell.swift */,
 				A4B20CA01BA2A35B00BA531F /* PlaylistDetailViewController.swift */,
 				A4BC227E1BA2EF0900B588C9 /* PlaylistDetailSongCell.swift */,
+				1E8FAB2C1BA5425500026055 /* SelectSongTableViewCell.swift */,
+				1E8FAB2D1BA5425500026055 /* SelectSongTableViewCell.xib */,
+				1E8FAB301BA543C300026055 /* CheckButton.swift */,
+				1E8FAB361BA548D900026055 /* SelectSongTableViewSectionCell.swift */,
+				1E8FAB371BA548D900026055 /* SelectSongTableViewSectionCell.xib */,
 			);
 			name = PlaylistList;
 			sourceTree = "<group>";
@@ -380,8 +398,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8FAB391BA548D900026055 /* SelectSongTableViewSectionCell.xib in Resources */,
 				A4B20C5A1BA1926E00BA531F /* Main.storyboard in Resources */,
 				A4B20C5F1BA1926E00BA531F /* LaunchScreen.xib in Resources */,
+				1E8FAB2F1BA5425500026055 /* SelectSongTableViewCell.xib in Resources */,
 				A4B20C5C1BA1926E00BA531F /* Images.xcassets in Resources */,
 				1EC692141BA2DBAC00621D53 /* EditOrderSongTableViewCell.xib in Resources */,
 				1EC692181BA2F1FE00621D53 /* art.jpg in Resources */,
@@ -452,11 +472,14 @@
 			files = (
 				A4B20C921BA25F5E00BA531F /* PageCellViewController.swift in Sources */,
 				1ECAA04E1BA2633000F9250B /* EditOrderPlayListViewController.swift in Sources */,
+				1E8FAB381BA548D900026055 /* SelectSongTableViewSectionCell.swift in Sources */,
 				A4B20C571BA1926E00BA531F /* ViewController.swift in Sources */,
 				A4B20C551BA1926E00BA531F /* AppDelegate.swift in Sources */,
 				A4B20C7F1BA192A600BA531F /* AwaApi.swift in Sources */,
 				A4B20CA11BA2A35B00BA531F /* PlaylistDetailViewController.swift in Sources */,
+				1E8FAB2E1BA5425500026055 /* SelectSongTableViewCell.swift in Sources */,
 				A4B20C961BA2608C00BA531F /* SongListViewController.swift in Sources */,
+				1E8FAB311BA543C300026055 /* CheckButton.swift in Sources */,
 				A4B20C841BA192A600BA531F /* MyPlaylist.swift in Sources */,
 				A4B20C811BA192A600BA531F /* ItunesApi.swift in Sources */,
 				B40202AF1BA46C6B00F7B0B4 /* SelectedSongsManager.swift in Sources */,
@@ -467,6 +490,7 @@
 				A4B20C901BA25F5E00BA531F /* PagingDataController.swift in Sources */,
 				A4BC227F1BA2EF0900B588C9 /* PlaylistDetailSongCell.swift in Sources */,
 				A4B20C851BA192A600BA531F /* MyPlaylistViewController.swift in Sources */,
+				1E8FAB331BA5470B00026055 /* SelectSongViewController.swift in Sources */,
 				B47B52E51BA2A96F00F3A739 /* ApiClient.swift in Sources */,
 				B40400221BA2998C00896839 /* MusicTrackResponse.swift in Sources */,
 				A4B20C871BA192A600BA531F /* PlaySongViewController.swift in Sources */,
