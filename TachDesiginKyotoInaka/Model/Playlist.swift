@@ -13,12 +13,16 @@ class Playlist: Object {
         return "id"
     }
 
-    static func lastId() -> Int {
-        return realm.objects(Playlist).last!.id
+    static func createWithSongs(title: String, songs: [Song]) -> Playlist {
+        let playlist = Playlist()
+        playlist.title = title
+        playlist.songs = songs
+
+        return playlist
     }
 
-    static func create() -> Bool {
-        return true
+    static func lastId() -> Int {
+        return realm.objects(Playlist).last!.id
     }
 }
 
