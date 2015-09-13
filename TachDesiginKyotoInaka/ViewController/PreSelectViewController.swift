@@ -70,6 +70,7 @@ class PreSelectDataController: PagingDataController {
 
     override func viewControllerAtIndex(index: Int) -> PageCellViewController? {
         super.viewControllerAtIndex(index)
+        initIfNeed(0)
 
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let dataViewController: PageCellViewController!
@@ -90,13 +91,11 @@ class PreSelectDataController: PagingDataController {
     }
 
     func appendSelectedItem(pageIndex: Int, itemIndex: Int) {
-        initIfNeed(pageIndex)
         self.selectedItemIndexes[pageIndex].append(itemIndex)
         println(self.selectedItemIndexes)
     }
 
     func removeSelectedItem(pageIndex: Int, itemIndex: Int) {
-        initIfNeed(pageIndex)
         if let idx = find(self.selectedItemIndexes[pageIndex], itemIndex) {
             self.selectedItemIndexes[pageIndex].removeAtIndex(idx)
         }
@@ -104,7 +103,6 @@ class PreSelectDataController: PagingDataController {
     }
 
     func contain(pageIndex: Int, itemIndex: Int) ->  Bool {
-        initIfNeed(pageIndex)
         return contains(self.selectedItemIndexes[pageIndex], itemIndex)
     }
 
