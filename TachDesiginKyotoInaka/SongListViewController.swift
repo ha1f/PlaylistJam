@@ -7,7 +7,6 @@ class SongListViewController: PageCellViewController{
 
     override func setDataObject(dataObject: AnyObject?){
         if let tmpDataObject: AnyObject = dataObject {
-
             self.songList = dataObject as! [Song]
         }else{
             println("DataObject is nil")
@@ -22,13 +21,10 @@ class SongListViewController: PageCellViewController{
         self.songTableView.delegate = self
         self.songTableView.dataSource = self
         
-        self.songTableView.backgroundColor = UIColor.blackColor()
-        self.songTableView.separatorColor = UIColor.blackColor()
-        
+
+        self.songTableView.separatorColor = UIColor.darkGrayColor()
         self.songTableView.tableFooterView = UIView()
-        
-        //songTableView.registerClass(SongCell.self, forCellReuseIdentifier: "SongCell")
-        
+
         self.view.addSubview(self.songTableView)
     }
     
@@ -58,11 +54,8 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate{
     //セルを作成
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongCell
-        
-        cell.setSong(self.songList[indexPath.row])
-        
+        cell.setup(self.songList[indexPath.row])
         println("create:\(indexPath.row)")
-        
         return cell
     }
     

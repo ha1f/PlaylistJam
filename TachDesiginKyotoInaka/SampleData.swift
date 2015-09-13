@@ -1,7 +1,7 @@
 class SampleData {
     let maxPlaylistSongs: Int = 8
 
-    func fetchPlaylistsAnd(completion: ([Playlist] -> Void)) {
+    func fetchDataAnd(completion: (([Playlist], [Song]) -> Void)) {
         var playlists: [Playlist] = []
         var i = 0
 
@@ -13,13 +13,13 @@ class SampleData {
                     _songs.append(s)
                     i++
                 } else {
-                    playlists.append(Playlist.createWithSongs("awesome", songs: _songs))
+                    playlists.append(Playlist.createWithSongs(s.title, songs: _songs))
                     _songs = [s]
                     i = 1
                 }
             }
 
-            completion(playlists)
+            completion(playlists, songs)
         }
     }
 }
