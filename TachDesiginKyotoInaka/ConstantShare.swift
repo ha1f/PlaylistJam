@@ -8,5 +8,5 @@
 
 class ConstantShare {
     //ムードの配列
-    static let moodList = ["mood1","mood2","mood3","mood4","mood5","mood6"]
+    static let moodList = ["HAPPY", "EXCITED", "RELAX", "LOVE", "SAD", "DARK", "MORNING", "SLEEP", "STUDY", "WORKOUT", "PARTY", "DRIVE"]
 }

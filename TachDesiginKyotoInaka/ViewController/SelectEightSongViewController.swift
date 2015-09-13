@@ -11,6 +11,11 @@ import UIKit
 class SelectEightSongViewController: UIViewController {
     
     var songList:[Song] = []
+    var selectedSongs: [Song] = [] {
+        didSet{
+            self.selectedCount.text = "\(selectedSongs.count)/8 曲"
+        }
+    }
     
     @IBOutlet weak var selectSongTableView: UITableView!
     @IBOutlet weak var selectedCount: UILabel!
@@ -20,6 +25,8 @@ class SelectEightSongViewController: UIViewController {
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
         
+        
+        //songListを受け取る
         songList = genTestData( 15 )
         
         selectSongTableView.reloadData()
@@ -72,7 +79,7 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //カスタムセルで生成
         let cell = selectSongTableView.dequeueReusableCellWithIdentifier("SelectSongTableViewCell", forIndexPath: indexPath) as! SelectSongTableViewCell
-        var songLen = self.songList.count
+
         let song = self.songList[indexPath.row]
         
         cell.setSong(song)
@@ -84,8 +91,8 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let height :CGFloat! = nil
         // heightがnilの場合、とりあえず高さ40で設定 TODO
-        if height != nil{
-            return height
+        if let h = height{
+            return h
         } else {
             return 60//tableView.estimatedRowHeight
         }

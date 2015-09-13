@@ -429,6 +429,7 @@
                         <outlet property="moodBtn" destination="yRb-FH-UrH" id="mJv-I5-eE0"/>
                         <outlet property="songListTableView" destination="CVZ-cj-2eK" id="vn7-UT-rZN"/>
                         <outlet property="titleField" destination="IXf-yR-0Bh" id="qCN-Ve-oEv"/>
+                        <segue destination="huP-j3-5ZK" kind="presentation" identifier="selectMood" id="6I5-iq-12R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIE-zz-R93" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -438,7 +439,7 @@
         <!--Select Mood Modal View Controller-->
         <scene sceneID="e3Q-u4-QHw">
             <objects>
-                <viewController id="huP-j3-5ZK" customClass="SelectMoodModalViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectMoodModal" id="huP-j3-5ZK" customClass="SelectMoodModalViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uTr-p4-4Bu"/>
                         <viewControllerLayoutGuide type="bottom" id="01r-lb-A1Y"/>
@@ -447,15 +448,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ah2-OB-TjS">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ati-uc-6k0">
+                                <rect key="frame" x="0.0" y="143" width="375" height="464"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="615"/>
-                                </variation>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iw7-Qt-0zp">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <rect key="frame" x="130" y="615" width="114" height="42"/>
                                 <state key="normal" title="キャンセル">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -464,16 +462,14 @@
                                 </variation>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="ah2-OB-TjS"/>
                                 <exclude reference="Iw7-Qt-0zp"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="ah2-OB-TjS"/>
                                 <include reference="Iw7-Qt-0zp"/>
                             </mask>
                         </variation>
@@ -481,12 +477,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cancelBtn" destination="Iw7-Qt-0zp" id="19B-wb-ve7"/>
-                        <outlet property="moodTableView" destination="ah2-OB-TjS" id="paY-4J-oaV"/>
+                        <outlet property="moodTableView" destination="ati-uc-6k0" id="ybw-7J-O1y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWZ-vs-bW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974.25" y="1146.375"/>
+            <point key="canvasLocation" x="1084.5" y="-125.5"/>
         </scene>
         <!--Player View Controller-->
         <scene sceneID="ulW-Ma-u3K">

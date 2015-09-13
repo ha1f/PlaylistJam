@@ -13,6 +13,7 @@ class SelectSongTableViewCell: UITableViewCell {
     @IBOutlet weak var artWorkImage: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
+    @IBOutlet weak var checkBox: CheckBox!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +30,5 @@ class SelectSongTableViewCell: UITableViewCell {
         songNameLabel.text = song.title
         artistNameLabel.text = song.artist
         artWorkImage.image = UIImage(named: "art.jpg")
-        
     }
 }
