@@ -1,6 +1,6 @@
 import UIKit
 
-class SongListViewController: PageCellViewController{
+class SongListViewController: PageCellViewController {
     var songList: [Song] = []
     
     @IBOutlet var songTableView: UITableView!
@@ -35,16 +35,18 @@ class SongListViewController: PageCellViewController{
     //Viewが表示される直前
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
 }
 
 //tableViewに対するdelegate
-extension SongListViewController: UITableViewDataSource, UITableViewDelegate{
-    //選択された時
+extension SongListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("selected: \(indexPath.row)")
-        //self.performSegueWithIdentifier("tosend",sender: nil)
+        appendSelectedItem(indexPath.row)
+    }
+
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        println("deselected: \(indexPath.row)")
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,5 +73,4 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate{
             return tableView.estimatedRowHeight
         }
     }
-    
 }

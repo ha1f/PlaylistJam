@@ -11,7 +11,8 @@ import UIKit
 
 
 class PageCellViewController: UIViewController {
-    private var index: Int?//pageControllerの識別のため
+    private var index: Int? //pageControllerの識別のため
+    var parent : PreSelectDataController?
     
     //必ずオーバーライドする
     func setDataObject(dataObject: AnyObject?){
@@ -23,4 +24,21 @@ class PageCellViewController: UIViewController {
     final func setIndex(index: Int?){
         self.index = index
     }
+
+    func listen(parent: PreSelectDataController) {
+        self.parent = parent
+    }
+
+    func appendSelectedItem(i: Int) {
+        if !(self.parent?.contain(self.index!, itemIndex: i) ?? false) {
+            self.parent?.appendSelectedItem(self.index!, itemIndex: i)
+        }
+    }
+
+    func removeSelectedItem(i: Int) {
+        if self.parent?.contain(self.index!, itemIndex: i) ?? false {
+            self.parent?.removeSelectedItem(self.index!, itemIndex: i)
+        }
+    }
 }
+

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlaylistListViewController: PageCellViewController{
+class PlaylistListViewController: PageCellViewController {
     var playlistList: [Playlist] = []
     
     @IBOutlet var playlistCollectionView: UICollectionView!
@@ -19,8 +19,6 @@ class PlaylistListViewController: PageCellViewController{
             self.playlistList = tmpDataObject
         } else {
             println("DataObject is nil")
-            //デフォルトの処理
-            //self.playlistList
         }
     }
     
@@ -31,42 +29,36 @@ class PlaylistListViewController: PageCellViewController{
         //tableViewの作成、delegate,dataSourceを設定
         self.playlistCollectionView.delegate = self
         self.playlistCollectionView.dataSource = self
-        
         self.playlistCollectionView.backgroundColor = UIColor.clearColor()
         self.playlistCollectionView.allowsMultipleSelection = true
         
         self.view.addSubview(self.playlistCollectionView)
     }
-    
-    //画面の回転を検知
+
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
     }
-    
-    //Viewが表示される直前
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
 }
 
-//tableViewに対するdelegate
-extension PlaylistListViewController: UICollectionViewDataSource,UICollectionViewDelegate {
-
-    //選択された時
+extension PlaylistListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlaylistCell", forIndexPath: indexPath) as! PlaylistCell
-
         cell.setup(self.playlistList[indexPath.row])
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
-        self.performSegueWithIdentifier("showDetail", sender: nil)
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        // self.performSegueWithIdentifier("showDetail", sender: nil)
+        appendSelectedItem(indexPath.row)
         println("select: \(indexPath.row)")
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         println("deselect: \(indexPath.row)")
+        removeSelectedItem(indexPath.row)
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

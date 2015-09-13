@@ -1,11 +1,3 @@
-//
-//  SelectSongViewController.swift
-//  TachDesiginKyotoInaka
-//
-//  Created by 坂本時緒 on 9/13/15.
-//  Copyright (c) 2015 NextVanguard. All rights reserved.
-//
-
 import UIKit
 
 class SelectEightSongViewController: UIViewController {
@@ -25,10 +17,6 @@ class SelectEightSongViewController: UIViewController {
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
         
-        
-        //songListを受け取る
-        songList = genTestData( 15 )
-        
         selectSongTableView.reloadData()
     }
     
@@ -40,33 +28,12 @@ class SelectEightSongViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    //テストデータ生成関数
-    func genTestData(dataLen: Int) -> [Song]{
-        var testList: [Song] = []
-        for(var i=0;i<dataLen;i++){
-            var song = Song()
-            song.id = i
-            song.artworkUrl = "sample"
-            song.artist = "artist"+String(i)
-            song.title = "song"+String(i)
-            song.itunesTrackId = ""
-            testList.append(song)
-        }
-        return testList
+    func checkButtonClicked(sender: CheckBox!) {
+        sender.isChecked = !sender.isChecked
+        println(sender.tag)
     }
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
 }
 
 extension SelectEightSongViewController: UITableViewDataSource, UITableViewDelegate{
@@ -79,6 +46,8 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //カスタムセルで生成
         let cell = selectSongTableView.dequeueReusableCellWithIdentifier("SelectSongTableViewCell", forIndexPath: indexPath) as! SelectSongTableViewCell
+        cell.checkBox.tag = indexPath.row
+        cell.checkBox.addTarget(self, action: "checkButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
 
         let song = self.songList[indexPath.row]
         
