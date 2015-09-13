@@ -33,20 +33,21 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     @IBAction func touchUpNextButton(sender: AnyObject) {
         player.playNextSong()
         setArtwork()
+        setSongInfo()
     }
 
     @IBAction func touchUpPrevButton(sender: AnyObject) {
         player.playPrevSong()
         self.artwork.sd_setImageWithURL(self.player.artworkUrl())
+        setSongInfo()
     }
 
     private func setupViewObject() {
         self.playTimeLabel.text = self.player.playTime()
         self.playingTimeLabel.text = "00:00"
         self.setPlayingTimeListener()
-        self.titleLabel.text = self.player.title()
-        self.artistLabel.text = self.player.artist()
         self.progressView.setProgress(0.0, animated: true)
+        self.setSongInfo()
     }
 
     private func setPlayingTimeListener() {
@@ -76,6 +77,11 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     private func play() {
         player.play()
         setArtwork()
+    }
+
+    private func setSongInfo() {
+        self.titleLabel.text = self.player.title()
+        self.artistLabel.text = self.player.artist()
     }
 
     private func setArtwork() {
