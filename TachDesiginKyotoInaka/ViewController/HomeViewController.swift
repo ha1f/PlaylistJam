@@ -12,7 +12,7 @@ import UIKit
 マイプレイリスト一覧
 ＋ボタンを右下に
 */
-class MyPlaylistViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -39,6 +39,10 @@ class PlaylistDetailViewController: UIViewController {
         
         self.songTableView.tableFooterView = UIView()
     }
+    
+    @IBAction func close(sender: AnyObject?) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
 extension PlaylistDetailViewController: UITableViewDataSource, UITableViewDelegate{
