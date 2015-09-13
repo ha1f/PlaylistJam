@@ -17,16 +17,7 @@ class CheckBox: UIButton {
     //bool propety
     var isChecked:Bool = false {
         didSet{
-            if isChecked == true {
-                self.setImage(checkedImage, forState: .Normal)
-            }else{
-                self.setImage(unCheckedImage, forState: .Normal)
-            }
+            self.setImage(isChecked ? checkedImage : unCheckedImage, forState: .Normal)
         }
-    }
-    
-    
-    override func awakeFromNib() {
-        self.isChecked = false
     }
 }

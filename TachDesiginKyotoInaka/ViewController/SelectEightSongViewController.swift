@@ -8,6 +8,7 @@ class SelectEightSongViewController: UIViewController {
             self.selectedCount.text = "\(selectedSongs.count)/8 曲"
         }
     }
+    var checkFlags: [Bool] = []
     
     @IBOutlet weak var selectSongTableView: UITableView!
     @IBOutlet weak var selectedCount: UILabel!
@@ -16,6 +17,15 @@ class SelectEightSongViewController: UIViewController {
         super.viewDidLoad()
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
+        
+        self.selectedCount.text = "\(selectedSongs.count)/8 曲"
+        
+        selectSongTableView.allowsSelection = false
+        
+        //同じ回数分
+        for i in songList {
+            self.checkFlags.append(false)
+        }
         
         selectSongTableView.reloadData()
     }
@@ -32,7 +42,16 @@ class SelectEightSongViewController: UIViewController {
     
     func checkButtonClicked(sender: CheckBox!) {
         sender.isChecked = !sender.isChecked
-        println(sender.tag)
+        checkFlags[sender.tag] = sender.isChecked
+        if sender.isChecked {
+            if selectedSongs.count < 8 {
+                selectedSongs.append(songList[sender.tag])
+            } else {
+                sender.isChecked = false
+            }
+        } else {
+            //削除
+        }
     }
 }
 
@@ -48,6 +67,7 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
         let cell = selectSongTableView.dequeueReusableCellWithIdentifier("SelectSongTableViewCell", forIndexPath: indexPath) as! SelectSongTableViewCell
         cell.checkBox.tag = indexPath.row
         cell.checkBox.addTarget(self, action: "checkButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        cell.checkBox.isChecked = checkFlags[indexPath.row]
 
         let song = self.songList[indexPath.row]
         
