@@ -80,7 +80,6 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     
     //セルの行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        NSLog("%d",self.songList.count)
         return self.songList.count
     }
     
