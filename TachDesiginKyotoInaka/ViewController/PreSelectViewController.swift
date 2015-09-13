@@ -42,6 +42,15 @@ class PreSelectViewController: PagingViewController {
         self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
         self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
         self.createView()
+        
+        var button: UIButton! = UIButton(frame: CGRectMake(0,0,200,50))
+        button.setTitle("button", forState: UIControlState.Normal)
+        button.addTarget(self, action: "reduceEight:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(button)
+    }
+    
+    func reduceEight(sender: UIButton!) {
+        self.performSegueWithIdentifier("reduceEight", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {
