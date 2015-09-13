@@ -17,6 +17,12 @@ class Song: Object {
     }
 }
 
+extension Song: Selectable {
+    func selected() -> [Selectable] {
+        return [self]
+    }
+}
+
 extension Song: Mappable {
     static func newInstance(map: Map) -> Mappable? {
         return Song()
