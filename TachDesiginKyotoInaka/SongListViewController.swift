@@ -47,8 +47,9 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         println("deselected: \(indexPath.row)")
+        removeSelectedItem(indexPath.row)
     }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.songList.count
     }
