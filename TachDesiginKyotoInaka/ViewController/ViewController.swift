@@ -6,8 +6,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ItunesApi.songs()
-    
         // Do any additional setup after loading the view, typically from a nib.
     }
 
