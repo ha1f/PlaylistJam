@@ -4,9 +4,11 @@ import UIKit
 class PreSelectViewController: PagingViewController {
     var playlists: [Playlist] = []
     var songs: [Song] = []
+    var controller: PreSelectDataController?
     
     override func createDataController() -> PagingDataController {
-        return PreSelectDataController(pageIdentities: self.pageData)
+        controller = PreSelectDataController(pageIdentities: self.pageData)
+        return controller!
     }
 
     override func viewDidLoad() {
@@ -25,6 +27,24 @@ class PreSelectViewController: PagingViewController {
         button.setTitle("button", forState: UIControlState.Normal)
         button.addTarget(self, action: "reduceEight:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(button)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let viewController: SelectEightSongViewController = segue.destinationViewController as! SelectEightSongViewController
+
+        viewController.songList = []
+
+        for i in controller!.selectedItemIndexes[0] {
+            viewController.songList += playlists[i].songs
+        }
+
+        for i in controller!.selectedItemIndexes[1] {
+            viewController.songList += [songs[i]]
+        }
+
+        for i in controller!.selectedItemIndexes[2] {
+            viewController.songList += [songs[i]]
+        }
     }
 
     func reduceEight(sender: UIButton!) {

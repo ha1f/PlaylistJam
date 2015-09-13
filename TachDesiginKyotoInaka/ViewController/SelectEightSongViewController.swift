@@ -1,11 +1,3 @@
-//
-//  SelectSongViewController.swift
-//  TachDesiginKyotoInaka
-//
-//  Created by 坂本時緒 on 9/13/15.
-//  Copyright (c) 2015 NextVanguard. All rights reserved.
-//
-
 import UIKit
 
 class SelectEightSongViewController: UIViewController {
@@ -20,8 +12,6 @@ class SelectEightSongViewController: UIViewController {
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
         
-        songList = genTestData( 15 )
-        
         selectSongTableView.reloadData()
     }
     
@@ -33,33 +23,7 @@ class SelectEightSongViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    //テストデータ生成関数
-    func genTestData(dataLen: Int) -> [Song]{
-        var testList: [Song] = []
-        for(var i=0;i<dataLen;i++){
-            var song = Song()
-            song.id = i
-            song.artworkUrl = "sample"
-            song.artist = "artist"+String(i)
-            song.title = "song"+String(i)
-            song.itunesTrackId = ""
-            testList.append(song)
-        }
-        return testList
-    }
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
 }
 
 extension SelectEightSongViewController: UITableViewDataSource, UITableViewDelegate{
