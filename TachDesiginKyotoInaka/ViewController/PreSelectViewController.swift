@@ -20,16 +20,26 @@ class PreSelectViewController: PagingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
-
+        
+        var button: UIButton! = UIButton(frame: CGRectMake(0,0,200,50))
+        button.setTitle("button", forState: UIControlState.Normal)
+        button.addTarget(self, action: "reduceEight:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(button)
+        
         fetchPlaylistsAnd {
             self.pageData = [self.playlists]
             println(self.playlists)
-
+            
             self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
             self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
             self.createView()
         }
     }
+    
+    func reduceEight(sender: UIButton!) {
+        self.performSegueWithIdentifier("reduceEight", sender: nil)
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

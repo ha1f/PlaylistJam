@@ -60,7 +60,8 @@ extension PlaylistListViewController: UICollectionViewDataSource,UICollectionVie
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        self.performSegueWithIdentifier("showDetail", sender: nil)
         println("select: \(indexPath.row)")
     }
     
