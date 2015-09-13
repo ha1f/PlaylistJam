@@ -6,13 +6,13 @@
 //  Copyright (c) 2015年 NextVanguard. All rights reserved.
 //
 
-
-
 import Foundation
 import UIKit
 
 /** 前段階の選択 */
 class PreSelectViewController: PagingViewController {
+    var playlists: [Playlist] = []
+
     override func createDataController() -> PagingDataController {
         return SongListViewDataController(pageIdentities: self.pageData)
     }
@@ -21,41 +21,36 @@ class PreSelectViewController: PagingViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         
-        
-        //ダミーデータをセット
-        var song = Song()
-        song.title = "たいとー"
-        
-        var song2 = Song()
-        song2.title = "たいとる"
-        
-        var playlist = Playlist()
-        playlist.title = "プレイリスト1"
-        
-        var playlist2 = Playlist()
-        playlist2.title = "プレ2"
-        
-        
-        self.pageData = [[playlist, playlist2, playlist, playlist2, playlist], [song], [song2, song]]
-        
-        
-        self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
-        self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
-        self.createView()
-        
         var button: UIButton! = UIButton(frame: CGRectMake(0,0,200,50))
         button.setTitle("button", forState: UIControlState.Normal)
         button.addTarget(self, action: "reduceEight:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(button)
+        
+        fetchPlaylistsAnd {
+            self.pageData = [self.playlists]
+            println(self.playlists)
+            
+            self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
+            self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
+            self.createView()
+        }
     }
     
     func reduceEight(sender: UIButton!) {
         self.performSegueWithIdentifier("reduceEight", sender: nil)
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    private func fetchPlaylistsAnd(completion: (Void -> Void))  {
+        SampleData().fetchPlaylistsAnd { (playlists) in
+            self.playlists = playlists
+            completion()
+        }
     }
 }
 

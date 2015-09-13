@@ -1,27 +1,16 @@
-//
-//  SongListViewController.swift
-//  PictEdit
-//
-//  Created by 山口 智生 on 2015/07/02.
-//  Copyright (c) 2015年 NextVanguard. All rights reserved.
-//
-
 import UIKit
 
 class SongListViewController: PageCellViewController{
     var songList: [Song] = []
     
     @IBOutlet var songTableView: UITableView!
-    
-    
-    //dataobjectのセット、要override
+
     override func setDataObject(dataObject: AnyObject?){
         if let tmpDataObject: AnyObject = dataObject {
+
             self.songList = dataObject as! [Song]
         }else{
             println("DataObject is nil")
-            //デフォルトの処理
-            //self.songList
         }
     }
     

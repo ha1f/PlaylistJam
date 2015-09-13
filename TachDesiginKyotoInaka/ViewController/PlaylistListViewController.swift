@@ -15,9 +15,9 @@ class PlaylistListViewController: PageCellViewController{
     
     //dataobjectのセット、要override
     override func setDataObject(dataObject: AnyObject?){
-        if let tmpDataObject: AnyObject = dataObject {
-            self.playlistList = dataObject as! [Playlist]
-        }else{
+        if let tmpDataObject: [Playlist] = dataObject as? [Playlist] {
+            self.playlistList = tmpDataObject
+        } else {
             println("DataObject is nil")
             //デフォルトの処理
             //self.playlistList
@@ -26,13 +26,13 @@ class PlaylistListViewController: PageCellViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.blackColor()
+        self.view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.9)
         
         //tableViewの作成、delegate,dataSourceを設定
         self.playlistCollectionView.delegate = self
         self.playlistCollectionView.dataSource = self
         
-        self.playlistCollectionView.backgroundColor = UIColor.blackColor()
+        self.playlistCollectionView.backgroundColor = UIColor.clearColor()
         self.playlistCollectionView.allowsMultipleSelection = true
         
         self.view.addSubview(self.playlistCollectionView)
@@ -51,26 +51,21 @@ class PlaylistListViewController: PageCellViewController{
 
 //tableViewに対するdelegate
 extension PlaylistListViewController: UICollectionViewDataSource,UICollectionViewDelegate {
+
     //選択された時
-    // MARK: - UICollectionViewDelegate Protocol
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlaylistCell", forIndexPath: indexPath) as! PlaylistCell
-        
-        cell.setPlaylist(self.playlistList[indexPath.row])
-        
-        cell.backgroundColor = UIColor.darkGrayColor()
+
+        cell.setup(self.playlistList[indexPath.row])
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
-    {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         self.performSegueWithIdentifier("showDetail", sender: nil)
         println("select: \(indexPath.row)")
     }
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath)
-    {
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         println("deselect: \(indexPath.row)")
     }
     
@@ -81,6 +76,4 @@ extension PlaylistListViewController: UICollectionViewDataSource,UICollectionVie
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return playlistList.count;
     }
-
-    
 }
