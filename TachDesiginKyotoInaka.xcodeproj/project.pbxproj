@@ -48,6 +48,7 @@
 		B40202AF1BA46C6B00F7B0B4 /* SelectedSongsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40202AE1BA46C6B00F7B0B4 /* SelectedSongsManager.swift */; };
 		B40202B11BA4738F00F7B0B4 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40202B01BA4738F00F7B0B4 /* Selectable.swift */; };
 		B40400221BA2998C00896839 /* MusicTrackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40400211BA2998C00896839 /* MusicTrackResponse.swift */; };
+		B421168D1BA5428100C3FD3A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421168C1BA5428100C3FD3A /* SampleData.swift */; };
 		B47B52E51BA2A96F00F3A739 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B52E41BA2A96F00F3A739 /* ApiClient.swift */; };
 		B4BCD1781BA2C76600DD82F5 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCD1771BA2C76600DD82F5 /* PlayerViewController.swift */; };
 		B4BCD17A1BA2CEFA00DD82F5 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCD1791BA2CEFA00DD82F5 /* PlayerManager.swift */; };
@@ -112,6 +113,7 @@
 		B40202AE1BA46C6B00F7B0B4 /* SelectedSongsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedSongsManager.swift; sourceTree = "<group>"; };
 		B40202B01BA4738F00F7B0B4 /* Selectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		B40400211BA2998C00896839 /* MusicTrackResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicTrackResponse.swift; path = Model/MusicTrackResponse.swift; sourceTree = "<group>"; };
+		B421168C1BA5428100C3FD3A /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		B47B52E41BA2A96F00F3A739 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiClient.swift; path = API/ApiClient.swift; sourceTree = "<group>"; };
 		B4BCD1771BA2C76600DD82F5 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerViewController.swift; path = ViewController/PlayerViewController.swift; sourceTree = "<group>"; };
 		B4BCD1791BA2CEFA00DD82F5 /* PlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				A4B20C8B1BA192D200BA531F /* Model */,
 				A4B20C8A1BA192C700BA531F /* Api */,
 				A4B20C771BA192A600BA531F /* ModelManager.swift */,
+				B421168C1BA5428100C3FD3A /* SampleData.swift */,
 				B4BCD1791BA2CEFA00DD82F5 /* PlayerManager.swift */,
 				B40202AE1BA46C6B00F7B0B4 /* SelectedSongsManager.swift */,
 				A4B20C541BA1926E00BA531F /* AppDelegate.swift */,
@@ -493,6 +496,7 @@
 				1E8FAB331BA5470B00026055 /* SelectSongViewController.swift in Sources */,
 				B47B52E51BA2A96F00F3A739 /* ApiClient.swift in Sources */,
 				B40400221BA2998C00896839 /* MusicTrackResponse.swift in Sources */,
+				B421168D1BA5428100C3FD3A /* SampleData.swift in Sources */,
 				A4B20C871BA192A600BA531F /* PlaySongViewController.swift in Sources */,
 				A4B20C951BA2608C00BA531F /* PreSelectViewController.swift in Sources */,
 				B4BCD1781BA2C76600DD82F5 /* PlayerViewController.swift in Sources */,
