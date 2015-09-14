@@ -14,7 +14,9 @@ class HomeViewController: UIViewController {
     var playlists: [Playlist] = []
     var songs: [Song] = []
     var controller: PreSelectDataController?
+    @IBOutlet weak var blurNavbar: UIVisualEffectView!
     
+    @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var playlistCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +30,20 @@ class HomeViewController: UIViewController {
             self.playlistCollectionView.delegate = self
             self.playlistCollectionView.reloadData()
         }
+        createButton.addTarget(self, action: "createPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
+    func createPlaylist(){
+        self.performSegueWithIdentifier("createPlaylist", sender: nil)
+    }
+    
+    func setNavOpacity(opacity: CGFloat){
+        blurNavbar.alpha = opacity
     }
     
     func initViewProp(){
+        
+        createButton.backgroundColor = UIColor.blackColor()
         var colorList: [CGColor] = []
         colorList.append(UIColor.colorFromRGB("333333", alpha: 1).CGColor)
         colorList.append(UIColor.colorFromRGB("303030", alpha: 1).CGColor)
@@ -116,5 +129,17 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return playlists.count+1;
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        var opacity: CGFloat
+        var scrollValue = scrollView.contentOffset.y
+        opacity = (scrollValue - 60)/200
+        if(opacity > 1){
+            opacity = 1.0
+        }else if(opacity < 0){
+            opacity = 0
+        }
+        self.setNavOpacity(opacity)
     }
 }
