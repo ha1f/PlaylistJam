@@ -13,10 +13,21 @@ class CreatePlaylistViewController: UIViewController {
     @IBOutlet weak var publicButton: UIButton!
     @IBOutlet weak var privateButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    var isCreated: Bool = false
+    
+    override func viewWillAppear(animated: Bool) {
+        if self.isCreated {
+            self.dismissViewControllerAnimated(false, completion: nil)
+        }
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.isCreated = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         initViewProp()
     }
     
@@ -62,11 +73,17 @@ class CreatePlaylistViewController: UIViewController {
     }
     
     func createPublic(sender: UIButton!) {
+        self.isCreated = true
         self.performSegueWithIdentifier("createPublic", sender: nil)
     }
     
     func cancel(sender: UIButton!) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        //self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     /*
