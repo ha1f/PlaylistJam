@@ -1,34 +1,21 @@
-//
-//  PlaylistDetailViewController.swift
-//  TachDesiginKyotoInaka
-//
-//  Created by 山口 智生 on 2015/09/11.
-//  Copyright (c) 2015年 NextVanguard. All rights reserved.
-//
-
 import UIKit
 
-/** 
-* playlistListから呼び出し
-* モーダル的な表示
-*/
 class PlaylistDetailViewController: UIViewController {
     
     @IBOutlet var songTableView: UITableView!
-    
+    @IBOutlet weak var mainArtwork: UIImageView!
+    @IBOutlet weak var subArtwork1: UIImageView!
+    @IBOutlet weak var subArtwork2: UIImageView!
+
     var songList: [Song] = []
+    var playlist: Playlist?
+    var player: PlayerManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.blueColor()
-        
-        var song = Song()
-        song.title = "たいとー"
-        
-        var song2 = Song()
-        song2.title = "たいとる"
-        
-        songList = [song, song2]
+
+        songList = playlist!.songs
         
         //tableViewの作成、delegate,dataSourceを設定
         self.songTableView.delegate = self
@@ -38,6 +25,18 @@ class PlaylistDetailViewController: UIViewController {
         self.songTableView.separatorColor = UIColor.blackColor()
         
         self.songTableView.tableFooterView = UIView()
+        setupArtwork()
+        self.player = PlayerManager(songs: playlist!.songs)
+    }
+
+    func setupArtwork() {
+        let largeSong = playlist!.songs.first!
+        let song1 = playlist!.songs[1]
+        let song2 = playlist!.songs[2]
+
+        self.mainArtwork.sd_setImageWithURL(NSURL(string: largeSong.artworkUrl)!)
+        self.subArtwork1.sd_setImageWithURL(NSURL(string: song1.artworkUrl)!)
+        self.subArtwork2.sd_setImageWithURL(NSURL(string: song2.artworkUrl)!)
     }
     
     @IBAction func close(sender: AnyObject?) {
@@ -48,6 +47,7 @@ class PlaylistDetailViewController: UIViewController {
 extension PlaylistDetailViewController: UITableViewDataSource, UITableViewDelegate{
     //選択された時
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        player.playById(indexPath.row)
         println("selected: \(indexPath.row)")
         //self.performSegueWithIdentifier("tosend",sender: nil)
     }
@@ -59,18 +59,12 @@ extension PlaylistDetailViewController: UITableViewDataSource, UITableViewDelega
     //セルを作成
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PlaylistDetailSongCell") as! PlaylistDetailSongCell
-        
         cell.setSong(self.songList[indexPath.row])
-        
-        println("create:\(indexPath.row)")
-        
         return cell
     }
     
     //高さを計算したいけどとりあえず放置
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        //let song = self.songList[indexPath.row]
-        
         let height :CGFloat! = 80.0
         
         if let h = height{

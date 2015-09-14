@@ -1,11 +1,3 @@
-//
-//  PlaylistListViewController.swift
-//  TachDesiginKyotoInaka
-//
-//  Created by 山口 智生 on 2015/09/11.
-//  Copyright (c) 2015年 NextVanguard. All rights reserved.
-//
-
 import UIKit
 
 class PlaylistListViewController: PageCellViewController {
@@ -38,6 +30,12 @@ class PlaylistListViewController: PageCellViewController {
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let viewController: PlaylistDetailViewController = segue.destinationViewController as! PlaylistDetailViewController
+        let i: Int = sender as! Int
+        viewController.playlist = playlistList[i]
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -51,7 +49,7 @@ extension PlaylistListViewController: UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        // self.performSegueWithIdentifier("showDetail", sender: nil)
+        self.performSegueWithIdentifier("showDetail", sender: indexPath.row)
         appendSelectedItem(indexPath.row)
         println("select: \(indexPath.row)")
     }

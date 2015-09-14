@@ -38,6 +38,13 @@ class PlayerManager {
         player().play()
     }
 
+    func playById(i: Int) {
+        pause()
+        self.i = i
+        reset()
+        play()
+    }
+
     func title() -> String {
         return player().title()
     }
