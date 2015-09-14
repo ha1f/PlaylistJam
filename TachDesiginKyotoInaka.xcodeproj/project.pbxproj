@@ -196,7 +196,6 @@
 				A4B20C5D1BA1926E00BA531F /* LaunchScreen.xib */,
 				A4B20C521BA1926E00BA531F /* Supporting Files */,
 				1E8FAB281BA5306D00026055 /* ConstantShare.swift */,
-				1EF362AE1BA56BE00064284B /* CreatePlaylistViewController.swift */,
 			);
 			path = TachDesiginKyotoInaka;
 			sourceTree = "<group>";
@@ -264,6 +263,7 @@
 				1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */,
 				B4BCD1771BA2C76600DD82F5 /* PlayerViewController.swift */,
 				A4B025901BA565540056D5E2 /* HomeViewController.swift */,
+				1EF362AE1BA56BE00064284B /* CreatePlaylistViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
