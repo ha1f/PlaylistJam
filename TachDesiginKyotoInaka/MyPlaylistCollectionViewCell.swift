@@ -1,28 +1,29 @@
-//
-//  MyPlaylistCollectionViewCell.swift
-//  TachDesiginKyotoInaka
-//
-//  Created by 坂本時緒 on 9/14/15.
-//  Copyright (c) 2015 NextVanguard. All rights reserved.
-//
-
 import UIKit
 
 class MyPlaylistCollectionViewCell: UICollectionViewCell {
+    var index: Int = 0
+    var parent: HomeViewController!
+    var playlist: Playlist!
     
-    
+    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var mainArtworkImageView: UIImageView!
     @IBOutlet weak var infoView: UIView!
     
     @IBOutlet weak var sub1ArtworkImageView: UIImageView!
     @IBOutlet weak var sub2ArtworkImageView: UIImageView!
 
-    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var playlistTitleLabel: UILabel!
     @IBOutlet weak var playlistCommentLabel: UILabel!
 
+    @IBAction func touchUpPlayButton(sender: AnyObject) {
+        parent.player = PlayerManager(songs: playlist.songs)
+        parent.player.play()
+        println(index)
+    }
+
     func setup(playlist: Playlist) {
         initViewProp()
+        self.playlist = playlist
         
         if let url = NSURL(string: playlist.songs[0].artworkUrl) {
             self.mainArtworkImageView.sd_setImageWithURL(url)
@@ -33,49 +34,31 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
         if let url = NSURL(string: playlist.songs[2].artworkUrl) {
             self.sub2ArtworkImageView.sd_setImageWithURL(url)
         }
-        
+
+        let image = UIImage(named: "playlistPlayButton")
+        self.playButton.setBackgroundImage(image, forState: .Normal)
+        self.playButton.setTitle("", forState: .Normal)
+
         self.playlistTitleLabel.text = playlist.title
         self.playlistCommentLabel.text = playlist.desc
     }
-    
-    func getImageByURL(url: String) -> NSData{
-        // URLを指定したUIImageの生成例
-        let url = NSURL(string: url)
-        var err: NSError?;
-        var imageData :NSData = NSData(contentsOfURL: url!,options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err)!;
-        return imageData
-        //var img = UIImage(data:imageData);
- 
-    }
-    
+
     func initViewProp(){
-        var colorList: [CGColor] = []
-        colorList.append(UIColor.colorFromRGB("000000", alpha: 0).CGColor)
-        var locations: [CGFloat] = []
-        locations.append(0.0)
-        locations.append(0.8)
-        colorList.append(UIColor.blackColor().CGColor)
+        let colorList: [CGColor] = [
+            UIColor.colorFromRGB("000000", alpha: 0).CGColor,
+            UIColor.blackColor().CGColor
+        ]
+
+        let locations: [CGFloat] = [0.0, 0.8]
         setGradient(self.infoView, colorList: colorList, locations: locations)
-        
     }
     
     func setGradient(view: UIView, colorList: [CGColor]?, locations: [CGFloat]){
-        //グラデーションの色を配列で管理
         let gradientColors: [CGColor]? = colorList
-        
-        //グラデーションレイヤーを作成
         let gradientLayer: CAGradientLayer = CAGradientLayer()
-        
-        //グラデーションの色をレイヤーに割り当てる
         gradientLayer.colors = gradientColors
-        //グラデーションレイヤーをスクリーンサイズにする
         gradientLayer.frame = view.bounds
-        
         gradientLayer.locations = locations
-        
-        //グラデーションレイヤーをビューの一番下に配置
         view.layer.insertSublayer(gradientLayer, atIndex: 0)
     }
-    
-    
 }
