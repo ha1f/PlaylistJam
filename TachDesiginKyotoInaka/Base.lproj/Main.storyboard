@@ -484,10 +484,10 @@
             </objects>
             <point key="canvasLocation" x="-1809.75" y="619.125"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Create Playlist Navigation Controller-->
         <scene sceneID="9iy-xH-peG">
             <objects>
-                <navigationController id="zBF-tG-wf8" sceneMemberID="viewController">
+                <navigationController id="zBF-tG-wf8" customClass="CreatePlaylistNavigationController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RYq-fG-GZD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -604,7 +604,7 @@
             </objects>
             <point key="canvasLocation" x="593.5" y="612.5"/>
         </scene>
-        <!--description-->
+        <!--プレイリストの詳細設定-->
         <scene sceneID="vM5-v9-IG4">
             <objects>
                 <viewController id="9Ag-B2-HGh" customClass="EditOrderSongViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
@@ -616,15 +616,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP4-X8-rBq">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="プレイリストの詳細設定" id="omw-vW-jpq"/>
-                                </items>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                </variation>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WQ-v6-E3O">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -690,7 +681,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="zP4-X8-rBq"/>
                                 <exclude reference="9WQ-v6-E3O"/>
                                 <exclude reference="osn-Vl-uQ6"/>
                                 <exclude reference="fj7-zR-kBf"/>
@@ -702,7 +692,6 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="zP4-X8-rBq"/>
                                 <include reference="9WQ-v6-E3O"/>
                                 <include reference="osn-Vl-uQ6"/>
                                 <include reference="fj7-zR-kBf"/>
@@ -713,12 +702,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="description" id="5Sd-Bq-qqb">
+                    <navigationItem key="navigationItem" title="プレイリストの詳細設定" id="5Sd-Bq-qqb">
                         <barButtonItem key="rightBarButtonItem" title="完了" id="n18-dX-gcn"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="descField" destination="lQb-D7-jPW" id="Ibv-nA-ZG2"/>
+                        <outlet property="finishBarButton" destination="n18-dX-gcn" id="3Nf-5i-H0C"/>
                         <outlet property="moodBtn" destination="yRb-FH-UrH" id="mJv-I5-eE0"/>
                         <outlet property="songListTableView" destination="CVZ-cj-2eK" id="vn7-UT-rZN"/>
                         <outlet property="titleField" destination="IXf-yR-0Bh" id="qCN-Ve-oEv"/>
@@ -928,70 +918,6 @@
             </objects>
             <point key="canvasLocation" x="-1030.5" y="604.5"/>
         </scene>
-        <!--Select Song View Controller-->
-        <scene sceneID="fj7-q5-Ajy">
-            <objects>
-                <viewController id="bao-XQ-cBK" customClass="SelectSongViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5Wb-GQ-N5o"/>
-                        <viewControllerLayoutGuide type="bottom" id="Zct-Db-6oU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="t9L-uA-S6k">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="guK-E8-nIt">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="57" width="370" height="538"/>
-                                </variation>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKr-WW-OuJ">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="315" y="599" width="37" height="39"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/8" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIA-Yv-PM5">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="329" y="610" width="37" height="39"/>
-                                </variation>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="guK-E8-nIt"/>
-                                <exclude reference="VKr-WW-OuJ"/>
-                                <exclude reference="XIA-Yv-PM5"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="guK-E8-nIt"/>
-                                <include reference="VKr-WW-OuJ"/>
-                                <include reference="XIA-Yv-PM5"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="selectSongTableView" destination="guK-E8-nIt" id="GlP-uJ-nnW"/>
-                        <outlet property="selectedCount" destination="VKr-WW-OuJ" id="3dX-w9-TVU"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zYl-IU-0Xo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1565.25" y="612.375"/>
-        </scene>
         <!--Player View Controller-->
         <scene sceneID="ulW-Ma-u3K">
             <objects>
@@ -1068,24 +994,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDq-6q-drS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="382.5" y="1444.5"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="41H-zG-fVP">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="hby-62-w55" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yLN-jb-9Nd"/>
-                        <viewControllerLayoutGuide type="bottom" id="7C1-XM-Vfu"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XxN-oo-Ef7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bdf-yV-5PF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>

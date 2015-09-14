@@ -14,6 +14,8 @@ class EditOrderSongViewController: UIViewController {
     @IBOutlet weak var descField: UITextField!
     @IBOutlet weak var songListTableView: UITableView!
     @IBOutlet weak var moodBtn: UIButton!
+    @IBOutlet weak var finishBarButton: UIBarButtonItem!
+    
 
     let manager = SelectedSongsManager.manager
     var songList: [Song] = []
@@ -35,6 +37,15 @@ class EditOrderSongViewController: UIViewController {
 
         songList = map(manager.selectedSongInfo()) { return $0.song }
         songListTableView.reloadData()
+        
+        self.finishBarButton.target = self
+        self.finishBarButton.action = "finishEditting:"
+    }
+    
+    //完了ボタン
+    func finishEditting(sender: UIBarButtonItem!) {
+        println("finsh")
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
