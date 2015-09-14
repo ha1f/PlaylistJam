@@ -9,7 +9,7 @@ class ItunesApi {
     private init() {}
 
     func fetchSongs(completion: (songs: [Song]) -> Void) {
-        let params = ["term": "technologic", "country": "JP", "entity": "musicTrack"]
+        let params = ["term": "sekai", "country": "JP", "entity": "musicTrack"]
 
         client.get(ItunesApi.url, parameters: params, completion: { (response: MusicTrackResponse?, error: NSError?) in
             if let songs = response?.songs {

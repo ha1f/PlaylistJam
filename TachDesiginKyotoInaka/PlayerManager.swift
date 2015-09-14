@@ -1,15 +1,24 @@
 import AVFoundation
 
-class PlayerManager {
+class PlayerManager: NSObject {
     var players: [Player?]
     let songs: [Song]
     var i = 0;
     let songCount: Int
+    var playingTimes : NSTimer?
+    var listener: AnyObject?
 
     init(songs: [Song]) {
         self.songs = songs
         self.songCount = songs.count
         self.players = [Player?](count: songCount, repeatedValue: nil)
+        super.init()
+    }
+
+    func fuga() {
+        if progress() == 1.0 {
+            playNextSong()
+        }
     }
 
     func playNextSong() {
@@ -53,8 +62,12 @@ class PlayerManager {
         return player().artist()
     }
 
-    func isPlaying() -> Bool {
-        return player().isPlaying!
+    func isFinish() -> Bool {
+        return progress() > 1.0
+    }
+
+    func isPausing() -> Bool {
+        return player().isPausing!
     }
 
     func artworkUrl() -> NSURL {
@@ -73,6 +86,14 @@ class PlayerManager {
         return player().progress()
     }
 
+    func seekTo(d: Float) {
+        player().seekTo(d)
+    }
+
+    func listen(li: AnyObject) {
+        self.listener = li
+    }
+
     private func selectNextSong() {
         if(i < (songCount - 1)) {
             i += 1
@@ -89,6 +110,10 @@ class PlayerManager {
         }
     }
 
+    func playerDidFinishPlaying(note: NSNotification) {
+        playNextSong()
+    }
+
     private func player() -> Player {
         println(i)
         if let player = self.players[i] {
@@ -96,18 +121,30 @@ class PlayerManager {
         } else {
             let song = songs[i]
             self.players[i] = Player(song: song)
+            println(listener)
+
+            NSNotificationCenter.defaultCenter().addObserver(
+                (listener ?? self),
+                selector: "finishedPlaying:",
+                name: AVPlayerItemDidPlayToEndTimeNotification,
+                object: self.players[i]?.playerItem
+            )
             return players[i]!
         }
     }
+
+    func finishedPlaying(notification: NSNotification?) {
+        self.playNextSong()
+    }
 }
 
-class Player {
+class Player{
     var player: AVPlayer!
     var song: Song
     let zeroSec: CMTime = CMTimeMake(0, 1)
     var playerItem: AVPlayerItem?
     var asset: AVURLAsset?
-    var isPlaying: Bool?
+    var isPausing: Bool?
 
     init(song: Song) {
         self.song = song
@@ -116,12 +153,12 @@ class Player {
 
     func play() {
         player.play()
-        isPlaying = true
+        isPausing = true
     }
 
     func pause() {
         player.pause()
-        isPlaying = false
+        isPausing = false
     }
 
     func reset() {
@@ -138,6 +175,11 @@ class Player {
 
     func artist() -> String {
         return song.artist
+    }
+
+    func seekTo(d: Float) {
+        let time = Float(CMTimeGetSeconds(self.asset!.duration)) * d
+        player.seekToTime(CMTimeMakeWithSeconds(Float64(time), 1))
     }
 
     func playTime() -> String {
@@ -177,7 +219,7 @@ class Player {
         if let p = AVPlayer(playerItem: playerItem) {
             println(url)
             self.player = p
-            self.isPlaying = false
+            self.isPausing = false
         } else {
             println("failed generating player")
         }

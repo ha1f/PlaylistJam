@@ -10,60 +10,70 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var playingTimeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var playButton: UIButton!
+
+    @IBOutlet weak var playingTimeSlider: UISlider!
 
     var playingTime : NSTimer?
+    let pauseImage = UIImage(named: "stopButton")
+    let playImage = UIImage(named: "playButton")
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.playingTimeSlider.value = 0.0
+        self.playingTimeSlider.setThumbImage(UIImage(named: "sliderThum"),forState: .Normal)
+
         setupPlayerAnd {
-            self.play()
+            self.player.listen(self)
             self.setupViewObject()
+            self.play()
         }
     }
 
-    @IBAction func touchUpPlayBotton(sender: AnyObject) {
-        play()
+    @IBAction func changePlayingTime(sender: AnyObject) {
+        player.seekTo(self.playingTimeSlider.value)
     }
 
-    @IBAction func touchUpPauseButton(sender: AnyObject) {
-        player.pause()
+    @IBAction func touchUpPlayBotton(sender: AnyObject) {
+        if player.isPausing() {
+            pause()
+        } else {
+            play()
+        }
     }
 
     @IBAction func touchUpNextButton(sender: AnyObject) {
         player.playNextSong()
-        setArtwork()
         setSongInfo()
     }
 
     @IBAction func touchUpPrevButton(sender: AnyObject) {
         player.playPrevSong()
-        self.artwork.sd_setImageWithURL(self.player.artworkUrl())
         setSongInfo()
-    }
-
-    private func setupViewObject() {
-        self.playTimeLabel.text = self.player.playTime()
-        self.playingTimeLabel.text = "00:00"
-        self.setPlayingTimeListener()
-        self.progressView.setProgress(0.0, animated: true)
-        self.setSongInfo()
     }
 
     private func setPlayingTimeListener() {
         self.playingTime = NSTimer.scheduledTimerWithTimeInterval(
             0.1,
             target: self,
-            selector: "updatePlayingTime",
+            selector: "updatePlayingState",
             userInfo: nil,
             repeats: true
         )
     }
 
-    func updatePlayingTime() {
-        if self.player.isPlaying() {
+    // for Notification
+    func finishedPlaying(notification: NSNotification?) {
+        player.playNextSong()
+        setSongInfo()
+    }
+
+    func updatePlayingState() {
+        if self.player.isPausing() {
             playingTimeLabel.text = player.playingTime()
-            self.progressView.progress = self.player.progress()
+            self.playingTimeSlider.value = self.player.progress()
         }
     }
 
@@ -76,15 +86,24 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
 
     private func play() {
         player.play()
-        setArtwork()
+        playButton.setImage(pauseImage, forState: .Normal)
+    }
+
+    private func pause() {
+        player.pause()
+        playButton.setImage(playImage, forState: .Normal)
     }
 
     private func setSongInfo() {
+        self.artwork.sd_setImageWithURL(self.player.artworkUrl())
         self.titleLabel.text = self.player.title()
         self.artistLabel.text = self.player.artist()
+        playButton.setImage(pauseImage, forState: .Normal)
     }
 
-    private func setArtwork() {
-        self.artwork.sd_setImageWithURL(self.player.artworkUrl())
+    private func setupViewObject() {
+        self.playTimeLabel.text = self.player.playTime()
+        self.setPlayingTimeListener()
+        self.setSongInfo()
     }
 }
