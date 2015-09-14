@@ -3,7 +3,7 @@ import UIKit
 class SelectEightSongViewController: UIViewController {
     let manager = SelectedSongsManager.manager
     var songList:[Song] = []
-    var selectedSongs: [Song] = [] {
+    var selectedSongs: [SelectedSong] = [] {
         didSet{
             self.selectedCount.text = "\(selectedSongs.count)/8 曲"
         }
@@ -45,15 +45,20 @@ class SelectEightSongViewController: UIViewController {
     func checkButtonClicked(sender: CheckBox!) {
         sender.isChecked = !sender.isChecked
         checkFlags[sender.tag] = sender.isChecked
+
         if sender.isChecked {
             if selectedSongs.count < 8 {
-                selectedSongs.append(songList[sender.tag])
+                self.manager.selectSongInfoById(sender.tag)
+                selectedSongs.append(self.manager.selectedSongInfos[sender.tag])
             } else {
                 sender.isChecked = false
             }
         } else {
-            //削除
+            println("delete")
+            self.manager.removeSongInfoById(sender.tag)
+            selectedSongs = manager.selectedSongInfo()
         }
+        println(self.manager.selectedIds)
     }
 }
 
