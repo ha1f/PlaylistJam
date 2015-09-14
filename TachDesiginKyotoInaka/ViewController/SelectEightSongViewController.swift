@@ -1,7 +1,7 @@
 import UIKit
 
 class SelectEightSongViewController: UIViewController {
-    
+    let manager = SelectedSongsManager.manager
     var songList:[Song] = []
     var selectedSongs: [Song] = [] {
         didSet{
@@ -15,6 +15,8 @@ class SelectEightSongViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        songList = manager.selectedSongs()
+
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
         
@@ -26,7 +28,7 @@ class SelectEightSongViewController: UIViewController {
         for i in songList {
             self.checkFlags.append(false)
         }
-        
+
         selectSongTableView.reloadData()
     }
     
