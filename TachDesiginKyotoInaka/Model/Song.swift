@@ -18,7 +18,7 @@ class Song: Object {
 }
 
 extension Song: Selectable {
-    func selected() -> [Selectable] {
+   func selected() -> [Song] {
         return [self]
     }
 }
