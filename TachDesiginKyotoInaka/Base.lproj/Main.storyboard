@@ -770,7 +770,7 @@
         <!--Create Playlist View Controller-->
         <scene sceneID="sxV-SV-NEP">
             <objects>
-                <viewController id="HVN-8P-hqo" customClass="CreatePlaylistViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="HVN-8P-hqo" customClass="CreatePlaylistViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jy9-6G-QQO"/>
                         <viewControllerLayoutGuide type="bottom" id="vy9-Dt-Vya"/>
@@ -779,21 +779,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPL-aX-Ygo">
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mD-Rz-iEs">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nSg-TL-fKj">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gnL-gI-z3b">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <blurEffect style="dark"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <blurEffect style="light"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="405" width="375" height="269"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="406"/>
                                 </variation>
                             </visualEffectView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="publicIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NTd-I2-Pr6">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="84" y="443" width="25" height="25"/>
+                                    <rect key="frame" x="84" y="428" width="25" height="25"/>
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="privateIcon" translatesAutoresizingMaskIntoConstraints="NO" id="kry-i8-bhU">
@@ -812,7 +813,7 @@
                                     <rect key="frame" x="24" y="143" width="326" height="54"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="46" y="432" width="281" height="54"/>
+                                    <rect key="frame" x="46.5" y="414" width="281" height="54"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEQ-hK-lJ2">
@@ -857,41 +858,42 @@
                                     <rect key="frame" x="132" y="618" width="110" height="26"/>
                                 </variation>
                             </button>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mD-Rz-iEs">
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPL-aX-Ygo">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gnL-gI-z3b">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nSg-TL-fKj">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <blurEffect style="extraLight"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="406"/>
+                                    <rect key="frame" x="-1" y="405" width="375" height="269"/>
                                 </variation>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="LPL-aX-Ygo"/>
+                                <exclude reference="8mD-Rz-iEs"/>
                                 <exclude reference="NTd-I2-Pr6"/>
                                 <exclude reference="kry-i8-bhU"/>
                                 <exclude reference="1F9-dd-WOh"/>
                                 <exclude reference="HEQ-hK-lJ2"/>
                                 <exclude reference="3BR-Hu-4BM"/>
                                 <exclude reference="SVf-q1-m8g"/>
-                                <exclude reference="8mD-Rz-iEs"/>
+                                <exclude reference="LPL-aX-Ygo"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="LPL-aX-Ygo"/>
+                                <include reference="8mD-Rz-iEs"/>
                                 <include reference="NTd-I2-Pr6"/>
                                 <include reference="kry-i8-bhU"/>
                                 <include reference="1F9-dd-WOh"/>
                                 <include reference="HEQ-hK-lJ2"/>
                                 <include reference="3BR-Hu-4BM"/>
                                 <include reference="SVf-q1-m8g"/>
-                                <include reference="8mD-Rz-iEs"/>
+                                <include reference="LPL-aX-Ygo"/>
                             </mask>
                         </variation>
                     </view>
@@ -905,7 +907,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30l-Oj-Si5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1031.25" y="604.125"/>
+            <point key="canvasLocation" x="-1142.25" y="604.125"/>
         </scene>
         <!--Player View Controller-->
         <scene sceneID="ulW-Ma-u3K">

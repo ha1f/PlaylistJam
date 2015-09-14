@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
 
         initViewProp()
         createButton.addTarget(self, action: "createPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
+        
     }
     
     func createPlaylist() {
