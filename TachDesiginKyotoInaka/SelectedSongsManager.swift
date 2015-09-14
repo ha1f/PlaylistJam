@@ -12,6 +12,11 @@ class SelectedSongsManager {
             }
         }
     }
+    
+    func moveSelectedSongInfo(from: Int, to: Int) {
+        let tmp = selectedIds.removeAtIndex(from)
+        selectedIds.insert(tmp, atIndex: to)
+    }
 
     func appendSongs(songs: [Song]) {
         for song in songs {
