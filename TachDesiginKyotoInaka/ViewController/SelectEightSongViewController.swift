@@ -1,4 +1,5 @@
 import UIKit
+import DraggableCollectionView
 
 class SelectEightSongViewController: UIViewController {
     
@@ -12,20 +13,28 @@ class SelectEightSongViewController: UIViewController {
     
     @IBOutlet weak var selectSongTableView: UITableView!
     @IBOutlet weak var selectedCount: UILabel!
+    @IBOutlet weak var selectedCollection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
         
         self.selectedCount.text = "\(selectedSongs.count)/8 曲"
         
         selectSongTableView.allowsSelection = false
+        selectSongTableView.backgroundColor = UIColor.clearColor()
         
         //同じ回数分
         for i in songList {
             self.checkFlags.append(false)
         }
+        
+        selectedCollection.delegate = self
+        selectedCollection.dataSource = self
+        selectedCollection.draggable = true
+        
         
         selectSongTableView.reloadData()
     }
@@ -46,12 +55,14 @@ class SelectEightSongViewController: UIViewController {
         if sender.isChecked {
             if selectedSongs.count < 8 {
                 selectedSongs.append(songList[sender.tag])
+                //self.selectedCollection.scrollToItemAtIndexPath(NSIndexPath(forRow: selectedSongs.count-1, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
             } else {
                 sender.isChecked = false
             }
         } else {
             //削除
         }
+        self.selectedCollection.reloadData()
     }
 }
 
@@ -80,10 +91,52 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let height :CGFloat! = nil
         // heightがnilの場合、とりあえず高さ40で設定 TODO
-        if let h = height{
+        if let h = height {
             return h
         } else {
             return 60//tableView.estimatedRowHeight
         }
+    }
+}
+
+extension SelectEightSongViewController: UICollectionViewDataSource_Draggable, UICollectionViewDelegate {
+    
+    func collectionView(collectionView: UICollectionView!, canMoveItemAtIndexPath indexPath: NSIndexPath!, toIndexPath: NSIndexPath!) -> Bool {
+        return true
+    }
+    
+    //それを動かしていいか
+    func collectionView(collectionView: UICollectionView!, canMoveItemAtIndexPath indexPath: NSIndexPath!) -> Bool {
+        return true
+    }
+    
+    func collectionView(collectionView: UICollectionView!, moveItemAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
+        println("drag")
+        let tmp = self.selectedSongs.removeAtIndex(fromIndexPath.row)
+        self.selectedSongs.insert(tmp, atIndex: toIndexPath.row)
+        println(self.selectedSongs)
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        println("\(indexPath.row)")
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("selectedSongCell", forIndexPath: indexPath) as! SelectedSongCell
+        cell.setup(self.selectedSongs[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        println("select: \(indexPath.row)")
+    }
+    
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        println("deselect: \(indexPath.row)")
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedSongs.count;
     }
 }

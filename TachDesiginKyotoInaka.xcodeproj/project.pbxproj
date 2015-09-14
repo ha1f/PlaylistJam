@@ -45,6 +45,7 @@
 		A4B20C9D1BA29B6E00BA531F /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C9C1BA29B6E00BA531F /* PlaylistCell.swift */; };
 		A4B20CA11BA2A35B00BA531F /* PlaylistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20CA01BA2A35B00BA531F /* PlaylistDetailViewController.swift */; };
 		A4BC227F1BA2EF0900B588C9 /* PlaylistDetailSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BC227E1BA2EF0900B588C9 /* PlaylistDetailSongCell.swift */; };
+		A4ECA6631BA68B5D00784B0A /* SelectedSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECA6621BA68B5D00784B0A /* SelectedSongCell.swift */; };
 		B40202AF1BA46C6B00F7B0B4 /* SelectedSongsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40202AE1BA46C6B00F7B0B4 /* SelectedSongsManager.swift */; };
 		B40202B11BA4738F00F7B0B4 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40202B01BA4738F00F7B0B4 /* Selectable.swift */; };
 		B40400221BA2998C00896839 /* MusicTrackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40400211BA2998C00896839 /* MusicTrackResponse.swift */; };
@@ -110,6 +111,7 @@
 		A4B20C9C1BA29B6E00BA531F /* PlaylistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaylistCell.swift; path = ViewController/PlaylistCell.swift; sourceTree = "<group>"; };
 		A4B20CA01BA2A35B00BA531F /* PlaylistDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaylistDetailViewController.swift; path = ViewController/PlaylistDetailViewController.swift; sourceTree = "<group>"; };
 		A4BC227E1BA2EF0900B588C9 /* PlaylistDetailSongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaylistDetailSongCell.swift; path = ViewController/PlaylistDetailSongCell.swift; sourceTree = "<group>"; };
+		A4ECA6621BA68B5D00784B0A /* SelectedSongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedSongCell.swift; sourceTree = "<group>"; };
 		B40202AE1BA46C6B00F7B0B4 /* SelectedSongsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedSongsManager.swift; sourceTree = "<group>"; };
 		B40202B01BA4738F00F7B0B4 /* Selectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		B40400211BA2998C00896839 /* MusicTrackResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicTrackResponse.swift; path = Model/MusicTrackResponse.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				1E8FAB2D1BA5425500026055 /* SelectSongTableViewCell.xib */,
 				1E8FAB301BA543C300026055 /* CheckButton.swift */,
 				1E8FAB261BA52FD000026055 /* SelectMoodModalViewController.swift */,
+				A4ECA6621BA68B5D00784B0A /* SelectedSongCell.swift */,
 			);
 			name = SelectEightSong;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				TargetAttributes = {
 					A4B20C4E1BA1926E00BA531F = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = V723YSJ67H;
 					};
 					A4B20C631BA1926E00BA531F = {
 						CreatedOnToolsVersion = 6.4;
@@ -512,6 +516,7 @@
 				A4B20C821BA192A600BA531F /* ModelManager.swift in Sources */,
 				A4B20C891BA192A600BA531F /* Song.swift in Sources */,
 				1EC692131BA2DBAC00621D53 /* EditOrderSongTableViewCell.swift in Sources */,
+				A4ECA6631BA68B5D00784B0A /* SelectedSongCell.swift in Sources */,
 				1E8FAB291BA5306D00026055 /* ConstantShare.swift in Sources */,
 				A4B20C911BA25F5E00BA531F /* PagingViewController.swift in Sources */,
 				1E8FAB271BA52FD000026055 /* SelectMoodModalViewController.swift in Sources */,
@@ -647,10 +652,13 @@
 			baseConfigurationReference = 58B18F1FC211CE0D810643A5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TachDesiginKyotoInaka/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -659,10 +667,13 @@
 			baseConfigurationReference = DF14468BD71C2DD80759279E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TachDesiginKyotoInaka/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
