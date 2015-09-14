@@ -2,9 +2,9 @@ import UIKit
 import DraggableCollectionView
 
 class SelectEightSongViewController: UIViewController {
-    
+    let manager = SelectedSongsManager.manager
     var songList:[Song] = []
-    var selectedSongs: [Song] = [] {
+    var selectedSongs: [SelectedSong] = [] {
         didSet{
             self.selectedCount.text = "\(selectedSongs.count)/8 曲"
         }
@@ -18,6 +18,8 @@ class SelectEightSongViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.songList = manager.selectedSongs()
+
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
         
@@ -35,7 +37,6 @@ class SelectEightSongViewController: UIViewController {
         selectedCollection.dataSource = self
         selectedCollection.draggable = true
         
-        
         selectSongTableView.reloadData()
     }
     
@@ -52,17 +53,22 @@ class SelectEightSongViewController: UIViewController {
     func checkButtonClicked(sender: CheckBox!) {
         sender.isChecked = !sender.isChecked
         checkFlags[sender.tag] = sender.isChecked
+
         if sender.isChecked {
             if selectedSongs.count < 8 {
-                selectedSongs.append(songList[sender.tag])
+                self.manager.selectSongInfoById(sender.tag)
+                selectedSongs.append(self.manager.selectedSongInfos[sender.tag])
                 //self.selectedCollection.scrollToItemAtIndexPath(NSIndexPath(forRow: selectedSongs.count-1, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
             } else {
                 sender.isChecked = false
             }
         } else {
-            //削除
+            println("delete")
+            self.manager.removeSongInfoById(sender.tag)
+            selectedSongs = manager.selectedSongInfo()
         }
         self.selectedCollection.reloadData()
+        println(self.manager.selectedIds)
     }
 }
 
@@ -112,15 +118,14 @@ extension SelectEightSongViewController: UICollectionViewDataSource_Draggable, U
     
     func collectionView(collectionView: UICollectionView!, moveItemAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
         println("drag")
-        let tmp = self.selectedSongs.removeAtIndex(fromIndexPath.row)
-        self.selectedSongs.insert(tmp, atIndex: toIndexPath.row)
+        manager.moveSelectedSongInfo(fromIndexPath.row, to: toIndexPath.row)
         println(self.selectedSongs)
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         println("\(indexPath.row)")
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("selectedSongCell", forIndexPath: indexPath) as! SelectedSongCell
-        cell.setup(self.selectedSongs[indexPath.row])
+        cell.setup(manager.selectedSongInfo()[indexPath.row])
         return cell
     }
     

@@ -27,7 +27,7 @@ class Playlist: Object {
 }
 
 extension Playlist: Selectable {
-    func selected() -> [Selectable] {
-        return self.songs
+    func selected() -> [Song] {
+        return songs
     }
 }

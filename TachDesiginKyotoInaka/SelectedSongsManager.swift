@@ -1,18 +1,67 @@
 class SelectedSongsManager {
     static let manager = SelectedSongsManager()   // for Singleton
-    var songs: [Song] = []
+    var selectedSongInfos: [SelectedSong] = []
+    var selectedIds: [Int] = []
 
     private init() {}
 
-    func setSongs(selectables: [Selectable]) {
-        self.songs = flatMap(selectables, { return $0.selected() }) as! [Song]
+    func appendPlaylists(playlists: [Playlist]) {
+        for p in playlists {
+            for song in p.songs {
+                self.selectedSongInfos.append(SelectedSong(song: song, playlistName: p.title, playlistId: p.id))
+            }
+        }
+    }
+    
+    func moveSelectedSongInfo(from: Int, to: Int) {
+        let tmp = selectedIds.removeAtIndex(from)
+        selectedIds.insert(tmp, atIndex: to)
     }
 
-    func appendSongs(selectables: [Selectable]) {
-        self.songs += flatMap(selectables, { return $0.selected() }) as! [Song]
+    func appendSongs(songs: [Song]) {
+        for song in songs {
+            let selected = SelectedSong(song: song, playlistName: nil, playlistId: nil)
+
+            if isExistSongs(selected) {
+                self.selectedSongInfos.append(selected)
+            }
+        }
     }
 
-    func selectSongs(selectedIds: [Int]) {
-        self.songs = map(selectedIds, { self.songs[$0] })
+    func selectedSongs() -> [Song] {
+        return map(selectedSongInfos) { return $0.song }
     }
+
+    func selectedSongInfo() -> [SelectedSong] {
+        return map(selectedIds) { return self.selectedSongInfos[$0] }
+    }
+
+    func reset() {
+        selectedSongInfos = []
+        selectedIds = [] // TODO remove this line to perpetuate selected item
+    }
+
+    private func isExistSongs(song: SelectedSong) -> Bool {
+        if song.song.id != 0 {
+            let ids = map(selectedSongInfos) { return $0.song.id }
+            return contains(ids, song.song.id)
+        }
+        return false
+    }
+
+    func removeSongInfoById(selectedId: Int) {
+        if let idx = find(selectedIds, selectedId) {
+            self.selectedIds.removeAtIndex(idx)
+        }
+    }
+
+    func selectSongInfoById(selectedId: Int) {
+        selectedIds.append(selectedId)
+    }
+}
+
+struct SelectedSong {
+    var song: Song
+    var playlistName: String?
+    var playlistId: Int?
 }
