@@ -24,12 +24,16 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
     func setup(playlist: Playlist) {
         initViewProp()
         
-        var mainArtwork: NSData = getImageByURL(playlist.songs[0].artworkUrl)
-        self.mainArtworkImageView.image = UIImage(data: mainArtwork)
-        var sub1Artwork: NSData = getImageByURL(playlist.songs[1].artworkUrl)
-        self.sub1ArtworkImageView.image = UIImage(data: sub1Artwork)
-        var sub2Artwork: NSData = getImageByURL(playlist.songs[2].artworkUrl)
-        self.sub2ArtworkImageView.image = UIImage(data: sub2Artwork)
+        if let url = NSURL(string: playlist.songs[0].artworkUrl) {
+            self.mainArtworkImageView.sd_setImageWithURL(url)
+        }
+        if let url = NSURL(string: playlist.songs[1].artworkUrl) {
+            self.sub1ArtworkImageView.sd_setImageWithURL(url)
+        }
+        if let url = NSURL(string: playlist.songs[2].artworkUrl) {
+            self.sub2ArtworkImageView.sd_setImageWithURL(url)
+        }
+        
         self.playlistTitleLabel.text = playlist.title
         self.playlistCommentLabel.text = playlist.desc
     }
