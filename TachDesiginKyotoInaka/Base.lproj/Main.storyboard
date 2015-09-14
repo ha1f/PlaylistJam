@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zHs-Em-FcI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zHs-Em-FcI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -240,7 +240,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AWAWA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xck-bO-nhG">
@@ -293,7 +293,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="237"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xUd-CR-1xn">
@@ -317,15 +317,6 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Qa-lL-V5c">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bck-aw-Z9t">
-                                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                            <state key="normal" title="PLAY" image="playlistPlayButton">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                                <rect key="frame" x="16" y="56" width="45" height="45"/>
-                                                            </variation>
-                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIST TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqd-dT-tKE">
                                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -344,21 +335,33 @@
                                                                 <rect key="frame" x="67" y="59" width="285" height="21"/>
                                                             </variation>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOs-Im-IIc">
+                                                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                            <state key="normal" title="play">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                                <rect key="frame" x="21" y="77" width="30" height="30"/>
+                                                            </variation>
+                                                            <connections>
+                                                                <action selector="touchUpPlayButton:" destination="Dph-lm-PUq" eventType="touchUpInside" id="i9S-H6-GF8"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <variation key="default">
                                                         <mask key="subviews">
-                                                            <exclude reference="Bck-aw-Z9t"/>
                                                             <exclude reference="dqd-dT-tKE"/>
                                                             <exclude reference="jHt-MF-ZeR"/>
+                                                            <exclude reference="JOs-Im-IIc"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="0.0" y="117" width="360" height="120"/>
                                                         <mask key="subviews">
-                                                            <include reference="Bck-aw-Z9t"/>
                                                             <include reference="dqd-dT-tKE"/>
                                                             <include reference="jHt-MF-ZeR"/>
+                                                            <include reference="JOs-Im-IIc"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
@@ -386,7 +389,7 @@
                                         <connections>
                                             <outlet property="infoView" destination="9Qa-lL-V5c" id="pkA-Vd-ACx"/>
                                             <outlet property="mainArtworkImageView" destination="xUd-CR-1xn" id="Wtt-Ug-aoH"/>
-                                            <outlet property="playButton" destination="Bck-aw-Z9t" id="L7b-Qk-6ej"/>
+                                            <outlet property="playButton" destination="JOs-Im-IIc" id="VlP-Zx-Zxi"/>
                                             <outlet property="playlistCommentLabel" destination="dqd-dT-tKE" id="acq-eY-VCV"/>
                                             <outlet property="playlistTitleLabel" destination="jHt-MF-ZeR" id="aS5-V8-73b"/>
                                             <outlet property="sub1ArtworkImageView" destination="jSh-dX-WQX" id="i3n-to-cx3"/>
@@ -556,7 +559,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bSg-AL-vs7">
@@ -1004,15 +1007,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWv-f1-t7m">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idv-9E-YKz">
-                                <rect key="frame" x="157" y="583" width="61" height="55"/>
-                                <state key="normal" image="StopButton">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="touchUpPauseButton:" destination="2uu-fm-wl5" eventType="touchUpInside" id="Zim-2C-Ueq"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Dw-8v-eGw">
                                 <rect key="frame" x="83" y="509" width="39" height="39"/>
                                 <state key="normal" image="PrevSongButton">
@@ -1058,15 +1052,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufw-Io-YNZ">
-                                <rect key="frame" x="157" y="499" width="60" height="60"/>
-                                <state key="normal" image="PlayButton">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="touchUpPlayBotton:" destination="2uu-fm-wl5" eventType="touchUpInside" id="tXw-a0-AxD"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1105,9 +1090,6 @@
     </scenes>
     <resources>
         <image name="NextSongButton" width="90" height="110"/>
-        <image name="PlayButton" width="172" height="176"/>
         <image name="PrevSongButton" width="92" height="110"/>
-        <image name="StopButton" width="172" height="168"/>
-        <image name="playlistPlayButton" width="766" height="712"/>
     </resources>
 </document>
