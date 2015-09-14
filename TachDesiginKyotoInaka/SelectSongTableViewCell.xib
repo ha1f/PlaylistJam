@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pza-61-dJm">
-                        <rect key="frame" x="0.0" y="-1" width="55" height="55.5"/>
+                        <rect key="frame" x="0.0" y="-1" width="55" height="56"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpR-iZ-fvV" customClass="CheckBox" customModule="TachDesiginKyotoInaka" customModuleProvider="target">
                         <rect key="frame" x="327" y="14" width="30" height="30"/>
@@ -39,6 +39,7 @@
             <connections>
                 <outlet property="artWorkImage" destination="pza-61-dJm" id="8z3-nl-6XI"/>
                 <outlet property="artistNameLabel" destination="xHs-4C-0wy" id="jTV-6G-rjo"/>
+                <outlet property="checkBox" destination="XpR-iZ-fvV" id="oF9-Jv-fAP"/>
                 <outlet property="songNameLabel" destination="P20-cV-fHj" id="5pa-Qz-tvD"/>
             </connections>
             <point key="canvasLocation" x="261" y="338.5"/>

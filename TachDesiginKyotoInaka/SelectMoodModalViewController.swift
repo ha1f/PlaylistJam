@@ -22,6 +22,9 @@ class SelectMoodModalViewController: UIViewController{
         //キャンセルボタンのイベント登録
         cancelBtn.addTarget(self, action: "cancel:", forControlEvents: .TouchUpInside)
         
+        moodTableView.backgroundColor = UIColor.blackColor()
+        
+        
         moodTableView.reloadData()
     }
     
@@ -55,8 +58,9 @@ extension SelectMoodModalViewController: UITableViewDataSource, UITableViewDeleg
     //セルの内容を変更
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
-        
+        cell.backgroundColor = UIColor.blackColor()
         cell.textLabel?.text = ConstantShare.moodList[indexPath.row]
+        cell.textLabel?.textColor = UIColor.lightGrayColor()
         println("celltext=> \(cell.textLabel?.text)")
         return cell
     }

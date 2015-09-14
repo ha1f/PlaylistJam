@@ -56,7 +56,19 @@ class CreatePlaylistViewController: UIViewController {
         //self.view.addSubview(back)
         
         //self.view.sendSubviewToBack(back)
+        
+        publicButton.addTarget(self, action: "createPublic:", forControlEvents: UIControlEvents.TouchUpInside)
+        cancelButton.addTarget(self, action: "cancel:", forControlEvents: UIControlEvents.TouchUpInside)
     }
+    
+    func createPublic(sender: UIButton!) {
+        self.performSegueWithIdentifier("createPublic", sender: nil)
+    }
+    
+    func cancel(sender: UIButton!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     /*
     エフェクトを適用する.
     */
