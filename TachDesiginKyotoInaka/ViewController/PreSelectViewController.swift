@@ -31,8 +31,6 @@ class PreSelectViewController: PagingViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let viewController: SelectEightSongViewController = segue.destinationViewController as! SelectEightSongViewController
-
         manager.reset()
 
         let favPlaylists = map(controller!.selectedItemIndexes[0]) { return self.playlists[$0] }
