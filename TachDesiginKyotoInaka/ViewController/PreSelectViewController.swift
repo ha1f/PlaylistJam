@@ -5,6 +5,7 @@ class PreSelectViewController: PagingViewController {
     var playlists: [Playlist] = []
     var songs: [Song] = []
     var controller: PreSelectDataController?
+    let manager = SelectedSongsManager.manager
     
     override func createDataController() -> PagingDataController {
         controller = PreSelectDataController(pageIdentities: self.pageData)
@@ -32,19 +33,16 @@ class PreSelectViewController: PagingViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let viewController: SelectEightSongViewController = segue.destinationViewController as! SelectEightSongViewController
 
-        viewController.songList = []
+        manager.reset()
 
-        for i in controller!.selectedItemIndexes[0] {
-            viewController.songList += playlists[i].songs
-        }
+        let favPlaylists = map(controller!.selectedItemIndexes[0]) { return self.playlists[$0] }
+        manager.appendPlaylists(favPlaylists)
 
-        for i in controller!.selectedItemIndexes[1] {
-            viewController.songList += [songs[i]]
-        }
+        let favSongs = map(controller!.selectedItemIndexes[1]) { return self.songs[$0] }
+        manager.appendSongs(favSongs)
 
-        for i in controller!.selectedItemIndexes[2] {
-            viewController.songList += [songs[i]]
-        }
+        let historySongs = map(controller!.selectedItemIndexes[2]) { return self.songs[$0] }
+        manager.appendSongs(historySongs)
     }
 
     func reduceEight(sender: UIButton!) {

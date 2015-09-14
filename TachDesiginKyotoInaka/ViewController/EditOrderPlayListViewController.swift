@@ -14,7 +14,8 @@ class EditOrderSongViewController: UIViewController {
     @IBOutlet weak var descField: UITextField!
     @IBOutlet weak var songListTableView: UITableView!
     @IBOutlet weak var moodBtn: UIButton!
-    
+
+    let manager = SelectedSongsManager.manager
     var songList: [Song] = []
     var selectMoodModalViewController: SelectMoodModalViewController!
     
@@ -31,9 +32,8 @@ class EditOrderSongViewController: UIViewController {
         
         //Viewのプロパティ初期化
         initViewProp()
-        
-        //テスト曲データの挿入
-        songList = genTestData(20)
+
+        songList = map(manager.selectedSongInfo()) { return $0.song }
         songListTableView.reloadData()
     }
     
@@ -51,22 +51,7 @@ class EditOrderSongViewController: UIViewController {
     func initViewProp(){
         moodBtn.layer.borderWidth = 1
         moodBtn.layer.cornerRadius = 3
-    }
-    
-    //テストデータ生成関数
-    func genTestData(dataLen: Int) -> [Song]{
-        var testList: [Song] = []
-        for(var i=0;i<dataLen;i++){
-            var song = Song()
-            song.id = i
-            song.artworkUrl = "sample"
-            song.artist = "artist"+String(i)
-            song.title = "song"+String(i)
-            song.itunesTrackId = ""
-            testList.append(song)
-        }
-        return testList
-    }
+    }    
 }
 
 //tableViewに対するdelegate
