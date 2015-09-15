@@ -29,6 +29,8 @@ class SelectSongTableViewCell: UITableViewCell {
     func setSong(song: Song){
         songNameLabel.text = song.title
         artistNameLabel.text = song.artist
-        artWorkImage.sd_setImageWithURL(NSURL(string: song.artworkUrl)!)
+        if let url = NSURL(string: song.artworkUrl) {
+            self.artWorkImage.sd_setImageWithURL(url)
+        }
     }
 }

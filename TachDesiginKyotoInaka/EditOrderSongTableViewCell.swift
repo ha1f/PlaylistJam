@@ -25,6 +25,8 @@ class EditOrderSongTableViewCell: UITableViewCell {
     func setSong(song: Song){
         titleLabel.text = song.title
         artistLabel.text = song.artist
-        artworkImageView.sd_setImageWithURL(NSURL(string: song.artworkUrl)!)
+        if let url = NSURL(string: song.artworkUrl) {
+            artworkImageView.sd_setImageWithURL(url)
+        }
     }
 }

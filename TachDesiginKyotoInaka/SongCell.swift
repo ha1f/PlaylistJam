@@ -12,10 +12,13 @@ class SongCell:UITableViewCell {
     }
 
     private func setupSong(song: Song) {
-        self.artwork.sd_setImageWithURL(NSURL(string: song.artworkUrl)!)
         self.artistLabel.text = song.artist
         self.artistLabel.textColor = UIColor.whiteColor()
         self.titleLabel.text = song.title
         self.titleLabel.textColor = UIColor.whiteColor()
+
+        if let url = NSURL(string: song.artworkUrl) {
+            self.artwork.sd_setImageWithURL(url)
+        }
     }
 }
