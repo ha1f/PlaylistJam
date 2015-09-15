@@ -89,8 +89,6 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
         
         cell.setSong(song)
         
-        //println("cell count => \(indexPath.row)")
-        
         return cell
     }
     
