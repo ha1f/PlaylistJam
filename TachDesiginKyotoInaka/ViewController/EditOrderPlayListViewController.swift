@@ -1,15 +1,6 @@
-//
-//  ViewController.swift
-//  StoryBoardPractice
-//
-//  Created by 坂本時緒 on 9/11/15.
-//  Copyright (c) 2015 坂本時緒. All rights reserved.
-//
-
 import UIKit
 
 class EditOrderSongViewController: UIViewController {
-    
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descField: UITextField!
     @IBOutlet weak var songListTableView: UITableView!
@@ -17,25 +8,21 @@ class EditOrderSongViewController: UIViewController {
     @IBOutlet weak var finishBarButton: UIBarButtonItem!
     
 
-    let manager = SelectedSongsManager.manager
-    var songList: [Song] = []
+    let manager = SongsManager.manager
+    var selectedSongCount = 0
     var selectMoodModalViewController: SelectMoodModalViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //tableViewの作成、delegate,dataSourceを設定
+
         self.songListTableView.delegate = self
         self.songListTableView.dataSource = self
         self.songListTableView.editing = true
-        
-        //ムード選択モーダル表示ボタンのイベント登録
+
         moodBtn.addTarget(self, action: "showModal:", forControlEvents:.TouchUpInside)
-        
-        //Viewのプロパティ初期化
         initViewProp()
 
-        songList = map(manager.selectedSongInfo()) { return $0.song }
+        selectedSongCount = manager.selectedSongCount()
         songListTableView.reloadData()
         
         self.finishBarButton.target = self
@@ -54,11 +41,12 @@ class EditOrderSongViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        // カスタムセルを登録
-        self.songListTableView.registerNib(UINib(nibName:"EditOrderSongTableViewCell", bundle: nil), forCellReuseIdentifier: "EditOrderSongTableViewCell")
+        self.songListTableView.registerNib(
+            UINib(nibName:"EditOrderSongTableViewCell", bundle: nil),
+            forCellReuseIdentifier: "EditOrderSongTableViewCell"
+        )
     }
-    
-    //Viewのプロパティ初期化
+
     func initViewProp(){
         moodBtn.layer.borderWidth = 1
         moodBtn.layer.cornerRadius = 3
@@ -73,16 +61,13 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     
     //セルの行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.songList.count
+        return self.selectedSongCount
     }
     
     //セルを作成
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //カスタムセルで生成
         let cell = songListTableView.dequeueReusableCellWithIdentifier("EditOrderSongTableViewCell", forIndexPath: indexPath) as! EditOrderSongTableViewCell
-        var songLen = self.songList.count
-        let song = self.songList[indexPath.row]
-        
+        let song = manager.findFormSelectedSongInfo(indexPath.row).song
         cell.setSong(song)
         
         return cell
@@ -101,9 +86,7 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     
     //順番変更を有効にする
     func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        var itemToMove = songList[fromIndexPath.row]
-        songList.removeAtIndex(fromIndexPath.row)
-        songList.insert(itemToMove, atIndex: toIndexPath.row)
+        manager.moveSelectedSongInfo(fromIndexPath.row, to: toIndexPath.row)
     }
     
     //削除ボタンを非表示にする
