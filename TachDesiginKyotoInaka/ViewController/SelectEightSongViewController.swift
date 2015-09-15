@@ -4,11 +4,12 @@ import DraggableCollectionView
 class SelectEightSongViewController: UIViewController {
     let manager = SongsManager.manager
     var songList:[Song] = []
-    var appendedSongInfos: [AppendedSongInfo] = [] {
-        didSet{
-            self.selectedCount.text = "\(appendedSongInfos.count)/8 曲"
+    var selectedSongCount: Int = 0 {
+        didSet(newValue) {
+            self.selectedCount.text = "\(newValue)/8 曲"
         }
     }
+
     var checkFlags: [Bool] = []
 
     @IBOutlet weak var selectSongTableView: UITableView!
@@ -22,7 +23,7 @@ class SelectEightSongViewController: UIViewController {
 
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
-        self.selectedCount.text = "\(appendedSongInfos.count)/8 曲"
+        self.selectedCount.text = "\(selectedSongCount)/8 曲"
         selectSongTableView.allowsSelection = false
         selectSongTableView.backgroundColor = UIColor.clearColor()
 
@@ -40,31 +41,38 @@ class SelectEightSongViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        // カスタムセルを登録
-        self.selectSongTableView.registerNib(UINib(nibName:"SelectSongTableViewCell", bundle: nil), forCellReuseIdentifier: "SelectSongTableViewCell")
+
+        self.selectSongTableView.registerNib(
+            UINib(nibName:"SelectSongTableViewCell", bundle: nil),
+            forCellReuseIdentifier: "SelectSongTableViewCell"
+        )
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+<<<<<<< HEAD
 
     func checkButtonClicked(sender: CheckBox!) {
+=======
+
+    func clickedCheckButton(sender: CheckBox!) {
+>>>>>>> remove unused variable
         sender.isChecked = !sender.isChecked
         checkFlags[sender.tag] = sender.isChecked
 
         if sender.isChecked {
-            if appendedSongInfos.count < 8 {
-                self.manager.selectSongInfoById(sender.tag)
-                appendedSongInfos.append(self.manager.appendedSongInfos[sender.tag])
-                //self.selectedCollection.scrollToItemAtIndexPath(NSIndexPath(forRow: selectedSongs.count-1, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+            if self.selectedSongCount < 8 {
+                self.manager.selectSongInfo(sender.tag)
             } else {
                 sender.isChecked = false
             }
         } else {
             println("delete")
-            self.manager.removeSongInfoById(sender.tag)
-            appendedSongInfos = manager.selectedSongInfo()
+            self.manager.removeSongInfo(sender.tag)
         }
+
+        self.selectedSongCount = manager.selectedSongCount()
         self.selectedCollection.reloadData()
         println(self.manager.selectedIds)
     }
@@ -81,11 +89,14 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
         //カスタムセルで生成
         let cell = selectSongTableView.dequeueReusableCellWithIdentifier("SelectSongTableViewCell", forIndexPath: indexPath) as! SelectSongTableViewCell
         cell.checkBox.tag = indexPath.row
-        cell.checkBox.addTarget(self, action: "checkButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        cell.checkBox.addTarget(self, action: "clickedCheckButton:", forControlEvents: UIControlEvents.TouchUpInside)
         cell.checkBox.isChecked = checkFlags[indexPath.row]
 
         let song = self.songList[indexPath.row]
+<<<<<<< HEAD
 
+=======
+>>>>>>> remove unused variable
         cell.setSong(song)
 
         return cell
@@ -94,7 +105,7 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
     //高さを計算したいけどとりあえず放置
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let height :CGFloat! = nil
-        // heightがnilの場合、とりあえず高さ40で設定 TODO
+
         if let h = height {
             return h
         } else {
@@ -116,8 +127,7 @@ extension SelectEightSongViewController: UICollectionViewDataSource_Draggable, U
 
     func collectionView(collectionView: UICollectionView!, moveItemAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
         println("drag")
-        manager.moveSelectedSongInfo(fromIndexPath.row, to: toIndexPath.row)
-        println(self.appendedSongInfos)
+        manager.switchSelectedSongInfo(fromIndexPath.row, to: toIndexPath.row)
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -140,6 +150,6 @@ extension SelectEightSongViewController: UICollectionViewDataSource_Draggable, U
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return appendedSongInfos.count;
+        return self.selectedSongCount;
     }
 }
