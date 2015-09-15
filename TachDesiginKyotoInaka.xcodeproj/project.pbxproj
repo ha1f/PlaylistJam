@@ -49,7 +49,6 @@
 		A4ECA6631BA68B5D00784B0A /* SelectedSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECA6621BA68B5D00784B0A /* SelectedSongCell.swift */; };
 		A4ECA6651BA6DD4000784B0A /* CreatePlaylistNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECA6641BA6DD4000784B0A /* CreatePlaylistNavigationController.swift */; };
 		A4ECA6691BA7C24300784B0A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECA6681BA7C24300784B0A /* SearchViewController.swift */; };
-		B40202AF1BA46C6B00F7B0B4 /* SelectedSongsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40202AE1BA46C6B00F7B0B4 /* SelectedSongsManager.swift */; };
 		B40202AF1BA46C6B00F7B0B4 /* SongsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40202AE1BA46C6B00F7B0B4 /* SongsManager.swift */; };
 		B40202B11BA4738F00F7B0B4 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40202B01BA4738F00F7B0B4 /* Selectable.swift */; };
 		B40400221BA2998C00896839 /* MusicTrackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40400211BA2998C00896839 /* MusicTrackResponse.swift */; };
@@ -119,7 +118,6 @@
 		A4ECA6621BA68B5D00784B0A /* SelectedSongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedSongCell.swift; sourceTree = "<group>"; };
 		A4ECA6641BA6DD4000784B0A /* CreatePlaylistNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePlaylistNavigationController.swift; sourceTree = "<group>"; };
 		A4ECA6681BA7C24300784B0A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		B40202AE1BA46C6B00F7B0B4 /* SelectedSongsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedSongsManager.swift; sourceTree = "<group>"; };
 		B40202AE1BA46C6B00F7B0B4 /* SongsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsManager.swift; sourceTree = "<group>"; };
 		B40202B01BA4738F00F7B0B4 /* Selectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		B40400211BA2998C00896839 /* MusicTrackResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicTrackResponse.swift; path = Model/MusicTrackResponse.swift; sourceTree = "<group>"; };

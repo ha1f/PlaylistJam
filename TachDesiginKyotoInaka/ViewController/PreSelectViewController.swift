@@ -144,9 +144,24 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     func updateTab() {
         println("updateTab")
         let currentPage = getCurrentPageIndex()
+        let largeCategoryIndex = getLargeCategoryIndex(currentPage)
         
-        self.pageControl.setCurrentPage(getLargeCategoryIndex(currentPage))
-        self.subPageControl.setCurrentPage(currentPage - self.largePage[getLargeCategoryIndex(currentPage)])
+        //my playlist
+        if largeCategoryIndex == 2 {
+            self.subPageControl.hidden = true
+        } else {
+            self.subPageControl.hidden = false
+        }
+        
+        //search
+        if largeCategoryIndex == 3 {
+            self.subPageControl.setPages(["Artists", "Playlists", "Tracks"])
+        } else {
+            self.subPageControl.setPages(["Playlists", "Tracks"])
+        }
+        
+        self.pageControl.setCurrentPage(largeCategoryIndex)
+        self.subPageControl.setCurrentPage(currentPage - self.largePage[largeCategoryIndex])
     }
     
     //ページ遷移アニメーション完了後
