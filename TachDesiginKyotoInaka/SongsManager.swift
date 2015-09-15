@@ -6,9 +6,19 @@ class SongsManager {
     private init() {}
 
     func appendPlaylists(playlists: [Playlist]) {
-        for p in playlists {
-            for song in p.songs {
-                self.appendedSongInfos.append(AppendedSongInfo(song: song, playlistName: p.title, playlistId: p.id))
+        for playlist in playlists {
+            self.appendedSongInfos += map(playlist.songs) {
+                AppendedSongInfo(song: $0, playlistName: playlist.title, playlistId: playlist.id)
+            }
+        }
+    }
+
+    func appendSongs(songs: [Song]) {
+        for song in songs {
+            let selected = AppendedSongInfo(song: song, playlistName: nil, playlistId: nil)
+
+            if !isExistSongs(selected) {
+                self.appendedSongInfos.append(selected)
             }
         }
     }
@@ -16,16 +26,6 @@ class SongsManager {
     func moveSelectedSongInfo(from: Int, to: Int) {
         let tmp = selectedIds.removeAtIndex(from)
         selectedIds.insert(tmp, atIndex: to)
-    }
-
-    func appendSongs(songs: [Song]) {
-        for song in songs {
-            let selected = AppendedSongInfo(song: song, playlistName: nil, playlistId: nil)
-
-            if isExistSongs(selected) {
-                self.appendedSongInfos.append(selected)
-            }
-        }
     }
 
     func selectedSongs() -> [Song] {
