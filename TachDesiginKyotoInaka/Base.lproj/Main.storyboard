@@ -656,7 +656,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="215" width="330" height="30"/>
+                                    <rect key="frame" x="22" y="200" width="330" height="30"/>
                                 </variation>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzD-c4-I4C">
@@ -685,7 +685,7 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="32" y="134" width="278" height="21"/>
+                                    <rect key="frame" x="32" y="125" width="278" height="21"/>
                                 </variation>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POR-QF-Wxm">
@@ -694,9 +694,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="129" width="330" height="62"/>
+                                    <rect key="frame" x="22" y="120" width="330" height="62"/>
                                 </variation>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="曲順の変更" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ng2-DL-fGf">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="242" width="89" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.28357670977467758" green="0.28632023358585856" blue="0.28151819143821472" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
@@ -707,6 +716,7 @@
                                 <exclude reference="IXf-yR-0Bh"/>
                                 <exclude reference="C1n-Fj-x7Y"/>
                                 <exclude reference="POR-QF-Wxm"/>
+                                <exclude reference="ng2-DL-fGf"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -717,6 +727,7 @@
                                 <include reference="IXf-yR-0Bh"/>
                                 <include reference="C1n-Fj-x7Y"/>
                                 <include reference="POR-QF-Wxm"/>
+                                <include reference="ng2-DL-fGf"/>
                             </mask>
                         </variation>
                     </view>
