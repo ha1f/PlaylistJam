@@ -17,7 +17,7 @@ search
 */
 
 class PreSelectViewController: PagingViewController, PageControlDelegate {
-    var playlists: [Playlist] = []
+    var samplePlaylistRepository: PlaylistRepository = PlaylistRepository()
     var songs: [Song] = []
     var controller: PreSelectDataController?
     let manager = SongsManager.manager
@@ -42,8 +42,9 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fetchPlaylistsAnd {
-            self.pageData = [self.playlists, self.songs, self.playlists, self.songs, self.playlists, "search1", "search2", "search3"]
+        samplePlaylistRepository.fetchSongsWithTerm( "swift", completion: { (playlists, songs) in
+            self.songs = songs!
+            self.pageData = [self.samplePlaylistRepository.getPlaylists(), self.songs, self.samplePlaylistRepository.getPlaylists(), self.songs, self.samplePlaylistRepository.getPlaylists(), "search1", "search2", "search3"]
             self.createView()
             
             //TODO navigationBarの高さを取得する
@@ -60,7 +61,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
             self.view.addSubview(self.subPageControl)
             
             self.updateTab()
-        }
+        })
 
         //self.view.backgroundColor = UIColor.whiteColor()
         self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
@@ -148,14 +149,6 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    private func fetchPlaylistsAnd(completion: (Void -> Void))  {
-        SampleData().fetchDataAnd { (playlists, songs) in
-            self.playlists = playlists
-            self.songs = songs
-            completion()
-        }
     }
     
     func updateTab() {
