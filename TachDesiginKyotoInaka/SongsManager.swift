@@ -35,13 +35,17 @@ class SongsManager {
         return appendedSongInfos[i]
     }
 
-    func switchSelectedSongInfo(from: Int, to: Int) {
+    func moveSelectedSongInfo(from: Int, to: Int) {
         let tmp = selectedIds.removeAtIndex(from)
         selectedIds.insert(tmp, atIndex: to)
     }
 
     func selectedSongInfo() -> [AppendedSongInfo] {
         return map(selectedIds) { return self.appendedSongInfos[$0] }
+    }
+
+    func selectedSongs() -> [Song] {
+        return map(selectedSongInfo()) { return $0.song }
     }
 
     func selectedSongCount() -> Int {

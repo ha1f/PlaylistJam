@@ -1,15 +1,6 @@
-//
-//  ViewController.swift
-//  StoryBoardPractice
-//
-//  Created by 坂本時緒 on 9/11/15.
-//  Copyright (c) 2015 坂本時緒. All rights reserved.
-//
-
 import UIKit
 
 class EditOrderSongViewController: UIViewController {
-    
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descField: UITextField!
     @IBOutlet weak var songListTableView: UITableView!
@@ -23,19 +14,15 @@ class EditOrderSongViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //tableViewの作成、delegate,dataSourceを設定
+
         self.songListTableView.delegate = self
         self.songListTableView.dataSource = self
         self.songListTableView.editing = true
-        
-        //ムード選択モーダル表示ボタンのイベント登録
+
         moodBtn.addTarget(self, action: "showModal:", forControlEvents:.TouchUpInside)
-        
-        //Viewのプロパティ初期化
         initViewProp()
 
-        songList = map(manager.selectedSongInfo()) { return $0.song }
+        songList = manager.selectedSongs()
         songListTableView.reloadData()
         
         self.finishBarButton.target = self
@@ -54,11 +41,12 @@ class EditOrderSongViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        // カスタムセルを登録
-        self.songListTableView.registerNib(UINib(nibName:"EditOrderSongTableViewCell", bundle: nil), forCellReuseIdentifier: "EditOrderSongTableViewCell")
+        self.songListTableView.registerNib(
+            UINib(nibName:"EditOrderSongTableViewCell", bundle: nil),
+            forCellReuseIdentifier: "EditOrderSongTableViewCell"
+        )
     }
-    
-    //Viewのプロパティ初期化
+
     func initViewProp(){
         moodBtn.layer.borderWidth = 1
         moodBtn.layer.cornerRadius = 3
