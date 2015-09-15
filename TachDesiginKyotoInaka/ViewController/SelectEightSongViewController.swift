@@ -49,13 +49,8 @@ class SelectEightSongViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-<<<<<<< HEAD
-
-    func checkButtonClicked(sender: CheckBox!) {
-=======
 
     func clickedCheckButton(sender: CheckBox!) {
->>>>>>> remove unused variable
         sender.isChecked = !sender.isChecked
         checkFlags[sender.tag] = sender.isChecked
 
