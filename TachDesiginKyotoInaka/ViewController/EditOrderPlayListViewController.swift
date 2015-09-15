@@ -62,6 +62,7 @@ class EditOrderSongViewController: UIViewController {
     func initViewProp(){
         moodBtn.layer.borderWidth = 1
         moodBtn.layer.cornerRadius = 3
+        moodBtn.layer.borderColor = UIColor.colorFromRGB("333333", alpha: 1).CGColor
     }    
 }
 

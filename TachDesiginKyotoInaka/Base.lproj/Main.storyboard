@@ -648,7 +648,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="31" y="94" width="97" height="30"/>
+                                    <rect key="frame" x="31" y="94" width="323" height="30"/>
                                 </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lQb-D7-jPW">
@@ -656,20 +656,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="31" y="155" width="97" height="30"/>
+                                    <rect key="frame" x="31" y="155" width="323" height="30"/>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRb-FH-UrH">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                <state key="normal" title="＋　ムードを選択する">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="31" y="219" width="170" height="30"/>
-                                </variation>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CVZ-cj-2eK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -677,6 +666,17 @@
                                     <rect key="frame" x="22" y="274" width="332" height="373"/>
                                 </variation>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRb-FH-UrH">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" title="ムードを選択する">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="31" y="219" width="323" height="30"/>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -686,8 +686,8 @@
                                 <exclude reference="fj7-zR-kBf"/>
                                 <exclude reference="IXf-yR-0Bh"/>
                                 <exclude reference="lQb-D7-jPW"/>
-                                <exclude reference="yRb-FH-UrH"/>
                                 <exclude reference="CVZ-cj-2eK"/>
+                                <exclude reference="yRb-FH-UrH"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -697,8 +697,8 @@
                                 <include reference="fj7-zR-kBf"/>
                                 <include reference="IXf-yR-0Bh"/>
                                 <include reference="lQb-D7-jPW"/>
-                                <include reference="yRb-FH-UrH"/>
                                 <include reference="CVZ-cj-2eK"/>
+                                <include reference="yRb-FH-UrH"/>
                             </mask>
                         </variation>
                     </view>
@@ -717,7 +717,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIE-zz-R93" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1109.5" y="612.5"/>
+            <point key="canvasLocation" x="1322.25" y="619.125"/>
         </scene>
         <!--Select Mood Modal View Controller-->
         <scene sceneID="e3Q-u4-QHw">
@@ -1022,5 +1022,7 @@
         <image name="NextSongButton" width="90" height="110"/>
         <image name="PrevSongButton" width="92" height="110"/>
         <image name="playButton" width="172" height="176"/>
+        <image name="privateIcon" width="47" height="53"/>
+        <image name="publicIcon" width="64" height="60"/>
     </resources>
 </document>
