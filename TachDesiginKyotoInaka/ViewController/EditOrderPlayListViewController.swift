@@ -8,14 +8,8 @@ class EditOrderSongViewController: UIViewController {
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var descField: UITextView!
     
-/*<<<<<<< HEAD
-    let manager = SelectedSongsManager.manager
-    var songList: [Song] = []
-=======*/
-
     let manager = SongsManager.manager
     var selectedSongCount = 0
-//>>>>>>> origin/master
     var selectMoodModalViewController: SelectMoodModalViewController!
     
     override func viewDidLoad() {
@@ -55,16 +49,31 @@ class EditOrderSongViewController: UIViewController {
     }
 
     func initViewProp(){
+        //各枠線
         moodBtn.layer.borderWidth = 1
         moodBtn.layer.cornerRadius = 3
-        moodBtn.layer.borderColor = UIColor.colorFromRGB("333333", alpha: 1).CGColor
-        moodBtn.backgroundColor = UIColor.whiteColor()
+        titleField.layer.borderWidth = 1
+        titleField.layer.cornerRadius = 3
+        descField.layer.borderWidth = 1
         descField.layer.cornerRadius = 3
+        
+        moodBtn.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
+        titleField.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
+        descField.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
+        
+        setColorToPlaceHolder(UIColor.colorFromRGB("bcbcbc", alpha: 1), field: titleField)
+        
         
         placeholderLabel.hidden = false
     }
-    
+   
+    //任意のUITextFieldのプレイスホルダーの色を指定する関数
+    func setColorToPlaceHolder(color: UIColor, field: UITextField){
+        field.attributedPlaceholder = NSAttributedString(string:field.placeholder!,
+            attributes:[NSForegroundColorAttributeName: color])
     }
+    
+}
 
 //tableViewに対するdelegate
 extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegate{

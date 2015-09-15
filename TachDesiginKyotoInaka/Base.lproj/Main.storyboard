@@ -648,59 +648,53 @@
                                     <rect key="frame" x="22" y="271" width="330" height="396"/>
                                 </variation>
                             </tableView>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRb-FH-UrH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRb-FH-UrH">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                <state key="normal" title="ムードを選択する">
+                                <state key="normal" title="＋ムードを選ぶ">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="23" y="225" width="330" height="30"/>
+                                    <rect key="frame" x="22" y="215" width="330" height="30"/>
                                 </variation>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzD-c4-I4C">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="35" y="179" width="0.0" height="0.0"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="聴きたい気分(ムードを選択)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4G-SU-jO5">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="26" y="200" width="213" height="21"/>
-                                </variation>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="プレイリスト名(必須)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IXf-yR-0Bh">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="23" y="79" width="330" height="30"/>
+                                    <rect key="frame" x="22" y="78" width="330" height="30"/>
                                 </variation>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プレイリストの説明" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0i-mE-3e7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プレイリストの説明" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1n-Fj-x7Y">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="30" y="129" width="204" height="21"/>
+                                    <rect key="frame" x="32" y="134" width="278" height="21"/>
                                 </variation>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POR-QF-Wxm">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="25" y="126" width="326" height="62"/>
+                                    <rect key="frame" x="22" y="129" width="330" height="62"/>
                                 </variation>
                             </textView>
                         </subviews>
@@ -710,9 +704,8 @@
                                 <exclude reference="CVZ-cj-2eK"/>
                                 <exclude reference="yRb-FH-UrH"/>
                                 <exclude reference="gzD-c4-I4C"/>
-                                <exclude reference="m4G-SU-jO5"/>
                                 <exclude reference="IXf-yR-0Bh"/>
-                                <exclude reference="f0i-mE-3e7"/>
+                                <exclude reference="C1n-Fj-x7Y"/>
                                 <exclude reference="POR-QF-Wxm"/>
                             </mask>
                         </variation>
@@ -721,9 +714,8 @@
                                 <include reference="CVZ-cj-2eK"/>
                                 <include reference="yRb-FH-UrH"/>
                                 <include reference="gzD-c4-I4C"/>
-                                <include reference="m4G-SU-jO5"/>
                                 <include reference="IXf-yR-0Bh"/>
-                                <include reference="f0i-mE-3e7"/>
+                                <include reference="C1n-Fj-x7Y"/>
                                 <include reference="POR-QF-Wxm"/>
                             </mask>
                         </variation>
@@ -736,7 +728,7 @@
                         <outlet property="descField" destination="POR-QF-Wxm" id="7Sq-E1-jG2"/>
                         <outlet property="finishBarButton" destination="n18-dX-gcn" id="3Nf-5i-H0C"/>
                         <outlet property="moodBtn" destination="yRb-FH-UrH" id="mJv-I5-eE0"/>
-                        <outlet property="placeholderLabel" destination="f0i-mE-3e7" id="Qsp-Wo-JNW"/>
+                        <outlet property="placeholderLabel" destination="C1n-Fj-x7Y" id="bFf-tO-ghn"/>
                         <outlet property="songListTableView" destination="CVZ-cj-2eK" id="vn7-UT-rZN"/>
                         <outlet property="titleField" destination="IXf-yR-0Bh" id="qCN-Ve-oEv"/>
                         <segue destination="huP-j3-5ZK" kind="presentation" identifier="selectMood" id="6I5-iq-12R"/>
@@ -1007,7 +999,7 @@
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hyl-Ty-pD8">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-2" y="368" width="379" height="31"/>
+                                    <rect key="frame" x="-2" y="367" width="380" height="31"/>
                                 </variation>
                                 <connections>
                                     <action selector="changePlayingTime:" destination="2uu-fm-wl5" eventType="valueChanged" id="q0s-SM-3oc"/>
