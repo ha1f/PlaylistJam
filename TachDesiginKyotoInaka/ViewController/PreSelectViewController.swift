@@ -25,6 +25,9 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     var pageControl: PageControl!
     var subPageControl: PageControl!
     
+    @IBOutlet weak var exitButton: UIBarButtonItem!
+    
+    
     let tabHeight: CGFloat = 50.0
     let subTabHeight: CGFloat = 50.0
     
@@ -67,6 +70,13 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         button.setTitle("button", forState: UIControlState.Normal)
         button.addTarget(self, action: "reduceEight:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(button)
+        
+        exitButton.target = self
+        exitButton.action = "exitButtonClicked:"
+    }
+    
+    func exitButtonClicked(sender: UIBarButtonItem!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //ページのタブが押された時に移動させる
@@ -114,15 +124,21 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         manager.reset()
-
-        let favPlaylists = map(controller!.selectedItemIndexes[0]) { return self.playlists[$0] }
-        manager.appendPlaylists(favPlaylists)
-
-        let favSongs = map(controller!.selectedItemIndexes[1]) { return self.songs[$0] }
-        manager.appendSongs(favSongs)
-
-        let historySongs = map(controller!.selectedItemIndexes[2]) { return self.songs[$0] }
-        manager.appendSongs(historySongs)
+        
+        var index = 0
+        for indexes in controller!.selectedItemIndexes {
+            let tmpDataList: AnyObject = self.pageData[index]
+            let tmpDatas = map(indexes){ return tmpDataList[$0] }
+            if !tmpDatas.isEmpty {
+                //型判定
+                if tmpDatas[0] is Playlist {
+                    manager.appendPlaylists(tmpDatas as! [Playlist])
+                } else {
+                    manager.appendSongs(tmpDatas as! [Song])
+                }
+            }
+            index++
+        }
     }
 
     func reduceEight(sender: UIButton!) {
@@ -144,9 +160,26 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     func updateTab() {
         println("updateTab")
         let currentPage = getCurrentPageIndex()
+        let largeCategoryIndex = getLargeCategoryIndex(currentPage)
         
-        self.pageControl.setCurrentPage(getLargeCategoryIndex(currentPage))
-        self.subPageControl.setCurrentPage(currentPage - self.largePage[getLargeCategoryIndex(currentPage)])
+        //my playlist
+        if largeCategoryIndex == 2 {
+            self.subPageControl.hidden = true
+        } else {
+            self.subPageControl.hidden = false
+        }
+        
+        //search
+        if largeCategoryIndex == 3 {
+            self.subPageControl.setPages(["Artists", "Playlists", "Tracks"])
+            self.subPageControl.frame = CGRectMake(0, 65 + self.tabHeight + 100, self.view.frame.width, self.subTabHeight)
+        } else {
+            self.subPageControl.setPages(["Playlists", "Tracks"])
+            self.subPageControl.frame = CGRectMake(0, 65 + self.tabHeight, self.view.frame.width, self.subTabHeight)
+        }
+        
+        self.pageControl.setCurrentPage(largeCategoryIndex)
+        self.subPageControl.setCurrentPage(currentPage - self.largePage[largeCategoryIndex])
     }
     
     //ページ遷移アニメーション完了後
