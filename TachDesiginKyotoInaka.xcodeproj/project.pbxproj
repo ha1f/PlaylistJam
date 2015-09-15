@@ -34,7 +34,6 @@
 		A4B20C811BA192A600BA531F /* ItunesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C761BA192A600BA531F /* ItunesApi.swift */; };
 		A4B20C841BA192A600BA531F /* MyPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C791BA192A600BA531F /* MyPlaylist.swift */; };
 		A4B20C861BA192A600BA531F /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C7B1BA192A600BA531F /* Playlist.swift */; };
-		A4B20C871BA192A600BA531F /* PlaySongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C7C1BA192A600BA531F /* PlaySongViewController.swift */; };
 		A4B20C881BA192A600BA531F /* SelectEightSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C7D1BA192A600BA531F /* SelectEightSongViewController.swift */; };
 		A4B20C891BA192A600BA531F /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C7E1BA192A600BA531F /* Song.swift */; };
 		A4B20C901BA25F5E00BA531F /* PagingDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C8D1BA25F5E00BA531F /* PagingDataController.swift */; };
@@ -51,6 +50,7 @@
 		A4ECA6651BA6DD4000784B0A /* CreatePlaylistNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECA6641BA6DD4000784B0A /* CreatePlaylistNavigationController.swift */; };
 		A4ECA6691BA7C24300784B0A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECA6681BA7C24300784B0A /* SearchViewController.swift */; };
 		B40202AF1BA46C6B00F7B0B4 /* SelectedSongsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40202AE1BA46C6B00F7B0B4 /* SelectedSongsManager.swift */; };
+		B40202AF1BA46C6B00F7B0B4 /* SongsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40202AE1BA46C6B00F7B0B4 /* SongsManager.swift */; };
 		B40202B11BA4738F00F7B0B4 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40202B01BA4738F00F7B0B4 /* Selectable.swift */; };
 		B40400221BA2998C00896839 /* MusicTrackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40400211BA2998C00896839 /* MusicTrackResponse.swift */; };
 		B421168D1BA5428100C3FD3A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421168C1BA5428100C3FD3A /* SampleData.swift */; };
@@ -104,7 +104,6 @@
 		A4B20C761BA192A600BA531F /* ItunesApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItunesApi.swift; path = API/ItunesApi.swift; sourceTree = "<group>"; };
 		A4B20C791BA192A600BA531F /* MyPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPlaylist.swift; path = Model/MyPlaylist.swift; sourceTree = "<group>"; };
 		A4B20C7B1BA192A600BA531F /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Playlist.swift; path = Model/Playlist.swift; sourceTree = "<group>"; };
-		A4B20C7C1BA192A600BA531F /* PlaySongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySongViewController.swift; path = ViewController/PlaySongViewController.swift; sourceTree = "<group>"; };
 		A4B20C7D1BA192A600BA531F /* SelectEightSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectEightSongViewController.swift; path = ViewController/SelectEightSongViewController.swift; sourceTree = "<group>"; };
 		A4B20C7E1BA192A600BA531F /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Song.swift; path = Model/Song.swift; sourceTree = "<group>"; };
 		A4B20C8D1BA25F5E00BA531F /* PagingDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingDataController.swift; path = ViewController/PagingDataController.swift; sourceTree = "<group>"; };
@@ -121,6 +120,7 @@
 		A4ECA6641BA6DD4000784B0A /* CreatePlaylistNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePlaylistNavigationController.swift; sourceTree = "<group>"; };
 		A4ECA6681BA7C24300784B0A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B40202AE1BA46C6B00F7B0B4 /* SelectedSongsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedSongsManager.swift; sourceTree = "<group>"; };
+		B40202AE1BA46C6B00F7B0B4 /* SongsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsManager.swift; sourceTree = "<group>"; };
 		B40202B01BA4738F00F7B0B4 /* Selectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		B40400211BA2998C00896839 /* MusicTrackResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicTrackResponse.swift; path = Model/MusicTrackResponse.swift; sourceTree = "<group>"; };
 		B421168C1BA5428100C3FD3A /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 				A4B20C8A1BA192C700BA531F /* Api */,
 				B421168C1BA5428100C3FD3A /* SampleData.swift */,
 				B4BCD1791BA2CEFA00DD82F5 /* PlayerManager.swift */,
-				B40202AE1BA46C6B00F7B0B4 /* SelectedSongsManager.swift */,
+				B40202AE1BA46C6B00F7B0B4 /* SongsManager.swift */,
 				A4B20C541BA1926E00BA531F /* AppDelegate.swift */,
 				A4B20C581BA1926E00BA531F /* Main.storyboard */,
 				A4B20C5B1BA1926E00BA531F /* Images.xcassets */,
@@ -279,7 +279,8 @@
 				A42F2EF21BA7DCD40060552A /* PageControlCell.swift */,
 				A4B20C991BA269AD00BA531F /* PreSelectPage */,
 				A4B025931BA5C1E00056D5E2 /* SelectEightSong */,
-				A4B20C7C1BA192A600BA531F /* PlaySongViewController.swift */,
+				A4B20CA01BA2A35B00BA531F /* PlaylistDetailViewController.swift */,
+				A4BC227E1BA2EF0900B588C9 /* PlaylistDetailSongCell.swift */,
 				1E8FAB361BA548D900026055 /* SelectSongTableViewSectionCell.swift */,
 				1E8FAB371BA548D900026055 /* SelectSongTableViewSectionCell.xib */,
 				1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */,
@@ -315,9 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				A4B20C9C1BA29B6E00BA531F /* PlaylistCell.swift */,
-				A4B20CA01BA2A35B00BA531F /* PlaylistDetailViewController.swift */,
 				A4B20C9A1BA2998500BA531F /* PlaylistListViewController.swift */,
-				A4BC227E1BA2EF0900B588C9 /* PlaylistDetailSongCell.swift */,
 			);
 			name = PlaylistList;
 			sourceTree = "<group>";
@@ -520,7 +519,7 @@
 				A4B20C841BA192A600BA531F /* MyPlaylist.swift in Sources */,
 				A4B20C811BA192A600BA531F /* ItunesApi.swift in Sources */,
 				A42F2EF31BA7DCD40060552A /* PageControlCell.swift in Sources */,
-				B40202AF1BA46C6B00F7B0B4 /* SelectedSongsManager.swift in Sources */,
+				B40202AF1BA46C6B00F7B0B4 /* SongsManager.swift in Sources */,
 				1E5B8C051BA68861002132E3 /* MyPlaylistCollectionViewCell.swift in Sources */,
 				1EF362AF1BA56BE00064284B /* CreatePlaylistViewController.swift in Sources */,
 				A4B20C9D1BA29B6E00BA531F /* PlaylistCell.swift in Sources */,
@@ -534,7 +533,6 @@
 				B47B52E51BA2A96F00F3A739 /* ApiClient.swift in Sources */,
 				B40400221BA2998C00896839 /* MusicTrackResponse.swift in Sources */,
 				B421168D1BA5428100C3FD3A /* SampleData.swift in Sources */,
-				A4B20C871BA192A600BA531F /* PlaySongViewController.swift in Sources */,
 				A4B20C951BA2608C00BA531F /* PreSelectViewController.swift in Sources */,
 				B4BCD1781BA2C76600DD82F5 /* PlayerViewController.swift in Sources */,
 				A4B20C881BA192A600BA531F /* SelectEightSongViewController.swift in Sources */,

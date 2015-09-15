@@ -1,6 +1,6 @@
 import UIKit
 
 class MyPlaylistCollectionHeaderCell: UICollectionViewCell {
-    var index: Int = 0
-    var parent: HomeViewController!
+    var parent: HomeViewController! // for manage prayingList
+    var index = -1    
 }

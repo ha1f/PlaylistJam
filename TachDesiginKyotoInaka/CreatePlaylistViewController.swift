@@ -94,6 +94,8 @@ class CreatePlaylistViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         //self.dismissViewControllerAnimated(true, completion: nil)

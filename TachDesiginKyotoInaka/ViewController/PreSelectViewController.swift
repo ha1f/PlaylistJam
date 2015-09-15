@@ -20,7 +20,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     var playlists: [Playlist] = []
     var songs: [Song] = []
     var controller: PreSelectDataController?
-    let manager = SelectedSongsManager.manager
+    let manager = SongsManager.manager
     
     var pageControl: PageControl!
     var subPageControl: PageControl!

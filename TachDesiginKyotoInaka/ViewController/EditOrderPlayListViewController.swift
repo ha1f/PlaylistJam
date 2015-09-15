@@ -1,41 +1,29 @@
-//
-//  ViewController.swift
-//  StoryBoardPractice
-//
-//  Created by 坂本時緒 on 9/11/15.
-//  Copyright (c) 2015 坂本時緒. All rights reserved.
-//
-
 import UIKit
 
 class EditOrderSongViewController: UIViewController {
-    
     @IBOutlet weak var titleField: UITextField!
-    @IBOutlet weak var descField: UITextField!
     @IBOutlet weak var songListTableView: UITableView!
     @IBOutlet weak var moodBtn: UIButton!
     @IBOutlet weak var finishBarButton: UIBarButtonItem!
+    @IBOutlet weak var placeholderLabel: UILabel!
+    @IBOutlet weak var descField: UITextView!
     
-
-    let manager = SelectedSongsManager.manager
-    var songList: [Song] = []
+    let manager = SongsManager.manager
+    var selectedSongCount = 0
     var selectMoodModalViewController: SelectMoodModalViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //tableViewの作成、delegate,dataSourceを設定
+
         self.songListTableView.delegate = self
+        self.descField.delegate = self
         self.songListTableView.dataSource = self
         self.songListTableView.editing = true
-        
-        //ムード選択モーダル表示ボタンのイベント登録
+
         moodBtn.addTarget(self, action: "showModal:", forControlEvents:.TouchUpInside)
-        
-        //Viewのプロパティ初期化
         initViewProp()
 
-        songList = map(manager.selectedSongInfo()) { return $0.song }
+        selectedSongCount = manager.selectedSongCount()
         songListTableView.reloadData()
         
         self.finishBarButton.target = self
@@ -54,15 +42,37 @@ class EditOrderSongViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        // カスタムセルを登録
-        self.songListTableView.registerNib(UINib(nibName:"EditOrderSongTableViewCell", bundle: nil), forCellReuseIdentifier: "EditOrderSongTableViewCell")
+        self.songListTableView.registerNib(
+            UINib(nibName:"EditOrderSongTableViewCell", bundle: nil),
+            forCellReuseIdentifier: "EditOrderSongTableViewCell"
+        )
     }
-    
-    //Viewのプロパティ初期化
+
     func initViewProp(){
+        //各枠線
         moodBtn.layer.borderWidth = 1
         moodBtn.layer.cornerRadius = 3
-    }    
+        titleField.layer.borderWidth = 1
+        titleField.layer.cornerRadius = 3
+        descField.layer.borderWidth = 1
+        descField.layer.cornerRadius = 3
+        
+        moodBtn.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
+        titleField.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
+        descField.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
+        
+        setColorToPlaceHolder(UIColor.colorFromRGB("bcbcbc", alpha: 1), field: titleField)
+        
+        
+        placeholderLabel.hidden = false
+    }
+   
+    //任意のUITextFieldのプレイスホルダーの色を指定する関数
+    func setColorToPlaceHolder(color: UIColor, field: UITextField){
+        field.attributedPlaceholder = NSAttributedString(string:field.placeholder!,
+            attributes:[NSForegroundColorAttributeName: color])
+    }
+    
 }
 
 //tableViewに対するdelegate
@@ -73,16 +83,13 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     
     //セルの行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.songList.count
+        return self.selectedSongCount
     }
     
     //セルを作成
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //カスタムセルで生成
         let cell = songListTableView.dequeueReusableCellWithIdentifier("EditOrderSongTableViewCell", forIndexPath: indexPath) as! EditOrderSongTableViewCell
-        var songLen = self.songList.count
-        let song = self.songList[indexPath.row]
-        
+        let song = manager.findFormSelectedSongInfo(indexPath.row).song
         cell.setSong(song)
         
         return cell
@@ -95,15 +102,13 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
         if height != nil{
             return height
         } else {
-            return 40//tableView.estimatedRowHeight
+            return 70//tableView.estimatedRowHeight
         }
     }
     
     //順番変更を有効にする
     func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        var itemToMove = songList[fromIndexPath.row]
-        songList.removeAtIndex(fromIndexPath.row)
-        songList.insert(itemToMove, atIndex: toIndexPath.row)
+        manager.moveSelectedSongInfo(fromIndexPath.row, to: toIndexPath.row)
     }
     
     //削除ボタンを非表示にする
@@ -124,7 +129,7 @@ extension EditOrderSongViewController: SelectMoodModalViewControllerDelegate {
         self.selectMoodModalViewController.dismissViewControllerAnimated(true, completion: nil)
         if mood != nil{
             var moodText: String? = ConstantShare.moodList[mood!]
-            self.moodBtn.setTitle("＋　"+moodText!, forState: UIControlState.Normal)
+            self.moodBtn.setTitle(moodText!, forState: UIControlState.Normal)
         }
     }
     
@@ -135,6 +140,27 @@ extension EditOrderSongViewController: SelectMoodModalViewControllerDelegate {
         self.selectMoodModalViewController.delegate = self
         self.presentViewController(self.selectMoodModalViewController, animated: true, completion: nil);
     }
+}
+
+extension EditOrderSongViewController: UITextViewDelegate{
+    
+    //textviewがフォーカスされたら、Labelを非表示
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool
+    {
+        self.placeholderLabel.hidden = true
+        return true
+    }
+    
+    //textviewからフォーカスが外れて、TextViewが空だったらLabelを再び表示
+    func textViewDidEndEditing(textView: UITextView) {
+        
+        println("finifh")
+        if(textView.text.isEmpty){
+            self.placeholderLabel.hidden = false
+        }
+    }
+
+    
 }
 
 //RGB文字列からUIColorを生成する関数
