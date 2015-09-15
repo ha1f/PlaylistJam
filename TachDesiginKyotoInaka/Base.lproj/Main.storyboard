@@ -206,7 +206,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="134" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="114" width="375" height="44"/>
                                 </variation>
                             </searchBar>
                         </subviews>
@@ -223,6 +223,9 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Ikr-JX-Giv" id="HKm-w4-gyB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KwW-I8-ayu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
