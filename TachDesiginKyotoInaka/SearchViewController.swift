@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: PageCellViewController {
+class SearchViewController: PageCellViewController, UISearchBarDelegate {
     var data: String? = nil
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -23,8 +23,43 @@ class SearchViewController: PageCellViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let barHeight: CGFloat = searchBar.frame.height
-        //searchBar.layer.position = CGPointMake(64 + PreSelectViewController.tabHeight + barHeight/2, self.view.frame.width/2)
-        println("barHeight:\(barHeight)")
+        
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapped:")
+        self.view.addGestureRecognizer(tapGesture)
+        
+        searchBar.showsCancelButton = true
+        searchBar.delegate = self
     }
+    
+    func tapped(sender: AnyObject?) {
+        resignFirstResponderIfNeeded()
+    }
+    
+    func resignFirstResponderIfNeeded() {
+        if searchBar.isFirstResponder() {
+            searchBar.resignFirstResponder()
+        }
+    }
+    
+    /*
+    テキストが変更される毎に呼ばれる
+    */
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+    }
+    
+    /*
+    Cancelボタンが押された時に呼ばれる
+    */
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        resignFirstResponderIfNeeded()
+    }
+    
+    /*
+    Searchボタンが押された時に呼ばれる
+    */
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        resignFirstResponderIfNeeded()
+    }
+    
 }
