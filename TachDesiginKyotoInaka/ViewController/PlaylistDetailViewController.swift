@@ -20,6 +20,8 @@ class PlaylistDetailViewController: UIViewController {
         self.songTableView.delegate = self
         self.songTableView.dataSource = self
         
+        self.songTableView.backgroundColor = UIColor.clearColor()
+        
         self.songTableView.separatorColor = UIColor.blackColor()
         
         self.songTableView.tableFooterView = UIView()
