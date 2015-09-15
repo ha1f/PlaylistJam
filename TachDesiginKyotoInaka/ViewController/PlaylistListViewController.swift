@@ -16,7 +16,7 @@ class PlaylistListViewController: PageCellViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.9)
+        self.view.backgroundColor = UIColor.clearColor()
         
         //tableViewの作成、delegate,dataSourceを設定
         self.playlistCollectionView.delegate = self
