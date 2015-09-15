@@ -19,10 +19,13 @@ class SelectMoodModalViewController: UIViewController{
         self.moodTableView.delegate = self
         self.moodTableView.dataSource = self
         
+        //キャンセルボタンの見た目変更
+        cancelBtn.layer.backgroundColor = UIColor.colorFromRGB("303030", alpha: 1).CGColor
         //キャンセルボタンのイベント登録
         cancelBtn.addTarget(self, action: "cancel:", forControlEvents: .TouchUpInside)
-        
-        moodTableView.backgroundColor = UIColor.blackColor()
+        //テーブルビューの背景透明に
+        moodTableView.backgroundColor = UIColor.clearColor()
+        moodTableView.separatorColor = UIColor.colorFromRGB("555555", alpha: 1)
         
         
         moodTableView.reloadData()
@@ -58,7 +61,7 @@ extension SelectMoodModalViewController: UITableViewDataSource, UITableViewDeleg
     //セルの内容を変更
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
-        cell.backgroundColor = UIColor.blackColor()
+        cell.backgroundColor = UIColor.clearColor()
         cell.textLabel?.text = ConstantShare.moodList[indexPath.row]
         cell.textLabel?.textColor = UIColor.lightGrayColor()
         println("celltext=> \(cell.textLabel?.text)")
