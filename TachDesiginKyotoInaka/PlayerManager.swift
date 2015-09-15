@@ -26,7 +26,7 @@ class PlayerManager: NSObject {
     func setupPlaylist(playlist: Playlist) {
         self.playlistId = playlist.id
         self.playlistTitle = playlist.title
-        setupSongs(playlist.songs)
+        setupSongs(playlist.songsArray())
     }
 
     func playNextSong() {

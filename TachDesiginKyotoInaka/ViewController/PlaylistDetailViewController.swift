@@ -18,7 +18,7 @@ class PlaylistDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        songList = playlist!.songs
+        songList = playlist!.songsArray()
         
         //tableViewの作成、delegate,dataSourceを設定
         self.songTableView.delegate = self
@@ -30,7 +30,7 @@ class PlaylistDetailViewController: UIViewController {
         
         self.songTableView.tableFooterView = UIView()
         setupArtwork()
-        self.player.setupSongs(playlist!.songs)
+        self.player.setupSongs(playlist!.songsArray())
         self.playerImage.image = playButtonImage
     }
 

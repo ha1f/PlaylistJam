@@ -27,7 +27,6 @@ class PageControl: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.currentPage = 0
-        self.backgroundColor = UIColor.redColor()
     }
     
     func setActive(cell: PageControlCell) {
@@ -48,7 +47,7 @@ class PageControl: UIView {
             let pageCell = PageControlCell(frame: CGRectMake(offsetX, 0, width, height))
             pageCell.setTitle(datum, forState: UIControlState.Normal)
             setInActive(pageCell)
-            pageCell.backgroundColor = UIColor.blackColor()
+            //pageCell.backgroundColor = UIColor.blackColor()
             pageCell.addTarget(self, action: "pageSelected:", forControlEvents: UIControlEvents.TouchUpInside)
             pageCell.tag = index
             tmpCells.append(pageCell)
@@ -56,6 +55,10 @@ class PageControl: UIView {
             index++
         }
         self.pageCells = tmpCells
+        
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
         
         for page in pageCells {
             self.addSubview(page)

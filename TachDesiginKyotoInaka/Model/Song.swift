@@ -5,7 +5,7 @@ import ObjectMapper
 class Song: Object {
     static let realm = Realm()
 
-    dynamic var id = 0
+    dynamic var id = 1
     dynamic var title = ""
     dynamic var artist = ""
     dynamic var artworkUrl = ""
@@ -14,6 +14,24 @@ class Song: Object {
 
     override static func primaryKey() -> String? {
         return "id"
+    }
+
+    static func lastId() -> Int {
+        if let song = realm.objects(Song).last {
+            return song.id + 1
+        } else {
+            return 1
+        }
+    }
+
+    static func all() -> [Song] {
+        let songs = realm.objects(Song)
+        var ret: [Song] = []
+
+        for song in songs {
+            ret.append(song)
+        }
+        return ret
     }
 }
 

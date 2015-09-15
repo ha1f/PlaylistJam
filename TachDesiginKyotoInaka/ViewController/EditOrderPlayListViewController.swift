@@ -32,6 +32,11 @@ class EditOrderSongViewController: UIViewController {
     
     //完了ボタン
     func finishEditting(sender: UIBarButtonItem!) {
+        Playlist.createWithSongAndInit([
+            "title": titleField.text,
+            "desc": descField.text
+            ], songs: manager.selectedSongs())
+        
         println("finsh")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
