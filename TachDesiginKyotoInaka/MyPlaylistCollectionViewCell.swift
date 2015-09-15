@@ -21,6 +21,9 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
     
     var gradientLayer: CAGradientLayer! = nil
     
+    let infoViewHeight: CGFloat = 120
+    let infoViewWidth: CGFloat = 360
+    
 
     @IBAction func touchUpPlayButton(sender: AnyObject) {
         if index == parent.playingList {
@@ -37,7 +40,6 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
     }
 
     func setup(playlist: Playlist) {
-        initViewProp()
         self.playlist = playlist
 
 
@@ -63,6 +65,8 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
 
         self.playlistTitleLabel.text = playlist.title
         self.playlistCommentLabel.text = playlist.desc
+        
+        initViewProp()
     }
 
     func initViewProp(){
@@ -78,13 +82,13 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
     func setGradient(view: UIView, colorList: [CGColor]?, locations: [CGFloat]){
         if self.gradientLayer == nil {
             self.gradientLayer = CAGradientLayer()
-            if let gradientColors = colorList {
-                self.gradientLayer.colors = gradientColors
-            }
-            self.gradientLayer.locations = locations
             view.layer.insertSublayer(self.gradientLayer, atIndex: 0)
         }
-        self.gradientLayer.frame = view.bounds
+        self.gradientLayer.frame = CGRectMake(0, 0, self.infoViewWidth, self.infoViewHeight)
+        if let gradientColors = colorList {
+            self.gradientLayer.colors = gradientColors
+        }
+        self.gradientLayer.locations = locations
     }
 }
 

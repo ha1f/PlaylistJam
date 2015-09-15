@@ -23,10 +23,10 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         super.viewDidLoad()
 
         fetchPlaylists {
-            self.playlistCollectionView.dataSource = self
-            self.playlistCollectionView.delegate = self
             self.playlistCollectionView.reloadData()
         }
+        self.playlistCollectionView.dataSource = self
+        self.playlistCollectionView.delegate = self
 
         initViewProp()
         createButton.addTarget(self, action: "createPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
