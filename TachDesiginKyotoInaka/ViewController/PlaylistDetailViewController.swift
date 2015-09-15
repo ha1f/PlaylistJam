@@ -5,11 +5,16 @@ class PlaylistDetailViewController: UIViewController {
     @IBOutlet weak var mainArtwork: UIImageView!
     @IBOutlet weak var subArtwork1: UIImageView!
     @IBOutlet weak var subArtwork2: UIImageView!
+    @IBOutlet weak var playerImage: UIImageView!
+
 
     var songList: [Song] = []
     var playlist: Playlist?
     let player: PlayerManager = PlayerManager.manager
-    
+
+    let pauseButtonImage = UIImage(named: "PauseButton")
+    let playButtonImage = UIImage(named: "playlistPlayButton")
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +31,7 @@ class PlaylistDetailViewController: UIViewController {
         self.songTableView.tableFooterView = UIView()
         setupArtwork()
         self.player.setupSongs(playlist!.songs)
+        self.playerImage.image = playButtonImage
     }
 
     func setupArtwork() {
@@ -40,6 +46,15 @@ class PlaylistDetailViewController: UIViewController {
     
     @IBAction func close(sender: AnyObject?) {
         self.dismissViewControllerAnimated(true, completion: nil)
+        player.pause()
+    }
+
+    @IBAction func playOrPauseButton(sender: AnyObject) {
+        if player.isPausing() {
+            play()
+        } else {
+            pause()
+        }
     }
 }
 
@@ -47,8 +62,8 @@ extension PlaylistDetailViewController: UITableViewDataSource, UITableViewDelega
     //選択された時
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         player.playById(indexPath.row)
+        playerImage.image = pauseButtonImage
         println("selected: \(indexPath.row)")
-        //self.performSegueWithIdentifier("tosend",sender: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,5 +86,18 @@ extension PlaylistDetailViewController: UITableViewDataSource, UITableViewDelega
         } else {
             return tableView.estimatedRowHeight
         }
+    }
+}
+
+// for play Playlist
+extension PlaylistDetailViewController {
+    func play() {
+        player.play()
+        playerImage.image = pauseButtonImage
+    }
+
+    func pause() {
+        player.pause()
+        self.playerImage.image = playButtonImage
     }
 }
