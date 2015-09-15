@@ -5,7 +5,7 @@ class PreSelectViewController: PagingViewController {
     var playlists: [Playlist] = []
     var songs: [Song] = []
     var controller: PreSelectDataController?
-    let manager = SelectedSongsManager.manager
+    let manager = SongsManager.manager
     
     override func createDataController() -> PagingDataController {
         controller = PreSelectDataController(pageIdentities: self.pageData)

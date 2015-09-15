@@ -63,7 +63,7 @@ class PlayerManager: NSObject {
     }
 
     func isFinish() -> Bool {
-        return progress() > 1.0
+        return progress() >= 1.0
     }
 
     func isPausing() -> Bool {
