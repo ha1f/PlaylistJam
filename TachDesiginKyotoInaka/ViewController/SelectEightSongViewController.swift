@@ -18,6 +18,9 @@ class SelectEightSongViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //謎のずれる現象の対策
+        self.automaticallyAdjustsScrollViewInsets = false;
+        
         appendedSongCount = manager.appendedSongCount()
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self

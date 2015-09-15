@@ -14,6 +14,9 @@ class EditOrderSongViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //謎のずれる現象を治す(自動調整機能をOFF)
+        self.automaticallyAdjustsScrollViewInsets = false;
 
         self.songListTableView.delegate = self
         self.descField.delegate = self
@@ -96,13 +99,14 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
         let cell = songListTableView.dequeueReusableCellWithIdentifier("EditOrderSongTableViewCell", forIndexPath: indexPath) as! EditOrderSongTableViewCell
         let song = manager.findFormSelectedSongInfo(indexPath.row).song
         cell.setSong(song)
-        
+        println("IIIII   \(indexPath.row)")
         return cell
     }
     
     //高さを計算したいけどとりあえず放置
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let height :CGFloat! = nil
+        println("height => \(height)");
         // heightがnilの場合、とりあえず高さ40で設定 TODO
         if height != nil{
             return height
