@@ -102,7 +102,7 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
         if height != nil{
             return height
         } else {
-            return 50//tableView.estimatedRowHeight
+            return 70//tableView.estimatedRowHeight
         }
     }
     
