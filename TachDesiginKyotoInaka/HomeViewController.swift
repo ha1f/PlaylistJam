@@ -46,7 +46,7 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     }
     
     func setNavOpacity(opacity: CGFloat) {
-        //blurNavbar.alpha = opacity
+        blurNavbar.alpha = opacity
     }
     
     func initViewProp(){
