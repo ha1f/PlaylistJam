@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zHs-Em-FcI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zHs-Em-FcI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -144,12 +144,43 @@
                                     <action selector="close:" destination="SXs-QT-fsR" eventType="touchUpInside" id="og4-es-e1G"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3my-mE-y4k">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="158" y="143" width="58" height="56"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-rU-4sr">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="21" y="59" width="333" height="224"/>
+                                </variation>
+                                <connections>
+                                    <action selector="playOrPauseButton:" destination="SXs-QT-fsR" eventType="touchUpInside" id="0wL-cM-70d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="3my-mE-y4k"/>
+                                <exclude reference="MSA-rU-4sr"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="3my-mE-y4k"/>
+                                <include reference="MSA-rU-4sr"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="mainArtwork" destination="uV6-S2-ZWm" id="f7U-tp-lit"/>
+                        <outlet property="playerImage" destination="3my-mE-y4k" id="ZsK-IA-z5B"/>
                         <outlet property="songTableView" destination="2BZ-9u-WM9" id="HhB-9V-RZj"/>
                         <outlet property="subArtwork1" destination="cUq-qU-P8k" id="PNB-az-wtj"/>
                         <outlet property="subArtwork2" destination="43L-na-JCZ" id="gLr-as-03Y"/>
@@ -1045,6 +1076,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDq-6q-drS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="381.75" y="1444.125"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aoF-A3-Tav">
+            <objects>
+                <viewController id="UgA-T2-dvI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bp8-s8-lPB"/>
+                        <viewControllerLayoutGuide type="bottom" id="In4-xU-e8P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UVM-i9-V45">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FVL-sc-dRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

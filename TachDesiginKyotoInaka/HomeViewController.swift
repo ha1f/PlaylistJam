@@ -5,13 +5,18 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     var pageData: NSArray = []
     var playlists: [Playlist] = []
     var controller: PreSelectDataController?
+    var playingList = -1 {
+        didSet {
+            if oldValue != -1 {
+                playlistCollectionView.reloadItemsAtIndexPaths([NSIndexPath(forRow: oldValue + 1, inSection: 0)])
+            }
+        }
+    }
     @IBOutlet weak var blurNavbar: UIVisualEffectView!
     
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var playlistCollectionView: UICollectionView!
 
-    var player: PlayerManager!
-    
     var modalView: CreatePlaylistViewController! = nil
 
     override func viewDidLoad() {
@@ -25,7 +30,6 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
 
         initViewProp()
         createButton.addTarget(self, action: "createPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
-        
     }
     
     func createPlaylist() {
@@ -84,7 +88,6 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cellID: String
         var playlist: Playlist?
@@ -99,8 +102,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! UICollectionViewCell
         if let list = playlist {
             (cell as! MyPlaylistCollectionViewCell).setup(playlist!)
-            (cell as! MyPlaylistCollectionViewCell).index = indexPath.row - 1
             (cell as! MyPlaylistCollectionViewCell).parent = self
+            (cell as! MyPlaylistCollectionViewCell).index = indexPath.row - 1
         }
         return cell
     }
