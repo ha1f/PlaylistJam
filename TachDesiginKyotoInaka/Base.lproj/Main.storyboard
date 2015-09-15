@@ -62,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXA-Na-ofb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10.5" y="-218.5"/>
+            <point key="canvasLocation" x="-80.25" y="12.375"/>
         </scene>
         <!--Playlist Detail View Controller-->
         <scene sceneID="5VY-7n-8oT">
@@ -79,6 +79,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="81" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2BZ-9u-WM9">
                                 <rect key="frame" x="16" y="291" width="343" height="361"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="PlaylistDetailSongCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaylistDetailSongCell" rowHeight="81" id="BnS-qU-0DD" customClass="PlaylistDetailSongCell" customModule="TachDesiginKyotoInaka" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -92,17 +93,18 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbj-IN-X3e">
                                                     <rect key="frame" x="92" y="43" width="235" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmS-63-Vz5">
                                                     <rect key="frame" x="92" y="14" width="243" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="artistLabel" destination="Rbj-IN-X3e" id="aZF-Ng-I0a"/>
                                             <outlet property="artwork" destination="yho-Lo-MqH" id="myL-11-BJw"/>
@@ -111,27 +113,39 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cUq-qU-P8k">
+                                <rect key="frame" x="241" y="40" width="113" height="113"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="241" y="58" width="113" height="113"/>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="43L-na-JCZ">
+                                <rect key="frame" x="241" y="152" width="113" height="113"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="241" y="170" width="113" height="113"/>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uV6-S2-ZWm">
+                                <rect key="frame" x="21" y="40" width="220" height="225"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="21" y="58" width="220" height="225"/>
+                                </variation>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebV-wz-DDA">
                                 <rect key="frame" x="290" y="7" width="40" height="30"/>
                                 <state key="normal" title="Close">
                                     <color key="titleColor" red="1" green="0.69772736052779027" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="289" y="20" width="40" height="30"/>
+                                </variation>
                                 <connections>
                                     <action selector="close:" destination="SXs-QT-fsR" eventType="touchUpInside" id="og4-es-e1G"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cUq-qU-P8k">
-                                <rect key="frame" x="241" y="40" width="113" height="113"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="43L-na-JCZ">
-                                <rect key="frame" x="241" y="152" width="113" height="113"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uV6-S2-ZWm">
-                                <rect key="frame" x="21" y="40" width="220" height="225"/>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -143,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDA-l0-t3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="478.5" y="-966.5"/>
+            <point key="canvasLocation" x="654.75" y="-556.125"/>
         </scene>
         <!--Playlist List View Controller-->
         <scene sceneID="ns7-DM-YcY">
@@ -212,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTv-4k-f4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10.5" y="-966.5"/>
+            <point key="canvasLocation" x="-80.25" y="-556.125"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="O3d-F1-yGK">
@@ -478,11 +492,13 @@
                         <outlet property="createButton" destination="ANs-LJ-mmo" id="3Vp-aU-hsQ"/>
                         <outlet property="playlistCollectionView" destination="I8E-BK-4Tp" id="Ved-Pk-eiQ"/>
                         <segue destination="HVN-8P-hqo" kind="presentation" identifier="createPlaylist" id="6Wa-Ll-7xQ"/>
+                        <segue destination="zBF-tG-wf8" kind="presentation" identifier="createPublic" id="ywh-DP-uhP"/>
+                        <segue destination="SXs-QT-fsR" kind="presentation" identifier="showMyplaylistDetail" id="zX0-OE-dHl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZv-7I-VAT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1809.75" y="619.125"/>
+            <point key="canvasLocation" x="-2331.75" y="604.125"/>
         </scene>
         <!--Create Playlist Navigation Controller-->
         <scene sceneID="9iy-xH-peG">
@@ -498,7 +514,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mA-3B-78n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-512.5" y="604.5"/>
+            <point key="canvasLocation" x="-762.75" y="604.125"/>
         </scene>
         <!--PreSelect-->
         <scene sceneID="tne-QT-ifu">
@@ -524,7 +540,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10.5" y="612.5"/>
+            <point key="canvasLocation" x="-80.25" y="604.125"/>
         </scene>
         <!--8曲選んで-->
         <scene sceneID="7nZ-Mt-f5D">
@@ -602,7 +618,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOI-5g-oMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="593.5" y="612.5"/>
+            <point key="canvasLocation" x="593.25" y="604.125"/>
         </scene>
         <!--プレイリストの詳細設定-->
         <scene sceneID="vM5-v9-IG4">
@@ -770,7 +786,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWZ-vs-bW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084.5" y="-125.5"/>
+            <point key="canvasLocation" x="1319.25" y="37.875"/>
         </scene>
         <!--Create Playlist View Controller-->
         <scene sceneID="sxV-SV-NEP">
@@ -808,7 +824,7 @@
                                     <rect key="frame" x="86" y="496" width="23" height="23"/>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1F9-dd-WOh" customClass="BackgroundButton" customModule="TachDesiginKyotoInaka" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1F9-dd-WOh">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="　　　公開プレイリストを作る(8曲)">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -907,12 +923,11 @@
                         <outlet property="cancelButton" destination="SVf-q1-m8g" id="l5x-GK-xRx"/>
                         <outlet property="privateButton" destination="HEQ-hK-lJ2" id="D89-mS-iY8"/>
                         <outlet property="publicButton" destination="1F9-dd-WOh" id="tJO-Qt-vgP"/>
-                        <segue destination="zBF-tG-wf8" kind="show" identifier="createPublic" id="pMa-K0-lem"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30l-Oj-Si5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1142.25" y="604.125"/>
+            <point key="canvasLocation" x="-1530.75" y="1006.125"/>
         </scene>
         <!--Player View Controller-->
         <scene sceneID="ulW-Ma-u3K">
@@ -1030,4 +1045,7 @@
         <image name="privateIcon" width="47" height="53"/>
         <image name="publicIcon" width="64" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="zX0-OE-dHl"/>
+    </inferredMetricsTieBreakers>
 </document>

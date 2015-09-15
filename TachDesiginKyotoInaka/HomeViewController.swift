@@ -1,6 +1,6 @@
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, ModalViewControllerDelegate {
    
     var pageData: NSArray = []
     var playlists: [Playlist] = []
@@ -11,6 +11,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var playlistCollectionView: UICollectionView!
 
     var player: PlayerManager!
+    
+    var modalView: CreatePlaylistViewController! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,23 @@ class HomeViewController: UIViewController {
     
     func createPlaylist() {
         self.performSegueWithIdentifier("createPlaylist", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //公開/非公開選択画面
+        if segue.identifier == "createPlaylist" {
+            self.modalView = segue.destinationViewController as! CreatePlaylistViewController
+            self.modalView.delegate = self
+        //音楽再生画面
+        } else if segue.identifier == "showMyplaylistDetail" {
+            let detailViewController = segue.destinationViewController as! PlaylistDetailViewController
+            detailViewController.playlist = playlists[(sender as! Int)]
+        }
+    }
+    
+    func modalDidFinished(nextSegue: String) {
+        self.modalView.dismissViewControllerAnimated(false, completion: nil)
+        self.performSegueWithIdentifier(nextSegue, sender: nil)
     }
     
     func setNavOpacity(opacity: CGFloat) {
@@ -99,6 +118,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println("select: \(indexPath.row)")
+        if indexPath.row > 0 {
+            self.performSegueWithIdentifier("showMyplaylistDetail", sender: (indexPath.row-1))
+        }
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {

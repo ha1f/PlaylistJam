@@ -13,15 +13,15 @@ class PlaylistDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.blueColor()
-
+        
         songList = playlist!.songs
         
         //tableViewの作成、delegate,dataSourceを設定
         self.songTableView.delegate = self
         self.songTableView.dataSource = self
         
-        self.songTableView.backgroundColor = UIColor.blackColor()
+        self.songTableView.backgroundColor = UIColor.clearColor()
+        
         self.songTableView.separatorColor = UIColor.blackColor()
         
         self.songTableView.tableFooterView = UIView()

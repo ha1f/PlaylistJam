@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol ModalViewControllerDelegate{
+    func modalDidFinished(nextSegue: String)
+}
+
 class CreatePlaylistViewController: UIViewController {
     
     @IBOutlet weak var publicButton: UIButton!
     @IBOutlet weak var privateButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     var isCreated: Bool = false
+    
+    //rootに値を渡す
+    var delegate: ModalViewControllerDelegate! = nil
     
     override func viewWillAppear(animated: Bool) {
         if self.isCreated {
@@ -80,7 +87,7 @@ class CreatePlaylistViewController: UIViewController {
     
     func createPublic(sender: UIButton!) {
         self.isCreated = true
-        self.performSegueWithIdentifier("createPublic", sender: nil)
+        self.delegate.modalDidFinished("createPublic")
     }
     
     func cancel(sender: UIButton!) {
