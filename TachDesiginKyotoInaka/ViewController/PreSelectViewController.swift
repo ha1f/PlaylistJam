@@ -55,6 +55,8 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
             self.subPageControl.setIdentity(1)
             self.subPageControl.delegate = self
             self.view.addSubview(self.subPageControl)
+            
+            self.updateTab()
         }
 
         //self.view.backgroundColor = UIColor.whiteColor()
@@ -67,37 +69,47 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         self.view.addSubview(button)
     }
     
+    //ページのタブが押された時に移動させる
     func pageSelected(identity: Int, page: Int) {
-        println("selected:\(identity),\(page)")
-        let currentPage = 0
+        let currentPage = self.getCurrentPageIndex()
         //大カテゴリ
         var targetPage: Int! = nil
         if identity == 0 {
             targetPage = self.largePage[page]
         } else if identity == 1 {
+            println(page)
             targetPage = getLargeCategory(currentPage) + page
+            println(targetPage)
         }
         if let target = targetPage {
             moveTargetPage(target)
         }
     }
-    //大カテゴリの0ページ目を取得
-    func getLargeCategory(page: Int) -> Int{
+    func getLargeCategoryIndex(page: Int) -> Int {
+        var index = self.largePage.count - 1
         for i in self.largePage.reverse() {
             if page >= i {
-                return i
+                return index
             }
+            index--
         }
         return 0
     }
     
+    //大カテゴリの0ページ目を取得
+    func getLargeCategory(page: Int) -> Int{
+        return self.largePage[getLargeCategoryIndex(page)]
+    }
+    
     //特定のページヘ移動
     func moveTargetPage(targetPage: Int) {
-        let dataViewController: PageCellViewController = self.dataController.viewControllerAtIndex(targetPage)!
-        let viewControllers: NSArray = NSArray(array: [dataViewController])
-        let direction:UIPageViewControllerNavigationDirection = targetPage > self.getCurrentPageIndex() ? UIPageViewControllerNavigationDirection.Forward : UIPageViewControllerNavigationDirection.Reverse
+        if targetPage != self.getCurrentPageIndex() {
+            let dataViewController: PageCellViewController = self.dataController.viewControllerAtIndex(targetPage)!
+            let viewControllers: NSArray = NSArray(array: [dataViewController])
+            let direction:UIPageViewControllerNavigationDirection = targetPage > self.getCurrentPageIndex() ? UIPageViewControllerNavigationDirection.Forward : UIPageViewControllerNavigationDirection.Reverse
         
-        self.pageViewController?.setViewControllers(viewControllers as [AnyObject], direction: direction, animated: true, completion: nil)
+            self.pageViewController?.setViewControllers(viewControllers as [AnyObject], direction: direction, animated: true, completion: {(Bool) -> Void in self.updateTab()})
+        }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -129,10 +141,18 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         }
     }
     
+    func updateTab() {
+        println("updateTab")
+        let currentPage = getCurrentPageIndex()
+        
+        self.pageControl.setCurrentPage(getLargeCategoryIndex(currentPage))
+        self.subPageControl.setCurrentPage(currentPage - self.largePage[getLargeCategoryIndex(currentPage)])
+    }
+    
     //ページ遷移アニメーション完了後
     override func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
         //self.pageControl.currentPage = self.dataController.indexOfViewController(self.pageViewController!.viewControllers[0] as! PageCellViewController)
-        println("pageMoved:\(getCurrentPageIndex())")
+        updateTab()
     }
     
     func getCurrentPageIndex() -> Int! {

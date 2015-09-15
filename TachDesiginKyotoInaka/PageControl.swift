@@ -14,7 +14,7 @@ protocol PageControlDelegate {
 
 class PageControl: UIView {
     private var pageCells: [PageControlCell] = []
-    private var currentPage = 0
+    private var currentPage:Int? = nil
     //タグ的な
     private var identity = 0
     
@@ -30,6 +30,13 @@ class PageControl: UIView {
         self.backgroundColor = UIColor.redColor()
     }
     
+    func setActive(cell: PageControlCell) {
+        cell.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Normal)
+    }
+    func setInActive(cell: PageControlCell) {
+        cell.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+    }
+    
     func setPages(data: [String]) {
         self.pageCells = []
         let width = self.frame.width / CGFloat(data.count)
@@ -40,6 +47,7 @@ class PageControl: UIView {
         for datum in data {
             let pageCell = PageControlCell(frame: CGRectMake(offsetX, 0, width, height))
             pageCell.setTitle(datum, forState: UIControlState.Normal)
+            setInActive(pageCell)
             pageCell.backgroundColor = UIColor.blueColor()
             pageCell.addTarget(self, action: "pageSelected:", forControlEvents: UIControlEvents.TouchUpInside)
             pageCell.tag = index
@@ -51,7 +59,9 @@ class PageControl: UIView {
         for page in pageCells {
             self.addSubview(page)
         }
-        updateView()
+        
+        //初期ページ
+        setCurrentPage(0)
     }
     
     func setIdentity(identity: Int) {
@@ -66,18 +76,16 @@ class PageControl: UIView {
         self.delegate.pageSelected(self.identity, page: sender.tag)
     }
     
-    func updateView() {
-        //currentPageの表示を変える
-        //animation
-        
-    }
-    
     func setCurrentPage(page: Int) {
+        if let oldPage = self.currentPage {
+            //oldのビューを更新
+            self.setInActive(pageCells[oldPage])
+        }
         self.currentPage = page
-        updateView()
+        self.setActive(pageCells[self.currentPage!])
     }
     
     func getCurrentPage() -> Int {
-        return self.currentPage
+        return self.currentPage!
     }
 }
