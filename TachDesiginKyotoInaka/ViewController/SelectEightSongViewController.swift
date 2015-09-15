@@ -22,7 +22,6 @@ class SelectEightSongViewController: UIViewController {
 
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
-        
         self.selectedCount.text = "\(selectedSongs.count)/8 曲"
         
         selectSongTableView.allowsSelection = false
@@ -89,6 +88,8 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
         let song = self.songList[indexPath.row]
         
         cell.setSong(song)
+        
+        //println("cell count => \(indexPath.row)")
         
         return cell
     }
