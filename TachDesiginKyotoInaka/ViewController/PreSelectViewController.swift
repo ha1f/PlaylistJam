@@ -124,15 +124,21 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         manager.reset()
-
-        let favPlaylists = map(controller!.selectedItemIndexes[0]) { return self.playlists[$0] }
-        manager.appendPlaylists(favPlaylists)
-
-        let favSongs = map(controller!.selectedItemIndexes[1]) { return self.songs[$0] }
-        manager.appendSongs(favSongs)
-
-        let historySongs = map(controller!.selectedItemIndexes[2]) { return self.songs[$0] }
-        manager.appendSongs(historySongs)
+        
+        var index = 0
+        for indexes in controller!.selectedItemIndexes {
+            let tmpDataList: AnyObject = self.pageData[index]
+            let tmpDatas = map(indexes){ return tmpDataList[$0] }
+            if !tmpDatas.isEmpty {
+                //型判定
+                if tmpDatas[0] is Playlist {
+                    manager.appendPlaylists(tmpDatas as! [Playlist])
+                } else {
+                    manager.appendSongs(tmpDatas as! [Song])
+                }
+            }
+            index++
+        }
     }
 
     func reduceEight(sender: UIButton!) {
