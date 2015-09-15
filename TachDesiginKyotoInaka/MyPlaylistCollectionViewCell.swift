@@ -5,11 +5,11 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
     var index = -1
     let player = PlayerManager.instance
     var parent: HomeViewController! // for manage prayingList
-    
+
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var mainArtworkImageView: UIImageView!
     @IBOutlet weak var infoView: UIView!
-    
+
     @IBOutlet weak var sub1ArtworkImageView: UIImageView!
     @IBOutlet weak var sub2ArtworkImageView: UIImageView!
 
@@ -36,15 +36,22 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
     func setup(playlist: Playlist) {
         initViewProp()
         self.playlist = playlist
-        
+
+
         if let url = NSURL(string: playlist.songs[0].artworkUrl) {
             self.mainArtworkImageView.sd_setImageWithURL(url)
         }
-        if let url = NSURL(string: playlist.songs[1].artworkUrl) {
-            self.sub1ArtworkImageView.sd_setImageWithURL(url)
+
+        if playlist.songs.count > 1 {
+            if let url = NSURL(string: playlist.songs[1].artworkUrl) {
+                self.sub1ArtworkImageView.sd_setImageWithURL(url)
+            }
         }
-        if let url = NSURL(string: playlist.songs[2].artworkUrl) {
-            self.sub2ArtworkImageView.sd_setImageWithURL(url)
+
+        if playlist.songs.count > 2 {
+            if let url = NSURL(string: playlist.songs[2].artworkUrl) {
+                self.sub2ArtworkImageView.sd_setImageWithURL(url)
+            }
         }
 
         let image = UIImage(named: "playlistPlayButton")
@@ -64,7 +71,7 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
         let locations: [CGFloat] = [0.0, 0.8]
         setGradient(self.infoView, colorList: colorList, locations: locations)
     }
-    
+
     func setGradient(view: UIView, colorList: [CGColor]?, locations: [CGFloat]){
         let gradientColors: [CGColor]? = colorList
         let gradientLayer: CAGradientLayer = CAGradientLayer()
