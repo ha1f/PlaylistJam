@@ -2,7 +2,7 @@ import UIKit
 import DraggableCollectionView
 
 class SelectEightSongViewController: UIViewController {
-    let manager = SelectedSongsManager.manager
+    let manager = SongsManager.manager
     var songList:[Song] = []
     var appendedSongInfos: [AppendedSongInfo] = [] {
         didSet{

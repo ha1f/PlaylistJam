@@ -1,5 +1,5 @@
-class SelectedSongsManager {
-    static let manager = SelectedSongsManager()   // for Singleton
+class SongsManager {
+    static let manager = SongsManager()   // for Singleton
     var appendedSongInfos: [AppendedSongInfo] = []
     var selectedIds: [Int] = []
 

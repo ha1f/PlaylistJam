@@ -17,7 +17,7 @@ class EditOrderSongViewController: UIViewController {
     @IBOutlet weak var finishBarButton: UIBarButtonItem!
     
 
-    let manager = SelectedSongsManager.manager
+    let manager = SongsManager.manager
     var songList: [Song] = []
     var selectMoodModalViewController: SelectMoodModalViewController!
     
