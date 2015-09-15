@@ -11,8 +11,8 @@ import UIKit
 class SelectedSongCell: UICollectionViewCell {
     @IBOutlet var iconView: UIImageView!
     
-    func setup(song: AppendedSongInfo) {
-        if let url = NSURL(string: song.song.artworkUrl) {
+    func setup(song: Song) {
+        if let url = NSURL(string: song.artworkUrl) {
             self.iconView.sd_setImageWithURL(url)
         } else {
             //TODO set default image

@@ -126,7 +126,7 @@ extension SelectEightSongViewController: UICollectionViewDataSource_Draggable, U
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         println("\(indexPath.row)")
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("selectedSongCell", forIndexPath: indexPath) as! SelectedSongCell
-        cell.setup(manager.findFormSelectedSongInfo(indexPath.row))
+        cell.setup(manager.findFormSelectedSongInfo(indexPath.row).song)
         return cell
     }
 
