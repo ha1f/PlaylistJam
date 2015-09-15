@@ -19,7 +19,7 @@ class PlaylistCell:UICollectionViewCell {
         setPlaylist(playlist)
     }
     
-    func setup(playlist: Playlist, index:Int, topProtocol: TopProtocol) {
+    func setup(playlist: Playlist, index:Int, isSelect: Bool, topProtocol: TopProtocol) {
         self.backgroundColor = UIColor.blackColor()
         setPlaylist(playlist)
         
@@ -32,22 +32,35 @@ class PlaylistCell:UICollectionViewCell {
         detailButton.addTarget(self, action: "goDetailPage", forControlEvents: UIControlEvents.TouchUpInside)
         self.index = index
         
+        if(isSelect){
+            select()
+        }else{
+            deSelect()
+        }
+        
+    }
+    
+    func select(){
+            self.topProtocol!.onTapForAdd(self.index!)
+            self.addButton.setTitle("V", forState: nil)
+            isSelect = true
+    }
+    
+    func deSelect(){
+            self.topProtocol!.onTapForDel(self.index!)
+            self.addButton.setTitle("＋", forState: nil)
+            isSelect = false
     }
     
     func selectPlaylist(){
         if(isSelect){
-            self.topProtocol!.onTapForDel(self.index!)
-            self.addButton.setTitle("＋", forState: nil)
-            isSelect = false
+            deSelect()
         }else{
-            self.topProtocol!.onTapForAdd(self.index!)
-            self.addButton.setTitle("V", forState: nil)
-            isSelect = true
+            select()
         }
     }
     
     func goDetailPage(){
-        println("adddddddddd")
         self.topProtocol!.onTapDetail(self.index!,playlist: playlist!)
     }
 

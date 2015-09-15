@@ -46,15 +46,14 @@ class PlaylistListViewController: PageCellViewController {
 extension PlaylistListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlaylistCell", forIndexPath: indexPath) as! PlaylistCell
-        cell.setup(self.playlistList[indexPath.row], index: indexPath.row, topProtocol: self)
+        //現在選択中のものを取得
+        var selectedIndexs: [Int] = getSelectedItem()
         var index = indexPath.row
+        cell.setup(self.playlistList[indexPath.row], index: indexPath.row, isSelect: contains(selectedIndexs,indexPath.row),topProtocol: self)
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        //self.performSegueWithIdentifier("showDetail", sender: indexPath.row)
-        //appendSelectedItem(indexPath.row)
-        println("select: \(indexPath.row)")
         //getSelectedItem()で現在選択されているもの一覧を取得できる[Int]
     }
     
