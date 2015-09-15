@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol ModalViewControllerDelegate{
+    func modalDidFinished(nextSegue: String)
+}
+
 class CreatePlaylistViewController: UIViewController {
     
     @IBOutlet weak var publicButton: UIButton!
     @IBOutlet weak var privateButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     var isCreated: Bool = false
+    
+    //rootに値を渡す
+    var delegate: ModalViewControllerDelegate! = nil
     
     override func viewWillAppear(animated: Bool) {
         if self.isCreated {
@@ -37,9 +44,15 @@ class CreatePlaylistViewController: UIViewController {
     }
     
     func initViewProp(){
-        /*publicButton.backgroundColor = colorFromRGB("5cbf00", alpha: 1)
-        privateButton.backgroundColor = colorFromRGB("00c7f9", alpha: 1)
-        cancelButton.backgroundColor = colorFromRGB("7c827e", alpha: 1)*/
+        
+        self.view.backgroundColor = UIColor.colorFromRGB("000000", alpha: 0)
+        
+        publicButton.layer.borderWidth = 1
+        publicButton.layer.borderColor = colorFromRGB("FFFFFF", alpha: 1).CGColor
+        publicButton.layer.cornerRadius = 5
+        privateButton.layer.borderWidth = 1
+        privateButton.layer.borderColor = colorFromRGB("FFFFFF", alpha: 1).CGColor
+        privateButton.layer.cornerRadius = 5
         cancelButton.layer.borderWidth = 1
         cancelButton.layer.borderColor = colorFromRGB("FFFFFF", alpha: 1).CGColor
         
@@ -74,7 +87,7 @@ class CreatePlaylistViewController: UIViewController {
     
     func createPublic(sender: UIButton!) {
         self.isCreated = true
-        self.performSegueWithIdentifier("createPublic", sender: nil)
+        self.delegate.modalDidFinished("createPublic")
     }
     
     func cancel(sender: UIButton!) {

@@ -478,6 +478,7 @@
                         <outlet property="createButton" destination="ANs-LJ-mmo" id="3Vp-aU-hsQ"/>
                         <outlet property="playlistCollectionView" destination="I8E-BK-4Tp" id="Ved-Pk-eiQ"/>
                         <segue destination="HVN-8P-hqo" kind="presentation" identifier="createPlaylist" id="6Wa-Ll-7xQ"/>
+                        <segue destination="zBF-tG-wf8" kind="presentation" identifier="createPublic" id="ywh-DP-uhP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZv-7I-VAT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -559,7 +560,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bSg-AL-vs7">
@@ -770,7 +771,7 @@
         <!--Create Playlist View Controller-->
         <scene sceneID="sxV-SV-NEP">
             <objects>
-                <viewController id="HVN-8P-hqo" customClass="CreatePlaylistViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="HVN-8P-hqo" customClass="CreatePlaylistViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jy9-6G-QQO"/>
                         <viewControllerLayoutGuide type="bottom" id="vy9-Dt-Vya"/>
@@ -779,54 +780,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPL-aX-Ygo">
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mD-Rz-iEs">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nSg-TL-fKj">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gnL-gI-z3b">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <blurEffect style="dark"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="674"/>
-                                </variation>
-                            </visualEffectView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make New PlayList" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmS-fl-Peg">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="24" y="53" width="326" height="61"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="47" y="43" width="281" height="61"/>
-                                </variation>
-                            </label>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ho-pr-RLO">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2r4-Fe-rGp">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <blurEffect style="light"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="47" y="206" width="281" height="57"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="406"/>
                                 </variation>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IKH-N7-U35">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="publicIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NTd-I2-Pr6">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mal-lp-T6T">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="light"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="47" y="128" width="281" height="57"/>
+                                    <rect key="frame" x="84" y="428" width="25" height="25"/>
                                 </variation>
-                            </visualEffectView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1F9-dd-WOh" customClass="BackgroundButton" customModule="TachDesiginKyotoInaka" customModuleProvider="target">
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="privateIcon" translatesAutoresizingMaskIntoConstraints="NO" id="kry-i8-bhU">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="86" y="496" width="23" height="23"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1F9-dd-WOh">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="公開プレイリストを作る">
+                                <state key="normal" title="　　　公開プレイリストを作る(8曲)">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -834,12 +814,12 @@
                                     <rect key="frame" x="24" y="143" width="326" height="54"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="47" y="131" width="281" height="54"/>
+                                    <rect key="frame" x="46.5" y="414" width="281" height="54"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEQ-hK-lJ2">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="非公開プレイリストを作る">
+                                <state key="normal" title="　　非公開プレイリストを作る">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -847,7 +827,7 @@
                                     <rect key="frame" x="24" y="210" width="326" height="54"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="47" y="208" width="281" height="54"/>
+                                    <rect key="frame" x="47" y="482" width="281" height="54"/>
                                 </variation>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="7" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3BR-Hu-4BM">
@@ -863,7 +843,7 @@
                                     <rect key="frame" x="24" y="335" width="326" height="169"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="47" y="333" width="312" height="169"/>
+                                    <rect key="frame" x="41" y="545" width="312" height="70"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVf-q1-m8g">
@@ -876,33 +856,45 @@
                                     <rect key="frame" x="132" y="295" width="110" height="26"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="132" y="309" width="110" height="26"/>
+                                    <rect key="frame" x="132" y="618" width="110" height="26"/>
                                 </variation>
                             </button>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPL-aX-Ygo">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nSg-TL-fKj">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <blurEffect style="extraLight"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="-1" y="405" width="375" height="269"/>
+                                </variation>
+                            </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="LPL-aX-Ygo"/>
-                                <exclude reference="zmS-fl-Peg"/>
-                                <exclude reference="4Ho-pr-RLO"/>
-                                <exclude reference="IKH-N7-U35"/>
+                                <exclude reference="8mD-Rz-iEs"/>
+                                <exclude reference="NTd-I2-Pr6"/>
+                                <exclude reference="kry-i8-bhU"/>
                                 <exclude reference="1F9-dd-WOh"/>
                                 <exclude reference="HEQ-hK-lJ2"/>
                                 <exclude reference="3BR-Hu-4BM"/>
                                 <exclude reference="SVf-q1-m8g"/>
+                                <exclude reference="LPL-aX-Ygo"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="LPL-aX-Ygo"/>
-                                <include reference="zmS-fl-Peg"/>
-                                <include reference="4Ho-pr-RLO"/>
-                                <include reference="IKH-N7-U35"/>
+                                <include reference="8mD-Rz-iEs"/>
+                                <include reference="NTd-I2-Pr6"/>
+                                <include reference="kry-i8-bhU"/>
                                 <include reference="1F9-dd-WOh"/>
                                 <include reference="HEQ-hK-lJ2"/>
                                 <include reference="3BR-Hu-4BM"/>
                                 <include reference="SVf-q1-m8g"/>
+                                <include reference="LPL-aX-Ygo"/>
                             </mask>
                         </variation>
                     </view>
@@ -911,12 +903,11 @@
                         <outlet property="cancelButton" destination="SVf-q1-m8g" id="l5x-GK-xRx"/>
                         <outlet property="privateButton" destination="HEQ-hK-lJ2" id="D89-mS-iY8"/>
                         <outlet property="publicButton" destination="1F9-dd-WOh" id="tJO-Qt-vgP"/>
-                        <segue destination="zBF-tG-wf8" kind="show" identifier="createPublic" id="pMa-K0-lem"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30l-Oj-Si5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1529.25" y="604.125"/>
+            <point key="canvasLocation" x="-1530.75" y="1006.125"/>
         </scene>
         <!--Player View Controller-->
         <scene sceneID="ulW-Ma-u3K">
@@ -999,5 +990,7 @@
     <resources>
         <image name="NextSongButton" width="90" height="110"/>
         <image name="PrevSongButton" width="92" height="110"/>
+        <image name="privateIcon" width="47" height="53"/>
+        <image name="publicIcon" width="64" height="60"/>
     </resources>
 </document>
