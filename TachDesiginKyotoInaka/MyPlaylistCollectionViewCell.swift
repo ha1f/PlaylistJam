@@ -18,6 +18,9 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
 
     let pauseButtonImage = UIImage(named: "PauseButton")
     let playButtonImage = UIImage(named: "playlistPlayButton")
+    
+    var gradientLayer: CAGradientLayer! = nil
+    
 
     @IBAction func touchUpPlayButton(sender: AnyObject) {
         if index == parent.playingList {
@@ -73,12 +76,15 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
     }
 
     func setGradient(view: UIView, colorList: [CGColor]?, locations: [CGFloat]){
-        let gradientColors: [CGColor]? = colorList
-        let gradientLayer: CAGradientLayer = CAGradientLayer()
-        gradientLayer.colors = gradientColors
-        gradientLayer.frame = view.bounds
-        gradientLayer.locations = locations
-        view.layer.insertSublayer(gradientLayer, atIndex: 0)
+        if self.gradientLayer == nil {
+            self.gradientLayer = CAGradientLayer()
+            if let gradientColors = colorList {
+                self.gradientLayer.colors = gradientColors
+            }
+            self.gradientLayer.locations = locations
+            view.layer.insertSublayer(self.gradientLayer, atIndex: 0)
+        }
+        self.gradientLayer.frame = view.bounds
     }
 }
 

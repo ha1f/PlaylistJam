@@ -150,6 +150,7 @@
 		1E5B8C031BA687A2002132E3 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				A4B025901BA565540056D5E2 /* HomeViewController.swift */,
 				1E5B8C041BA68861002132E3 /* MyPlaylistCollectionViewCell.swift */,
 				1E5B8C081BA6B1DD002132E3 /* MyPlaylistCollectionHeaderCell.swift */,
 			);
@@ -283,7 +284,6 @@
 				1E8FAB371BA548D900026055 /* SelectSongTableViewSectionCell.xib */,
 				1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */,
 				B4BCD1771BA2C76600DD82F5 /* PlayerViewController.swift */,
-				A4B025901BA565540056D5E2 /* HomeViewController.swift */,
 				1EF362AE1BA56BE00064284B /* CreatePlaylistViewController.swift */,
 			);
 			name = ViewController;
