@@ -9,7 +9,7 @@ class EditOrderSongViewController: UIViewController {
     
 
     let manager = SongsManager.manager
-    var songList: [Song] = []
+    var selectedSongCount = 0
     var selectMoodModalViewController: SelectMoodModalViewController!
     
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class EditOrderSongViewController: UIViewController {
         moodBtn.addTarget(self, action: "showModal:", forControlEvents:.TouchUpInside)
         initViewProp()
 
-        songList = manager.selectedSongs()
+        selectedSongCount = manager.selectedSongCount()
         songListTableView.reloadData()
         
         self.finishBarButton.target = self
@@ -61,16 +61,13 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     
     //セルの行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.songList.count
+        return self.selectedSongCount
     }
     
     //セルを作成
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //カスタムセルで生成
         let cell = songListTableView.dequeueReusableCellWithIdentifier("EditOrderSongTableViewCell", forIndexPath: indexPath) as! EditOrderSongTableViewCell
-        var songLen = self.songList.count
-        let song = self.songList[indexPath.row]
-        
+        let song = manager.findFormSelectedSongInfo(indexPath.row).song
         cell.setSong(song)
         
         return cell
@@ -89,9 +86,7 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     
     //順番変更を有効にする
     func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        var itemToMove = songList[fromIndexPath.row]
-        songList.removeAtIndex(fromIndexPath.row)
-        songList.insert(itemToMove, atIndex: toIndexPath.row)
+        manager.moveSelectedSongInfo(fromIndexPath.row, to: toIndexPath.row)
     }
     
     //削除ボタンを非表示にする
