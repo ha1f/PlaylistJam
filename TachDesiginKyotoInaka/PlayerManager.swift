@@ -1,24 +1,31 @@
 import AVFoundation
 
 class PlayerManager: NSObject {
-    var players: [Player?]
-    let songs: [Song]
-    var i = 0;
-    let songCount: Int
+    var players: [Player?] = []
+    var songs: [Song] = []
+    private var i = 0;
+    private var playlistId: Int = -1
+    var playlistTitle: String = ""
+    var songCount: Int = 0
     var playingTimes : NSTimer?
     var listener: AnyObject?
+    static let manager = PlayerManager()
 
-    init(songs: [Song]) {
+    private override init() {
+      // super.init()
+    }
+
+    func setupSongs(songs: [Song]) {
         self.songs = songs
         self.songCount = songs.count
         self.players = [Player?](count: songCount, repeatedValue: nil)
-        super.init()
+        self.i = 0
     }
 
-    func fuga() {
-        if progress() == 1.0 {
-            playNextSong()
-        }
+    func setupPlaylist(playlist: Playlist) {
+        self.playlistId = playlist.id
+        self.playlistTitle = playlist.title
+        setupSongs(playlist.songs)
     }
 
     func playNextSong() {

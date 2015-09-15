@@ -1,7 +1,6 @@
 import UIKit
 
-class PlaylistDetailViewController: UIViewController {
-    
+class PlaylistDetailViewController: UIViewController {    
     @IBOutlet var songTableView: UITableView!
     @IBOutlet weak var mainArtwork: UIImageView!
     @IBOutlet weak var subArtwork1: UIImageView!
@@ -9,7 +8,7 @@ class PlaylistDetailViewController: UIViewController {
 
     var songList: [Song] = []
     var playlist: Playlist?
-    var player: PlayerManager!
+    let player: PlayerManager = PlayerManager.manager
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,7 @@ class PlaylistDetailViewController: UIViewController {
         
         self.songTableView.tableFooterView = UIView()
         setupArtwork()
-        self.player = PlayerManager(songs: playlist!.songs)
+        self.player.setupSongs(playlist!.songs)
     }
 
     func setupArtwork() {

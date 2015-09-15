@@ -10,8 +10,6 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var playlistCollectionView: UICollectionView!
 
-    var player: PlayerManager!
-    
     var modalView: CreatePlaylistViewController! = nil
 
     override func viewDidLoad() {
@@ -99,8 +97,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! UICollectionViewCell
         if let list = playlist {
             (cell as! MyPlaylistCollectionViewCell).setup(playlist!)
-            (cell as! MyPlaylistCollectionViewCell).index = indexPath.row - 1
-            (cell as! MyPlaylistCollectionViewCell).parent = self
         }
         return cell
     }

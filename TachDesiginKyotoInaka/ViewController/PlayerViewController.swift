@@ -4,7 +4,7 @@ import SDWebImage
 
 class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     var button: UIButton!
-    var player: PlayerManager!
+    let player: PlayerManager = PlayerManager.manager
     @IBOutlet weak var artwork: UIImageView!
     @IBOutlet weak var playTimeLabel: UILabel!
     @IBOutlet weak var playingTimeLabel: UILabel!
@@ -25,7 +25,7 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
         self.playingTimeSlider.value = 0.0
         self.playingTimeSlider.setThumbImage(UIImage(named: "sliderThum"),forState: .Normal)
 
-        setupPlayerAnd {
+        setupPlayer {
             self.player.listen(self)
             self.setupViewObject()
             self.play()
@@ -77,9 +77,9 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
 
-    private func setupPlayerAnd(completion: (Void -> Void)) {
+    private func setupPlayer(completion: (Void -> Void)) {
         ItunesApi.api.fetchSongs { (songs) in
-            self.player = PlayerManager(songs: songs)
+            self.player.setupSongs(songs)
             completion()
         }
     }

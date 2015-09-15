@@ -1,9 +1,8 @@
 import UIKit
 
 class MyPlaylistCollectionViewCell: UICollectionViewCell {
-    var index: Int = 0
-    var parent: HomeViewController!
     var playlist: Playlist!
+    let player = PlayerManager.manager
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var mainArtworkImageView: UIImageView!
@@ -16,9 +15,8 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var playlistCommentLabel: UILabel!
 
     @IBAction func touchUpPlayButton(sender: AnyObject) {
-        parent.player = PlayerManager(songs: playlist.songs)
-        parent.player.play()
-        println(index)
+        player.setupPlaylist(playlist)
+        player.play()
     }
 
     func setup(playlist: Playlist) {
