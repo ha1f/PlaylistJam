@@ -3,7 +3,7 @@ import DraggableCollectionView
 
 class SelectEightSongViewController: UIViewController {
     let manager = SongsManager.manager
-    var songList:[Song] = []
+    var appendedSongCount: Int = 0
     var selectedSongCount: Int = 0 {
         didSet(newValue) {
             self.selectedCount.text = "\(newValue)/8 曲"
@@ -18,9 +18,7 @@ class SelectEightSongViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.songList = manager.selectedSongs()
-
+        appendedSongCount = manager.appendedSongCount()
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
         self.selectedCount.text = "\(selectedSongCount)/8 曲"
@@ -28,7 +26,7 @@ class SelectEightSongViewController: UIViewController {
         selectSongTableView.backgroundColor = UIColor.clearColor()
 
         //同じ回数分
-        for i in songList {
+        for i in 0..<appendedSongCount {
             self.checkFlags.append(false)
         }
 
@@ -81,7 +79,7 @@ class SelectEightSongViewController: UIViewController {
 extension SelectEightSongViewController: UITableViewDataSource, UITableViewDelegate{
     //セルの行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.songList.count
+        return appendedSongCount
     }
 
     //セルを作成
@@ -92,11 +90,15 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
         cell.checkBox.addTarget(self, action: "clickedCheckButton:", forControlEvents: UIControlEvents.TouchUpInside)
         cell.checkBox.isChecked = checkFlags[indexPath.row]
 
+<<<<<<< HEAD
         let song = self.songList[indexPath.row]
 <<<<<<< HEAD
 
 =======
 >>>>>>> remove unused variable
+=======
+        let song = manager.findFromAppendedSongInfo(indexPath.row).song
+>>>>>>> remove songsList variable
         cell.setSong(song)
 
         return cell
