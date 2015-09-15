@@ -20,6 +20,7 @@ class PlayerManager: NSObject {
         self.songCount = songs.count
         self.players = [Player?](count: songCount, repeatedValue: nil)
         self.i = 0
+        reset()
     }
 
     func setupPlaylist(playlist: Playlist) {
@@ -74,7 +75,7 @@ class PlayerManager: NSObject {
     }
 
     func isPausing() -> Bool {
-        return player().isPausing!
+        return player().isPausing
     }
 
     func artworkUrl() -> NSURL {
@@ -151,7 +152,7 @@ class Player{
     let zeroSec: CMTime = CMTimeMake(0, 1)
     var playerItem: AVPlayerItem?
     var asset: AVURLAsset?
-    var isPausing: Bool?
+    var isPausing: Bool = true
 
     init(song: Song) {
         self.song = song
@@ -160,15 +161,16 @@ class Player{
 
     func play() {
         player.play()
-        isPausing = true
+        isPausing = false
     }
 
     func pause() {
         player.pause()
-        isPausing = false
+        isPausing = true
     }
 
     func reset() {
+        isPausing = true
         player.seekToTime(zeroSec)
     }
 

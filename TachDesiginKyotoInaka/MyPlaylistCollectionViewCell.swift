@@ -2,7 +2,9 @@ import UIKit
 
 class MyPlaylistCollectionViewCell: UICollectionViewCell {
     var playlist: Playlist!
+    var index = -1
     let player = PlayerManager.manager
+    var parent: HomeViewController! // for manage prayingList
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var mainArtworkImageView: UIImageView!
@@ -14,9 +16,21 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var playlistTitleLabel: UILabel!
     @IBOutlet weak var playlistCommentLabel: UILabel!
 
+    let pauseButtonImage = UIImage(named: "PauseButton")
+    let playButtonImage = UIImage(named: "playlistPlayButton")
+
     @IBAction func touchUpPlayButton(sender: AnyObject) {
-        player.setupPlaylist(playlist)
-        player.play()
+        if index == parent.playingList {
+            if player.isPausing() {
+                play()
+            } else {
+                pause()
+            }
+        } else {
+            player.setupPlaylist(playlist)
+            parent.playingList = index
+            play()
+        }
     }
 
     func setup(playlist: Playlist) {
@@ -59,4 +73,18 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
         gradientLayer.locations = locations
         view.layer.insertSublayer(gradientLayer, atIndex: 0)
     }
+}
+
+// for play Playlist
+extension MyPlaylistCollectionViewCell {
+    func play() {
+        self.playButton.setBackgroundImage(pauseButtonImage, forState: .Normal)
+        player.play()
+    }
+
+    func pause() {
+        player.pause()
+        self.playButton.setBackgroundImage(playButtonImage, forState: .Normal)
+    }
+
 }
