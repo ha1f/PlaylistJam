@@ -21,6 +21,8 @@
 		1EC692181BA2F1FE00621D53 /* art.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1EC692171BA2F1FE00621D53 /* art.jpg */; };
 		1ECAA04E1BA2633000F9250B /* EditOrderPlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */; };
 		1EF362AF1BA56BE00064284B /* CreatePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF362AE1BA56BE00064284B /* CreatePlaylistViewController.swift */; };
+		A42F2EF31BA7DCD40060552A /* PageControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F2EF21BA7DCD40060552A /* PageControlCell.swift */; };
+		A42F2EF71BA7DDA90060552A /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F2EF61BA7DDA90060552A /* PageControl.swift */; };
 		A4B025911BA565540056D5E2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B025901BA565540056D5E2 /* HomeViewController.swift */; };
 		A4B20C551BA1926E00BA531F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C541BA1926E00BA531F /* AppDelegate.swift */; };
 		A4B20C5A1BA1926E00BA531F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B20C581BA1926E00BA531F /* Main.storyboard */; };
@@ -85,6 +87,8 @@
 		1EF362AE1BA56BE00064284B /* CreatePlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePlaylistViewController.swift; sourceTree = "<group>"; };
 		58B18F1FC211CE0D810643A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		865CBE057C0A2E8E514A3FC3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A42F2EF21BA7DCD40060552A /* PageControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlCell.swift; sourceTree = "<group>"; };
+		A42F2EF61BA7DDA90060552A /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		A4B025901BA565540056D5E2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A4B20C4F1BA1926E00BA531F /* TachDesiginKyotoInaka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TachDesiginKyotoInaka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4B20C531BA1926E00BA531F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -271,6 +275,8 @@
 				1E5B8C031BA687A2002132E3 /* HomePage */,
 				1EC692101BA2DB7500621D53 /* EditOrderSongPage */,
 				A4B20C931BA2608C00BA531F /* PreSelectViewController.swift */,
+				A42F2EF61BA7DDA90060552A /* PageControl.swift */,
+				A42F2EF21BA7DCD40060552A /* PageControlCell.swift */,
 				A4B20C991BA269AD00BA531F /* PreSelectPage */,
 				A4B025931BA5C1E00056D5E2 /* SelectEightSong */,
 				A4B20C7C1BA192A600BA531F /* PlaySongViewController.swift */,
@@ -395,7 +401,7 @@
 				TargetAttributes = {
 					A4B20C4E1BA1926E00BA531F = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = V723YSJ67H;
+						DevelopmentTeam = S2QVPRJ4JH;
 					};
 					A4B20C631BA1926E00BA531F = {
 						CreatedOnToolsVersion = 6.4;
@@ -513,6 +519,7 @@
 				1E8FAB311BA543C300026055 /* CheckButton.swift in Sources */,
 				A4B20C841BA192A600BA531F /* MyPlaylist.swift in Sources */,
 				A4B20C811BA192A600BA531F /* ItunesApi.swift in Sources */,
+				A42F2EF31BA7DCD40060552A /* PageControlCell.swift in Sources */,
 				B40202AF1BA46C6B00F7B0B4 /* SelectedSongsManager.swift in Sources */,
 				1E5B8C051BA68861002132E3 /* MyPlaylistCollectionViewCell.swift in Sources */,
 				1EF362AF1BA56BE00064284B /* CreatePlaylistViewController.swift in Sources */,
@@ -521,6 +528,7 @@
 				B4BCD17A1BA2CEFA00DD82F5 /* PlayerManager.swift in Sources */,
 				1E5B8C091BA6B1DD002132E3 /* MyPlaylistCollectionHeaderCell.swift in Sources */,
 				A4B20C801BA192A600BA531F /* FavoritePlayList.swift in Sources */,
+				A42F2EF71BA7DDA90060552A /* PageControl.swift in Sources */,
 				A4B20C901BA25F5E00BA531F /* PagingDataController.swift in Sources */,
 				A4BC227F1BA2EF0900B588C9 /* PlaylistDetailSongCell.swift in Sources */,
 				B47B52E51BA2A96F00F3A739 /* ApiClient.swift in Sources */,
@@ -619,6 +627,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "7b2ce42b-1836-41f7-8635-cd10fc144a87";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -657,6 +666,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "7b2ce42b-1836-41f7-8635-cd10fc144a87";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
