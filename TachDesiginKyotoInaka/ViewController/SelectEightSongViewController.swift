@@ -90,15 +90,7 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
         cell.checkBox.addTarget(self, action: "clickedCheckButton:", forControlEvents: UIControlEvents.TouchUpInside)
         cell.checkBox.isChecked = checkFlags[indexPath.row]
 
-<<<<<<< HEAD
-        let song = self.songList[indexPath.row]
-<<<<<<< HEAD
-
-=======
->>>>>>> remove unused variable
-=======
         let song = manager.findFromAppendedSongInfo(indexPath.row).song
->>>>>>> remove songsList variable
         cell.setSong(song)
 
         return cell
@@ -117,7 +109,6 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
 }
 
 extension SelectEightSongViewController: UICollectionViewDataSource_Draggable, UICollectionViewDelegate {
-
     func collectionView(collectionView: UICollectionView!, canMoveItemAtIndexPath indexPath: NSIndexPath!, toIndexPath: NSIndexPath!) -> Bool {
         return true
     }
@@ -135,7 +126,7 @@ extension SelectEightSongViewController: UICollectionViewDataSource_Draggable, U
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         println("\(indexPath.row)")
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("selectedSongCell", forIndexPath: indexPath) as! SelectedSongCell
-        cell.setup(manager.selectedSongInfo()[indexPath.row])
+        cell.setup(manager.findFormSelectedSongInfo(indexPath.row))
         return cell
     }
 
