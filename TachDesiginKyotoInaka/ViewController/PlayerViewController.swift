@@ -4,7 +4,7 @@ import SDWebImage
 
 class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     var button: UIButton!
-    let player: PlayerManager = PlayerManager.manager
+    let player: PlayerManager = PlayerManager.instance
     @IBOutlet weak var artwork: UIImageView!
     @IBOutlet weak var playTimeLabel: UILabel!
     @IBOutlet weak var playingTimeLabel: UILabel!

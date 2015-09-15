@@ -9,7 +9,7 @@ class PlayerManager: NSObject {
     var songCount: Int = 0
     var playingTimes : NSTimer?
     var listener: AnyObject?
-    static let manager = PlayerManager()
+    static let instance = PlayerManager()
 
     private override init() {
       // super.init()

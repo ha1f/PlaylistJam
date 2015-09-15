@@ -3,7 +3,7 @@ import UIKit
 class MyPlaylistCollectionViewCell: UICollectionViewCell {
     var playlist: Playlist!
     var index = -1
-    let player = PlayerManager.manager
+    let player = PlayerManager.instance
     var parent: HomeViewController! // for manage prayingList
     
     @IBOutlet weak var playButton: UIButton!

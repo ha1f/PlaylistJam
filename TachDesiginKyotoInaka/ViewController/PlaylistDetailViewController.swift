@@ -10,7 +10,7 @@ class PlaylistDetailViewController: UIViewController {
 
     var songList: [Song] = []
     var playlist: Playlist?
-    let player: PlayerManager = PlayerManager.manager
+    let player: PlayerManager = PlayerManager.instance
 
     let pauseButtonImage = UIImage(named: "PauseButton")
     let playButtonImage = UIImage(named: "playlistPlayButton")
