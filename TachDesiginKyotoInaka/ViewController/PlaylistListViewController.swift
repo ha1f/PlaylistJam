@@ -18,13 +18,19 @@ class PlaylistListViewController: PageCellViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.clearColor()
         
-        //tableViewの作成、delegate,dataSourceを設定
+
         self.playlistCollectionView.delegate = self
         self.playlistCollectionView.dataSource = self
         self.playlistCollectionView.backgroundColor = UIColor.clearColor()
         self.playlistCollectionView.allowsMultipleSelection = true
-        
-        self.view.addSubview(self.playlistCollectionView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if self.title == "MyPlaylist" {
+            self.playlistCollectionView.frame = CGRectMake(7, 164 - 51, (self.view.frame.width-15), (self.view.frame.height - 164 - 20))
+        } else {
+            self.playlistCollectionView.frame = CGRectMake(7, 164, (self.view.frame.width-15), (self.view.frame.height - 164 - 20))
+        }
     }
 
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
