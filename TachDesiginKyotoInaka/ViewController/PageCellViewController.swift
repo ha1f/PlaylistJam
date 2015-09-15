@@ -41,9 +41,9 @@ class PageCellViewController: UIViewController {
         }
     }
     
-    func getSelectedItem() -> [Int] {
-        if let h = self.parent?.getSelectedItem(self.index!) {
-            return h
+    func getSelectedItem() -> [Int]{
+        if let ret = self.parent?.getSelectedItem(self.index!){
+            return ret
         }
         return []
     }
