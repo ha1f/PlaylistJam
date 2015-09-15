@@ -38,7 +38,7 @@ class PageControl: UIView {
     }
     
     func setPages(data: [String]) {
-        self.pageCells = []
+        var tmpCells: [PageControlCell] = []
         let width = self.frame.width / CGFloat(data.count)
         let height = self.frame.height
         var offsetX: CGFloat = 0
@@ -48,13 +48,14 @@ class PageControl: UIView {
             let pageCell = PageControlCell(frame: CGRectMake(offsetX, 0, width, height))
             pageCell.setTitle(datum, forState: UIControlState.Normal)
             setInActive(pageCell)
-            pageCell.backgroundColor = UIColor.blueColor()
+            pageCell.backgroundColor = UIColor.blackColor()
             pageCell.addTarget(self, action: "pageSelected:", forControlEvents: UIControlEvents.TouchUpInside)
             pageCell.tag = index
-            self.pageCells.append(pageCell)
+            tmpCells.append(pageCell)
             offsetX += width
             index++
         }
+        self.pageCells = tmpCells
         
         for page in pageCells {
             self.addSubview(page)
@@ -77,11 +78,16 @@ class PageControl: UIView {
     }
     
     func setCurrentPage(page: Int) {
+        var newPage = page
+        if newPage >= self.pageCells.count {
+            newPage = self.pageCells.count - 1
+        }
+        
         if let oldPage = self.currentPage {
             //oldのビューを更新
             self.setInActive(pageCells[oldPage])
         }
-        self.currentPage = page
+        self.currentPage = newPage
         self.setActive(pageCells[self.currentPage!])
     }
     

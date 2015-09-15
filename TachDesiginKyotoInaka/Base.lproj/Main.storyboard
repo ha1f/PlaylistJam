@@ -206,7 +206,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="134" width="375" height="44"/>
                                 </variation>
                             </searchBar>
                         </subviews>
@@ -645,6 +645,7 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="PreSelect" id="ZtU-K3-TWH">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="sqS-o8-sWK"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="498-GB-ptd">
                             <connections>
                                 <segue destination="2Ks-qv-Ntr" kind="show" id="enU-d2-gLP"/>
@@ -652,6 +653,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="exitButton" destination="sqS-o8-sWK" id="5QW-xn-xux"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
