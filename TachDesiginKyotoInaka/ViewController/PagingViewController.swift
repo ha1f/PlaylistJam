@@ -11,7 +11,6 @@ import UIKit
 
 class PagingViewController: UIViewController, UIPageViewControllerDelegate{
     var pageViewController: UIPageViewController?
-    var pageControl = UIPageControl()
     
     var pageData = NSArray()
     
@@ -59,14 +58,6 @@ class PagingViewController: UIViewController, UIPageViewControllerDelegate{
         self.pageViewController!.didMoveToParentViewController(self)
         
         
-        // PageControlを作成する.
-        pageControl = UIPageControl(frame: CGRectMake(0, 50, self.view.frame.width, 50))
-        pageControl.numberOfPages = self.pageData.count
-        pageControl.currentPage = 0// 現在ページを設定
-        pageControl.userInteractionEnabled = false
-        self.view.addSubview(pageControl)
-        
-        
         self.view.gestureRecognizers = self.pageViewController!.gestureRecognizers
     }
     
@@ -109,6 +100,5 @@ class PagingViewController: UIViewController, UIPageViewControllerDelegate{
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
         //println(self.PagingDataController.indexOfViewController(previousViewControllers[0] as! ImagePageCellViewController))
         //その時のページをPageControlにセット
-        self.pageControl.currentPage = self.dataController.indexOfViewController(self.pageViewController!.viewControllers[0] as! PageCellViewController)
     }
 }

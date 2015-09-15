@@ -1,11 +1,30 @@
 import Foundation
 import UIKit
 
+
+/**  
+Favorite
+    Playlists
+    Tracks
+History
+    Playlists
+    Tracks
+MyPlaylist
+search
+    Artists
+    Tracks
+    Playlists
+
+
+*/
+
 class PreSelectViewController: PagingViewController {
     var playlists: [Playlist] = []
     var songs: [Song] = []
     var controller: PreSelectDataController?
     let manager = SelectedSongsManager.manager
+    
+    var pageControl = UIPageControl()
     
     override func createDataController() -> PagingDataController {
         controller = PreSelectDataController(pageIdentities: self.pageData)
@@ -16,11 +35,18 @@ class PreSelectViewController: PagingViewController {
         super.viewDidLoad()
 
         fetchPlaylistsAnd {
-            self.pageData = [self.playlists, self.songs, self.songs]
+            self.pageData = [self.playlists, self.songs, self.playlists, self.songs, self.playlists]
             self.createView()
+            
+            // PageControlを作成する.
+            self.pageControl = UIPageControl(frame: CGRectMake(0, 50, self.view.frame.width, 50))
+            self.pageControl.numberOfPages = self.pageData.count
+            self.pageControl.currentPage = 0// 現在ページを設定
+            self.pageControl.userInteractionEnabled = false
+            self.view.addSubview(self.pageControl)
         }
 
-        self.view.backgroundColor = UIColor.whiteColor()
+        //self.view.backgroundColor = UIColor.whiteColor()
         self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
         self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
 
@@ -57,6 +83,11 @@ class PreSelectViewController: PagingViewController {
             self.songs = songs
             completion()
         }
+    }
+    
+    //ページ遷移アニメーション完了後
+    override func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+        self.pageControl.currentPage = self.dataController.indexOfViewController(self.pageViewController!.viewControllers[0] as! PageCellViewController)
     }
 }
 
