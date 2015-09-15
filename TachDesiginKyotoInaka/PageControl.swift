@@ -48,7 +48,7 @@ class PageControl: UIView {
             let pageCell = PageControlCell(frame: CGRectMake(offsetX, 0, width, height))
             pageCell.setTitle(datum, forState: UIControlState.Normal)
             setInActive(pageCell)
-            pageCell.backgroundColor = UIColor.blueColor()
+            pageCell.backgroundColor = UIColor.blackColor()
             pageCell.addTarget(self, action: "pageSelected:", forControlEvents: UIControlEvents.TouchUpInside)
             pageCell.tag = index
             tmpCells.append(pageCell)

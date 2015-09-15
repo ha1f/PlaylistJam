@@ -156,8 +156,10 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         //search
         if largeCategoryIndex == 3 {
             self.subPageControl.setPages(["Artists", "Playlists", "Tracks"])
+            self.subPageControl.frame = CGRectMake(0, 65 + self.tabHeight + 100, self.view.frame.width, self.subTabHeight)
         } else {
             self.subPageControl.setPages(["Playlists", "Tracks"])
+            self.subPageControl.frame = CGRectMake(0, 65 + self.tabHeight, self.view.frame.width, self.subTabHeight)
         }
         
         self.pageControl.setCurrentPage(largeCategoryIndex)
