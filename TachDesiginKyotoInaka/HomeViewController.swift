@@ -22,7 +22,7 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fetchPlaylistsAnd {
+        fetchPlaylists {
             self.playlistCollectionView.dataSource = self
             self.playlistCollectionView.delegate = self
             self.playlistCollectionView.reloadData()
@@ -34,6 +34,10 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     
     func createPlaylist() {
         self.performSegueWithIdentifier("createPlaylist", sender: nil)
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        fetchPlaylists { self.playlistCollectionView.reloadData() }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -68,7 +72,7 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         setGradient(self.view, colorList: colorList, locations: locations)
     }
     
-    private func fetchPlaylistsAnd(completion: (Void -> Void))  {
+    private func fetchPlaylists(completion: (Void -> Void))  {
         SampleData().fetchDataAnd { (playlists, _) in
             self.playlists = playlists
             completion()
