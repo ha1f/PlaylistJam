@@ -33,10 +33,14 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //モーダルの時のみ
+        //公開/非公開選択画面
         if segue.identifier == "createPlaylist" {
             self.modalView = segue.destinationViewController as! CreatePlaylistViewController
             self.modalView.delegate = self
+        //音楽再生画面
+        } else if segue.identifier == "showMyplaylistDetail" {
+            let detailViewController = segue.destinationViewController as! PlaylistDetailViewController
+            detailViewController.playlist = playlists[(sender as! Int)]
         }
     }
     
@@ -114,6 +118,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println("select: \(indexPath.row)")
+        if indexPath.row > 0 {
+            self.performSegueWithIdentifier("showMyplaylistDetail", sender: (indexPath.row-1))
+        }
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
