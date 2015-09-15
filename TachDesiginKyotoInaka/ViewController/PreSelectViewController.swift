@@ -54,7 +54,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
             self.view.addSubview(self.pageControl)
             
             self.subPageControl = PageControl(frame: CGRectMake(0, 64 + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.tabHeight))
-            self.subPageControl.setPages(["Playlists", "Tracks"])
+            //self.subPageControl.setPages(["Playlists", "Tracks"])
             self.subPageControl.setIdentity(1)
             self.subPageControl.delegate = self
             self.view.addSubview(self.subPageControl)
@@ -119,6 +119,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
             let direction:UIPageViewControllerNavigationDirection = targetPage > self.getCurrentPageIndex() ? UIPageViewControllerNavigationDirection.Forward : UIPageViewControllerNavigationDirection.Reverse
         
             self.pageViewController?.setViewControllers(viewControllers as [AnyObject], direction: direction, animated: true, completion: {(Bool) -> Void in self.updateTab()})
+            updateTab()
         }
     }
 
@@ -158,7 +159,6 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     }
     
     func updateTab() {
-        println("updateTab")
         let currentPage = getCurrentPageIndex()
         let largeCategoryIndex = getLargeCategoryIndex(currentPage)
         
@@ -196,6 +196,8 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 //PagingDataControllerをオーバーライドしてDataControllerクラスを作成
 class PreSelectDataController: PagingDataController {
     var selectedItemIndexes: [[Int]] = [[]]
+    
+    let titles = ["","","","","MyPlaylist","","",""]
 
     override func viewControllerAtIndex(index: Int) -> PageCellViewController? {
         super.viewControllerAtIndex(index)
@@ -214,6 +216,8 @@ class PreSelectDataController: PagingDataController {
         } else {
             dataViewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as! SearchViewController
         }
+        dataViewController.title = self.titles[index]
+        
 
         dataViewController.listen(self)
         dataViewController.setDataObject(sendData)
