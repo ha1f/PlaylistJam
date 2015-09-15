@@ -232,6 +232,10 @@ class PreSelectDataController: PagingDataController {
         }
         println(self.selectedItemIndexes)
     }
+    
+    func getSelectedItem(pageIndex: Int) -> [Int]{
+        return self.selectedItemIndexes[pageIndex]
+    }
 
     func contain(pageIndex: Int, itemIndex: Int) ->  Bool {
         return contains(self.selectedItemIndexes[pageIndex], itemIndex)

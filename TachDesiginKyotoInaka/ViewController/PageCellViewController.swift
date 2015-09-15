@@ -40,5 +40,12 @@ class PageCellViewController: UIViewController {
             self.parent?.removeSelectedItem(self.index!, itemIndex: i)
         }
     }
+    
+    func getSelectedItem() -> [Int]{
+        if let ret = self.parent?.getSelectedItem(self.index!){
+            return ret
+        }
+        return []
+    }
 }
 

@@ -55,6 +55,7 @@ extension PlaylistListViewController: UICollectionViewDataSource, UICollectionVi
         //self.performSegueWithIdentifier("showDetail", sender: indexPath.row)
         //appendSelectedItem(indexPath.row)
         println("select: \(indexPath.row)")
+        //getSelectedItem()で現在選択されているもの一覧を取得できる[Int]
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
