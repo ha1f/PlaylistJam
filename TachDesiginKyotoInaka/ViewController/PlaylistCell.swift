@@ -8,7 +8,7 @@ class PlaylistCell:UICollectionViewCell {
     @IBOutlet weak var samllArtwork2: UIImageView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var detailButton: UIButton!
-    
+
     var topProtocol: TopProtocol?
     var playlist: Playlist?
     var isSelect: Bool = false
@@ -18,11 +18,11 @@ class PlaylistCell:UICollectionViewCell {
         self.backgroundColor = UIColor.blackColor()
         setPlaylist(playlist)
     }
-    
+
     func setup(playlist: Playlist, index:Int, isSelect: Bool, topProtocol: TopProtocol) {
         self.backgroundColor = UIColor.blackColor()
         setPlaylist(playlist)
-        
+
         //コールバック登録
         self.topProtocol = topProtocol
         //各種イベント登録
@@ -31,27 +31,27 @@ class PlaylistCell:UICollectionViewCell {
         addButton.addTarget(self, action: "selectPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
         detailButton.addTarget(self, action: "goDetailPage", forControlEvents: UIControlEvents.TouchUpInside)
         self.index = index
-        
+
         if(isSelect){
             select()
         }else{
             deSelect()
         }
-        
+
     }
-    
+
     func select(){
             self.topProtocol!.onTapForAdd(self.index!)
             self.addButton.setTitle("V", forState: nil)
             isSelect = true
     }
-    
+
     func deSelect(){
             self.topProtocol!.onTapForDel(self.index!)
             self.addButton.setTitle("＋", forState: nil)
             isSelect = false
     }
-    
+
     func selectPlaylist(){
         if(isSelect){
             deSelect()
@@ -59,7 +59,7 @@ class PlaylistCell:UICollectionViewCell {
             select()
         }
     }
-    
+
     func goDetailPage(){
         self.topProtocol!.onTapDetail(self.index!,playlist: playlist!)
     }
@@ -67,19 +67,22 @@ class PlaylistCell:UICollectionViewCell {
     private func setPlaylist(playlist: Playlist) {
         self.playlist = playlist
         let largeSong = playlist.songs.first!
-        let song1 = playlist.songs[1]
-        let song2 = playlist.songs[2]
+        let songs = playlist.songs
 
         if let url = NSURL(string: largeSong.artworkUrl) {
             self.artwork.sd_setImageWithURL(url)
         }
 
-        if let url = NSURL(string: song1.artworkUrl) {
-            self.samllArtwork1.sd_setImageWithURL(url)
+        if songs.count > 1 {
+            if let url = NSURL(string: songs[1].artworkUrl) {
+                self.samllArtwork1.sd_setImageWithURL(url)
+            }
         }
 
-        if let url = NSURL(string: song2.artworkUrl) {
-            self.samllArtwork2.sd_setImageWithURL(url)
+        if songs.count > 2 {
+            if let url = NSURL(string: songs[2].artworkUrl) {
+                self.samllArtwork2.sd_setImageWithURL(url)
+            }
         }
 
         self.titleLabel.text = playlist.title

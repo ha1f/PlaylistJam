@@ -36,19 +36,22 @@ class PlaylistDetailViewController: UIViewController {
 
     func setupArtwork() {
         let largeSong = playlist!.songs.first!
-        let song1 = playlist!.songs[1]
-        let song2 = playlist!.songs[2]
+        let songs = playlist!.songs
 
         if let url = NSURL(string: largeSong.artworkUrl) {
             self.mainArtwork.sd_setImageWithURL(url)
         }
 
-        if let url = NSURL(string: song1.artworkUrl) {
-            self.subArtwork1.sd_setImageWithURL(url)
+        if songs.count > 1 {
+            if let url = NSURL(string: songs[1].artworkUrl) {
+                self.subArtwork1.sd_setImageWithURL(url)
+            }
         }
 
-        if let url = NSURL(string: song2.artworkUrl) {
-            self.subArtwork2.sd_setImageWithURL(url)
+        if songs.count > 2 {
+            if let url = NSURL(string: songs[2].artworkUrl) {
+                self.subArtwork1.sd_setImageWithURL(url)
+            }
         }
     }
 
