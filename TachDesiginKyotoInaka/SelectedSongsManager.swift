@@ -1,6 +1,6 @@
 class SelectedSongsManager {
     static let manager = SelectedSongsManager()   // for Singleton
-    var selectedSongInfos: [SelectedSong] = []
+    var appendedSongInfos: [AppendedSongInfo] = []
     var selectedIds: [Int] = []
 
     private init() {}
@@ -8,7 +8,7 @@ class SelectedSongsManager {
     func appendPlaylists(playlists: [Playlist]) {
         for p in playlists {
             for song in p.songs {
-                self.selectedSongInfos.append(SelectedSong(song: song, playlistName: p.title, playlistId: p.id))
+                self.appendedSongInfos.append(AppendedSongInfo(song: song, playlistName: p.title, playlistId: p.id))
             }
         }
     }
@@ -20,30 +20,30 @@ class SelectedSongsManager {
 
     func appendSongs(songs: [Song]) {
         for song in songs {
-            let selected = SelectedSong(song: song, playlistName: nil, playlistId: nil)
+            let selected = AppendedSongInfo(song: song, playlistName: nil, playlistId: nil)
 
             if isExistSongs(selected) {
-                self.selectedSongInfos.append(selected)
+                self.appendedSongInfos.append(selected)
             }
         }
     }
 
     func selectedSongs() -> [Song] {
-        return map(selectedSongInfos) { return $0.song }
+        return map(appendedSongInfos) { return $0.song }
     }
 
-    func selectedSongInfo() -> [SelectedSong] {
-        return map(selectedIds) { return self.selectedSongInfos[$0] }
+    func selectedSongInfo() -> [AppendedSongInfo] {
+        return map(selectedIds) { return self.appendedSongInfos[$0] }
     }
 
     func reset() {
-        selectedSongInfos = []
+        appendedSongInfos = []
         selectedIds = [] // TODO remove this line to perpetuate selected item
     }
 
-    private func isExistSongs(song: SelectedSong) -> Bool {
+    private func isExistSongs(song: AppendedSongInfo) -> Bool {
         if song.song.id != 0 {
-            let ids = map(selectedSongInfos) { return $0.song.id }
+            let ids = map(appendedSongInfos) { return $0.song.id }
             return contains(ids, song.song.id)
         }
         return false
@@ -60,7 +60,7 @@ class SelectedSongsManager {
     }
 }
 
-struct SelectedSong {
+struct AppendedSongInfo {
     var song: Song
     var playlistName: String?
     var playlistId: Int?
