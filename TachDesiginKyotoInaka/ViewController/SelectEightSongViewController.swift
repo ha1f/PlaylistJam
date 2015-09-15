@@ -22,7 +22,6 @@ class SelectEightSongViewController: UIViewController {
 
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
-        
         self.selectedCount.text = "\(selectedSongs.count)/8 曲"
         
         selectSongTableView.allowsSelection = false
