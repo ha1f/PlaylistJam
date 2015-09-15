@@ -35,7 +35,7 @@ class PreSelectViewController: PagingViewController {
         super.viewDidLoad()
 
         fetchPlaylistsAnd {
-            self.pageData = [self.playlists, self.songs, self.playlists, self.songs, self.playlists]
+            self.pageData = [self.playlists, self.songs, self.playlists, self.songs, self.playlists, "search1", "search2", "search3"]
             self.createView()
             
             // PageControlを作成する.
@@ -110,7 +110,7 @@ class PreSelectDataController: PagingDataController {
         } else if let tmp = sendData[0] as? Playlist {
             dataViewController = storyboard.instantiateViewControllerWithIdentifier("PlaylistListViewController") as! PlaylistListViewController
         } else {
-            dataViewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as! PlaylistListViewController
+            dataViewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as! SearchViewController
         }
 
         dataViewController.listen(self)

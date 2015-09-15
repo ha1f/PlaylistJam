@@ -24,12 +24,9 @@ class SongListViewController: PageCellViewController {
 
         self.songTableView.separatorColor = UIColor.darkGrayColor()
         self.songTableView.tableFooterView = UIView()
+        self.songTableView.backgroundColor = UIColor.clearColor()
 
         self.view.addSubview(self.songTableView)
-    }
-    
-    //画面の回転を検知
-    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
     }
     
     //Viewが表示される直前

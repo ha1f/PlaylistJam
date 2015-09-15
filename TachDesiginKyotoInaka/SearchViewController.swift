@@ -8,6 +8,14 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: PageCellViewController {
+    var data: String? = nil
     
+    override func setDataObject(dataObject: AnyObject?){
+        if let tmpDataObject: AnyObject = dataObject {
+            self.data = tmpDataObject as? String
+        }else{
+            println("DataObject is nil")
+        }
+    }
 }

@@ -280,7 +280,6 @@
 				B4BCD1771BA2C76600DD82F5 /* PlayerViewController.swift */,
 				A4B025901BA565540056D5E2 /* HomeViewController.swift */,
 				1EF362AE1BA56BE00064284B /* CreatePlaylistViewController.swift */,
-				A4ECA6681BA7C24300784B0A /* SearchViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -288,6 +287,7 @@
 		A4B20C991BA269AD00BA531F /* PreSelectPage */ = {
 			isa = PBXGroup;
 			children = (
+				A4ECA6681BA7C24300784B0A /* SearchViewController.swift */,
 				A4BC227D1BA2D2D600B588C9 /* SongList */,
 				A4B20CA51BA2ADF600BA531F /* PlaylistList */,
 				A4B20CA21BA2A37100BA531F /* lib */,
