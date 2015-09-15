@@ -70,9 +70,17 @@ class PlaylistCell:UICollectionViewCell {
         let song1 = playlist.songs[1]
         let song2 = playlist.songs[2]
 
-        self.artwork.sd_setImageWithURL(NSURL(string: largeSong.artworkUrl)!)
-        self.samllArtwork1.sd_setImageWithURL(NSURL(string: song1.artworkUrl)!)
-        self.samllArtwork2.sd_setImageWithURL(NSURL(string: song2.artworkUrl)!)
+        if let url = NSURL(string: largeSong.artworkUrl) {
+            self.artwork.sd_setImageWithURL(url)
+        }
+
+        if let url = NSURL(string: song1.artworkUrl) {
+            self.samllArtwork1.sd_setImageWithURL(url)
+        }
+
+        if let url = NSURL(string: song2.artworkUrl) {
+            self.samllArtwork2.sd_setImageWithURL(url)
+        }
 
         self.titleLabel.text = playlist.title
     }

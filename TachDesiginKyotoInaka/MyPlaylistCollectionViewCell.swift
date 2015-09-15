@@ -86,5 +86,4 @@ extension MyPlaylistCollectionViewCell {
         player.pause()
         self.playButton.setBackgroundImage(playButtonImage, forState: .Normal)
     }
-
 }
