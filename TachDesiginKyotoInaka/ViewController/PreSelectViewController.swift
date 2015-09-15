@@ -107,8 +107,10 @@ class PreSelectDataController: PagingDataController {
         if let tmp = sendData[0] as? Song {
             dataViewController = storyboard.instantiateViewControllerWithIdentifier("SongListViewController") as! SongListViewController
 
-        } else {
+        } else if let tmp = sendData[0] as? Playlist {
             dataViewController = storyboard.instantiateViewControllerWithIdentifier("PlaylistListViewController") as! PlaylistListViewController
+        } else {
+            dataViewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as! PlaylistListViewController
         }
 
         dataViewController.listen(self)
