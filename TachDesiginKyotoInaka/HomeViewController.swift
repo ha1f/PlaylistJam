@@ -1,6 +1,6 @@
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, ModalViewControllerDelegate {
    
     var pageData: NSArray = []
     var playlists: [Playlist] = []
@@ -11,6 +11,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var playlistCollectionView: UICollectionView!
 
     var player: PlayerManager!
+    
+    var modalView: CreatePlaylistViewController! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,19 @@ class HomeViewController: UIViewController {
     
     func createPlaylist() {
         self.performSegueWithIdentifier("createPlaylist", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //モーダルの時のみ
+        if segue.identifier == "createPlaylist" {
+            self.modalView = segue.destinationViewController as! CreatePlaylistViewController
+            self.modalView.delegate = self
+        }
+    }
+    
+    func modalDidFinished(nextSegue: String) {
+        self.modalView.dismissViewControllerAnimated(false, completion: nil)
+        self.performSegueWithIdentifier(nextSegue, sender: nil)
     }
     
     func setNavOpacity(opacity: CGFloat) {
