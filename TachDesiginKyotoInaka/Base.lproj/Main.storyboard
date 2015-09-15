@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zHs-Em-FcI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zHs-Em-FcI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -62,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXA-Na-ofb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10.5" y="-218.5"/>
+            <point key="canvasLocation" x="-80.25" y="12.375"/>
         </scene>
         <!--Playlist Detail View Controller-->
         <scene sceneID="5VY-7n-8oT">
@@ -143,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDA-l0-t3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="478.5" y="-966.5"/>
+            <point key="canvasLocation" x="654.75" y="-556.125"/>
         </scene>
         <!--Playlist List View Controller-->
         <scene sceneID="ns7-DM-YcY">
@@ -212,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTv-4k-f4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10.5" y="-966.5"/>
+            <point key="canvasLocation" x="-80.25" y="-556.125"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="O3d-F1-yGK">
@@ -482,7 +482,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZv-7I-VAT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1809.75" y="619.125"/>
+            <point key="canvasLocation" x="-2331.75" y="604.125"/>
         </scene>
         <!--Create Playlist Navigation Controller-->
         <scene sceneID="9iy-xH-peG">
@@ -498,7 +498,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mA-3B-78n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-512.5" y="604.5"/>
+            <point key="canvasLocation" x="-762.75" y="604.125"/>
         </scene>
         <!--PreSelect-->
         <scene sceneID="tne-QT-ifu">
@@ -524,7 +524,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10.5" y="612.5"/>
+            <point key="canvasLocation" x="-80.25" y="604.125"/>
         </scene>
         <!--8曲選んで-->
         <scene sceneID="7nZ-Mt-f5D">
@@ -559,7 +559,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bSg-AL-vs7">
@@ -602,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOI-5g-oMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="593.5" y="612.5"/>
+            <point key="canvasLocation" x="593.25" y="604.125"/>
         </scene>
         <!--プレイリストの詳細設定-->
         <scene sceneID="vM5-v9-IG4">
@@ -717,7 +717,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIE-zz-R93" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1109.5" y="612.5"/>
+            <point key="canvasLocation" x="1319.25" y="609.375"/>
         </scene>
         <!--Select Mood Modal View Controller-->
         <scene sceneID="e3Q-u4-QHw">
@@ -765,7 +765,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWZ-vs-bW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084.5" y="-125.5"/>
+            <point key="canvasLocation" x="1319.25" y="37.875"/>
         </scene>
         <!--Create Playlist View Controller-->
         <scene sceneID="sxV-SV-NEP">
@@ -916,7 +916,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30l-Oj-Si5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1030.5" y="604.5"/>
+            <point key="canvasLocation" x="-1529.25" y="604.125"/>
         </scene>
         <!--Player View Controller-->
         <scene sceneID="ulW-Ma-u3K">
