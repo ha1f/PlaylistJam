@@ -2,12 +2,12 @@ import UIKit
 
 class EditOrderSongViewController: UIViewController {
     @IBOutlet weak var titleField: UITextField!
-    @IBOutlet weak var descField: UITextField!
     @IBOutlet weak var songListTableView: UITableView!
     @IBOutlet weak var moodBtn: UIButton!
     @IBOutlet weak var finishBarButton: UIBarButtonItem!
+    @IBOutlet weak var placeholderLabel: UILabel!
+    @IBOutlet weak var descField: UITextView!
     
-
     let manager = SongsManager.manager
     var selectedSongCount = 0
     var selectMoodModalViewController: SelectMoodModalViewController!
@@ -16,6 +16,7 @@ class EditOrderSongViewController: UIViewController {
         super.viewDidLoad()
 
         self.songListTableView.delegate = self
+        self.descField.delegate = self
         self.songListTableView.dataSource = self
         self.songListTableView.editing = true
 
@@ -48,9 +49,30 @@ class EditOrderSongViewController: UIViewController {
     }
 
     func initViewProp(){
+        //各枠線
         moodBtn.layer.borderWidth = 1
         moodBtn.layer.cornerRadius = 3
-    }    
+        titleField.layer.borderWidth = 1
+        titleField.layer.cornerRadius = 3
+        descField.layer.borderWidth = 1
+        descField.layer.cornerRadius = 3
+        
+        moodBtn.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
+        titleField.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
+        descField.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
+        
+        setColorToPlaceHolder(UIColor.colorFromRGB("bcbcbc", alpha: 1), field: titleField)
+        
+        
+        placeholderLabel.hidden = false
+    }
+   
+    //任意のUITextFieldのプレイスホルダーの色を指定する関数
+    func setColorToPlaceHolder(color: UIColor, field: UITextField){
+        field.attributedPlaceholder = NSAttributedString(string:field.placeholder!,
+            attributes:[NSForegroundColorAttributeName: color])
+    }
+    
 }
 
 //tableViewに対するdelegate
@@ -80,7 +102,7 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
         if height != nil{
             return height
         } else {
-            return 40//tableView.estimatedRowHeight
+            return 70//tableView.estimatedRowHeight
         }
     }
     
@@ -107,7 +129,7 @@ extension EditOrderSongViewController: SelectMoodModalViewControllerDelegate {
         self.selectMoodModalViewController.dismissViewControllerAnimated(true, completion: nil)
         if mood != nil{
             var moodText: String? = ConstantShare.moodList[mood!]
-            self.moodBtn.setTitle("＋　"+moodText!, forState: UIControlState.Normal)
+            self.moodBtn.setTitle(moodText!, forState: UIControlState.Normal)
         }
     }
     
@@ -118,6 +140,27 @@ extension EditOrderSongViewController: SelectMoodModalViewControllerDelegate {
         self.selectMoodModalViewController.delegate = self
         self.presentViewController(self.selectMoodModalViewController, animated: true, completion: nil);
     }
+}
+
+extension EditOrderSongViewController: UITextViewDelegate{
+    
+    //textviewがフォーカスされたら、Labelを非表示
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool
+    {
+        self.placeholderLabel.hidden = true
+        return true
+    }
+    
+    //textviewからフォーカスが外れて、TextViewが空だったらLabelを再び表示
+    func textViewDidEndEditing(textView: UITextView) {
+        
+        println("finifh")
+        if(textView.text.isEmpty){
+            self.placeholderLabel.hidden = false
+        }
+    }
+
+    
 }
 
 //RGB文字列からUIColorを生成する関数
