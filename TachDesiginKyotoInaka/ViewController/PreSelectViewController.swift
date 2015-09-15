@@ -25,6 +25,9 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     var pageControl: PageControl!
     var subPageControl: PageControl!
     
+    @IBOutlet weak var exitButton: UIBarButtonItem!
+    
+    
     let tabHeight: CGFloat = 50.0
     let subTabHeight: CGFloat = 50.0
     
@@ -67,6 +70,13 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         button.setTitle("button", forState: UIControlState.Normal)
         button.addTarget(self, action: "reduceEight:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(button)
+        
+        exitButton.target = self
+        exitButton.action = "exitButtonClicked:"
+    }
+    
+    func exitButtonClicked(sender: UIBarButtonItem!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //ページのタブが押された時に移動させる
