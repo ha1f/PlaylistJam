@@ -28,6 +28,9 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     let tabHeight: CGFloat = 50.0
     let subTabHeight: CGFloat = 50.0
     
+    //0ページ目になってる奴
+    let largePage: [Int] = [0, 2, 4, 5]
+    
     override func createDataController() -> PagingDataController {
         controller = PreSelectDataController(pageIdentities: self.pageData)
         return controller!
@@ -70,22 +73,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         //大カテゴリ
         var targetPage: Int! = nil
         if identity == 0 {
-            switch(page) {
-            case 0:
-                targetPage = 0
-                break
-            case 1:
-                targetPage = 2
-                break
-            case 2:
-                targetPage = 4
-                break
-            case 3:
-                targetPage = 5
-                break
-            default:
-                break
-            }
+            targetPage = self.largePage[page]
         } else if identity == 1 {
             targetPage = getLargeCategory(currentPage) + page
         }
@@ -93,16 +81,14 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
             moveTargetPage(target)
         }
     }
+    //大カテゴリの0ページ目を取得
     func getLargeCategory(page: Int) -> Int{
-        if page >= 5 {
-            return 5
-        } else if page >= 4 {
-            return 4
-        } else if page >= 2 {
-            return 2
-        } else {
-            return 0
+        for i in self.largePage.reverse() {
+            if page >= i {
+                return i
+            }
         }
+        return 0
     }
     
     //特定のページヘ移動
