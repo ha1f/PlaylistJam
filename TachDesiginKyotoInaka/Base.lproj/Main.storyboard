@@ -1022,5 +1022,7 @@
         <image name="NextSongButton" width="90" height="110"/>
         <image name="PrevSongButton" width="92" height="110"/>
         <image name="playButton" width="172" height="176"/>
+        <image name="privateIcon" width="47" height="53"/>
+        <image name="publicIcon" width="64" height="60"/>
     </resources>
 </document>
