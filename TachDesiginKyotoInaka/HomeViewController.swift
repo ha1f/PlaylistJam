@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         fetchPlaylistsAnd {
             self.playlistCollectionView.dataSource = self
             self.playlistCollectionView.delegate = self
