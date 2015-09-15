@@ -11,34 +11,48 @@ class PlaylistCell:UICollectionViewCell {
     
     var topProtocol: TopProtocol?
     var playlist: Playlist?
+    var isSelect: Bool = false
+    var index: Int?
 
     func setup(playlist: Playlist) {
         self.backgroundColor = UIColor.blackColor()
         setPlaylist(playlist)
-        
     }
     
-    func setup(playlist: Playlist, topProtocol: TopProtocol) {
+    func setup(playlist: Playlist, index:Int, topProtocol: TopProtocol) {
         self.backgroundColor = UIColor.blackColor()
         setPlaylist(playlist)
         
         //コールバック登録
         self.topProtocol = topProtocol
         //各種イベント登録
-        let gesture = UITapGestureRecognizer(target:self, action: "addPlaylist:")
+        let gesture = UITapGestureRecognizer(target:self, action: "selectPlaylist")
         self.addGestureRecognizer(gesture);
-        detailButton.addTarget(self, action: "goDetailPage:", forControlEvents: UIControlEvents.TouchUpInside)
+        addButton.addTarget(self, action: "selectPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
+        detailButton.addTarget(self, action: "goDetailPage", forControlEvents: UIControlEvents.TouchUpInside)
+        self.index = index
+        
     }
     
-    private func addPlaylist(){
-        self.topProtocol!.onTapAddArea(playlist!)
+    func selectPlaylist(){
+        if(isSelect){
+            self.topProtocol!.onTapForDel(self.index!)
+            self.addButton.setTitle("＋", forState: nil)
+            isSelect = false
+        }else{
+            self.topProtocol!.onTapForAdd(self.index!)
+            self.addButton.setTitle("V", forState: nil)
+            isSelect = true
+        }
     }
     
-    private func goDetailPage(){
-        self.topProtocol!.onTapDetail(playlist!)
+    func goDetailPage(){
+        println("adddddddddd")
+        self.topProtocol!.onTapDetail(self.index!,playlist: playlist!)
     }
 
     private func setPlaylist(playlist: Playlist) {
+        self.playlist = playlist
         let largeSong = playlist.songs.first!
         let song1 = playlist.songs[1]
         let song2 = playlist.songs[2]
@@ -52,6 +66,7 @@ class PlaylistCell:UICollectionViewCell {
 }
 
 protocol TopProtocol{
-    func onTapAddArea(playlist :Playlist)
-    func onTapDetail(playlist :Playlist)
+    func onTapForAdd(index: Int)
+    func onTapForDel(index: Int)
+    func onTapDetail(index: Int, playlist :Playlist)
 }

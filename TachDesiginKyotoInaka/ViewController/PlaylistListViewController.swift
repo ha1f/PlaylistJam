@@ -2,6 +2,7 @@ import UIKit
 
 class PlaylistListViewController: PageCellViewController {
     var playlistList: [Playlist] = []
+    var tapProtocol: TopProtocol?
     
     @IBOutlet var playlistCollectionView: UICollectionView!
     
@@ -25,6 +26,7 @@ class PlaylistListViewController: PageCellViewController {
         self.playlistCollectionView.allowsMultipleSelection = true
         
         self.view.addSubview(self.playlistCollectionView)
+        
     }
 
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
@@ -44,13 +46,14 @@ class PlaylistListViewController: PageCellViewController {
 extension PlaylistListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlaylistCell", forIndexPath: indexPath) as! PlaylistCell
-        cell.setup(self.playlistList[indexPath.row])
+        cell.setup(self.playlistList[indexPath.row], index: indexPath.row, topProtocol: self)
+        var index = indexPath.row
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("showDetail", sender: indexPath.row)
-        appendSelectedItem(indexPath.row)
+        //self.performSegueWithIdentifier("showDetail", sender: indexPath.row)
+        //appendSelectedItem(indexPath.row)
         println("select: \(indexPath.row)")
     }
     
@@ -65,5 +68,19 @@ extension PlaylistListViewController: UICollectionViewDataSource, UICollectionVi
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return playlistList.count;
+    }
+}
+
+extension PlaylistListViewController: TopProtocol{
+    func onTapForAdd(index: Int) {
+        appendSelectedItem(index)
+    }
+    
+    func onTapForDel(index: Int) {
+        removeSelectedItem(index)
+    }
+    
+    func onTapDetail(index: Int, playlist: Playlist) {
+        self.performSegueWithIdentifier("showDetail", sender: index)
     }
 }
