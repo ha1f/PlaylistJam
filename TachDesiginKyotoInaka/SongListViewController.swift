@@ -3,7 +3,9 @@ import UIKit
 class SongListViewController: PageCellViewController {
     var songList: [Song] = []
     var songCount: Int = 0
-    
+    let checkedButtonImage = UIImage(named: "songPlusButton")
+    let unCheckedButtonImage = UIImage(named: "checkedSongButton")
+
     @IBOutlet var songTableView: UITableView!
 
     override func setDataObject(dataObject: AnyObject?){
@@ -38,11 +40,15 @@ class SongListViewController: PageCellViewController {
 //tableViewに対するdelegate
 extension SongListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let v = tableView.cellForRowAtIndexPath(indexPath) as! SongCell
+        v.check()
         println("selected: \(indexPath.row)")
         appendSelectedItem(indexPath.row)
     }
 
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let v = tableView.cellForRowAtIndexPath(indexPath) as! SongCell
+        v.unCheck()
         println("deselected: \(indexPath.row)")
         removeSelectedItem(indexPath.row)
     }
