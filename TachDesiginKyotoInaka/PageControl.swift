@@ -71,6 +71,11 @@ class PageControl: UIView {
         
         //一旦消す
         for subview in self.subviews {
+            if let subviewAsImageView = (subview as? UIImageView) {
+                if subviewAsImageView == self.bar {
+                    continue
+                }
+            }
             subview.removeFromSuperview()
         }
         //そしてadd
@@ -85,16 +90,32 @@ class PageControl: UIView {
     }
     
     func updateBar() {
+        let width = self.frame.width / CGFloat(self.pageCells.count)
         if self.barMode == "bar" {
             if self.bar == nil {
-            let width = self.frame.width / CGFloat(self.pageCells.count)
-            self.bar = UIImageView(frame: CGRectMake(0, 0, width, barHeight))
-            self.bar.backgroundColor = UIColor.colorFromRGB(ConstantShare.featureColorString, alpha: 1.0)
+                self.bar = UIImageView(frame: CGRectMake(0, 0, width, barHeight))
+                self.bar.backgroundColor = UIColor.colorFromRGB(ConstantShare.featureColorString, alpha: 1.0)
 
-            if self.bar.superview != self {
-                self.addSubview(self.bar)
+                //if self.bar.superview != self {
+                    self.addSubview(self.bar)
+                //}
+                self.bar.layer.position = pointIndex(0)
+            } else {
+                self.bar.frame = CGRectMake(0, 0, width, barHeight)
+                self.bar.layer.position = pointIndex(0)
             }
-            self.bar.layer.position = pointIndex(0)
+        } else if self.barMode == "triangle" {
+            if self.bar == nil {
+                self.bar = UIImageView(frame: CGRectMake(0, 0, width, barHeight))
+                self.bar.backgroundColor = UIColor.whiteColor()
+                
+                //if self.bar.superview != self {
+                self.addSubview(self.bar)
+                    //}
+                self.bar.layer.position = pointIndex(0)
+            } else {
+                self.bar.frame = CGRectMake(0, 0, width, barHeight)
+                self.bar.layer.position = pointIndex(0)
             }
         }
     }
@@ -134,6 +155,13 @@ class PageControl: UIView {
             }
             UIView.animateWithDuration(0.1, animations: { () -> Void in
                     self.bar.layer.position = self.pointIndex(newPage)
+            })
+        } else if self.barMode == "triangle" {
+            if self.bar == nil {
+                updateBar()
+            }
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
+                self.bar.layer.position = self.pointIndex(newPage)
             })
         }
     }
