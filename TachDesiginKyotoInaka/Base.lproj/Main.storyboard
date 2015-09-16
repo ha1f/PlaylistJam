@@ -974,7 +974,7 @@
                                             <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <color key="sectionIndexTrackingBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="0.0" y="151" width="375" height="465"/>
+                                                <rect key="frame" x="0.0" y="20" width="375" height="596"/>
                                             </variation>
                                         </tableView>
                                     </subviews>
@@ -1026,7 +1026,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DWZ-vs-bW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1319.25" y="37.875"/>
+            <point key="canvasLocation" x="1283.25" y="-149.625"/>
         </scene>
         <!--Create Playlist View Controller-->
         <scene sceneID="sxV-SV-NEP">
