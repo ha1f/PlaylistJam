@@ -13,6 +13,7 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         }
     }
     @IBOutlet weak var blurNavbar: UIVisualEffectView!
+    @IBOutlet weak var createButtonImage: UIImageView!
 
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var playlistCollectionView: UICollectionView!
@@ -60,12 +61,13 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     }
 
     func initViewProp(){
-        createButton.backgroundColor = UIColor.blackColor()
+        createButton.backgroundColor = UIColor.colorFromRGB(ConstantShare.featureColor, alpha: 1.0)
         var colorList: [CGColor] = [
             UIColor.colorFromRGB("333333", alpha: 1).CGColor,
             UIColor.colorFromRGB("303030", alpha: 1).CGColor
         ]
         var locations: [CGFloat] = [0.0, 1.0]
+//        self.createButtonImage.image = UIImage(named: "createPlaylistButton")
 
         setGradient(self.view, colorList: colorList, locations: locations)
     }
