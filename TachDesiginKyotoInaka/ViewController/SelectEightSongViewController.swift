@@ -35,6 +35,7 @@ class SelectEightSongViewController: UIViewController {
         self.selectSongTableView.dataSource = self
         self.selectedCount.text = "\(selectedSongCount)/8 曲"
         selectSongTableView.backgroundColor = UIColor.clearColor()
+        selectSongTableView.tableFooterView = UIView()
 
         //同じ回数分
         for i in 0..<appendedSongCount {
@@ -141,12 +142,6 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("didselect!!!!!!")
         self.clickedCheckButton((tableView.cellForRowAtIndexPath(indexPath) as! SelectSongTableViewCell).checkBox)
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        var footerView = UIView()
-        footerView.backgroundColor = UIColor.colorFromRGB( ConstantShare.tableCelBackColorString, alpha: 1)
-        return footerView
     }
 }
 

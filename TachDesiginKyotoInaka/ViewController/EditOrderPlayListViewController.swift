@@ -113,7 +113,8 @@ class EditOrderSongViewController: UIViewController {
         setColorToPlaceHolder(UIColor.colorFromRGB("bcbcbc", alpha: 1), field: titleField)
         self.view.backgroundColor = UIColor.colorFromRGB(ConstantShare.backColorString, alpha: 1)
         self.songListTableView.separatorColor = UIColor.colorFromRGB(ConstantShare.tableSeparaterColorString, alpha: 1)
-        self.songListTableView.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
+        self.songListTableView.backgroundColor = UIColor.clearColor()
+        self.songListTableView.tableFooterView = UIView(frame: CGRectMake(0, 0, 0, 0))
         placeholderLabel.hidden = false
     }
    
@@ -134,7 +135,7 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     
     //セルの行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.selectedSongCount
+        return manager.selectedSongCount()
     }
     
     //セルを作成
@@ -171,12 +172,6 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     }
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.None
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        var footerView = UIView()
-        footerView.backgroundColor = UIColor.colorFromRGB( ConstantShare.tableCelBackColorString, alpha: 1)
-        return footerView
     }
 }
 
