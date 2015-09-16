@@ -45,13 +45,16 @@ class PlaylistCell:UICollectionViewCell {
     func select(){
         self.topProtocol!.onTapForAdd(self.index!)
         self.addButton.setBackgroundImage(self.unCheckedButtonImage, forState: .Normal)
+        self.titleLabel.textColor = UIColor.lightGrayColor()
+        self.descLabel.textColor = UIColor.lightGrayColor()
         isSelect = true
     }
 
     func deSelect(){
         self.topProtocol!.onTapForDel(self.index!)
         self.addButton.setBackgroundImage(self.checkedButtonImage, forState: .Normal)
-
+        self.titleLabel.textColor = UIColor.whiteColor()
+        self.descLabel.textColor = UIColor.whiteColor()
         isSelect = false
     }
 
