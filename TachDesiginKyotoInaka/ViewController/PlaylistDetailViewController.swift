@@ -25,7 +25,7 @@ class PlaylistDetailViewController: BlurModalViewController {
         self.songTableView.dataSource = self
         
         self.songTableView.backgroundColor = UIColor.clearColor()
-        self.songTableView.separatorColor = UIColor.blackColor()
+        self.songTableView.separatorColor = UIColor.darkGrayColor()
         
         self.view.backgroundColor = UIColor.clearColor()
 
@@ -92,7 +92,7 @@ extension PlaylistDetailViewController: UITableViewDataSource, UITableViewDelega
 
     //高さを計算したいけどとりあえず放置
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let height :CGFloat! = 80.0
+        let height :CGFloat! = ConstantShare.songCellHeight
 
         if let h = height{
             return h
