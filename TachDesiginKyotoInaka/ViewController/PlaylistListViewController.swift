@@ -18,7 +18,6 @@ class PlaylistListViewController: PageCellViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.clearColor()
-        
 
         self.playlistCollectionView.delegate = self
         self.playlistCollectionView.dataSource = self

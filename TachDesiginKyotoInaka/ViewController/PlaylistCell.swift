@@ -7,7 +7,6 @@ class PlaylistCell:UICollectionViewCell {
     @IBOutlet weak var samllArtwork1: UIImageView!
     @IBOutlet weak var samllArtwork2: UIImageView!
     @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var descLabel: UILabel!
 
     var topProtocol: TopProtocol?
@@ -15,8 +14,10 @@ class PlaylistCell:UICollectionViewCell {
     var isSelect: Bool = false
     var index: Int?
 
+    let checkedButtonImage = UIImage(named: "songPlusButton")
+    let unCheckedButtonImage = UIImage(named: "checkedSongButton")
+
     func setup(playlist: Playlist) {
-        //self.backgroundColor = UIColor.blackColor()
         self.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1.0)
         setPlaylist(playlist)
     }
@@ -28,10 +29,10 @@ class PlaylistCell:UICollectionViewCell {
         //コールバック登録
         self.topProtocol = topProtocol
         //各種イベント登録
-        let gesture = UITapGestureRecognizer(target:self, action: "selectPlaylist")
+        let gesture = UITapGestureRecognizer(target:self, action: "goDetailPage")
         self.addGestureRecognizer(gesture);
         addButton.addTarget(self, action: "selectPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
-        detailButton.addTarget(self, action: "goDetailPage", forControlEvents: UIControlEvents.TouchUpInside)
+//        detailButton.addTarget(self, action: "goDetailPage", forControlEvents: UIControlEvents.TouchUpInside)
         self.index = index
 
         if(isSelect){
@@ -39,19 +40,22 @@ class PlaylistCell:UICollectionViewCell {
         }else{
             deSelect()
         }
-
     }
 
     func select(){
-            self.topProtocol!.onTapForAdd(self.index!)
-            self.addButton.setTitle("V", forState: nil)
-            isSelect = true
+        self.topProtocol!.onTapForAdd(self.index!)
+        self.addButton.setBackgroundImage(self.unCheckedButtonImage, forState: .Normal)
+        self.titleLabel.textColor = UIColor.lightGrayColor()
+        self.descLabel.textColor = UIColor.lightGrayColor()
+        isSelect = true
     }
 
     func deSelect(){
-            self.topProtocol!.onTapForDel(self.index!)
-            self.addButton.setTitle("＋", forState: nil)
-            isSelect = false
+        self.topProtocol!.onTapForDel(self.index!)
+        self.addButton.setBackgroundImage(self.checkedButtonImage, forState: .Normal)
+        self.titleLabel.textColor = UIColor.whiteColor()
+        self.descLabel.textColor = UIColor.whiteColor()
+        isSelect = false
     }
 
     func selectPlaylist(){

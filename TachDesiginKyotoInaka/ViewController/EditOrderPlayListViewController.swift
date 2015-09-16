@@ -126,13 +126,13 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     
     //高さを計算したいけどとりあえず放置
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let height :CGFloat! = nil
+        let height :CGFloat! = ConstantShare.songCellHeight
         println("height => \(height)");
         // heightがnilの場合、とりあえず高さ40で設定 TODO
-        if let h = height{
+        if let h = height {
             return h
         } else {
-            return 70//tableView.estimatedRowHeight
+            return 70 //tableView.estimatedRowHeight
         }
     }
     
