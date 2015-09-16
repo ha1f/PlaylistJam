@@ -32,8 +32,8 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     @IBOutlet weak var exitButton: UIBarButtonItem!
     
     
-    static let tabHeight: CGFloat = 40.0
-    static let subTabHeight: CGFloat = 60.0
+    static let tabHeight: CGFloat = 60.0
+    static let subTabHeight: CGFloat = 50.0
     let navigationBarHeight: CGFloat = 64.0
     
     //100->200
@@ -81,7 +81,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                 self.view.addSubview(self.pageControl)
                 
                 self.subPageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.tabHeight), mode: "triangle")
-                //self.subPageControl.setPages(["Playlists", "Tracks"])
+                self.subPageControl.setPages(["Playlists", "Tracks"])
                 self.subPageControl.setIdentity(1)
                 self.subPageControl.delegate = self
                 self.subPageControl.setFontSize(13)

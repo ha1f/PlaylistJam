@@ -9,7 +9,9 @@ class PlaylistDetailSongCell: UITableViewCell {
         self.titleLabel.text = song.title
         self.artistLabel.text = song.artist
         
-        self.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1.0)
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+        
+        self.backgroundColor = UIColor.clearColor()
 
         if let url = NSURL(string: song.artworkUrl) {
             self.artwork.sd_setImageWithURL(url)

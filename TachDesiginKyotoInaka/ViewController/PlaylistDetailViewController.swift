@@ -13,7 +13,7 @@ class PlaylistDetailViewController: BlurModalViewController {
     let player: PlayerManager = PlayerManager.instance
 
     let pauseButtonImage = UIImage(named: "PauseButton")
-    let playButtonImage = UIImage(named: "playlistPlayButton")
+    let playButtonImage = UIImage(named: "playlistPLayButton")
 
     override func viewDidLoad() {
         super.viewDidLoad()

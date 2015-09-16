@@ -29,9 +29,9 @@ class PlaylistListViewController: PageCellViewController {
     
     override func viewDidLayoutSubviews() {
         if self.title == "MyPlaylist" {
-            self.playlistCollectionView.frame = CGRectMake(7, 164 - 51, (self.view.frame.width-15), (self.view.frame.height - 164 - 20))
+            self.playlistCollectionView.frame = CGRectMake(7, 174 - PreSelectViewController.subTabHeight, (self.view.frame.width-15), (self.view.frame.height - 174 + PreSelectViewController.subTabHeight))
         } else {
-            self.playlistCollectionView.frame = CGRectMake(7, 164, (self.view.frame.width-15), (self.view.frame.height - 164 - 20))
+            self.playlistCollectionView.frame = CGRectMake(7, 174, (self.view.frame.width-15), (self.view.frame.height - 174))
         }
     }
 
