@@ -31,8 +31,11 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     @IBOutlet weak var exitButton: UIBarButtonItem!
     
     
-    static let tabHeight: CGFloat = 50.0
-    static let subTabHeight: CGFloat = 50.0
+    static let tabHeight: CGFloat = 40.0
+    static let subTabHeight: CGFloat = 60.0
+    let navigationBarHeight: CGFloat = 64.0
+    
+    //100->200
     
     //0ページ目になってる奴
     let largePage: [Int] = [0, 2, 4, 5]
@@ -66,17 +69,19 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                 self.createView()
                 
                 //TODO navigationBarの高さを取得する
-                self.pageControl = PageControl(frame: CGRectMake(0, 64, self.view.frame.width, PreSelectViewController.tabHeight))
+                self.pageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight, self.view.frame.width, PreSelectViewController.tabHeight), mode: "bar")
                 self.pageControl.setPages(["Favorite", "History", "My Playlists", "Search"])
                 self.pageControl.setIdentity(0)
                 self.pageControl.delegate = self
+                self.pageControl.setFontSize(16)
                 self.pageControl.backgroundColor = UIColor.colorFromRGB(ConstantShare.tabColorString, alpha: 1.0)
                 self.view.addSubview(self.pageControl)
                 
-                self.subPageControl = PageControl(frame: CGRectMake(0, 64 + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.tabHeight))
+                self.subPageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.tabHeight), mode: "triangle")
                 //self.subPageControl.setPages(["Playlists", "Tracks"])
                 self.subPageControl.setIdentity(1)
                 self.subPageControl.delegate = self
+                self.subPageControl.setFontSize(13)
                 self.view.addSubview(self.subPageControl)
                 
                 self.updateTab()
