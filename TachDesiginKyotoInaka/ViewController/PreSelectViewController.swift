@@ -81,10 +81,10 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                 self.view.addSubview(self.pageControl)
 
                 self.subPageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.tabHeight), mode: "triangle")
+                self.subPageControl.setFontSize(13, isBold: false)
                 self.subPageControl.setPages(["Playlists", "Tracks"])
                 self.subPageControl.setIdentity(1)
                 self.subPageControl.delegate = self
-                self.subPageControl.setFontSize(13, isBold: false)
                 self.view.addSubview(self.subPageControl)
 
                 self.updateTab()
