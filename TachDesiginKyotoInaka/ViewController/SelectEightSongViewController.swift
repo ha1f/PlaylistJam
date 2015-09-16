@@ -28,7 +28,6 @@ class SelectEightSongViewController: UIViewController {
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
         self.selectedCount.text = "\(selectedSongCount)/8 曲"
-        selectSongTableView.allowsSelection = false
         selectSongTableView.backgroundColor = UIColor.clearColor()
 
         //同じ回数分
@@ -60,6 +59,7 @@ class SelectEightSongViewController: UIViewController {
 
     func clickedCheckButton(sender: CheckBox!) {
 
+        println("select!!!!!")
         if self.selectedSongCount < 8 {
             sender.isChecked = !sender.isChecked
             checkFlags[sender.tag] = sender.isChecked
@@ -109,8 +109,15 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
 
         let song = manager.findFromAppendedSongInfo(indexPath.row).song
         cell.setSong(song)
-
+        //セルの背景変更
+        cell.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
+        //セル選択中のハイライト解除
+        cell.selectionStyle = UITableViewCellSelectionStyle.None;
         return cell
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
     }
 
     //高さを計算したいけどとりあえず放置
@@ -122,6 +129,12 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
         } else {
             return 60//tableView.estimatedRowHeight
         }
+    }
+    
+    //セルが選択された時
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("didselect!!!!!!")
+        self.clickedCheckButton((tableView.cellForRowAtIndexPath(indexPath) as! SelectSongTableViewCell).checkBox)
     }
 }
 

@@ -11,13 +11,13 @@ import UIKit
 class CheckBox: UIButton {
     
     //images
-    let checkedImage = UIImage(named: "checkedButton")
-    let unCheckedImage = UIImage(named: "unCheckedButton")
+    let checkedImage = UIImage(named: "checkedSongButton")
+    let unCheckedImage = UIImage(named: "songPlusButton")
     
     //bool propety
     var isChecked:Bool = false {
         didSet{
-            self.setImage(isChecked ? checkedImage : unCheckedImage, forState: .Normal)
+            self.setBackgroundImage(isChecked ? checkedImage : unCheckedImage, forState: .Normal)
         }
     }
 }

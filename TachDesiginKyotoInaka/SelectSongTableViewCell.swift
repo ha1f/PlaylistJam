@@ -14,7 +14,9 @@ class SelectSongTableViewCell: UITableViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var checkBox: CheckBox!
-
+    
+   
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
