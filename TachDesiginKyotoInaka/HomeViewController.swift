@@ -24,6 +24,14 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         super.viewDidLoad()
         self.playlistCollectionView.dataSource = self
         self.playlistCollectionView.delegate = self
+        let backgroundImage: UIImage = UIImage(named: "backgroundImage")!
+        let ui = UIImageView()
+        ui.image = backgroundImage
+        ui.frame = self.view.frame
+        self.view.addSubview(ui)
+
+//        println(backgroundImage)
+//        self.view.addSubview(<#view: UIView#>)
 
         initViewProp()
         createButton.addTarget(self, action: "createPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
