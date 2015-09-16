@@ -19,21 +19,34 @@ class PageControl: UIView {
     private var identity = 0
     
     var delegate: PageControlDelegate!
+    
+    var bar: UIImageView! = nil
+    let barHeight: CGFloat = 3
+    
+    var barMode: String = ""
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, mode: String) {
         super.init(frame: frame)
         self.currentPage = 0
+        self.barMode = mode
     }
     
-    func setActive(cell: PageControlCell) {
-        cell.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Normal)
+    func setFontSize(size: CGFloat) {
+        for pageCell in self.pageCells {
+            pageCell.titleLabel?.font = UIFont.systemFontOfSize(size)
+        }
     }
-    func setInActive(cell: PageControlCell) {
-        cell.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+    
+    func pointIndex(index: Int) -> CGPoint {
+        let width = self.frame.width / CGFloat(self.pageCells.count)
+        let height = self.frame.height
+        
+        let pointX: CGFloat = CGFloat(Double(index) * Double(width))
+        return CGPoint(x: pointX + width/2, y: (height - barHeight/2))
     }
     
     func setPages(data: [String]) {
@@ -46,7 +59,6 @@ class PageControl: UIView {
         for datum in data {
             let pageCell = PageControlCell(frame: CGRectMake(offsetX, 0, width, height))
             pageCell.setTitle(datum, forState: UIControlState.Normal)
-            setInActive(pageCell)
             pageCell.backgroundColor = UIColor.clearColor()
             pageCell.addTarget(self, action: "pageSelected:", forControlEvents: UIControlEvents.TouchUpInside)
             pageCell.tag = index
@@ -54,18 +66,58 @@ class PageControl: UIView {
             offsetX += width
             index++
         }
+        
         self.pageCells = tmpCells
         
-        for subview in subviews {
+        //一旦消す
+        for subview in self.subviews {
+            if let subviewAsImageView = (subview as? UIImageView) {
+                if subviewAsImageView == self.bar {
+                    continue
+                }
+            }
             subview.removeFromSuperview()
         }
-        
+        //そしてadd
         for page in pageCells {
             self.addSubview(page)
         }
         
         //初期ページ
         setCurrentPage(0)
+        
+        updateBar()
+    }
+    
+    func updateBar() {
+        let width = self.frame.width / CGFloat(self.pageCells.count)
+        if self.barMode == "bar" {
+            if self.bar == nil {
+                self.bar = UIImageView(frame: CGRectMake(0, 0, width, barHeight))
+                self.bar.backgroundColor = UIColor.colorFromRGB(ConstantShare.featureColorString, alpha: 1.0)
+
+                //if self.bar.superview != self {
+                    self.addSubview(self.bar)
+                //}
+                self.bar.layer.position = pointIndex(0)
+            } else {
+                self.bar.frame = CGRectMake(0, 0, width, barHeight)
+                self.bar.layer.position = pointIndex(0)
+            }
+        } else if self.barMode == "triangle" {
+            if self.bar == nil {
+                self.bar = UIImageView(frame: CGRectMake(0, 0, width, barHeight))
+                self.bar.backgroundColor = UIColor.whiteColor()
+                
+                //if self.bar.superview != self {
+                self.addSubview(self.bar)
+                    //}
+                self.bar.layer.position = pointIndex(0)
+            } else {
+                self.bar.frame = CGRectMake(0, 0, width, barHeight)
+                self.bar.layer.position = pointIndex(0)
+            }
+        }
     }
     
     func setIdentity(identity: Int) {
@@ -87,13 +139,31 @@ class PageControl: UIView {
         }
         
         if let oldPage = self.currentPage {
-            //oldのビューを更新
             if oldPage < self.pageCells.count {
-                self.setInActive(pageCells[oldPage])
+                moveEmphasis(oldPage, newPage: newPage)
             }
         }
         self.currentPage = newPage
-        self.setActive(pageCells[self.currentPage!])
+    }
+    
+    func moveEmphasis(oldPage: Int, newPage: Int) {
+        //self.setInActive(pageCells[oldPage])
+        //self.setActive(pageCells[newPage])
+        if self.barMode == "bar" {
+            if self.bar == nil {
+                updateBar()
+            }
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
+                    self.bar.layer.position = self.pointIndex(newPage)
+            })
+        } else if self.barMode == "triangle" {
+            if self.bar == nil {
+                updateBar()
+            }
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
+                self.bar.layer.position = self.pointIndex(newPage)
+            })
+        }
     }
     
     func getCurrentPage() -> Int {
