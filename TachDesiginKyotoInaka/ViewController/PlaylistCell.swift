@@ -16,12 +16,13 @@ class PlaylistCell:UICollectionViewCell {
     var index: Int?
 
     func setup(playlist: Playlist) {
-        self.backgroundColor = UIColor.blackColor()
+        //self.backgroundColor = UIColor.blackColor()
+        self.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1.0)
         setPlaylist(playlist)
     }
 
     func setup(playlist: Playlist, index:Int, isSelect: Bool, topProtocol: TopProtocol) {
-        self.backgroundColor = UIColor.blackColor()
+        self.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1.0)
         setPlaylist(playlist)
 
         //コールバック登録

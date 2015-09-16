@@ -12,8 +12,8 @@ History
 MyPlaylist:4
 search
     Artists:5
-    Tracks:6
-    Playlists:7
+    Tracks:5
+    Playlists:5
 */
 
 class PreSelectViewController: PagingViewController, PageControlDelegate {
@@ -52,9 +52,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                     self.historyPlaylistRepository.getPlaylists(),
                     self.historyPlaylistRepository.getSongs(),
                     self.samplePlaylistRepository.getPlaylists(),
-                    "search1",
-                    "search2",
-                    "search3"
+                    "search"
                 ]
                 self.createView()
                 
@@ -63,6 +61,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                 self.pageControl.setPages(["Favorite", "History", "My Playlists", "Search"])
                 self.pageControl.setIdentity(0)
                 self.pageControl.delegate = self
+                self.pageControl.backgroundColor = UIColor.colorFromRGB(ConstantShare.tabColorString, alpha: 1.0)
                 self.view.addSubview(self.pageControl)
                 
                 self.subPageControl = PageControl(frame: CGRectMake(0, 64 + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.tabHeight))
@@ -75,7 +74,8 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
             })
         })
 
-        //self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.colorFromRGB(ConstantShare.backColorString, alpha: 1.0)
+        
         self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
         self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
 
@@ -95,14 +95,18 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     //ページのタブが押された時に移動させる
     func pageSelected(identity: Int, page: Int) {
         let currentPage = self.getCurrentPageIndex()
+        println("\(identity),\(page)")
         //大カテゴリ
         var targetPage: Int! = nil
         if identity == 0 {
             targetPage = self.largePage[page]
+        //小カテゴリ
         } else if identity == 1 {
-            println(page)
             targetPage = getLargeCategory(currentPage) + page
-            println(targetPage)
+            if (targetPage >= 5) {
+                self.subPageControl.setCurrentPage(page)
+                targetPage = 5
+            }
         }
         if let target = targetPage {
             moveTargetPage(target)
@@ -125,7 +129,8 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     }
     
     //特定のページヘ移動
-    func moveTargetPage(targetPage: Int) {
+    func moveTargetPage(targetPageTmp: Int) {
+        var targetPage = targetPageTmp > 5 ? 5 : targetPageTmp
         if targetPage != self.getCurrentPageIndex() {
             let dataViewController: PageCellViewController = self.dataController.viewControllerAtIndex(targetPage)!
             let viewControllers: NSArray = NSArray(array: [dataViewController])
@@ -184,7 +189,11 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         }
         
         self.pageControl.setCurrentPage(largeCategoryIndex)
-        self.subPageControl.setCurrentPage(currentPage - self.largePage[largeCategoryIndex])
+        if largeCategoryIndex == 3 {
+            
+        } else {
+            self.subPageControl.setCurrentPage(currentPage - self.largePage[largeCategoryIndex])
+        }
     }
     
     //ページ遷移アニメーション完了後
