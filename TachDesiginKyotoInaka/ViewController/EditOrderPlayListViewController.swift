@@ -49,12 +49,20 @@ class EditOrderSongViewController: UIViewController {
         if updateButtonEnable() {
             Playlist.createWithSongAndInit([
                 "title": titleField.text,
-                "desc": descField.text
+                "desc": checkDesc(descField.text)
             ], songs: manager.selectedSongs())
         
             println("finsh")
             self.dismissViewControllerAnimated(true, completion: nil)
         }
+    }
+
+    private func checkDesc(desc: String) -> String {
+        var ret = ""
+        if desc == "" {
+            ret = join("/", map(manager.selectedSongs()) { return $0.title })
+        }
+        return ret
     }
     
     override func didReceiveMemoryWarning() {
