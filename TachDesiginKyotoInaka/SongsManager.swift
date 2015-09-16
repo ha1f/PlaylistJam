@@ -17,9 +17,7 @@ class SongsManager {
         for song in songs {
             let selected = AppendedSongInfo(song: song, playlistName: nil, playlistId: nil)
 
-            if !isExistSongs(selected) {
-                self.appendedSongInfos.append(selected)
-            }
+            self.appendedSongInfos.append(selected)
         }
     }
 
