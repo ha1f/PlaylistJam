@@ -20,6 +20,7 @@ class SelectEightSongViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectSongTableView.separatorColor = UIColor.colorFromRGB(ConstantShare.tableSeparaterColorString, alpha: 1)
         //謎のずれる現象の対策
         self.automaticallyAdjustsScrollViewInsets = false;
         selectedSongsView.backgroundColor = UIColor.colorFromRGB(ConstantShare.selectedSongAreaColorString, alpha: 1)
