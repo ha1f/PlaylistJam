@@ -82,13 +82,15 @@ class PageControl: UIView {
     
     func setCurrentPage(page: Int) {
         var newPage = page
-        if newPage >= self.pageCells.count {
+        if newPage > self.pageCells.count - 1 {
             newPage = self.pageCells.count - 1
         }
         
         if let oldPage = self.currentPage {
             //oldのビューを更新
-            self.setInActive(pageCells[oldPage])
+            if oldPage < self.pageCells.count {
+                self.setInActive(pageCells[oldPage])
+            }
         }
         self.currentPage = newPage
         self.setActive(pageCells[self.currentPage!])
