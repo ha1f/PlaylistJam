@@ -8,6 +8,7 @@ class PlaylistCell:UICollectionViewCell {
     @IBOutlet weak var samllArtwork2: UIImageView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var detailButton: UIButton!
+    @IBOutlet weak var descLabel: UILabel!
 
     var topProtocol: TopProtocol?
     var playlist: Playlist?
@@ -66,11 +67,13 @@ class PlaylistCell:UICollectionViewCell {
 
     private func setPlaylist(playlist: Playlist) {
         self.playlist = playlist
-        let largeSong = playlist.songs.first!
         let songs = playlist.songs
+        self.descLabel.text = playlist.desc
 
-        if let url = NSURL(string: largeSong.artworkUrl) {
-            self.artwork.sd_setImageWithURL(url)
+        if songs.count > 0 {
+            if let url = NSURL(string: songs[0].artworkUrl) {
+                self.artwork.sd_setImageWithURL(url)
+            }
         }
 
         if songs.count > 1 {

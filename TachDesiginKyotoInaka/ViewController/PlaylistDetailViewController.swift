@@ -36,11 +36,12 @@ class PlaylistDetailViewController: BlurModalViewController {
     }
 
     func setupArtwork() {
-        let largeSong = playlist!.songs.first!
         let songs = playlist!.songs
 
-        if let url = NSURL(string: largeSong.artworkUrl) {
-            self.mainArtwork.sd_setImageWithURL(url)
+        if songs.count > 0 {
+            if let url = NSURL(string: songs[0].artworkUrl) {
+                self.mainArtwork.sd_setImageWithURL(url)
+            }
         }
 
         if songs.count > 1 {

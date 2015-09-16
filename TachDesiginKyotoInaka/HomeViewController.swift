@@ -1,9 +1,9 @@
 import UIKit
 
 class HomeViewController: UIViewController, ModalViewControllerDelegate {
-   
+
     var pageData: NSArray = []
-    var playlists: [Playlist] = []
+    var myPlaylistRepository: PlaylistRepository = PlaylistRepository()
     var controller: PreSelectDataController?
     var playingList = -1 {
         didSet {
@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         }
     }
     @IBOutlet weak var blurNavbar: UIVisualEffectView!
-    
+
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var playlistCollectionView: UICollectionView!
 
@@ -21,25 +21,23 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        fetchPlaylists {
-            self.playlistCollectionView.reloadData()
-        }
         self.playlistCollectionView.dataSource = self
         self.playlistCollectionView.delegate = self
 
         initViewProp()
         createButton.addTarget(self, action: "createPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
     }
-    
+
     func createPlaylist() {
         self.performSegueWithIdentifier("createPlaylist", sender: nil)
     }
 
     override func viewWillAppear(animated: Bool) {
-        fetchPlaylists { self.playlistCollectionView.reloadData() }
+        myPlaylistRepository.loadPlaylistsFormCache { playlists in
+            self.playlistCollectionView.reloadData()
+        }
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //公開/非公開選択画面
         if segue.identifier == "createPlaylist" {
@@ -48,19 +46,19 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         //音楽再生画面
         } else if segue.identifier == "showMyplaylistDetail" {
             let detailViewController = segue.destinationViewController as! PlaylistDetailViewController
-            detailViewController.playlist = playlists[(sender as! Int)]
+            detailViewController.playlist = myPlaylistRepository.getPlaylists()[(sender as! Int)]
         }
     }
-    
+
     func modalDidFinished(nextSegue: String) {
         self.modalView.dismissViewControllerAnimated(false, completion: nil)
         self.performSegueWithIdentifier(nextSegue, sender: nil)
     }
-    
+
     func setNavOpacity(opacity: CGFloat) {
         blurNavbar.alpha = opacity
     }
-    
+
     func initViewProp(){
         createButton.backgroundColor = UIColor.blackColor()
         var colorList: [CGColor] = [
@@ -71,14 +69,7 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
 
         setGradient(self.view, colorList: colorList, locations: locations)
     }
-    
-    private func fetchPlaylists(completion: (Void -> Void))  {
-        SampleData().fetchDataAnd { (playlists, _) in
-            self.playlists = playlists
-            completion()
-        }
-    }
-    
+
     func setGradient(view: UIView, colorList: [CGColor]?, locations: [CGFloat]){
         let gradientColors: [CGColor]? = colorList
         let gradientLayer: CAGradientLayer = CAGradientLayer()
@@ -101,7 +92,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             playlist = nil
         } else {
             cellID = "MyPlaylistCollectionViewCell"
-            playlist = playlists[indexPath.row - 1]
+            playlist = myPlaylistRepository.getPlaylists()[indexPath.row - 1]
         }
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! UICollectionViewCell
         if let list = playlist {
@@ -111,7 +102,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         return cell
     }
-    
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 
         var size: CGSize = CGSize.zeroSize
@@ -122,26 +113,26 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         return size
     }
-    
+
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println("select: \(indexPath.row)")
         if indexPath.row > 0 {
             self.performSegueWithIdentifier("showMyplaylistDetail", sender: (indexPath.row-1))
         }
     }
-    
+
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         println("deselect: \(indexPath.row)")
     }
-    
+
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return playlists.count + 1;
+        return myPlaylistRepository.getPlaylists().count + 1;
     }
-    
+
     func scrollViewDidScroll(scrollView: UIScrollView) {
         var opacity: CGFloat
         var scrollValue = scrollView.contentOffset.y

@@ -1,5 +1,8 @@
 import UIKit
 
+
+
+/** 最後の詳細設定画面 */
 class EditOrderSongViewController: UIViewController {
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var songListTableView: UITableView!
@@ -19,7 +22,6 @@ class EditOrderSongViewController: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false;
 
         self.songListTableView.delegate = self
-        self.descField.delegate = self
         self.songListTableView.dataSource = self
         self.songListTableView.editing = true
 
@@ -31,17 +33,28 @@ class EditOrderSongViewController: UIViewController {
         
         self.finishBarButton.target = self
         self.finishBarButton.action = "finishEditting:"
+        
+        self.titleField.tag = 1
+        self.titleField.delegate = self
+        self.titleField.returnKeyType = .Done
+        
+        self.descField.tag = 2
+        self.descField.delegate = self
+        
+        updateButtonEnable()
     }
     
     //完了ボタン
     func finishEditting(sender: UIBarButtonItem!) {
-        Playlist.createWithSongAndInit([
-            "title": titleField.text,
-            "desc": descField.text
+        if updateButtonEnable() {
+            Playlist.createWithSongAndInit([
+                "title": titleField.text,
+                "desc": descField.text
             ], songs: manager.selectedSongs())
         
-        println("finsh")
-        self.dismissViewControllerAnimated(true, completion: nil)
+            println("finsh")
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -108,8 +121,8 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
         let height :CGFloat! = nil
         println("height => \(height)");
         // heightがnilの場合、とりあえず高さ40で設定 TODO
-        if height != nil{
-            return height
+        if let h = height{
+            return h
         } else {
             return 70//tableView.estimatedRowHeight
         }
@@ -151,8 +164,7 @@ extension EditOrderSongViewController: SelectMoodModalViewControllerDelegate {
     }
 }
 
-extension EditOrderSongViewController: UITextViewDelegate{
-    
+extension EditOrderSongViewController: UITextViewDelegate, UITextFieldDelegate {
     //textviewがフォーカスされたら、Labelを非表示
     func textViewShouldBeginEditing(textView: UITextView) -> Bool
     {
@@ -162,11 +174,38 @@ extension EditOrderSongViewController: UITextViewDelegate{
     
     //textviewからフォーカスが外れて、TextViewが空だったらLabelを再び表示
     func textViewDidEndEditing(textView: UITextView) {
-        
-        println("finifh")
         if(textView.text.isEmpty){
             self.placeholderLabel.hidden = false
         }
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        println("change:\(textView.tag)")
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField.isFirstResponder() {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        updateButtonEnable()
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        updateButtonEnable()
+        //変更は常に許可
+        return true
+    }
+    
+    //完了ボタンが押せるかどうか更新
+    func updateButtonEnable() -> Bool{
+        var isNotEmpty: Bool = false
+        isNotEmpty = (count(self.titleField.text) > 0)
+        self.finishBarButton.enabled = isNotEmpty
+        return isNotEmpty
     }
 
     
@@ -174,7 +213,7 @@ extension EditOrderSongViewController: UITextViewDelegate{
 
 //RGB文字列からUIColorを生成する関数
 extension UIColor {
-    class func colorFromRGB(rgb: String, alpha: CGFloat) -> UIColor {
+    static func colorFromRGB(rgb: String, alpha: CGFloat) -> UIColor {
         let scanner = NSScanner(string: rgb)
         var rgbInt: UInt32 = 0
         scanner.scanHexInt(&rgbInt)

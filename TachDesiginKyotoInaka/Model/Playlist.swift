@@ -13,10 +13,10 @@ class Playlist: Object {
         return "id"
     }
 
-    static func createWithSongs(title: String, songs: [Song]) -> Playlist {
+    static func createWithSongs(title: String, desc: String, songs: [Song]) -> Playlist {
         let playlist = Playlist()
         playlist.title = title
-
+        playlist.desc = desc
         for s in songs {
             playlist.songs.append(s)
         }
@@ -64,6 +64,14 @@ class Playlist: Object {
         realm.write {
             self.realm.add(playlist)
         }
+        return playlist
+    }
+
+    static func createWithSongWithoutSave(config: [String: String], songs: [Song]) -> Playlist {
+        let playlist = Playlist()
+        playlist.title = config["title"] ?? ""
+        playlist.desc = config["desc"]  ?? ""
+        playlist.id = lastId()
         return playlist
     }
 
