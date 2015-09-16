@@ -60,6 +60,8 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         nextButton.target = self
         nextButton.action = "toReduceEight:"
         nextButton.enabled = false
+        
+        self.automaticallyAdjustsScrollViewInsets = false
 
         samplePlaylistRepository.fetchSongsWithTerm( "Alexandros", completion: { (playlists, songs) in
             self.historyPlaylistRepository.fetchSongsWithTerm("きゃりーぱみゅぱみゅ", completion: { (playlists, songs) in
