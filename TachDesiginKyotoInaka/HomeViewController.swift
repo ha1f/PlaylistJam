@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     }
 
     override func viewWillAppear(animated: Bool) {
-        myPlaylistRepository.loadPlaylistsFormCache { playlists in        
+        myPlaylistRepository.loadPlaylistsFormCache { playlists in
             self.playlistCollectionView.reloadData()
         }
     }

@@ -10,11 +10,14 @@ class PlaylistRepository {
     func loadPlaylistsFormCache(completion: (playlists: [Playlist]) -> Void){
         if Playlist.lastId() < minPlaylist {
             fetchSongsWithTermWith("perfume", completion: { (playlists, _) in
+                self.playlists = Playlist.all()
                 completion(playlists: playlists)
             })
+        } else {
+            let playlists = Playlist.all()
+            self.playlists = playlists
+            completion(playlists: playlists)
         }
-        let playlists = Playlist.all()
-        self.playlists = playlists
     }
 
     // 保存する
