@@ -17,7 +17,7 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var playlistCommentLabel: UILabel!
 
     let pauseButtonImage = UIImage(named: "PauseButton")
-    let playButtonImage = UIImage(named: "playlistPlayButton")
+    let playButtonImage = UIImage(named: "playlistPLayButton")
     
     var gradientLayer: CAGradientLayer! = nil
     
@@ -59,8 +59,7 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
             }
         }
 
-        let image = UIImage(named: "playlistPlayButton")
-        self.playButton.setBackgroundImage(image, forState: .Normal)
+        self.playButton.setBackgroundImage(self.playButtonImage, forState: .Normal)
         self.playButton.setTitle("", forState: .Normal)
 
         self.playlistTitleLabel.text = playlist.title
