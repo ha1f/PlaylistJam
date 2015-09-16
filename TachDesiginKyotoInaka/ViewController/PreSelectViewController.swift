@@ -61,6 +61,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                 self.pageControl.setPages(["Favorite", "History", "My Playlists", "Search"])
                 self.pageControl.setIdentity(0)
                 self.pageControl.delegate = self
+                self.pageControl.backgroundColor = UIColor.colorFromRGB(ConstantShare.tabColorString, alpha: 1.0)
                 self.view.addSubview(self.pageControl)
                 
                 self.subPageControl = PageControl(frame: CGRectMake(0, 64 + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.tabHeight))
@@ -73,7 +74,8 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
             })
         })
 
-        //self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.colorFromRGB(ConstantShare.backColorString, alpha: 1.0)
+        
         self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
         self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
 

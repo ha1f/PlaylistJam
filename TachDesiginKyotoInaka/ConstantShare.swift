@@ -13,10 +13,11 @@ class ConstantShare {
     static let moodList = ["HAPPY", "EXCITED", "RELAX", "LOVE", "SAD", "DARK", "MORNING", "SLEEP", "STUDY", "WORKOUT", "PARTY", "DRIVE"]
     
     static let navbarColorString = "333333"
-    static let backColorString = "444444"
+    static let backColorString = "2d2d2d"
     static let headerColorString = "333333"
-    static let tableCelBackColorString = "282828"
+    static let tableCelBackColorString = "141414"
     static let tableSeparaterColorString = "555555"
+    static let tabColorString = "666666"
     
     static let songCellHeight: CGFloat = 60
 }
