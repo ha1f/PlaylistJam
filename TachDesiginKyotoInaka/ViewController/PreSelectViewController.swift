@@ -26,6 +26,8 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     var pageControl: PageControl!
     var subPageControl: PageControl!
     
+    var loadingView: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     @IBOutlet weak var exitButton: UIBarButtonItem!
     
     
@@ -42,9 +44,16 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.loadingView.frame = CGRectMake(0, 0, 100, 100)
+        self.loadingView.layer.position = self.view.center
+        self.loadingView.startAnimating()
+        self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        self.view.addSubview(self.loadingView)
 
         samplePlaylistRepository.fetchSongsWithTerm( "capsule", completion: { (playlists, songs) in
             self.historyPlaylistRepository.fetchSongsWithTerm("キャリー", completion: { (playlists, songs) in
+                self.loadingView.removeFromSuperview()
                 self.songs = songs!
                 self.pageData = [
                     self.samplePlaylistRepository.getPlaylists(),
