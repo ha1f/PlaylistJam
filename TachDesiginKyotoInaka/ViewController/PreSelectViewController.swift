@@ -76,15 +76,15 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                 self.pageControl.setPages(["Favorite", "History", "My Playlists", "Search"])
                 self.pageControl.setIdentity(0)
                 self.pageControl.delegate = self
-                self.pageControl.setFontSize(16)
+                self.pageControl.setFontSize(16, isBold: false)
                 self.pageControl.backgroundColor = UIColor.colorFromRGB(ConstantShare.tabColorString, alpha: 1.0)
                 self.view.addSubview(self.pageControl)
 
-                self.subPageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.tabHeight), mode: "triangle")
+                self.subPageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.subTabHeight), mode: "triangle")
                 self.subPageControl.setPages(["Playlists", "Tracks"])
+                self.subPageControl.setFontSize(13, isBold: false)
                 self.subPageControl.setIdentity(1)
                 self.subPageControl.delegate = self
-                self.subPageControl.setFontSize(13)
                 self.view.addSubview(self.subPageControl)
 
                 self.updateTab()
