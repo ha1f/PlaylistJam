@@ -123,7 +123,6 @@ class PlayerManager: NSObject {
     }
 
     private func player() -> Player {
-        println(i)
         if let player = self.players[i] {
             return player
         } else {

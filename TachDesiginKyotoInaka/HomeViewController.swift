@@ -92,7 +92,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         var cellID: String
         var playlist: Playlist?
 
-        if ( indexPath.row == 0){
+        if indexPath.row == 0 {
             cellID = "MyPlaylistCollectionHeaderCell"
             playlist = nil
         } else {
@@ -100,11 +100,13 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             playlist = myPlaylistRepository.getPlaylists()[indexPath.row - 1]
         }
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! UICollectionViewCell
+
         if let list = playlist {
-            (cell as! MyPlaylistCollectionViewCell).setup(playlist!)
             (cell as! MyPlaylistCollectionViewCell).parent = self
             (cell as! MyPlaylistCollectionViewCell).index = indexPath.row - 1
+            (cell as! MyPlaylistCollectionViewCell).setup(playlist!)
         }
+
         return cell
     }
 
@@ -137,16 +139,4 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myPlaylistRepository.getPlaylists().count + 1;
     }
-
-    /*func scrollViewDidScroll(scrollView: UIScrollView) {
-        var opacity: CGFloat
-        var scrollValue = scrollView.contentOffset.y
-        opacity = (scrollValue - 60)/200
-        if(opacity > 1){
-            opacity = 1.0
-        }else if(opacity < 0){
-            opacity = 0
-        }
-        //self.setNavOpacity(opacity)
-    }*/
 }
