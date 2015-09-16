@@ -9,6 +9,7 @@ class SelectEightSongViewController: UIViewController {
             self.selectedCount.text = "\(newValue+1)/8 曲"
         }
     }
+    var preSelectedCount = 0
 
     var checkFlags: [Bool] = []
 
@@ -40,6 +41,8 @@ class SelectEightSongViewController: UIViewController {
         selectedCollection.draggable = true
 
         selectSongTableView.reloadData()
+        
+        
     }
 
     override func loadView() {
@@ -73,6 +76,19 @@ class SelectEightSongViewController: UIViewController {
         self.selectedSongCount = manager.selectedSongCount()
         self.selectedCollection.reloadData()
         println(self.manager.selectedIds)
+        
+        //選択曲が増えていたら選択曲画面スクロール
+        if(self.preSelectedCount < self.selectedSongCount){
+            println("scroll")
+            //self.scrollToNewer()
+        }
+    }
+    
+    func scrollToNewer(){
+        var areaSize: CGSize = selectedCollection.frame.size
+        
+        selectedCollection.scrollRectToVisible(rect, animated: true)
+        
     }
 }
 
