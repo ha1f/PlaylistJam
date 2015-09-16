@@ -2,6 +2,7 @@ import UIKit
 
 class SongListViewController: PageCellViewController {
     var songList: [Song] = []
+    var songCount: Int = 0
     
     @IBOutlet var songTableView: UITableView!
 
