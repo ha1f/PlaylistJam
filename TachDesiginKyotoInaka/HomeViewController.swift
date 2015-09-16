@@ -18,15 +18,18 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var playlistCollectionView: UICollectionView!
 
+    @IBOutlet weak var titleLabel: UILabel!
     var modalView: CreatePlaylistViewController! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.playlistCollectionView.dataSource = self
         self.playlistCollectionView.delegate = self
 
         initViewProp()
         createButton.addTarget(self, action: "createPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
+        
     }
 
     func createPlaylist() {
@@ -67,9 +70,9 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
             UIColor.colorFromRGB("303030", alpha: 1).CGColor
         ]
         var locations: [CGFloat] = [0.0, 1.0]
-//        self.createButtonImage.image = UIImage(named: "createPlaylistButton")
 
         setGradient(self.view, colorList: colorList, locations: locations)
+
     }
 
     func setGradient(view: UIView, colorList: [CGColor]?, locations: [CGFloat]){
@@ -101,6 +104,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             (cell as! MyPlaylistCollectionViewCell).setup(playlist!)
             (cell as! MyPlaylistCollectionViewCell).parent = self
             (cell as! MyPlaylistCollectionViewCell).index = indexPath.row - 1
+        }else{
+            //(cell as! MyPlaylistCollectionHeaderCell).titleLabel.font =         UIFont(name: "MyriadPro-Regular", size: 20)
         }
         return cell
     }

@@ -21,6 +21,8 @@
 		1EC692181BA2F1FE00621D53 /* art.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1EC692171BA2F1FE00621D53 /* art.jpg */; };
 		1ECAA04E1BA2633000F9250B /* EditOrderPlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */; };
 		1EF362AF1BA56BE00064284B /* CreatePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF362AE1BA56BE00064284B /* CreatePlaylistViewController.swift */; };
+		1EFD21451BA9BAD500F5C6EB /* MYRIADPRO-REGULAR.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 1EFD21431BA9BAD500F5C6EB /* MYRIADPRO-REGULAR.OTF */; };
+		1EFD21461BA9BAD500F5C6EB /* MYRIADPRO-SEMIBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 1EFD21441BA9BAD500F5C6EB /* MYRIADPRO-SEMIBOLD.OTF */; };
 		A413A14D1BA8844F00F50873 /* PlaylistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413A14C1BA8844F00F50873 /* PlaylistRepository.swift */; };
 		A413A1511BA907F800F50873 /* BlurModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413A1501BA907F800F50873 /* BlurModalViewController.swift */; };
 		A42F2EF31BA7DCD40060552A /* PageControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F2EF21BA7DCD40060552A /* PageControlCell.swift */; };
@@ -85,6 +87,8 @@
 		1EC692171BA2F1FE00621D53 /* art.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = art.jpg; sourceTree = "<group>"; };
 		1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditOrderPlayListViewController.swift; path = ViewController/EditOrderPlayListViewController.swift; sourceTree = "<group>"; };
 		1EF362AE1BA56BE00064284B /* CreatePlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePlaylistViewController.swift; sourceTree = "<group>"; };
+		1EFD21431BA9BAD500F5C6EB /* MYRIADPRO-REGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MYRIADPRO-REGULAR.OTF"; path = "../MYRIADPRO-REGULAR.OTF"; sourceTree = "<group>"; };
+		1EFD21441BA9BAD500F5C6EB /* MYRIADPRO-SEMIBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MYRIADPRO-SEMIBOLD.OTF"; path = "../MYRIADPRO-SEMIBOLD.OTF"; sourceTree = "<group>"; };
 		58B18F1FC211CE0D810643A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		865CBE057C0A2E8E514A3FC3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A413A14C1BA8844F00F50873 /* PlaylistRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistRepository.swift; sourceTree = "<group>"; };
@@ -169,6 +173,13 @@
 			name = EditOrderSongPage;
 			sourceTree = "<group>";
 		};
+		1EFD21471BA9BBFF00F5C6EB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		A4B025931BA5C1E00056D5E2 /* SelectEightSong */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +216,9 @@
 		A4B20C511BA1926E00BA531F /* TachDesiginKyotoInaka */ = {
 			isa = PBXGroup;
 			children = (
+				1EFD21431BA9BAD500F5C6EB /* MYRIADPRO-REGULAR.OTF */,
+				1EFD21441BA9BAD500F5C6EB /* MYRIADPRO-SEMIBOLD.OTF */,
+				1EFD21471BA9BBFF00F5C6EB /* Fonts */,
 				A4B20C8C1BA192E600BA531F /* ViewController */,
 				A4B20C8B1BA192D200BA531F /* Model */,
 				A4B20C8A1BA192C700BA531F /* Api */,
@@ -433,6 +447,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EFD21451BA9BAD500F5C6EB /* MYRIADPRO-REGULAR.OTF in Resources */,
+				1EFD21461BA9BAD500F5C6EB /* MYRIADPRO-SEMIBOLD.OTF in Resources */,
 				1E8FAB391BA548D900026055 /* SelectSongTableViewSectionCell.xib in Resources */,
 				A4B20C5A1BA1926E00BA531F /* Main.storyboard in Resources */,
 				A4B20C5F1BA1926E00BA531F /* LaunchScreen.xib in Resources */,
