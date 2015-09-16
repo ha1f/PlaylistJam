@@ -22,4 +22,6 @@ class ConstantShare {
     static let selectedSongAreaColorString = "333333"
     static let selectedTableCellBackColorString = "555555"
     static let featureColorString = "ed524a"
+    static let buttonColorString = "333333"
+    static let buttonBorderColorString = "666666"
 }

@@ -137,6 +137,12 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
         println("didselect!!!!!!")
         self.clickedCheckButton((tableView.cellForRowAtIndexPath(indexPath) as! SelectSongTableViewCell).checkBox)
     }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        var footerView = UIView()
+        footerView.backgroundColor = UIColor.colorFromRGB( ConstantShare.tableCelBackColorString, alpha: 1)
+        return footerView
+    }
 }
 
 extension SelectEightSongViewController: UICollectionViewDataSource_Draggable, UICollectionViewDelegate {
