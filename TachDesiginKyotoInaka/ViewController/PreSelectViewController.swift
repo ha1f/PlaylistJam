@@ -19,6 +19,7 @@ search
 class PreSelectViewController: PagingViewController, PageControlDelegate {
     var samplePlaylistRepository: PlaylistRepository = PlaylistRepository()
     var historyPlaylistRepository: PlaylistRepository = PlaylistRepository()
+    var myPlaylistRepository: PlaylistRepository = PlaylistRepository()
     var songs: [Song] = []
     var controller: PreSelectDataController?
     let manager = SongsManager.manager
@@ -56,14 +57,16 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
         samplePlaylistRepository.fetchSongsWithTerm( "capsule", completion: { (playlists, songs) in
             self.historyPlaylistRepository.fetchSongsWithTerm("キャリー", completion: { (playlists, songs) in
+               self.myPlaylistRepository.loadPlaylistsFormCache { playlists in
                 self.loadingView.removeFromSuperview()
+
                 self.songs = songs!
                 self.pageData = [
                     self.samplePlaylistRepository.getPlaylists(),
                     self.samplePlaylistRepository.getSongs(),
                     self.historyPlaylistRepository.getPlaylists(),
                     self.historyPlaylistRepository.getSongs(),
-                    self.samplePlaylistRepository.getPlaylists(),
+                    self.myPlaylistRepository.getPlaylists(),
                     "search"
                 ]
                 self.createView()
@@ -85,6 +88,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                 self.view.addSubview(self.subPageControl)
                 
                 self.updateTab()
+                }
             })
         })
 
