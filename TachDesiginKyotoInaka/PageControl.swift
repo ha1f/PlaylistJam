@@ -24,6 +24,8 @@ class PageControl: UIView {
     let barHeight: CGFloat = 3
     
     var barMode: String = ""
+    
+    var fontsize: CGFloat! = nil
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -36,6 +38,7 @@ class PageControl: UIView {
     }
     
     func setFontSize(size: CGFloat) {
+        self.fontsize = size
         for pageCell in self.pageCells {
             pageCell.titleLabel?.font = UIFont.systemFontOfSize(size)
         }
@@ -62,6 +65,9 @@ class PageControl: UIView {
             pageCell.backgroundColor = UIColor.clearColor()
             pageCell.addTarget(self, action: "pageSelected:", forControlEvents: UIControlEvents.TouchUpInside)
             pageCell.tag = index
+            if let size = self.fontsize {
+                pageCell.titleLabel?.font = UIFont.systemFontOfSize(size)
+            }
             tmpCells.append(pageCell)
             offsetX += width
             index++

@@ -78,7 +78,7 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="165" width="375" height="503"/>
+                                    <rect key="frame" x="0.0" y="175" width="375" height="493"/>
                                 </variation>
                             </tableView>
                         </subviews>
@@ -245,7 +245,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="114" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="124" width="375" height="44"/>
                                 </variation>
                             </searchBar>
                         </subviews>
@@ -373,7 +373,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="8" y="236" width="359" height="406"/>
+                                    <rect key="frame" x="8" y="249" width="359" height="396"/>
                                 </variation>
                             </collectionView>
                         </subviews>
@@ -1130,7 +1130,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="132" y="618" width="110" height="26"/>
+                                    <rect key="frame" x="-30" y="618" width="435" height="51"/>
                                 </variation>
                             </button>
                             <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPL-aX-Ygo">
@@ -1142,7 +1142,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <blurEffect style="extraLight"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-1" y="405" width="375" height="269"/>
+                                    <rect key="frame" x="0.0" y="398" width="375" height="269"/>
                                 </variation>
                             </visualEffectView>
                         </subviews>
