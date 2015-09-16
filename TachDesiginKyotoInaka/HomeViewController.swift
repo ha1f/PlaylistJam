@@ -56,9 +56,9 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         self.performSegueWithIdentifier(nextSegue, sender: nil)
     }
 
-    func setNavOpacity(opacity: CGFloat) {
+    /*func setNavOpacity(opacity: CGFloat) {
         blurNavbar.alpha = opacity
-    }
+    }*/
 
     func initViewProp(){
         createButton.backgroundColor = UIColor.colorFromRGB(ConstantShare.featureColorString, alpha: 1.0)
@@ -135,7 +135,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         return myPlaylistRepository.getPlaylists().count + 1;
     }
 
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    /*func scrollViewDidScroll(scrollView: UIScrollView) {
         var opacity: CGFloat
         var scrollValue = scrollView.contentOffset.y
         opacity = (scrollValue - 60)/200
@@ -144,6 +144,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }else if(opacity < 0){
             opacity = 0
         }
-        self.setNavOpacity(opacity)
-    }
+        //self.setNavOpacity(opacity)
+    }*/
 }
