@@ -6,7 +6,12 @@ class SelectEightSongViewController: UIViewController {
     var appendedSongCount: Int = 0
     var selectedSongCount: Int = 0 {
         didSet {
-            self.selectedCount.text = "\(selectedSongCount)/8 曲"
+            self.selectedCount.text = "\(selectedSongCount)/8"
+            if selectedSongCount >= 8 {
+                self.selectedCount.textColor = UIColor.colorFromRGB(ConstantShare.featureColorString, alpha: 1.0)
+            } else {
+                self.selectedCount.textColor = UIColor.whiteColor()
+            }
         }
     }
     var preSelectedCount = 0

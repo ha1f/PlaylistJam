@@ -573,7 +573,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="20" width="375" height="588"/>
+                                    <rect key="frame" x="0.0" y="20" width="375" height="602"/>
                                 </variation>
                             </collectionView>
                             <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppG-Lv-nod">
@@ -665,6 +665,7 @@
                         <segue destination="HVN-8P-hqo" kind="presentation" identifier="createPlaylist" id="6Wa-Ll-7xQ"/>
                         <segue destination="zBF-tG-wf8" kind="presentation" identifier="createPublic" id="ywh-DP-uhP"/>
                         <segue destination="SXs-QT-fsR" kind="presentation" identifier="showMyplaylistDetail" id="zX0-OE-dHl"/>
+                        <segue destination="xGd-oe-WIz" kind="presentation" identifier="Complete" id="dZE-hy-FVb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZv-7I-VAT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -975,6 +976,24 @@
             </objects>
             <point key="canvasLocation" x="1322.25" y="619.125"/>
         </scene>
+        <!--Complete View Controller-->
+        <scene sceneID="C2k-2c-ZB1">
+            <objects>
+                <viewController storyboardIdentifier="CompleteViewController" modalTransitionStyle="crossDissolve" id="xGd-oe-WIz" customClass="CompleteViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mlc-kQ-Xmz"/>
+                        <viewControllerLayoutGuide type="bottom" id="XLl-DB-fkZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e0O-jz-XxS">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="16F-vu-OH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1373.25" y="2035.125"/>
+        </scene>
         <!--Select Mood Modal View Controller-->
         <scene sceneID="e3Q-u4-QHw">
             <objects>
@@ -1057,7 +1076,7 @@
         <!--Create Playlist View Controller-->
         <scene sceneID="sxV-SV-NEP">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="HVN-8P-hqo" customClass="CreatePlaylistViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="HVN-8P-hqo" customClass="CreatePlaylistViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jy9-6G-QQO"/>
                         <viewControllerLayoutGuide type="bottom" id="vy9-Dt-Vya"/>
@@ -1304,6 +1323,6 @@
         <image name="publicIcon" width="44" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4D6-R0-dcJ"/>
+        <segue reference="zX0-OE-dHl"/>
     </inferredMetricsTieBreakers>
 </document>

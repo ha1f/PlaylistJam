@@ -15,8 +15,12 @@ class EditOrderSongViewController: UIViewController {
     var selectedSongCount = 0
     var selectMoodModalViewController: SelectMoodModalViewController!
     
+    var modal: CompleteViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         
         //謎のずれる現象を治す(自動調整機能をOFF)
         self.automaticallyAdjustsScrollViewInsets = false;
@@ -51,8 +55,7 @@ class EditOrderSongViewController: UIViewController {
                 "title": titleField.text,
                 "desc": checkDesc(descField.text)
             ], songs: manager.selectedSongs())
-        
-            println("finsh")
+            sharedFlag.isPlaylistCreated = true
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
@@ -75,6 +78,19 @@ class EditOrderSongViewController: UIViewController {
             UINib(nibName:"EditOrderSongTableViewCell", bundle: nil),
             forCellReuseIdentifier: "EditOrderSongTableViewCell"
         )
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        closeKeyboardIfNeed()
+    }
+    
+    func closeKeyboardIfNeed() {
+        if self.titleField.isFirstResponder() {
+            self.titleField.resignFirstResponder()
+        } else if self.descField.isFirstResponder() {
+            self.descField.resignFirstResponder()
+        }
     }
 
     func initViewProp(){
@@ -108,6 +124,7 @@ class EditOrderSongViewController: UIViewController {
 extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegate{
     //選択された時
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        closeKeyboardIfNeed()
     }
     
     //セルの行数
@@ -117,6 +134,7 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     
     //セルを作成
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        closeKeyboardIfNeed()
         let cell = songListTableView.dequeueReusableCellWithIdentifier("EditOrderSongTableViewCell", forIndexPath: indexPath) as! EditOrderSongTableViewCell
         let song = manager.findFormSelectedSongInfo(indexPath.row).song
         cell.setSong(song)

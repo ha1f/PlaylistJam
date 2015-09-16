@@ -45,7 +45,7 @@ class CreatePlaylistViewController: BlurModalViewController {
     
     func initViewProp(){
         
-        self.view.backgroundColor = UIColor.colorFromRGB("000000", alpha: 0)
+        self.view.backgroundColor = UIColor.clearColor()
         
         publicButton.layer.borderWidth = 1
         publicButton.layer.borderColor = colorFromRGB("FFFFFF", alpha: 1).CGColor
