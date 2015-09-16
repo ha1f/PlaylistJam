@@ -21,7 +21,6 @@ class SongListViewController: PageCellViewController {
         self.songTableView.delegate = self
         self.songTableView.dataSource = self
         
-
         self.songTableView.separatorColor = UIColor.darkGrayColor()
         self.songTableView.tableFooterView = UIView()
         self.songTableView.backgroundColor = UIColor.clearColor()
@@ -62,7 +61,7 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         //let song = self.songList[indexPath.row]
         
-        let height :CGFloat! = 80.0
+        let height :CGFloat! = ConstantShare.songCellHeight
         
         if height != nil{
             return height

@@ -13,7 +13,6 @@ class SongCell:UITableViewCell {
 
     private func setupSong(song: Song) {
         self.artistLabel.text = song.artist
-        //self.artistLabel.textColor = UIColor.whiteColor()
         self.titleLabel.text = song.title
         //self.titleLabel.textColor = UIColor.whiteColor()
         
