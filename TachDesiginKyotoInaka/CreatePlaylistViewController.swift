@@ -49,11 +49,12 @@ class CreatePlaylistViewController: BlurModalViewController {
         
         publicButton.layer.borderWidth = 1
         publicButton.layer.borderColor = colorFromRGB("FFFFFF", alpha: 1).CGColor
-        publicButton.layer.cornerRadius = 5
+        publicButton.layer.cornerRadius = 3
         privateButton.layer.borderWidth = 1
         privateButton.layer.borderColor = colorFromRGB("FFFFFF", alpha: 1).CGColor
-        privateButton.layer.cornerRadius = 5
+        privateButton.layer.cornerRadius = 3
         cancelButton.layer.borderWidth = 1
+        cancelButton.layer.cornerRadius = 3
         cancelButton.layer.borderColor = colorFromRGB("FFFFFF", alpha: 1).CGColor
         
         var back: UIImageView = UIImageView()
