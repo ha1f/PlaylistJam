@@ -23,5 +23,6 @@ class EditOrderSongTableViewCell: UITableViewCell {
         } else {
             artworkImageView.image = defaultArtwork
         }
+        self.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
     }
 }

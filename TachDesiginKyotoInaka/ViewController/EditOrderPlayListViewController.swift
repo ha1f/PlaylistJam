@@ -113,7 +113,7 @@ class EditOrderSongViewController: UIViewController {
         setColorToPlaceHolder(UIColor.colorFromRGB("bcbcbc", alpha: 1), field: titleField)
         self.view.backgroundColor = UIColor.colorFromRGB(ConstantShare.backColorString, alpha: 1)
         self.songListTableView.separatorColor = UIColor.colorFromRGB(ConstantShare.tableSeparaterColorString, alpha: 1)
-        self.songListTableView.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
+        self.songListTableView.backgroundColor = UIColor.clearColor()
         placeholderLabel.hidden = false
     }
    
