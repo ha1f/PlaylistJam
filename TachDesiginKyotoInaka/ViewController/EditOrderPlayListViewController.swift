@@ -174,7 +174,7 @@ extension EditOrderSongViewController: UITextViewDelegate{
 
 //RGB文字列からUIColorを生成する関数
 extension UIColor {
-    class func colorFromRGB(rgb: String, alpha: CGFloat) -> UIColor {
+    static func colorFromRGB(rgb: String, alpha: CGFloat) -> UIColor {
         let scanner = NSScanner(string: rgb)
         var rgbInt: UInt32 = 0
         scanner.scanHexInt(&rgbInt)

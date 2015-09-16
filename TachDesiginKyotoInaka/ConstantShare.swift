@@ -9,4 +9,10 @@
 class ConstantShare {
     //ムードの配列
     static let moodList = ["HAPPY", "EXCITED", "RELAX", "LOVE", "SAD", "DARK", "MORNING", "SLEEP", "STUDY", "WORKOUT", "PARTY", "DRIVE"]
+    
+    static let navbarColorString = "333333"
+    static let backColorString = "444444"
+    static let headerColorString = "333333"
+    static let tableCelBackColorString = "282828"
+    static let tableSeparaterColorString = "555555"
 }

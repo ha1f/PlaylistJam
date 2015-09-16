@@ -9,4 +9,8 @@
 import UIKit
 
 class CreatePlaylistNavigationController: UINavigationController {
+    
+    override func viewDidLoad() {
+        self.navigationBar.barTintColor = UIColor.colorFromRGB(ConstantShare.navbarColorString, alpha: 1)
+    }
 }
