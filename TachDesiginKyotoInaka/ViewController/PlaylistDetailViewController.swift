@@ -6,6 +6,7 @@ class PlaylistDetailViewController: BlurModalViewController {
     @IBOutlet weak var subArtwork1: UIImageView!
     @IBOutlet weak var subArtwork2: UIImageView!
     @IBOutlet weak var playerImage: UIImageView!
+    @IBOutlet weak var playlistName: UILabel!
 
 
     var songList: [Song] = []
@@ -33,6 +34,7 @@ class PlaylistDetailViewController: BlurModalViewController {
 
         self.songTableView.tableFooterView = UIView()
         setupArtwork()
+        self.playlistName.text = playlist?.title ?? ""
         self.player.setupSongs(playlist!.songsArray())
         self.playerImage.image = playButtonImage
     }
