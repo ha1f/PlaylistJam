@@ -869,7 +869,7 @@
                                 <color key="sectionIndexBackgroundColor" red="0.28357670979999999" green="0.28632023359999997" blue="0.28151819140000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.28357670979999999" green="0.28632023359999997" blue="0.28151819140000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="271" width="375" height="396"/>
+                                    <rect key="frame" x="0.0" y="308" width="375" height="359"/>
                                 </variation>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRb-FH-UrH">
@@ -880,7 +880,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="200" width="330" height="30"/>
+                                    <rect key="frame" x="15" y="210" width="345" height="30"/>
                                 </variation>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzD-c4-I4C">
@@ -892,7 +892,7 @@
                                     <rect key="frame" x="35" y="179" width="0.0" height="0.0"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="プレイリスト名(必須)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IXf-yR-0Bh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="345" placeholderIntrinsicHeight="40" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="プレイリスト名(必須)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IXf-yR-0Bh">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -900,34 +900,34 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="78" width="330" height="30"/>
+                                    <rect key="frame" x="15" y="82" width="345" height="30"/>
                                 </variation>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プレイリストの説明" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1n-Fj-x7Y">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="32" y="125" width="278" height="21"/>
-                                </variation>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POR-QF-Wxm">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="120" width="330" height="62"/>
+                                    <rect key="frame" x="15" y="128" width="345" height="70"/>
                                 </variation>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プレイリストの説明" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1n-Fj-x7Y">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="24" y="134" width="278" height="21"/>
+                                </variation>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="曲順の変更" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ng2-DL-fGf">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="242" width="89" height="21"/>
+                                    <rect key="frame" x="143" y="280" width="89" height="21"/>
                                 </variation>
                             </label>
                         </subviews>
@@ -938,8 +938,8 @@
                                 <exclude reference="yRb-FH-UrH"/>
                                 <exclude reference="gzD-c4-I4C"/>
                                 <exclude reference="IXf-yR-0Bh"/>
-                                <exclude reference="C1n-Fj-x7Y"/>
                                 <exclude reference="POR-QF-Wxm"/>
+                                <exclude reference="C1n-Fj-x7Y"/>
                                 <exclude reference="ng2-DL-fGf"/>
                             </mask>
                         </variation>
@@ -949,8 +949,8 @@
                                 <include reference="yRb-FH-UrH"/>
                                 <include reference="gzD-c4-I4C"/>
                                 <include reference="IXf-yR-0Bh"/>
-                                <include reference="C1n-Fj-x7Y"/>
                                 <include reference="POR-QF-Wxm"/>
+                                <include reference="C1n-Fj-x7Y"/>
                                 <include reference="ng2-DL-fGf"/>
                             </mask>
                         </variation>

@@ -20,6 +20,7 @@ class SelectEightSongViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectSongTableView.separatorColor = UIColor.colorFromRGB(ConstantShare.tableSeparaterColorString, alpha: 1)
         //謎のずれる現象の対策
         self.automaticallyAdjustsScrollViewInsets = false;
         selectedSongsView.backgroundColor = UIColor.colorFromRGB(ConstantShare.selectedSongAreaColorString, alpha: 1)
@@ -135,6 +136,12 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("didselect!!!!!!")
         self.clickedCheckButton((tableView.cellForRowAtIndexPath(indexPath) as! SelectSongTableViewCell).checkBox)
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        var footerView = UIView()
+        footerView.backgroundColor = UIColor.colorFromRGB( ConstantShare.tableCelBackColorString, alpha: 1)
+        return footerView
     }
 }
 
