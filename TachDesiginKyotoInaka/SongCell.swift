@@ -10,7 +10,6 @@ class SongCell:UITableViewCell {
     let checkedButtonImage = UIImage(named: "songPlusButton")
     let unCheckedButtonImage = UIImage(named: "checkedSongButton")
 
-
     func setup(song: Song) {
         self.backgroundColor = UIColor.blackColor()
         setupSong(song)
