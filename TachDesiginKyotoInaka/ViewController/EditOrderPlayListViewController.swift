@@ -102,13 +102,18 @@ class EditOrderSongViewController: UIViewController {
         descField.layer.borderWidth = 1
         descField.layer.cornerRadius = 3
         
-        moodBtn.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
-        titleField.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
-        descField.layer.borderColor = UIColor.colorFromRGB("dcdcdc", alpha: 1).CGColor
+        moodBtn.backgroundColor = UIColor.colorFromRGB(ConstantShare.buttonColorString, alpha: 1)
+        titleField.backgroundColor = UIColor.colorFromRGB(ConstantShare.buttonColorString, alpha: 1)
+        descField.backgroundColor = UIColor.colorFromRGB(ConstantShare.buttonColorString, alpha: 1)
+        
+        moodBtn.layer.borderColor = UIColor.colorFromRGB(ConstantShare.buttonBorderColorString, alpha: 1).CGColor
+        titleField.layer.borderColor = UIColor.colorFromRGB(ConstantShare.buttonBorderColorString, alpha: 1).CGColor
+        descField.layer.borderColor = UIColor.colorFromRGB(ConstantShare.buttonBorderColorString, alpha: 1).CGColor
         
         setColorToPlaceHolder(UIColor.colorFromRGB("bcbcbc", alpha: 1), field: titleField)
-        
-        
+        self.view.backgroundColor = UIColor.colorFromRGB(ConstantShare.backColorString, alpha: 1)
+        self.songListTableView.separatorColor = UIColor.colorFromRGB(ConstantShare.tableSeparaterColorString, alpha: 1)
+        self.songListTableView.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
         placeholderLabel.hidden = false
     }
    
@@ -138,7 +143,7 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
         let cell = songListTableView.dequeueReusableCellWithIdentifier("EditOrderSongTableViewCell", forIndexPath: indexPath) as! EditOrderSongTableViewCell
         let song = manager.findFormSelectedSongInfo(indexPath.row).song
         cell.setSong(song)
-        println("IIIII   \(indexPath.row)")
+        cell.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
         return cell
     }
     
@@ -166,6 +171,12 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     }
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.None
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        var footerView = UIView()
+        footerView.backgroundColor = UIColor.colorFromRGB( ConstantShare.tableCelBackColorString, alpha: 1)
+        return footerView
     }
 }
 

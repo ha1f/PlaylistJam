@@ -24,6 +24,14 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         super.viewDidLoad()
         self.playlistCollectionView.dataSource = self
         self.playlistCollectionView.delegate = self
+        let backgroundImage: UIImage = UIImage(named: "backgroundImage")!
+        let ui = UIImageView()
+        ui.image = backgroundImage
+        ui.frame = self.view.frame
+        self.view.addSubview(ui)
+
+//        println(backgroundImage)
+//        self.view.addSubview(<#view: UIView#>)
 
         initViewProp()
         createButton.addTarget(self, action: "createPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
@@ -60,9 +68,9 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         self.performSegueWithIdentifier(nextSegue, sender: nil)
     }
 
-    func setNavOpacity(opacity: CGFloat) {
+    /*func setNavOpacity(opacity: CGFloat) {
         blurNavbar.alpha = opacity
-    }
+    }*/
 
     func initViewProp(){
         createButton.backgroundColor = UIColor.colorFromRGB(ConstantShare.featureColorString, alpha: 1.0)
@@ -139,7 +147,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         return myPlaylistRepository.getPlaylists().count + 1;
     }
 
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    /*func scrollViewDidScroll(scrollView: UIScrollView) {
         var opacity: CGFloat
         var scrollValue = scrollView.contentOffset.y
         opacity = (scrollValue - 60)/200
@@ -148,6 +156,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }else if(opacity < 0){
             opacity = 0
         }
-        self.setNavOpacity(opacity)
-    }
+        //self.setNavOpacity(opacity)
+    }*/
 }
