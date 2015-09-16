@@ -34,6 +34,10 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     }
 
     override func viewWillAppear(animated: Bool) {
+        if sharedFlag.isPlaylistCreated {
+            performSegueWithIdentifier("Complete", sender: nil)
+        }
+        sharedFlag.isPlaylistCreated = false
         myPlaylistRepository.loadPlaylistsFormCache { playlists in
             self.playlistCollectionView.reloadData()
         }
