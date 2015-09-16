@@ -9,6 +9,8 @@ class PlaylistDetailSongCell: UITableViewCell {
         self.titleLabel.text = song.title
         self.artistLabel.text = song.artist
         
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+        
         self.backgroundColor = UIColor.clearColor()
 
         if let url = NSURL(string: song.artworkUrl) {
