@@ -5,8 +5,8 @@ class SelectEightSongViewController: UIViewController {
     let manager = SongsManager.manager
     var appendedSongCount: Int = 0
     var selectedSongCount: Int = 0 {
-        didSet(newValue) {
-            self.selectedCount.text = "\(newValue+1)/8 曲"
+        didSet {
+            self.selectedCount.text = "\(selectedSongCount)/8 曲"
         }
     }
     var preSelectedCount = 0
@@ -59,35 +59,36 @@ class SelectEightSongViewController: UIViewController {
     }
 
     func clickedCheckButton(sender: CheckBox!) {
-        sender.isChecked = !sender.isChecked
-        checkFlags[sender.tag] = sender.isChecked
 
-        if sender.isChecked {
-            if self.selectedSongCount < 8 {
+        if self.selectedSongCount < 8 {
+            sender.isChecked = !sender.isChecked
+            checkFlags[sender.tag] = sender.isChecked
+            if sender.isChecked {
                 self.manager.selectSongInfo(sender.tag)
-            } else {
-                sender.isChecked = false
+                //選択曲が増えていたら選択曲画面スクロール(ごめんなさい!)
+                if(self.selectedSongCount > 2){
+                    self.scrollToNewer()
+                }
+            }else{
+                self.manager.removeSongInfo(sender.tag)
             }
         } else {
-            println("delete")
-            self.manager.removeSongInfo(sender.tag)
+            if sender.isChecked {
+                sender.isChecked = false
+                self.manager.removeSongInfo(sender.tag)
+            }
         }
-
         self.selectedSongCount = manager.selectedSongCount()
         self.selectedCollection.reloadData()
-        println(self.manager.selectedIds)
         
-        //選択曲が増えていたら選択曲画面スクロール
-        if(self.preSelectedCount < self.selectedSongCount){
-            println("scroll")
-            //self.scrollToNewer()
-        }
     }
     
     func scrollToNewer(){
         var areaSize: CGSize = selectedCollection.frame.size
         
-        selectedCollection.scrollRectToVisible(rect, animated: true)
+        var point = CGPointMake( selectedCollection.contentSize.width - selectedCollection.frame.size.width+90,0)
+        
+        selectedCollection.setContentOffset(point, animated: true)
         
     }
 }
