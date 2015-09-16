@@ -59,11 +59,13 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         
         nextButton.target = self
         nextButton.action = "toReduceEight:"
+        nextButton.enabled = false
 
         samplePlaylistRepository.fetchSongsWithTerm( "Alexandros", completion: { (playlists, songs) in
             self.historyPlaylistRepository.fetchSongsWithTerm("きゃりーぱみゅぱみゅ", completion: { (playlists, songs) in
                self.myPlaylistRepository.loadPlaylistsFormCache { playlists in
                 self.loadingView.removeFromSuperview()
+                self.nextButton.enabled = true
 
                 self.songs = songs!
                 self.pageData = [
