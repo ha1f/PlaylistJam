@@ -18,10 +18,12 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var playlistCollectionView: UICollectionView!
 
+    @IBOutlet weak var titleLabel: UILabel!
     var modalView: CreatePlaylistViewController! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.playlistCollectionView.dataSource = self
         self.playlistCollectionView.delegate = self
         let backgroundImage: UIImage = UIImage(named: "backgroundImage")!
@@ -32,6 +34,7 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
 
         initViewProp()
         createButton.addTarget(self, action: "createPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
+        
     }
 
     func createPlaylist() {
@@ -72,7 +75,6 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
             UIColor.colorFromRGB("303030", alpha: 1).CGColor
         ]
         var locations: [CGFloat] = [0.0, 1.0]
-        setGradient(self.view, colorList: colorList, locations: locations)
     }
 
     func setGradient(view: UIView, colorList: [CGColor]?, locations: [CGFloat]){
