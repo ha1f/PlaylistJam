@@ -9,5 +9,11 @@
 import UIKit
 
 class PageControlCell: UIButton {
-    
+    func setFontSize(size: CGFloat, isBold: Bool) {
+        if isBold {
+            self.titleLabel?.font = UIFont.boldSystemFontOfSize(size)
+        } else {
+            self.titleLabel?.font = UIFont.systemFontOfSize(size)
+        }
+    }
 }

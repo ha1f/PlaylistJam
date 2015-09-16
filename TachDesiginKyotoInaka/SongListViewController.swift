@@ -61,6 +61,12 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongCell
         cell.setup(self.songList[indexPath.row])
+        
+        if contains(self.parent!.selectedItemIndexes[self.getIndex()!], indexPath.row) {
+            cell.check()
+        } else {
+            cell.unCheck()
+        }
         return cell
     }
     

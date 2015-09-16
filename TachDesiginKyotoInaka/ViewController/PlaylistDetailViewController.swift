@@ -14,6 +14,8 @@ class PlaylistDetailViewController: BlurModalViewController {
 
     let pauseButtonImage = UIImage(named: "PauseButton")
     let playButtonImage = UIImage(named: "playlistPLayButton")
+    let defaultArtwork = UIImage(named: "defaultArtwork")
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +25,10 @@ class PlaylistDetailViewController: BlurModalViewController {
         //tableViewの作成、delegate,dataSourceを設定
         self.songTableView.delegate = self
         self.songTableView.dataSource = self
-        
+
         self.songTableView.backgroundColor = UIColor.clearColor()
         self.songTableView.separatorColor = UIColor.darkGrayColor()
-        
+
         self.view.backgroundColor = UIColor.clearColor()
 
         self.songTableView.tableFooterView = UIView()
@@ -41,19 +43,31 @@ class PlaylistDetailViewController: BlurModalViewController {
         if songs.count > 0 {
             if let url = NSURL(string: songs[0].artworkUrl) {
                 self.mainArtwork.sd_setImageWithURL(url)
+            }  else {
+                self.mainArtwork.image = defaultArtwork
             }
+        } else {
+                self.mainArtwork.image = defaultArtwork
         }
 
         if songs.count > 1 {
             if let url = NSURL(string: songs[1].artworkUrl) {
                 self.subArtwork1.sd_setImageWithURL(url)
+            }  else {
+                self.subArtwork1.image = defaultArtwork
             }
+        } else {
+                self.subArtwork1.image = defaultArtwork
         }
 
         if songs.count > 2 {
             if let url = NSURL(string: songs[2].artworkUrl) {
                 self.subArtwork2.sd_setImageWithURL(url)
+            }  else {
+                self.subArtwork2.image = defaultArtwork
             }
+        } else {
+                self.subArtwork2.image = defaultArtwork
         }
     }
 

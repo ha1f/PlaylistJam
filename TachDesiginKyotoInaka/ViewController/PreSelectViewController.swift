@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 
-/**  
+/**
 Favorite
     Playlists:0
     Tracks:1
@@ -23,24 +23,24 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     var songs: [Song] = []
     var controller: PreSelectDataController?
     let manager = SongsManager.manager
-    
+
     var pageControl: PageControl!
     var subPageControl: PageControl!
-    
+
     var loadingView: UIActivityIndicatorView = UIActivityIndicatorView()
-    
+
     @IBOutlet weak var exitButton: UIBarButtonItem!
-    
-    
+
+
     static let tabHeight: CGFloat = 60.0
     static let subTabHeight: CGFloat = 50.0
     let navigationBarHeight: CGFloat = 64.0
-    
+
     //100->200
-    
+
     //0ページ目になってる奴
     let largePage: [Int] = [0, 2, 4, 5]
-    
+
     override func createDataController() -> PagingDataController {
         controller = PreSelectDataController(pageIdentities: self.pageData)
         return controller!
@@ -48,15 +48,15 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.loadingView.frame = CGRectMake(0, 0, 100, 100)
         self.loadingView.layer.position = self.view.center
         self.loadingView.startAnimating()
         self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
         self.view.addSubview(self.loadingView)
 
-        samplePlaylistRepository.fetchSongsWithTerm( "capsule", completion: { (playlists, songs) in
-            self.historyPlaylistRepository.fetchSongsWithTerm("キャリー", completion: { (playlists, songs) in
+        samplePlaylistRepository.fetchSongsWithTerm( "Alexandros", completion: { (playlists, songs) in
+            self.historyPlaylistRepository.fetchSongsWithTerm("きゃりーぱみゅぱみゅ", completion: { (playlists, songs) in
                self.myPlaylistRepository.loadPlaylistsFormCache { playlists in
                 self.loadingView.removeFromSuperview()
 
@@ -70,30 +70,30 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                     "search"
                 ]
                 self.createView()
-                
+
                 //TODO navigationBarの高さを取得する
                 self.pageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight, self.view.frame.width, PreSelectViewController.tabHeight), mode: "bar")
                 self.pageControl.setPages(["Favorite", "History", "My Playlists", "Search"])
                 self.pageControl.setIdentity(0)
                 self.pageControl.delegate = self
-                self.pageControl.setFontSize(16)
+                self.pageControl.setFontSize(16, isBold: false)
                 self.pageControl.backgroundColor = UIColor.colorFromRGB(ConstantShare.tabColorString, alpha: 1.0)
                 self.view.addSubview(self.pageControl)
-                
-                self.subPageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.tabHeight), mode: "triangle")
+
+                self.subPageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.subTabHeight), mode: "triangle")
                 self.subPageControl.setPages(["Playlists", "Tracks"])
+                self.subPageControl.setFontSize(13, isBold: false)
                 self.subPageControl.setIdentity(1)
                 self.subPageControl.delegate = self
-                self.subPageControl.setFontSize(13)
                 self.view.addSubview(self.subPageControl)
-                
+
                 self.updateTab()
                 }
             })
         })
 
         self.view.backgroundColor = UIColor.colorFromRGB(ConstantShare.backColorString, alpha: 1.0)
-        
+
         self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
         self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
 
@@ -101,15 +101,15 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         button.setTitle("button", forState: UIControlState.Normal)
         button.addTarget(self, action: "reduceEight:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(button)
-        
+
         exitButton.target = self
         exitButton.action = "exitButtonClicked:"
     }
-    
+
     func exitButtonClicked(sender: UIBarButtonItem!) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     //ページのタブが押された時に移動させる
     func pageSelected(identity: Int, page: Int) {
         let currentPage = self.getCurrentPageIndex()
@@ -140,12 +140,12 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         }
         return 0
     }
-    
+
     //大カテゴリの0ページ目を取得
     func getLargeCategory(page: Int) -> Int{
         return self.largePage[getLargeCategoryIndex(page)]
     }
-    
+
     //特定のページヘ移動
     func moveTargetPage(targetPageTmp: Int) {
         var targetPage = targetPageTmp > 5 ? 5 : targetPageTmp
@@ -153,7 +153,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
             let dataViewController: PageCellViewController = self.dataController.viewControllerAtIndex(targetPage)!
             let viewControllers: NSArray = NSArray(array: [dataViewController])
             let direction:UIPageViewControllerNavigationDirection = targetPage > self.getCurrentPageIndex() ? UIPageViewControllerNavigationDirection.Forward : UIPageViewControllerNavigationDirection.Reverse
-        
+
             self.pageViewController?.setViewControllers(viewControllers as [AnyObject], direction: direction, animated: true, completion: {(Bool) -> Void in self.updateTab()})
             updateTab()
         }
@@ -161,7 +161,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         manager.reset()
-        
+
         var index = 0
         for indexes in controller!.selectedItemIndexes {
             let tmpDataList: AnyObject = self.pageData[index]
@@ -185,18 +185,18 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func updateTab() {
         let currentPage = getCurrentPageIndex()
         let largeCategoryIndex = getLargeCategoryIndex(currentPage)
-        
+
         //my playlist
         if largeCategoryIndex == 2 {
             self.subPageControl.hidden = true
         } else {
             self.subPageControl.hidden = false
         }
-        
+
         //search
         if largeCategoryIndex == 3 {
             self.subPageControl.setPages(["Artists", "Playlists", "Tracks"])
@@ -205,21 +205,21 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
             self.subPageControl.setPages(["Playlists", "Tracks"])
             self.subPageControl.frame = CGRectMake(0, 64 + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.subTabHeight)
         }
-        
+
         self.pageControl.setCurrentPage(largeCategoryIndex)
         if largeCategoryIndex == 3 {
-            
+
         } else {
             self.subPageControl.setCurrentPage(currentPage - self.largePage[largeCategoryIndex])
         }
     }
-    
+
     //ページ遷移アニメーション完了後
     override func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
         //self.pageControl.currentPage = self.dataController.indexOfViewController(self.pageViewController!.viewControllers[0] as! PageCellViewController)
         updateTab()
     }
-    
+
     func getCurrentPageIndex() -> Int! {
         return self.dataController.indexOfViewController(self.pageViewController!.viewControllers[0] as! PageCellViewController)
     }
@@ -228,7 +228,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 //PagingDataControllerをオーバーライドしてDataControllerクラスを作成
 class PreSelectDataController: PagingDataController {
     var selectedItemIndexes: [[Int]] = [[]]
-    
+
     let titles = ["","","","","MyPlaylist","","",""]
 
     override func viewControllerAtIndex(index: Int) -> PageCellViewController? {
@@ -249,7 +249,7 @@ class PreSelectDataController: PagingDataController {
             dataViewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as! SearchViewController
         }
         dataViewController.title = self.titles[index]
-        
+
 
         dataViewController.listen(self)
         dataViewController.setDataObject(sendData)
@@ -268,7 +268,7 @@ class PreSelectDataController: PagingDataController {
         }
         println(self.selectedItemIndexes)
     }
-    
+
     func getSelectedItem(pageIndex: Int) -> [Int] {
         return self.selectedItemIndexes[pageIndex]
     }

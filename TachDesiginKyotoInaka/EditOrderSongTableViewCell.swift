@@ -1,11 +1,3 @@
-//
-//  EditOrderSongTableViewCell.swift
-//  StoryBoardPractice
-//
-//  Created by 坂本時緒 on 9/11/15.
-//  Copyright (c) 2015 坂本時緒. All rights reserved.
-//
-
 import UIKit
 
 class EditOrderSongTableViewCell: UITableViewCell {
@@ -13,6 +5,7 @@ class EditOrderSongTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var artworkImageView: UIImageView!
+    let defaultArtwork = UIImage(named: "defaultArtwork")
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +20,8 @@ class EditOrderSongTableViewCell: UITableViewCell {
         artistLabel.text = song.artist
         if let url = NSURL(string: song.artworkUrl) {
             artworkImageView.sd_setImageWithURL(url)
+        } else {
+            artworkImageView.image = defaultArtwork
         }
     }
 }

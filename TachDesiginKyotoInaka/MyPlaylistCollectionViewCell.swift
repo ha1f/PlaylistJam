@@ -18,11 +18,13 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
 
     let pauseButtonImage = UIImage(named: "PauseButton")
     let playButtonImage = UIImage(named: "playlistPLayButton")
-    
+    let defaultArtwork = UIImage(named: "defaultArtwork")
+
     var gradientLayer: CAGradientLayer! = nil
     
     let infoViewHeight: CGFloat = 120
     let infoViewWidth: CGFloat = 360
+
     
 
     @IBAction func touchUpPlayButton(sender: AnyObject) {
@@ -45,18 +47,28 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
 
         if let url = NSURL(string: playlist.songs[0].artworkUrl) {
             self.mainArtworkImageView.sd_setImageWithURL(url)
+        } else {
+            self.mainArtworkImageView.image = defaultArtwork
         }
 
         if playlist.songs.count > 1 {
             if let url = NSURL(string: playlist.songs[1].artworkUrl) {
                 self.sub1ArtworkImageView.sd_setImageWithURL(url)
+            } else {
+                self.sub1ArtworkImageView.image = defaultArtwork
             }
+        } else {
+            self.sub1ArtworkImageView.image = defaultArtwork
         }
 
         if playlist.songs.count > 2 {
             if let url = NSURL(string: playlist.songs[2].artworkUrl) {
                 self.sub2ArtworkImageView.sd_setImageWithURL(url)
+            } else {
+                self.sub2ArtworkImageView.image = defaultArtwork
             }
+        } else {
+            self.sub2ArtworkImageView.image = defaultArtwork
         }
 
         self.playButton.setBackgroundImage(self.playButtonImage, forState: .Normal)

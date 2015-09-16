@@ -64,7 +64,6 @@ extension SelectMoodModalViewController: UITableViewDataSource, UITableViewDeleg
         cell.backgroundColor = UIColor.clearColor()
         cell.textLabel?.text = ConstantShare.moodList[indexPath.row]
         cell.textLabel?.textColor = UIColor.lightGrayColor()
-        println("celltext=> \(cell.textLabel?.text)")
         return cell
     }
     
@@ -73,8 +72,8 @@ extension SelectMoodModalViewController: UITableViewDataSource, UITableViewDeleg
         
         let height :CGFloat! = nil
         
-        if height != nil{
-            return height
+        if let h = height {
+            return h
         } else {
             return 50//tableView.estimatedRowHeight
         }

@@ -21,7 +21,8 @@ class PageControl: UIView {
     var delegate: PageControlDelegate!
     
     var bar: UIImageView! = nil
-    let barHeight: CGFloat = 3
+    private var barHeight: CGFloat = 3
+    private var bottomOffset: CGFloat = 0
     
     var barMode: String = ""
     
@@ -37,16 +38,16 @@ class PageControl: UIView {
         self.barMode = mode
     }
     
-    func setFontSize(size: CGFloat) {
+    func setFontSize(size: CGFloat, isBold: Bool) {
         self.fontsize = size
         for pageCell in self.pageCells {
-            pageCell.titleLabel?.font = UIFont.systemFontOfSize(size)
+            pageCell.setFontSize(size, isBold: isBold)
         }
     }
     
     func pointIndex(index: Int) -> CGPoint {
         let width = self.frame.width / CGFloat(self.pageCells.count)
-        let height = self.frame.height
+        let height = self.frame.height - self.bottomOffset
         
         let pointX: CGFloat = CGFloat(Double(index) * Double(width))
         return CGPoint(x: pointX + width/2, y: (height - barHeight/2))
@@ -98,8 +99,11 @@ class PageControl: UIView {
     func updateBar() {
         let width = self.frame.width / CGFloat(self.pageCells.count)
         if self.barMode == "bar" {
+            self.barHeight = 3
+            self.bottomOffset = 0
             if self.bar == nil {
                 self.bar = UIImageView(frame: CGRectMake(0, 0, width, barHeight))
+                self.bar.image = nil
                 self.bar.backgroundColor = UIColor.colorFromRGB(ConstantShare.featureColorString, alpha: 1.0)
 
                 //if self.bar.superview != self {
@@ -111,10 +115,13 @@ class PageControl: UIView {
                 self.bar.layer.position = pointIndex(0)
             }
         } else if self.barMode == "triangle" {
+            self.bottomOffset = 10
             if self.bar == nil {
+                self.barHeight = 6
                 self.bar = UIImageView(frame: CGRectMake(0, 0, width, barHeight))
-                self.bar.backgroundColor = UIColor.whiteColor()
-                
+                self.bar.backgroundColor = UIColor.clearColor()
+                self.bar.image = UIImage(named: "TabArrow")
+                self.bar.contentMode = UIViewContentMode.ScaleAspectFit
                 //if self.bar.superview != self {
                 self.addSubview(self.bar)
                     //}
@@ -153,8 +160,12 @@ class PageControl: UIView {
     }
     
     func moveEmphasis(oldPage: Int, newPage: Int) {
-        //self.setInActive(pageCells[oldPage])
-        //self.setActive(pageCells[newPage])
+        if self.pageCells.count > 0 {
+            if let size = self.fontsize {
+                self.pageCells[oldPage].setFontSize(size, isBold: false)
+                self.pageCells[newPage].setFontSize(size, isBold: true)
+            }
+        }
         if self.barMode == "bar" {
             if self.bar == nil {
                 updateBar()
