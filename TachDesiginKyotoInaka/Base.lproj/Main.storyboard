@@ -793,7 +793,7 @@
                                 <color key="sectionIndexBackgroundColor" red="0.28357670979999999" green="0.28632023359999997" blue="0.28151819140000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.28357670979999999" green="0.28632023359999997" blue="0.28151819140000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="271" width="330" height="396"/>
+                                    <rect key="frame" x="0.0" y="271" width="375" height="396"/>
                                 </variation>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRb-FH-UrH">
