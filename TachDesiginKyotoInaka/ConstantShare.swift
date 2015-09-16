@@ -18,5 +18,5 @@ class ConstantShare {
     static let tableCelBackColorString = "282828"
     static let tableSeparaterColorString = "555555"
     
-    static let songCellHeight: CGFloat = 60
+    static let songCellHeight: CGFloat = 56
 }
