@@ -33,9 +33,9 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     }
 
     override func viewWillAppear(animated: Bool) {
-        myPlaylistRepository.loadPlaylists({ (playlists) -> Void in
+        myPlaylistRepository.loadPlaylistsFormCache { playlists in        
             self.playlistCollectionView.reloadData()
-        })
+        }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -1,37 +1,27 @@
-//
-//  MyPlaylistRepository.swift
-//  TachDesiginKyotoInaka
-//
-//  Created by 山口 智生 on 2015/09/16.
-//  Copyright (c) 2015年 NextVanguard. All rights reserved.
-//
-
-
 class PlaylistRepository {
     private var playlists: [Playlist] = []
     let maxPlaylistSongs: Int = 8
-    
+    let minPlaylist: Int = 5
+
     func fetchSongs(completion: (playlists: [Playlist], songs: [Song]?) -> Void) {
         fetchSongsWithTerm("sekai", completion: completion)
     }
-    
-    //Realmから
-    func loadPlaylists(completion: (playlists: [Playlist]) -> Void){
+
+    func loadPlaylistsFormCache(completion: (playlists: [Playlist]) -> Void){
+        if Playlist.lastId() < minPlaylist {
+            fetchSongsWithTermWith("perfume", completion: { (playlists, _) in
+                completion(playlists: playlists)
+            })
+        }
         let playlists = Playlist.all()
         self.playlists = playlists
-        completion(playlists: playlists)
     }
-    
-    func loadSongs(completion: (playlists: [Song]) -> Void){
-        let songLists = Song.all()
-        //self.playlists.extend(playlists)
-        completion(playlists: songLists)
-    }
-    
-    func fetchSongsWithTerm(term: String, completion: (playlists: [Playlist], songs: [Song]?) -> Void) {
+
+    // 保存する
+    func fetchSongsWithTermWith(term: String, completion: (playlists: [Playlist], songs: [Song]?) -> Void) {
         var playlists: [Playlist] = []
         var i = 0
-        
+
         if self.playlists.count < 1 {
             ItunesApi.api.fetchSongsWithTerm(term, completion: { (songs) in
                 self.playlists.extend(self.splitToPlaylist(songs))
@@ -39,34 +29,75 @@ class PlaylistRepository {
             })
         }
     }
-    
-    private func splitToPlaylist(songs: [Song]) -> [Playlist] {
+
+    func loadSongs(completion: (playlists: [Song]) -> Void){
+        let songLists = Song.all()
+        completion(playlists: songLists)
+    }
+
+    //しない
+    func fetchSongsWithTerm(term: String, completion: (playlists: [Playlist], songs: [Song]?) -> Void) {
         var playlists: [Playlist] = []
         var i = 0
-        var id = 0
+
+        if self.playlists.count < 1 {
+            ItunesApi.api.fetchSongsWithTerm(term, completion: { (songs) in
+                self.playlists.extend(self.splitToPlaylistWithout(songs))
+                completion(playlists: playlists, songs: songs)
+            })
+        }
+    }
+
+   // 保存しない
+    private func splitToPlaylistWithout(songs: [Song]) -> [Playlist] {
+        var playlists: [Playlist] = []
+        var i = 0
         var _songs: [Song] = []
         for s in songs {
             if i < self.maxPlaylistSongs {
                 _songs.append(s)
                 i++
             } else {
-                Playlist.createWithSong(["title": "samplePlaylist:\(id)"],
-                    songs: _songs
-                )
-                playlists.append(Playlist.createWithSongs(s.title, songs: _songs))
-                id++
+                playlists.append(Playlist.createWithSongs(_songs.last!.title, desc: createdesc(_songs), songs: _songs))
                 _songs = [s]
                 i = 1
             }
         }
         return playlists
     }
-    
+
+    private func splitToPlaylist(songs: [Song]) -> [Playlist] {
+        var playlists: [Playlist] = []
+        var i = 0
+        var _songs: [Song] = []
+        for s in songs {
+            if i < self.maxPlaylistSongs {
+                _songs.append(s)
+                i++
+            } else {
+                let a = Playlist.createWithSong(
+                    [
+                        "title": _songs.last!.title,
+                        "desc": createdesc(_songs)
+                    ],
+                    songs: _songs
+                )
+                playlists.append(a)
+                _songs = [s]
+                i = 1
+            }
+        }
+        return playlists
+    }
+
+    private func createdesc(songs: [Song]) -> String {
+        return join("/", songs.map{ return $0.title })
+    }
+
     func getPlaylists() -> [Playlist] {
         return self.playlists
     }
-    
-    //中身の曲全て
+
     func getSongs() -> [Song] {
         return self.playlists.flatMap{ $0.songsArray() }
     }

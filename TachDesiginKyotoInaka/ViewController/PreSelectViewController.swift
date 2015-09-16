@@ -43,10 +43,19 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        samplePlaylistRepository.fetchSongsWithTerm( "swift", completion: { (playlists, songs) in
-            self.historyPlaylistRepository.fetchSongsWithTerm("direction", completion: { (playlists, songs) in
+        samplePlaylistRepository.fetchSongsWithTerm( "capsule", completion: { (playlists, songs) in
+            self.historyPlaylistRepository.fetchSongsWithTerm("キャリー", completion: { (playlists, songs) in
                 self.songs = songs!
-                self.pageData = [self.samplePlaylistRepository.getPlaylists(), self.samplePlaylistRepository.getSongs(), self.historyPlaylistRepository.getPlaylists(), self.historyPlaylistRepository.getSongs(), self.samplePlaylistRepository.getPlaylists(), "search1", "search2", "search3"]
+                self.pageData = [
+                    self.samplePlaylistRepository.getPlaylists(),
+                    self.samplePlaylistRepository.getSongs(),
+                    self.historyPlaylistRepository.getPlaylists(),
+                    self.historyPlaylistRepository.getSongs(),
+                    self.samplePlaylistRepository.getPlaylists(),
+                    "search1",
+                    "search2",
+                    "search3"
+                ]
                 self.createView()
                 
                 //TODO navigationBarの高さを取得する

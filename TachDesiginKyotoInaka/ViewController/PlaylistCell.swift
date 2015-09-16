@@ -66,11 +66,12 @@ class PlaylistCell:UICollectionViewCell {
 
     private func setPlaylist(playlist: Playlist) {
         self.playlist = playlist
-        let largeSong = playlist.songs.first!
         let songs = playlist.songs
 
-        if let url = NSURL(string: largeSong.artworkUrl) {
-            self.artwork.sd_setImageWithURL(url)
+        if songs.count > 0 {
+            if let url = NSURL(string: songs[0].artworkUrl) {
+                self.artwork.sd_setImageWithURL(url)
+            }
         }
 
         if songs.count > 1 {
