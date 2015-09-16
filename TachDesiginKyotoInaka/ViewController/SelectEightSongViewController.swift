@@ -109,7 +109,10 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
 
         let song = manager.findFromAppendedSongInfo(indexPath.row).song
         cell.setSong(song)
-        
+        //セルの背景変更
+        cell.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
+        //セル選択中のハイライト解除
+        cell.selectionStyle = UITableViewCellSelectionStyle.None;
         return cell
     }
     

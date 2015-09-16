@@ -29,10 +29,6 @@ class SelectSongTableViewCell: UITableViewCell {
     }
     
     func setSong(song: Song){
-        var bgView = UIView()
-        bgView.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
-        self.selectedBackgroundView = bgView
-        self.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
         songNameLabel.text = song.title
         artistNameLabel.text = song.artist
         if let url = NSURL(string: song.artworkUrl) {

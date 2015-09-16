@@ -22,20 +22,20 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pza-61-dJm">
                         <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpR-iZ-fvV" customClass="CheckBox" customModule="TachDesiginKyotoInaka" customModuleProvider="target">
-                        <rect key="frame" x="327" y="14" width="30" height="30"/>
-                        <state key="normal">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ArtistName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHs-4C-0wy">
                         <rect key="frame" x="76" y="33" width="284" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpR-iZ-fvV" customClass="CheckBox" customModule="TachDesiginKyotoInaka" customModuleProvider="target">
+                        <rect key="frame" x="327" y="15" width="30" height="30"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
-                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
             <connections>
                 <outlet property="artWorkImage" destination="pza-61-dJm" id="8z3-nl-6XI"/>

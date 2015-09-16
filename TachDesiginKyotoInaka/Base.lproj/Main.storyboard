@@ -294,25 +294,18 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="7" y="118" width="144" height="21"/>
+                                                        <rect key="frame" x="7" y="118" width="122" height="21"/>
                                                     </variation>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSe-vh-5nV">
-                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <state key="normal" title="i">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="150" y="137" width="20" height="20"/>
-                                                    </variation>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KX6-dk-bb0">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <state key="normal" title="＋">
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="149" y="116" width="20" height="20"/>
+                                                        <rect key="frame" x="134" y="123" width="33" height="33"/>
                                                     </variation>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYy-W7-Tfx">
@@ -321,7 +314,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="8" y="137" width="143" height="20"/>
+                                                        <rect key="frame" x="8" y="137" width="121" height="20"/>
                                                     </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-fr-Z8b">
@@ -342,14 +335,12 @@
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <variation key="default">
                                             <mask key="subviews">
-                                                <exclude reference="vSe-vh-5nV"/>
                                                 <exclude reference="KX6-dk-bb0"/>
                                                 <exclude reference="QYy-W7-Tfx"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="subviews">
-                                                <include reference="vSe-vh-5nV"/>
                                                 <include reference="KX6-dk-bb0"/>
                                                 <include reference="QYy-W7-Tfx"/>
                                             </mask>
@@ -358,7 +349,6 @@
                                             <outlet property="addButton" destination="KX6-dk-bb0" id="b2h-pm-87N"/>
                                             <outlet property="artwork" destination="n2Z-We-EkI" id="Bqs-xn-ysp"/>
                                             <outlet property="descLabel" destination="QYy-W7-Tfx" id="jL1-jf-trg"/>
-                                            <outlet property="detailButton" destination="vSe-vh-5nV" id="DMK-Np-p9u"/>
                                             <outlet property="samllArtwork1" destination="g0h-Et-zrK" id="hvs-Jb-BBI"/>
                                             <outlet property="samllArtwork2" destination="yNT-fr-Z8b" id="w4B-76-LYM"/>
                                             <outlet property="titleLabel" destination="Cba-3T-hxB" id="AOU-XG-xfS"/>
@@ -615,14 +605,21 @@
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANs-LJ-mmo">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="新しいプレイリストを作成">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="　　新しいプレイリストを作成">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="613" width="375" height="55"/>
                                 </variation>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="createPlaylistButton" translatesAutoresizingMaskIntoConstraints="NO" id="SQj-4R-f84">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="73" y="630" width="22" height="22"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -630,6 +627,7 @@
                                 <exclude reference="I8E-BK-4Tp"/>
                                 <exclude reference="ppG-Lv-nod"/>
                                 <exclude reference="ANs-LJ-mmo"/>
+                                <exclude reference="SQj-4R-f84"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -637,6 +635,7 @@
                                 <include reference="I8E-BK-4Tp"/>
                                 <include reference="ppG-Lv-nod"/>
                                 <include reference="ANs-LJ-mmo"/>
+                                <include reference="SQj-4R-f84"/>
                             </mask>
                         </variation>
                     </view>
@@ -644,6 +643,7 @@
                     <connections>
                         <outlet property="blurNavbar" destination="ppG-Lv-nod" id="8vD-GM-waf"/>
                         <outlet property="createButton" destination="ANs-LJ-mmo" id="3Vp-aU-hsQ"/>
+                        <outlet property="createButtonImage" destination="SQj-4R-f84" id="nXi-ES-R7Z"/>
                         <outlet property="playlistCollectionView" destination="I8E-BK-4Tp" id="Ved-Pk-eiQ"/>
                         <segue destination="HVN-8P-hqo" kind="presentation" identifier="createPlaylist" id="6Wa-Ll-7xQ"/>
                         <segue destination="zBF-tG-wf8" kind="presentation" identifier="createPublic" id="ywh-DP-uhP"/>
@@ -719,16 +719,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TpD-fC-8ke">
-                                <rect key="frame" x="0.0" y="64" width="375" height="513"/>
-                                <color key="backgroundColor" red="0.22112193359999999" green="0.22324810610000001" blue="0.2189957612" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" red="0.22112193359999999" green="0.22324810610000001" blue="0.2189957612" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="sectionIndexTrackingBackgroundColor" red="0.22112193359999999" green="0.22324810610000001" blue="0.2189957612" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="375" height="504"/>
-                                </variation>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXN-RI-WiC">
                                 <rect key="frame" x="0.0" y="567" width="380" height="100"/>
                                 <subviews>
@@ -800,6 +790,16 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TpD-fC-8ke">
+                                <rect key="frame" x="0.0" y="64" width="375" height="513"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.22112193359999999" green="0.22324810610000001" blue="0.2189957612" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.22112193359999999" green="0.22324810610000001" blue="0.2189957612" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="-1" y="64" width="375" height="504"/>
+                                </variation>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.21823705808080807" green="0.21823705808080807" blue="0.21823705808080807" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
@@ -1064,18 +1064,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="publicIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NTd-I2-Pr6">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="84" y="428" width="25" height="25"/>
+                                    <rect key="frame" x="67" y="428" width="25" height="25"/>
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="privateIcon" translatesAutoresizingMaskIntoConstraints="NO" id="kry-i8-bhU">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="86" y="496" width="23" height="23"/>
+                                    <rect key="frame" x="79" y="496" width="23" height="23"/>
                                 </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1F9-dd-WOh">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="　　　公開プレイリストを作る(8曲)">
+                                <state key="normal" title="　　　公開プレイリストを作る（8曲）">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1281,9 +1281,10 @@
         <image name="allowLeft" width="17" height="23"/>
         <image name="allowRight" width="19" height="23"/>
         <image name="allowUnder" width="128" height="128"/>
+        <image name="createPlaylistButton" width="70" height="66"/>
         <image name="playButton" width="86" height="88"/>
-        <image name="privateIcon" width="47" height="53"/>
-        <image name="publicIcon" width="64" height="60"/>
+        <image name="privateIcon" width="60" height="61"/>
+        <image name="publicIcon" width="44" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4D6-R0-dcJ"/>
