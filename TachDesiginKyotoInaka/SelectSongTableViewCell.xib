@@ -14,13 +14,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SongName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P20-cV-fHj">
-                        <rect key="frame" x="74" y="11" width="283" height="21"/>
+                        <rect key="frame" x="74" y="9" width="283" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pza-61-dJm">
-                        <rect key="frame" x="0.0" y="2" width="55" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="59" height="59"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpR-iZ-fvV" customClass="CheckBox" customModule="TachDesiginKyotoInaka" customModuleProvider="target">
                         <rect key="frame" x="327" y="14" width="30" height="30"/>
@@ -43,7 +43,7 @@
                 <outlet property="checkBox" destination="XpR-iZ-fvV" id="oF9-Jv-fAP"/>
                 <outlet property="songNameLabel" destination="P20-cV-fHj" id="5pa-Qz-tvD"/>
             </connections>
-            <point key="canvasLocation" x="261" y="338.5"/>
+            <point key="canvasLocation" x="261" y="338"/>
         </tableViewCell>
     </objects>
 </document>
