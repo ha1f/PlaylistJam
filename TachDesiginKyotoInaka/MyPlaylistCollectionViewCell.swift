@@ -44,7 +44,6 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
     func setup(playlist: Playlist) {
         self.playlist = playlist
 
-
         if let url = NSURL(string: playlist.songs[0].artworkUrl) {
             self.mainArtworkImageView.sd_setImageWithURL(url)
         } else {
@@ -71,9 +70,19 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
             self.sub2ArtworkImageView.image = defaultArtwork
         }
 
-        self.playButton.setBackgroundImage(self.playButtonImage, forState: .Normal)
-        self.playButton.setTitle("", forState: .Normal)
+        println( parent )
 
+        if index == parent.playingList {
+            if player.isPausing() {
+                self.playButton.setBackgroundImage(self.playButtonImage, forState: .Normal)
+            } else {
+                self.playButton.setBackgroundImage(self.pauseButtonImage, forState: .Normal)
+            }
+        } else {
+            self.playButton.setBackgroundImage(self.playButtonImage, forState: .Normal)
+        }
+
+        self.playButton.setTitle("", forState: .Normal)
         self.playlistTitleLabel.text = playlist.title
         self.playlistCommentLabel.text = playlist.desc
         
