@@ -18,6 +18,7 @@ search
 
 class PreSelectViewController: PagingViewController, PageControlDelegate {
     var samplePlaylistRepository: PlaylistRepository = PlaylistRepository()
+    var historyPlaylistRepository: PlaylistRepository = PlaylistRepository()
     var songs: [Song] = []
     var controller: PreSelectDataController?
     let manager = SongsManager.manager
@@ -43,24 +44,26 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         super.viewDidLoad()
 
         samplePlaylistRepository.fetchSongsWithTerm( "swift", completion: { (playlists, songs) in
-            self.songs = songs!
-            self.pageData = [self.samplePlaylistRepository.getPlaylists(), self.songs, self.samplePlaylistRepository.getPlaylists(), self.songs, self.samplePlaylistRepository.getPlaylists(), "search1", "search2", "search3"]
-            self.createView()
-            
-            //TODO navigationBarの高さを取得する
-            self.pageControl = PageControl(frame: CGRectMake(0, 64, self.view.frame.width, PreSelectViewController.tabHeight))
-            self.pageControl.setPages(["Favorite", "History", "My Playlists", "Search"])
-            self.pageControl.setIdentity(0)
-            self.pageControl.delegate = self
-            self.view.addSubview(self.pageControl)
-            
-            self.subPageControl = PageControl(frame: CGRectMake(0, 64 + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.tabHeight))
-            //self.subPageControl.setPages(["Playlists", "Tracks"])
-            self.subPageControl.setIdentity(1)
-            self.subPageControl.delegate = self
-            self.view.addSubview(self.subPageControl)
-            
-            self.updateTab()
+            self.historyPlaylistRepository.fetchSongsWithTerm("direction", completion: { (playlists, songs) in
+                self.songs = songs!
+                self.pageData = [self.samplePlaylistRepository.getPlaylists(), self.samplePlaylistRepository.getSongs(), self.historyPlaylistRepository.getPlaylists(), self.historyPlaylistRepository.getSongs(), self.samplePlaylistRepository.getPlaylists(), "search1", "search2", "search3"]
+                self.createView()
+                
+                //TODO navigationBarの高さを取得する
+                self.pageControl = PageControl(frame: CGRectMake(0, 64, self.view.frame.width, PreSelectViewController.tabHeight))
+                self.pageControl.setPages(["Favorite", "History", "My Playlists", "Search"])
+                self.pageControl.setIdentity(0)
+                self.pageControl.delegate = self
+                self.view.addSubview(self.pageControl)
+                
+                self.subPageControl = PageControl(frame: CGRectMake(0, 64 + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.tabHeight))
+                //self.subPageControl.setPages(["Playlists", "Tracks"])
+                self.subPageControl.setIdentity(1)
+                self.subPageControl.delegate = self
+                self.view.addSubview(self.subPageControl)
+                
+                self.updateTab()
+            })
         })
 
         //self.view.backgroundColor = UIColor.whiteColor()

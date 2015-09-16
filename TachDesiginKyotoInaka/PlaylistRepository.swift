@@ -18,7 +18,7 @@ class PlaylistRepository {
     //Realmから
     func loadPlaylists(completion: (playlists: [Playlist]) -> Void){
         let playlists = Playlist.all()
-        self.playlists.extend(playlists)
+        self.playlists = playlists
         completion(playlists: playlists)
     }
     
@@ -32,10 +32,12 @@ class PlaylistRepository {
         var playlists: [Playlist] = []
         var i = 0
         
-        ItunesApi.api.fetchSongsWithTerm(term, completion: { (songs) in
-            self.playlists.extend(self.splitToPlaylist(songs))
-            completion(playlists: playlists, songs: songs)
-        })
+        if self.playlists.count < 1 {
+            ItunesApi.api.fetchSongsWithTerm(term, completion: { (songs) in
+                self.playlists.extend(self.splitToPlaylist(songs))
+                completion(playlists: playlists, songs: songs)
+            })
+        }
     }
     
     private func splitToPlaylist(songs: [Song]) -> [Playlist] {
