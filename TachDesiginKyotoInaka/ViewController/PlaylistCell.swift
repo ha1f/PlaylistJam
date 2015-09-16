@@ -16,6 +16,7 @@ class PlaylistCell:UICollectionViewCell {
 
     let checkedButtonImage = UIImage(named: "songPlusButton")
     let unCheckedButtonImage = UIImage(named: "checkedSongButton")
+    let defaultArtwork = UIImage(named: "defaultArtwork")
 
     func setup(playlist: Playlist) {
         self.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1.0)
@@ -84,13 +85,21 @@ class PlaylistCell:UICollectionViewCell {
         if songs.count > 1 {
             if let url = NSURL(string: songs[1].artworkUrl) {
                 self.samllArtwork1.sd_setImageWithURL(url)
+            } else {
+                self.samllArtwork1.image = defaultArtwork
             }
+        } else {
+                self.samllArtwork1.image = defaultArtwork
         }
 
         if songs.count > 2 {
             if let url = NSURL(string: songs[2].artworkUrl) {
                 self.samllArtwork2.sd_setImageWithURL(url)
+            } else {
+                self.samllArtwork2.image = defaultArtwork
             }
+        } else {
+                self.samllArtwork2.image = defaultArtwork
         }
 
         self.titleLabel.text = playlist.title

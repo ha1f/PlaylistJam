@@ -30,9 +30,6 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         ui.frame = self.view.frame
         self.view.addSubview(ui)
 
-//        println(backgroundImage)
-//        self.view.addSubview(<#view: UIView#>)
-
         initViewProp()
         createButton.addTarget(self, action: "createPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
     }
@@ -68,10 +65,6 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         self.performSegueWithIdentifier(nextSegue, sender: nil)
     }
 
-    /*func setNavOpacity(opacity: CGFloat) {
-        blurNavbar.alpha = opacity
-    }*/
-
     func initViewProp(){
         createButton.backgroundColor = UIColor.colorFromRGB(ConstantShare.featureColorString, alpha: 1.0)
         var colorList: [CGColor] = [
@@ -79,8 +72,6 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
             UIColor.colorFromRGB("303030", alpha: 1).CGColor
         ]
         var locations: [CGFloat] = [0.0, 1.0]
-//        self.createButtonImage.image = UIImage(named: "createPlaylistButton")
-
         setGradient(self.view, colorList: colorList, locations: locations)
     }
 
