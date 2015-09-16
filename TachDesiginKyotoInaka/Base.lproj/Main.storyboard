@@ -703,7 +703,7 @@
             </objects>
             <point key="canvasLocation" x="-80.25" y="604.125"/>
         </scene>
-        <!--8曲選んで-->
+        <!--プレイリスト曲の選抜-->
         <scene sceneID="7nZ-Mt-f5D">
             <objects>
                 <viewController id="2Ks-qv-Ntr" customClass="SelectEightSongViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
@@ -757,19 +757,43 @@
                                             </collectionViewCell>
                                         </cells>
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="22" y="0.0" width="263" height="86"/>
+                                            <rect key="frame" x="22" y="7" width="252" height="86"/>
                                         </variation>
                                     </collectionView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wau-iy-DU2">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="allowRight" translatesAutoresizingMaskIntoConstraints="NO" id="jUg-ee-dfC">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="269" y="39" width="17" height="22"/>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="allowLeft" translatesAutoresizingMaskIntoConstraints="NO" id="7ME-0W-uXW">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="13" y="39" width="17" height="22"/>
+                                        </variation>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wau-iy-DU2">
                                         <rect key="frame" x="249" y="585" width="86" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="277" y="37" width="85" height="55"/>
+                                        </variation>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="jUg-ee-dfC"/>
+                                        <exclude reference="7ME-0W-uXW"/>
+                                    </mask>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                    <mask key="subviews">
+                                        <include reference="jUg-ee-dfC"/>
+                                        <include reference="7ME-0W-uXW"/>
+                                    </mask>
                                 </variation>
                             </view>
                         </subviews>
@@ -785,7 +809,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="8曲選んで" id="IJf-3Y-wOI">
+                    <navigationItem key="navigationItem" title="プレイリスト曲の選抜" id="IJf-3Y-wOI">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="rLG-rG-E34">
                             <connections>
                                 <segue destination="9Ag-B2-HGh" kind="show" id="ezn-qH-258"/>
@@ -797,6 +821,7 @@
                         <outlet property="selectSongTableView" destination="TpD-fC-8ke" id="CBh-E6-C7H"/>
                         <outlet property="selectedCollection" destination="pn0-AY-Dfe" id="YN0-qD-V9O"/>
                         <outlet property="selectedCount" destination="wau-iy-DU2" id="rcO-vj-S3h"/>
+                        <outlet property="selectedSongsView" destination="UXN-RI-WiC" id="mEU-qQ-eAT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOI-5g-oMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1246,6 +1271,8 @@
     <resources>
         <image name="NextSongButton" width="90" height="110"/>
         <image name="PrevSongButton" width="92" height="110"/>
+        <image name="allowLeft" width="17" height="23"/>
+        <image name="allowRight" width="19" height="23"/>
         <image name="allowUnder" width="128" height="128"/>
         <image name="playButton" width="86" height="88"/>
         <image name="privateIcon" width="47" height="53"/>

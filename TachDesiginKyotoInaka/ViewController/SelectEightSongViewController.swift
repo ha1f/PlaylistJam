@@ -6,7 +6,7 @@ class SelectEightSongViewController: UIViewController {
     var appendedSongCount: Int = 0
     var selectedSongCount: Int = 0 {
         didSet(newValue) {
-            self.selectedCount.text = "\(newValue)/8 曲"
+            self.selectedCount.text = "\(newValue+1)/8 曲"
         }
     }
 
@@ -15,11 +15,13 @@ class SelectEightSongViewController: UIViewController {
     @IBOutlet weak var selectSongTableView: UITableView!
     @IBOutlet weak var selectedCount: UILabel!
     @IBOutlet weak var selectedCollection: UICollectionView!
+    @IBOutlet weak var selectedSongsView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //謎のずれる現象の対策
         self.automaticallyAdjustsScrollViewInsets = false;
+        selectedSongsView.backgroundColor = UIColor.colorFromRGB(ConstantShare.selectedSongAreaColorString, alpha: 1)
         
         appendedSongCount = manager.appendedSongCount()
         self.selectSongTableView.delegate = self
