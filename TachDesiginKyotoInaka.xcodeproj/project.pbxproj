@@ -21,8 +21,8 @@
 		1EC692181BA2F1FE00621D53 /* art.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1EC692171BA2F1FE00621D53 /* art.jpg */; };
 		1ECAA04E1BA2633000F9250B /* EditOrderPlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */; };
 		1EF362AF1BA56BE00064284B /* CreatePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF362AE1BA56BE00064284B /* CreatePlaylistViewController.swift */; };
-		A413A1511BA907F800F50873 /* BlurModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413A1501BA907F800F50873 /* BlurModalViewController.swift */; };
 		A413A14D1BA8844F00F50873 /* PlaylistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413A14C1BA8844F00F50873 /* PlaylistRepository.swift */; };
+		A413A1511BA907F800F50873 /* BlurModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413A1501BA907F800F50873 /* BlurModalViewController.swift */; };
 		A42F2EF31BA7DCD40060552A /* PageControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F2EF21BA7DCD40060552A /* PageControlCell.swift */; };
 		A42F2EF71BA7DDA90060552A /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F2EF61BA7DDA90060552A /* PageControl.swift */; };
 		A4B025911BA565540056D5E2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B025901BA565540056D5E2 /* HomeViewController.swift */; };
@@ -87,8 +87,8 @@
 		1EF362AE1BA56BE00064284B /* CreatePlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePlaylistViewController.swift; sourceTree = "<group>"; };
 		58B18F1FC211CE0D810643A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		865CBE057C0A2E8E514A3FC3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A413A1501BA907F800F50873 /* BlurModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurModalViewController.swift; sourceTree = "<group>"; };
 		A413A14C1BA8844F00F50873 /* PlaylistRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistRepository.swift; sourceTree = "<group>"; };
+		A413A1501BA907F800F50873 /* BlurModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurModalViewController.swift; sourceTree = "<group>"; };
 		A42F2EF21BA7DCD40060552A /* PageControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlCell.swift; sourceTree = "<group>"; };
 		A42F2EF61BA7DDA90060552A /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		A4B025901BA565540056D5E2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +162,7 @@
 		1EC692101BA2DB7500621D53 /* EditOrderSongPage */ = {
 			isa = PBXGroup;
 			children = (
+				1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */,
 				1EC692111BA2DBAC00621D53 /* EditOrderSongTableViewCell.swift */,
 				1EC692121BA2DBAC00621D53 /* EditOrderSongTableViewCell.xib */,
 			);
@@ -284,7 +285,6 @@
 				A4BC227E1BA2EF0900B588C9 /* PlaylistDetailSongCell.swift */,
 				1E8FAB361BA548D900026055 /* SelectSongTableViewSectionCell.swift */,
 				1E8FAB371BA548D900026055 /* SelectSongTableViewSectionCell.xib */,
-				1ECAA04D1BA2633000F9250B /* EditOrderPlayListViewController.swift */,
 				B4BCD1771BA2C76600DD82F5 /* PlayerViewController.swift */,
 				1EF362AE1BA56BE00064284B /* CreatePlaylistViewController.swift */,
 				A413A1501BA907F800F50873 /* BlurModalViewController.swift */,
