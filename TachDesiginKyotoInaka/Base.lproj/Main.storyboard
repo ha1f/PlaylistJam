@@ -704,14 +704,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="498-GB-ptd">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="2Ks-qv-Ntr" kind="show" id="enU-d2-gLP"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="exitButton" destination="sqS-o8-sWK" id="5QW-xn-xux"/>
+                        <outlet property="nextButton" destination="498-GB-ptd" id="3Ed-61-LHZ"/>
+                        <segue destination="2Ks-qv-Ntr" kind="show" identifier="toReduceEight" id="0ag-je-cKo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

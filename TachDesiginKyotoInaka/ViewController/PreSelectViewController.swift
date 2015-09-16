@@ -26,6 +26,8 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
     var pageControl: PageControl!
     var subPageControl: PageControl!
+    
+    @IBOutlet weak var nextButton: UIBarButtonItem!
 
     var loadingView: UIActivityIndicatorView = UIActivityIndicatorView()
 
@@ -54,6 +56,9 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         self.loadingView.startAnimating()
         self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
         self.view.addSubview(self.loadingView)
+        
+        nextButton.target = self
+        nextButton.action = "toReduceEight:"
 
         samplePlaylistRepository.fetchSongsWithTerm( "Alexandros", completion: { (playlists, songs) in
             self.historyPlaylistRepository.fetchSongsWithTerm("きゃりーぱみゅぱみゅ", completion: { (playlists, songs) in
@@ -96,11 +101,6 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
         self.trasitionStyle = UIPageViewControllerTransitionStyle.Scroll
         self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
-
-        var button: UIButton! = UIButton(frame: CGRectMake(0, 0, 200, 50))
-        button.setTitle("button", forState: UIControlState.Normal)
-        button.addTarget(self, action: "reduceEight:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(button)
 
         exitButton.target = self
         exitButton.action = "exitButtonClicked:"
@@ -178,8 +178,8 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         }
     }
 
-    func reduceEight(sender: UIButton!) {
-        self.performSegueWithIdentifier("reduceEight", sender: nil)
+    func toReduceEight(sender: AnyObject?) {
+        self.performSegueWithIdentifier("toReduceEight", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {
