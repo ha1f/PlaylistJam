@@ -12,7 +12,7 @@ protocol ModalViewControllerDelegate{
     func modalDidFinished(nextSegue: String)
 }
 
-class CreatePlaylistViewController: UIViewController {
+class CreatePlaylistViewController: BlurModalViewController {
     
     @IBOutlet weak var publicButton: UIButton!
     @IBOutlet weak var privateButton: UIButton!
@@ -56,23 +56,6 @@ class CreatePlaylistViewController: UIViewController {
         cancelButton.layer.borderWidth = 1
         cancelButton.layer.borderColor = colorFromRGB("FFFFFF", alpha: 1).CGColor
         
-        
-        
-        // blur effect view作る styleはdark
-        let blurEffect = UIBlurEffect(style:.Dark)
-        let visualEffectView = UIVisualEffectView(effect:blurEffect)
-        visualEffectView.frame = self.view.frame;
-        
-        // blur効果をかけたいviewを作成
-        let view = UIView(frame:self.view.frame);
-        
-        // blur効果viewのcontentViewにblur効果かけたいviewを追加
-        visualEffectView.contentView.addSubview(view)
-        
-        // 表示〜
-        self.view.addSubview(visualEffectView);
-        self.view.bringSubviewToFront(visualEffectView);
-        //self.addVirtualEffectView(effect)
         var back: UIImageView = UIImageView()
         var image: UIImage = UIImage(named: "art.jpg")!
         back.image = image
@@ -94,25 +77,9 @@ class CreatePlaylistViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
-    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         //self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    /*
-    エフェクトを適用する.
-    */
-    func addVirtualEffectView(effect : UIBlurEffect!){
-        
-        // Blurエフェクトを適用するEffectViewを作成.
-        var blurView = UIVisualEffectView(effect: effect)
-        blurView.frame = CGRectMake(0, 0, 200, 400)
-        blurView.layer.position = CGPointMake(20, 40)
-        blurView.layer.masksToBounds = true
-        blurView.layer.cornerRadius = 20.0
-        self.view.addSubview(blurView)
     }
 
     func colorFromRGB(rgb: String, alpha: CGFloat) -> UIColor {

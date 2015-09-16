@@ -70,7 +70,7 @@
         <!--Playlist Detail View Controller-->
         <scene sceneID="5VY-7n-8oT">
             <objects>
-                <viewController storyboardIdentifier="PlaylistDetailViewController" id="SXs-QT-fsR" customClass="PlaylistDetailViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaylistDetailViewController" modalPresentationStyle="overCurrentContext" id="SXs-QT-fsR" customClass="PlaylistDetailViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qZx-ir-4cJ"/>
                         <viewControllerLayoutGuide type="bottom" id="3PA-gs-mNg"/>
@@ -167,7 +167,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="3my-mE-y4k"/>

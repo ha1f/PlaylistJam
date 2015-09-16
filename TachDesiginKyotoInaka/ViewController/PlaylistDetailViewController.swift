@@ -1,6 +1,6 @@
 import UIKit
 
-class PlaylistDetailViewController: UIViewController {
+class PlaylistDetailViewController: BlurModalViewController {
     @IBOutlet var songTableView: UITableView!
     @IBOutlet weak var mainArtwork: UIImageView!
     @IBOutlet weak var subArtwork1: UIImageView!
@@ -23,10 +23,11 @@ class PlaylistDetailViewController: UIViewController {
         //tableViewの作成、delegate,dataSourceを設定
         self.songTableView.delegate = self
         self.songTableView.dataSource = self
-
+        
         self.songTableView.backgroundColor = UIColor.clearColor()
-
         self.songTableView.separatorColor = UIColor.blackColor()
+        
+        self.view.backgroundColor = UIColor.clearColor()
 
         self.songTableView.tableFooterView = UIView()
         setupArtwork()
@@ -50,7 +51,7 @@ class PlaylistDetailViewController: UIViewController {
 
         if songs.count > 2 {
             if let url = NSURL(string: songs[2].artworkUrl) {
-                self.subArtwork1.sd_setImageWithURL(url)
+                self.subArtwork2.sd_setImageWithURL(url)
             }
         }
     }
