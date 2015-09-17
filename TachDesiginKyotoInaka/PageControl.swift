@@ -41,7 +41,7 @@ class PageControl: UIView {
     func setFontSize(size: CGFloat, isBold: Bool) {
         self.fontsize = size
         for pageCell in self.pageCells {
-            pageCell.setFontSize(size, isBold: isBold)
+            pageCell.setFontSize(size, isBold: isBold, barMode: self.barMode)
         }
     }
     
@@ -162,8 +162,8 @@ class PageControl: UIView {
     func moveEmphasis(oldPage: Int, newPage: Int) {
         if self.pageCells.count > 0 {
             if let size = self.fontsize {
-                self.pageCells[oldPage].setFontSize(size, isBold: false)
-                self.pageCells[newPage].setFontSize(size, isBold: true)
+                self.pageCells[oldPage].setFontSize(size, isBold: false, barMode: self.barMode)
+                self.pageCells[newPage].setFontSize(size, isBold: true, barMode: self.barMode)
             }
         }
         if self.barMode == "bar" {
