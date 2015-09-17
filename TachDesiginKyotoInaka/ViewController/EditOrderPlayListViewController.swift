@@ -11,6 +11,8 @@ class EditOrderSongViewController: UIViewController {
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var descField: UITextView!
     
+    @IBOutlet weak var lineView: UIView!
+    
     let manager = SongsManager.manager
     var selectedSongCount = 0
     var selectMoodModalViewController: SelectMoodModalViewController!
@@ -102,6 +104,7 @@ class EditOrderSongViewController: UIViewController {
         descField.layer.borderWidth = 1
         descField.layer.cornerRadius = 3
         
+        lineView.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
         moodBtn.backgroundColor = UIColor.colorFromRGB(ConstantShare.buttonColorString, alpha: 1)
         titleField.backgroundColor = UIColor.colorFromRGB(ConstantShare.buttonColorString, alpha: 1)
         descField.backgroundColor = UIColor.colorFromRGB(ConstantShare.buttonColorString, alpha: 1)
@@ -114,6 +117,7 @@ class EditOrderSongViewController: UIViewController {
         self.view.backgroundColor = UIColor.colorFromRGB(ConstantShare.backColorString, alpha: 1)
         self.songListTableView.separatorColor = UIColor.colorFromRGB(ConstantShare.tableSeparaterColorString, alpha: 1)
         self.songListTableView.backgroundColor = UIColor.clearColor()
+        
         self.songListTableView.tableFooterView = UIView(frame: CGRectMake(0, 0, 0, 0))
         placeholderLabel.hidden = false
     }
@@ -145,6 +149,7 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
         let song = manager.findFormSelectedSongInfo(indexPath.row).song
         cell.setSong(song)
         cell.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
+        cell.selectionStyle = UITableViewCellSelectionStyle.None;
         return cell
     }
     
