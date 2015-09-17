@@ -115,7 +115,7 @@ class PageControl: UIView {
                 self.bar.layer.position = pointIndex(0)
             }
         } else if self.barMode == "triangle" {
-            self.bottomOffset = 10
+            self.bottomOffset = 8
             if self.bar == nil {
                 self.barHeight = 6
                 self.bar = UIImageView(frame: CGRectMake(0, 0, width, barHeight))

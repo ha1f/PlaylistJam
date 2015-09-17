@@ -8,10 +8,10 @@ class PlaylistDetailViewController: BlurModalViewController {
     @IBOutlet weak var playerImage: UIImageView!
     @IBOutlet weak var playlistName: UILabel!
 
-
     var songList: [Song] = []
     var playlist: Playlist?
     let player: PlayerManager = PlayerManager.instance
+    var lastPlayedId = -1
 
     let pauseButtonImage = UIImage(named: "PauseButton")
     let playButtonImage = UIImage(named: "playlistPLayButton")
@@ -73,6 +73,26 @@ class PlaylistDetailViewController: BlurModalViewController {
         }
     }
 
+    override func viewDidAppear(animated: Bool) {
+        if player.isPausing() {
+            self.playerImage.image = playButtonImage
+        } else {
+            self.playerImage.image = pauseButtonImage
+        }
+    }
+
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+//    }
+
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if player.isPausing() {
+            return true
+        } else {
+            return false
+        }
+    }
+
     @IBAction func close(sender: AnyObject?) {
         self.dismissViewControllerAnimated(true, completion: nil)
         player.pause()
@@ -90,8 +110,19 @@ class PlaylistDetailViewController: BlurModalViewController {
 extension PlaylistDetailViewController: UITableViewDataSource, UITableViewDelegate{
     //選択された時
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        player.playById(indexPath.row)
+
         playerImage.image = pauseButtonImage
+
+        if player.isPausing() {
+            player.playById(indexPath.row)
+        } else {
+            if lastPlayedId == indexPath.row {
+                self.performSegueWithIdentifier("playerViewPage", sender: nil)
+            } else {
+                player.playById(indexPath.row)
+            }
+        }
+        lastPlayedId = indexPath.row
         println("selected: \(indexPath.row)")
     }
 

@@ -18,6 +18,7 @@ class PlaylistCell:UICollectionViewCell {
     let unCheckedButtonImage = UIImage(named: "checkedSongButton")
     let defaultArtwork = UIImage(named: "defaultArtwork")
 
+    @IBOutlet weak var checkImage: UIImageView!
     func setup(playlist: Playlist) {
         self.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1.0)
         setPlaylist(playlist)
@@ -45,7 +46,7 @@ class PlaylistCell:UICollectionViewCell {
 
     func select(){
         self.topProtocol!.onTapForAdd(self.index!)
-        self.addButton.setBackgroundImage(self.unCheckedButtonImage, forState: .Normal)
+        checkImage.image = self.unCheckedButtonImage
         self.titleLabel.textColor = UIColor.lightGrayColor()
         self.descLabel.textColor = UIColor.lightGrayColor()
         isSelect = true
@@ -53,7 +54,7 @@ class PlaylistCell:UICollectionViewCell {
 
     func deSelect(){
         self.topProtocol!.onTapForDel(self.index!)
-        self.addButton.setBackgroundImage(self.checkedButtonImage, forState: .Normal)
+        checkImage.image = self.checkedButtonImage
         self.titleLabel.textColor = UIColor.whiteColor()
         self.descLabel.textColor = UIColor.whiteColor()
         isSelect = false

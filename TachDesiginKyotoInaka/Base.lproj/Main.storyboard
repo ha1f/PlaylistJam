@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zHs-Em-FcI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zHs-Em-FcI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -244,6 +244,7 @@
                         <outlet property="songTableView" destination="2BZ-9u-WM9" id="HhB-9V-RZj"/>
                         <outlet property="subArtwork1" destination="cUq-qU-P8k" id="PNB-az-wtj"/>
                         <outlet property="subArtwork2" destination="43L-na-JCZ" id="gLr-as-03Y"/>
+                        <segue destination="2uu-fm-wl5" kind="presentation" identifier="playerViewPage" id="Bvy-Zc-CuM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDA-l0-t3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -326,27 +327,16 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="7" y="122" width="99" height="21"/>
+                                                        <rect key="frame" x="7" y="122" width="117" height="21"/>
                                                     </variation>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KX6-dk-bb0">
-                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <state key="normal">
-                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="114" y="118" width="56" height="56"/>
-                                                    </variation>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYy-W7-Tfx">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="8" y="144" width="108" height="26"/>
+                                                        <rect key="frame" x="8" y="144" width="116" height="26"/>
                                                     </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-fr-Z8b">
@@ -367,25 +357,45 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="116" height="115"/>
                                                     </variation>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zmK-It-ixu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="134" y="133" width="30" height="30"/>
+                                                    </variation>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KX6-dk-bb0">
+                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="117" y="119" width="56" height="56"/>
+                                                    </variation>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <variation key="default">
                                             <mask key="subviews">
-                                                <exclude reference="KX6-dk-bb0"/>
                                                 <exclude reference="QYy-W7-Tfx"/>
+                                                <exclude reference="zmK-It-ixu"/>
+                                                <exclude reference="KX6-dk-bb0"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="subviews">
-                                                <include reference="KX6-dk-bb0"/>
                                                 <include reference="QYy-W7-Tfx"/>
+                                                <include reference="zmK-It-ixu"/>
+                                                <include reference="KX6-dk-bb0"/>
                                             </mask>
                                         </variation>
                                         <connections>
                                             <outlet property="addButton" destination="KX6-dk-bb0" id="b2h-pm-87N"/>
                                             <outlet property="artwork" destination="n2Z-We-EkI" id="Bqs-xn-ysp"/>
+                                            <outlet property="checkImage" destination="zmK-It-ixu" id="rYY-Q3-oq0"/>
                                             <outlet property="descLabel" destination="QYy-W7-Tfx" id="jL1-jf-trg"/>
                                             <outlet property="samllArtwork1" destination="g0h-Et-zrK" id="hvs-Jb-BBI"/>
                                             <outlet property="samllArtwork2" destination="yNT-fr-Z8b" id="w4B-76-LYM"/>
@@ -1267,14 +1277,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWv-f1-t7m">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Dw-8v-eGw">
                                 <rect key="frame" x="83" y="509" width="39" height="39"/>
                                 <state key="normal" image="PrevSongButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="75" y="563" width="47" height="54"/>
+                                </variation>
                                 <connections>
                                     <action selector="touchUpPrevButton:" destination="2uu-fm-wl5" eventType="touchUpInside" id="zt0-SH-k0r"/>
                                 </connections>
@@ -1284,6 +1294,9 @@
                                 <state key="normal" image="NextSongButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="250" y="563" width="48" height="54"/>
+                                </variation>
                                 <connections>
                                     <action selector="touchUpNextButton:" destination="2uu-fm-wl5" eventType="touchUpInside" id="yTl-9c-N4h"/>
                                 </connections>
@@ -1291,34 +1304,46 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyh-6O-yg4">
                                 <rect key="frame" x="326" y="377" width="49" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="327" y="442" width="49" height="21"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoa-pB-Gms">
                                 <rect key="frame" x="0.0" y="377" width="56" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="-1" y="442" width="56" height="21"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sG-tm-CfT">
                                 <rect key="frame" x="0.0" y="411" width="375" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="-1" y="475" width="375" height="21"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSn-zj-V82">
                                 <rect key="frame" x="0.0" y="448" width="375" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="504" width="375" height="21"/>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNw-YD-SMR">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button" image="playButton">
+                                <state key="normal" image="playButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="130" y="477" width="112" height="114"/>
+                                    <rect key="frame" x="130" y="533" width="112" height="114"/>
                                 </variation>
                                 <connections>
                                     <action selector="touchUpPlayBotton:" destination="2uu-fm-wl5" eventType="touchUpInside" id="Awv-xT-z3W"/>
@@ -1326,25 +1351,54 @@
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hyl-Ty-pD8">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-2" y="367" width="380" height="31"/>
+                                    <rect key="frame" x="-4" y="416" width="380" height="31"/>
                                 </variation>
                                 <connections>
                                     <action selector="changePlayingTime:" destination="2uu-fm-wl5" eventType="valueChanged" id="q0s-SM-3oc"/>
                                 </connections>
                             </slider>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wz5-ei-tYw">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="165" y="7" width="46" height="37"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkw-NJ-30N">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                </variation>
+                                <connections>
+                                    <action selector="closeModal:" destination="2uu-fm-wl5" eventType="touchUpInside" id="WOA-YM-j1D"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWv-f1-t7m">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="1" y="47" width="375" height="375"/>
+                                </variation>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="ZNw-YD-SMR"/>
                                 <exclude reference="Hyl-Ty-pD8"/>
+                                <exclude reference="Wz5-ei-tYw"/>
+                                <exclude reference="nkw-NJ-30N"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="ZNw-YD-SMR"/>
                                 <include reference="Hyl-Ty-pD8"/>
+                                <include reference="Wz5-ei-tYw"/>
+                                <include reference="nkw-NJ-30N"/>
                             </mask>
                         </variation>
                     </view>
@@ -1352,6 +1406,7 @@
                     <connections>
                         <outlet property="artistLabel" destination="MSn-zj-V82" id="lUf-GJ-5wb"/>
                         <outlet property="artwork" destination="FWv-f1-t7m" id="Fts-Sl-uDF"/>
+                        <outlet property="close" destination="Wz5-ei-tYw" id="d9z-ZD-3uQ"/>
                         <outlet property="playButton" destination="ZNw-YD-SMR" id="BN1-9V-7xs"/>
                         <outlet property="playTimeLabel" destination="Iyh-6O-yg4" id="2BX-Fr-WCh"/>
                         <outlet property="playingTimeLabel" destination="zoa-pB-Gms" id="Qgz-9D-lSS"/>
@@ -1361,7 +1416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDq-6q-drS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="381.75" y="1444.125"/>
+            <point key="canvasLocation" x="1917.75" y="-853.875"/>
         </scene>
     </scenes>
     <resources>
@@ -1378,6 +1433,6 @@
         <image name="viewCount" width="24" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zX0-OE-dHl"/>
+        <segue reference="4D6-R0-dcJ"/>
     </inferredMetricsTieBreakers>
 </document>

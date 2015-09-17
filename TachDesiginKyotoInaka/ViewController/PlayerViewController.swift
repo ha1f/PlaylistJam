@@ -2,7 +2,7 @@ import AVFoundation
 import UIKit
 import SDWebImage
 
-class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
+class PlayerViewController: BlurModalViewController, AVAudioPlayerDelegate {
     var button: UIButton!
     let player: PlayerManager = PlayerManager.instance
     @IBOutlet weak var artwork: UIImageView!
@@ -13,23 +13,22 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var playButton: UIButton!
 
     @IBOutlet weak var playingTimeSlider: UISlider!
+    @IBOutlet weak var close: UIImageView!
 
     var playingTime : NSTimer?
-    let pauseImage = UIImage(named: "stopButton")
+    let pauseImage = UIImage(named: "PauseButton")
     let playImage = UIImage(named: "playButton")
-
+    let closeButton = UIImage(named: "allowUnder")
+    var playlist: Playlist?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.playingTimeSlider.value = 0.0
         self.playingTimeSlider.setThumbImage(UIImage(named: "sliderThum"),forState: .Normal)
+        self.view.backgroundColor = UIColor.colorFromRGB("000000", alpha: 0.0)
 
-        setupPlayer {
-            self.player.listen(self)
-            self.setupViewObject()
-            self.play()
-        }
+        self.player.listen(self)
+        self.setupViewObject()
     }
 
     @IBAction func changePlayingTime(sender: AnyObject) {
@@ -38,9 +37,9 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
 
     @IBAction func touchUpPlayBotton(sender: AnyObject) {
         if player.isPausing() {
-            pause()
-        } else {
             play()
+        } else {
+            pause()
         }
     }
 
@@ -52,6 +51,11 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     @IBAction func touchUpPrevButton(sender: AnyObject) {
         player.playPrevSong()
         setSongInfo()
+    }
+
+    @IBAction func closeModal(sender: AnyObject) {
+        self.player.stopListen()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     private func setPlayingTimeListener() {
@@ -71,16 +75,9 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     }
 
     func updatePlayingState() {
-        if self.player.isPausing() {
+        if !self.player.isPausing() {
             playingTimeLabel.text = player.playingTime()
             self.playingTimeSlider.value = self.player.progress()
-        }
-    }
-
-    private func setupPlayer(completion: (Void -> Void)) {
-        ItunesApi.api.fetchSongs { (songs) in
-            self.player.setupSongs(songs)
-            completion()
         }
     }
 
@@ -98,12 +95,21 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
         self.artwork.sd_setImageWithURL(self.player.artworkUrl())
         self.titleLabel.text = self.player.title()
         self.artistLabel.text = self.player.artist()
-        playButton.setImage(pauseImage, forState: .Normal)
+
+        if player.isPausing() {
+            playButton.setImage(playImage, forState: .Normal)
+        } else {
+            playButton.setImage(pauseImage, forState: .Normal)
+        }
     }
 
     private func setupViewObject() {
+        close.image = closeButton
         self.playTimeLabel.text = self.player.playTime()
         self.setPlayingTimeListener()
-        self.setSongInfo()
+        self.artwork.sd_setImageWithURL(self.player.artworkUrl())
+        self.titleLabel.text = self.player.title()
+        self.artistLabel.text = self.player.artist()
+        playButton.setImage(pauseImage, forState: .Normal)
     }
 }

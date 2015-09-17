@@ -50,6 +50,8 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         sharedFlag.isPlaylistCreated = false
         myPlaylistRepository.loadPlaylistsFormCache { playlists in
             self.playlistCollectionView.reloadData()
+            //scrollToTop
+            self.playlistCollectionView.scrollToItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
         }
     }
 
