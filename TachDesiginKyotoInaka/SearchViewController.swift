@@ -31,6 +31,7 @@ class SearchViewController: PageCellViewController, UISearchBarDelegate {
         searchBar.delegate = self
         searchBar.backgroundColor = UIColor.clearColor()
         searchBar.barStyle = UIBarStyle.Black
+        
     }
     
     func tapped(sender: AnyObject?) {
