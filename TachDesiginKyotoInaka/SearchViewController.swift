@@ -33,6 +33,11 @@ class SearchViewController: PageCellViewController, UISearchBarDelegate {
         searchBar.barStyle = UIBarStyle.Black
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        resignFirstResponderIfNeeded()
+    }
+    
     func tapped(sender: AnyObject?) {
         resignFirstResponderIfNeeded()
     }
