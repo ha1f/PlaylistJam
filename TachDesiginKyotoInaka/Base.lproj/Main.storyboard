@@ -745,7 +745,7 @@
             </objects>
             <point key="canvasLocation" x="-762.75" y="604.125"/>
         </scene>
-        <!--PreSelect-->
+        <!--候補曲を選択（1 / 3）-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="PreSelectViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
@@ -758,7 +758,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="PreSelect" id="ZtU-K3-TWH">
+                    <navigationItem key="navigationItem" title="候補曲を選択（1 / 3）" id="ZtU-K3-TWH">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="sqS-o8-sWK">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -777,7 +777,7 @@
             </objects>
             <point key="canvasLocation" x="-80.25" y="604.125"/>
         </scene>
-        <!--プレイリスト曲の選抜-->
+        <!--プレイリスト曲の選択 （2 / 3）-->
         <scene sceneID="7nZ-Mt-f5D">
             <objects>
                 <viewController id="2Ks-qv-Ntr" customClass="SelectEightSongViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
@@ -883,7 +883,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="プレイリスト曲の選抜" id="IJf-3Y-wOI">
+                    <navigationItem key="navigationItem" title="プレイリスト曲の選択 （2 / 3）" id="IJf-3Y-wOI">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="rLG-rG-E34">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -903,7 +903,7 @@
             </objects>
             <point key="canvasLocation" x="593.25" y="604.125"/>
         </scene>
-        <!--プレイリストの詳細設定-->
+        <!--プレイリスト詳細設定（3 /3）-->
         <scene sceneID="vM5-v9-IG4">
             <objects>
                 <viewController id="9Ag-B2-HGh" customClass="EditOrderSongViewController" customModule="TachDesiginKyotoInaka" customModuleProvider="target" sceneMemberID="viewController">
@@ -1017,7 +1017,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="プレイリストの詳細設定" id="5Sd-Bq-qqb">
+                    <navigationItem key="navigationItem" title="プレイリスト詳細設定（3 /3）" id="5Sd-Bq-qqb">
                         <barButtonItem key="rightBarButtonItem" title="完了" id="n18-dX-gcn">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
