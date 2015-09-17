@@ -2,7 +2,7 @@ import AVFoundation
 import UIKit
 import SDWebImage
 
-class PlayerViewController: BlurModalViewController, AVAudioPlayerDelegate {
+class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     var button: UIButton!
     let player: PlayerManager = PlayerManager.instance
     @IBOutlet weak var artwork: UIImageView!
@@ -25,13 +25,15 @@ class PlayerViewController: BlurModalViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         self.playingTimeSlider.value = 0.0
         self.playingTimeSlider.setThumbImage(UIImage(named: "sliderThum"),forState: .Normal)
-        self.view.backgroundColor = UIColor.colorFromRGB("000000", alpha: 0.0)
+//        self.view.backgroundColor = UIColor.colorFromRGB("000000", alpha: 1.0)
+        self.view.backgroundColor = UIColor.blackColor()
 
         self.player.listen(self)
         self.setupViewObject()
     }
 
     @IBAction func changePlayingTime(sender: AnyObject) {
+        playingTimeLabel.text = player.playingTime()
         player.seekTo(self.playingTimeSlider.value)
     }
 
@@ -93,6 +95,7 @@ class PlayerViewController: BlurModalViewController, AVAudioPlayerDelegate {
 
     private func setSongInfo() {
         self.artwork.sd_setImageWithURL(self.player.artworkUrl())
+        self.artwork.backgroundColor = UIColor.whiteColor()
         self.titleLabel.text = self.player.title()
         self.artistLabel.text = self.player.artist()
 
