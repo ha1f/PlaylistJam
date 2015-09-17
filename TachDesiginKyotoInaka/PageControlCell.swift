@@ -9,19 +9,19 @@
 import UIKit
 
 class PageControlCell: UIButton {
-    func setFontSize(size: CGFloat, isBold: Bool, barMode:String) {
+    func setFontSize(size: CGFloat, isBold: Bool, barMode: PageControl.SelectedViewType) {
         if isBold {
             self.titleLabel?.textColor = UIColor.blackColor()
-            if(barMode == "bar"){
+            if(barMode == PageControl.SelectedViewType.bar){
                 self.titleLabel?.font = UIFont(name: "MyriadPro-Semibold", size: size)
-            }else if(barMode == "triangle"){
+            }else if(barMode == PageControl.SelectedViewType.triangle){
                 self.titleLabel?.font = UIFont(name: "mplus-1m-bold", size: size)
             }
         } else {
             self.titleLabel?.textColor = UIColor.colorFromRGB(ConstantShare.unActiveTextColorString, alpha: 1)
-            if(barMode == "bar"){
+            if(barMode == PageControl.SelectedViewType.bar){
                 self.titleLabel?.font = UIFont(name: "MyriadPro-Regular", size: size)
-            }else if(barMode == "triangle"){
+            }else if(barMode == PageControl.SelectedViewType.triangle){
                 self.titleLabel?.font = UIFont(name: "mplus-1c-light", size: size)
             }
         }

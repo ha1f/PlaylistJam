@@ -24,24 +24,29 @@ class PageControl: UIView {
     private var barHeight: CGFloat = 3
     private var bottomOffset: CGFloat = 0
     
-    var barMode: String = ""
-    
     var fontsize: CGFloat! = nil
+    
+    var selectedViewType = PageControl.SelectedViewType.bar
+    
+    enum SelectedViewType {
+        case triangle
+        case bar
+    }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, mode: String) {
+    init(frame: CGRect, mode: PageControl.SelectedViewType) {
         super.init(frame: frame)
+        self.selectedViewType = mode
         self.currentPage = 0
-        self.barMode = mode
     }
     
     func setFontSize(size: CGFloat, isBold: Bool) {
         self.fontsize = size
         for pageCell in self.pageCells {
-            pageCell.setFontSize(size, isBold: isBold, barMode: self.barMode)
+            pageCell.setFontSize(size, isBold: isBold, barMode: self.selectedViewType)
         }
     }
     
@@ -98,7 +103,7 @@ class PageControl: UIView {
     
     func updateBar() {
         let width = self.frame.width / CGFloat(self.pageCells.count)
-        if self.barMode == "bar" {
+        if self.selectedViewType == SelectedViewType.bar {
             self.barHeight = 3
             self.bottomOffset = 0
             if self.bar == nil {
@@ -114,7 +119,7 @@ class PageControl: UIView {
                 self.bar.frame = CGRectMake(0, 0, width, barHeight)
                 self.bar.layer.position = pointIndex(0)
             }
-        } else if self.barMode == "triangle" {
+        } else if self.selectedViewType == SelectedViewType.triangle {
             self.bottomOffset = 8
             if self.bar == nil {
                 self.barHeight = 6
@@ -162,18 +167,18 @@ class PageControl: UIView {
     func moveEmphasis(oldPage: Int, newPage: Int) {
         if self.pageCells.count > 0 {
             if let size = self.fontsize {
-                self.pageCells[oldPage].setFontSize(size, isBold: false, barMode: self.barMode)
-                self.pageCells[newPage].setFontSize(size, isBold: true, barMode: self.barMode)
+                self.pageCells[oldPage].setFontSize(size, isBold: false, barMode: self.selectedViewType)
+                self.pageCells[newPage].setFontSize(size, isBold: true, barMode: self.selectedViewType)
             }
         }
-        if self.barMode == "bar" {
+        if self.selectedViewType == SelectedViewType.bar {
             if self.bar == nil {
                 updateBar()
             }
             UIView.animateWithDuration(0.1, animations: { () -> Void in
                     self.bar.layer.position = self.pointIndex(newPage)
             })
-        } else if self.barMode == "triangle" {
+        } else if self.selectedViewType == SelectedViewType.triangle {
             if self.bar == nil {
                 updateBar()
             }

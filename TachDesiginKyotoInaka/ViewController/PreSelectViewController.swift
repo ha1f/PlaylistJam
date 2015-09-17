@@ -81,7 +81,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                 self.createView()
 
                 //TODO navigationBarの高さを取得する
-                self.pageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight, self.view.frame.width, PreSelectViewController.tabHeight), mode: "bar")
+                self.pageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight, self.view.frame.width, PreSelectViewController.tabHeight), mode: PageControl.SelectedViewType.bar)
                 self.pageControl.setPages(["Favorite", "History", "My Playlists", "Search"])
                 self.pageControl.setIdentity(0)
                 self.pageControl.delegate = self
@@ -89,7 +89,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                 self.pageControl.backgroundColor = UIColor.colorFromRGB(ConstantShare.tabColorString, alpha: 1.0)
                 self.view.addSubview(self.pageControl)
 
-                self.subPageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.subTabHeight), mode: "triangle")
+                self.subPageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.subTabHeight), mode: PageControl.SelectedViewType.triangle)
                 self.subPageControl.setPages(["Playlists", "Tracks"])
                 self.subPageControl.setFontSize(13, isBold: false)
                 self.subPageControl.setIdentity(1)
