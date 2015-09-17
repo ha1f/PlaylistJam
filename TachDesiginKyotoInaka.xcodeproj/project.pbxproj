@@ -32,6 +32,7 @@
 		A413A1551BA99B1200F50873 /* sharedFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413A1541BA99B1200F50873 /* sharedFlag.swift */; };
 		A42F2EF31BA7DCD40060552A /* PageControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F2EF21BA7DCD40060552A /* PageControlCell.swift */; };
 		A42F2EF71BA7DDA90060552A /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F2EF61BA7DDA90060552A /* PageControl.swift */; };
+		A45EC8D41BAA5DE90018AC01 /* splush.png in Resources */ = {isa = PBXBuildFile; fileRef = A45EC8D31BAA5DE90018AC01 /* splush.png */; };
 		A4B025911BA565540056D5E2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B025901BA565540056D5E2 /* HomeViewController.swift */; };
 		A4B20C551BA1926E00BA531F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C541BA1926E00BA531F /* AppDelegate.swift */; };
 		A4B20C5A1BA1926E00BA531F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B20C581BA1926E00BA531F /* Main.storyboard */; };
@@ -105,6 +106,7 @@
 		A413A1541BA99B1200F50873 /* sharedFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sharedFlag.swift; sourceTree = "<group>"; };
 		A42F2EF21BA7DCD40060552A /* PageControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlCell.swift; sourceTree = "<group>"; };
 		A42F2EF61BA7DDA90060552A /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		A45EC8D31BAA5DE90018AC01 /* splush.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splush.png; sourceTree = "<group>"; };
 		A4B025901BA565540056D5E2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A4B20C4F1BA1926E00BA531F /* TachDesiginKyotoInaka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TachDesiginKyotoInaka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4B20C531BA1926E00BA531F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				1E8FAB281BA5306D00026055 /* ConstantShare.swift */,
 				A4ECA6641BA6DD4000784B0A /* CreatePlaylistNavigationController.swift */,
 				A413A1541BA99B1200F50873 /* sharedFlag.swift */,
+				A45EC8D31BAA5DE90018AC01 /* splush.png */,
 			);
 			path = TachDesiginKyotoInaka;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				1EFD21461BA9BAD500F5C6EB /* MYRIADPRO-SEMIBOLD.OTF in Resources */,
 				1E8FAB391BA548D900026055 /* SelectSongTableViewSectionCell.xib in Resources */,
 				A4B20C5A1BA1926E00BA531F /* Main.storyboard in Resources */,
+				A45EC8D41BAA5DE90018AC01 /* splush.png in Resources */,
 				A4B20C5F1BA1926E00BA531F /* LaunchScreen.xib in Resources */,
 				1E8FAB2F1BA5425500026055 /* SelectSongTableViewCell.xib in Resources */,
 				A4B20C5C1BA1926E00BA531F /* Images.xcassets in Resources */,
