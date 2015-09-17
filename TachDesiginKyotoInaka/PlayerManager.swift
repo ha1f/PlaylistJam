@@ -102,6 +102,10 @@ class PlayerManager: NSObject {
         self.listener = li
     }
 
+    func stopListen() {
+        self.listener = nil
+    }
+
     private func selectNextSong() {
         if(i < (songCount - 1)) {
             i += 1
