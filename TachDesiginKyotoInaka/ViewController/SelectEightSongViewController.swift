@@ -29,11 +29,11 @@ class SelectEightSongViewController: UIViewController {
         //謎のずれる現象の対策
         self.automaticallyAdjustsScrollViewInsets = false;
         selectedSongsView.backgroundColor = UIColor.colorFromRGB(ConstantShare.selectedSongAreaColorString, alpha: 1)
-        
+
         appendedSongCount = manager.appendedSongCount()
         self.selectSongTableView.delegate = self
         self.selectSongTableView.dataSource = self
-        self.selectedCount.text = "\(selectedSongCount)/8 曲"
+        self.selectedCount.text = "\(selectedSongCount)/8"
         selectSongTableView.backgroundColor = UIColor.clearColor()
         selectSongTableView.tableFooterView = UIView()
 
@@ -47,8 +47,8 @@ class SelectEightSongViewController: UIViewController {
         selectedCollection.draggable = true
 
         selectSongTableView.reloadData()
-        
-        
+
+
     }
 
     override func loadView() {
@@ -87,16 +87,16 @@ class SelectEightSongViewController: UIViewController {
         }
         self.selectedSongCount = manager.selectedSongCount()
         self.selectedCollection.reloadData()
-        
+
     }
-    
+
     func scrollToNewer(){
         var areaSize: CGSize = selectedCollection.frame.size
-        
+
         var point = CGPointMake( selectedCollection.contentSize.width - selectedCollection.frame.size.width+90,0)
-        
+
         selectedCollection.setContentOffset(point, animated: true)
-        
+
     }
 }
 
@@ -122,7 +122,7 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
         cell.selectionStyle = UITableViewCellSelectionStyle.None;
         return cell
     }
-    
+
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.colorFromRGB(ConstantShare.tableCelBackColorString, alpha: 1)
     }
@@ -137,7 +137,7 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
             return 60//tableView.estimatedRowHeight
         }
     }
-    
+
     //セルが選択された時
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("didselect!!!!!!")
