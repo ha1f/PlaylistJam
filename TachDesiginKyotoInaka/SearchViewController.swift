@@ -31,6 +31,7 @@ class SearchViewController: PageCellViewController, UISearchBarDelegate {
         searchBar.delegate = self
         searchBar.backgroundColor = UIColor.clearColor()
         searchBar.barStyle = UIBarStyle.Black
+        searchBar.tintColor = UIColor.whiteColor()
     }
     
     override func viewWillDisappear(animated: Bool) {
