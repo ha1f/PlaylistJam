@@ -327,7 +327,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="7" y="122" width="99" height="21"/>
+                                                        <rect key="frame" x="7" y="122" width="117" height="21"/>
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYy-W7-Tfx">
@@ -336,7 +336,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="8" y="144" width="108" height="26"/>
+                                                        <rect key="frame" x="8" y="144" width="116" height="26"/>
                                                     </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-fr-Z8b">
@@ -357,6 +357,12 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="116" height="115"/>
                                                     </variation>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zmK-It-ixu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="134" y="133" width="30" height="30"/>
+                                                    </variation>
+                                                </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KX6-dk-bb0">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -375,18 +381,21 @@
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="QYy-W7-Tfx"/>
+                                                <exclude reference="zmK-It-ixu"/>
                                                 <exclude reference="KX6-dk-bb0"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="subviews">
                                                 <include reference="QYy-W7-Tfx"/>
+                                                <include reference="zmK-It-ixu"/>
                                                 <include reference="KX6-dk-bb0"/>
                                             </mask>
                                         </variation>
                                         <connections>
                                             <outlet property="addButton" destination="KX6-dk-bb0" id="b2h-pm-87N"/>
                                             <outlet property="artwork" destination="n2Z-We-EkI" id="Bqs-xn-ysp"/>
+                                            <outlet property="checkImage" destination="zmK-It-ixu" id="rYY-Q3-oq0"/>
                                             <outlet property="descLabel" destination="QYy-W7-Tfx" id="jL1-jf-trg"/>
                                             <outlet property="samllArtwork1" destination="g0h-Et-zrK" id="hvs-Jb-BBI"/>
                                             <outlet property="samllArtwork2" destination="yNT-fr-Z8b" id="w4B-76-LYM"/>
@@ -1424,6 +1433,6 @@
         <image name="viewCount" width="24" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zX0-OE-dHl"/>
+        <segue reference="4D6-R0-dcJ"/>
     </inferredMetricsTieBreakers>
 </document>
