@@ -6,6 +6,7 @@
     <customFonts key="customFonts">
         <mutableArray key="MYRIADPRO-REGULAR.OTF">
             <string>MyriadPro-Regular</string>
+            <string>MyriadPro-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -449,13 +450,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="360" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My PlayLists" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJC-6p-S8r">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Playlists" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJC-6p-S8r">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="26"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="65" y="35" width="229" height="21"/>
+                                                        <rect key="frame" x="65" y="35" width="229" height="26"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -626,6 +627,38 @@
                                     <rect key="frame" x="0.0" y="20" width="375" height="597"/>
                                 </variation>
                             </collectionView>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWs-DX-vae">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nDt-GB-tcO">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Playlists" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNf-Rw-tYi">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="112" y="19" width="150" height="32"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="mNf-Rw-tYi"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="mNf-Rw-tYi"/>
+                                        </mask>
+                                    </variation>
+                                </view>
+                                <blurEffect style="dark"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                </variation>
+                            </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANs-LJ-mmo">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -650,6 +683,7 @@
                             <mask key="subviews">
                                 <exclude reference="bDI-ec-0b0"/>
                                 <exclude reference="I8E-BK-4Tp"/>
+                                <exclude reference="QWs-DX-vae"/>
                                 <exclude reference="ANs-LJ-mmo"/>
                                 <exclude reference="SQj-4R-f84"/>
                             </mask>
@@ -658,6 +692,7 @@
                             <mask key="subviews">
                                 <include reference="bDI-ec-0b0"/>
                                 <include reference="I8E-BK-4Tp"/>
+                                <include reference="QWs-DX-vae"/>
                                 <include reference="ANs-LJ-mmo"/>
                                 <include reference="SQj-4R-f84"/>
                             </mask>
@@ -666,6 +701,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundBlur" destination="bDI-ec-0b0" id="PuV-mg-TN2"/>
+                        <outlet property="blurNavbar" destination="QWs-DX-vae" id="sTS-w8-LKn"/>
                         <outlet property="createButton" destination="ANs-LJ-mmo" id="3Vp-aU-hsQ"/>
                         <outlet property="createButtonImage" destination="SQj-4R-f84" id="nXi-ES-R7Z"/>
                         <outlet property="playlistCollectionView" destination="I8E-BK-4Tp" id="Ved-Pk-eiQ"/>
