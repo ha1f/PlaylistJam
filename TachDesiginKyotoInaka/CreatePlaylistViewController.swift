@@ -57,14 +57,6 @@ class CreatePlaylistViewController: BlurModalViewController {
         cancelButton.layer.cornerRadius = 3
         cancelButton.layer.borderColor = colorFromRGB("aaaaaa", alpha: 0.3).CGColor
         
-        var back: UIImageView = UIImageView()
-        var image: UIImage = UIImage(named: "art.jpg")!
-        back.image = image
-        
-        //self.view.addSubview(back)
-        
-        //self.view.sendSubviewToBack(back)
-        
         publicButton.addTarget(self, action: "createPublic:", forControlEvents: UIControlEvents.TouchUpInside)
         cancelButton.addTarget(self, action: "cancel:", forControlEvents: UIControlEvents.TouchUpInside)
     }

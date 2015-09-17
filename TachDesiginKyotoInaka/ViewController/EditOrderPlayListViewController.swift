@@ -66,6 +66,8 @@ class EditOrderSongViewController: UIViewController {
         var ret = ""
         if desc == "" {
             ret = join("/", map(manager.selectedSongs()) { return $0.title })
+        } else {
+            ret = desc
         }
         return ret
     }
