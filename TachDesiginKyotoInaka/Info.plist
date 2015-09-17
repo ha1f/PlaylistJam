@@ -26,6 +26,9 @@
 	<array>
 		<string>MYRIADPRO-REGULAR.OTF</string>
 		<string>MYRIADPRO-SEMIBOLD.OTF</string>
+		<string>mplus-1c-regular.ttf</string>
+		<string>mplus-1c-light.ttf</string>
+		<string>mplus-1m-bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

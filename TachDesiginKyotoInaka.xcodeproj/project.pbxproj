@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E54A52E1BAA554800A31079 /* mplus-1c-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E54A52C1BAA554800A31079 /* mplus-1c-light.ttf */; };
+		1E54A52F1BAA554800A31079 /* mplus-1c-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E54A52D1BAA554800A31079 /* mplus-1c-regular.ttf */; };
+		1E54A5311BAA57AD00A31079 /* mplus-1m-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E54A5301BAA57AD00A31079 /* mplus-1m-bold.ttf */; };
 		1E5B8C051BA68861002132E3 /* MyPlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5B8C041BA68861002132E3 /* MyPlaylistCollectionViewCell.swift */; };
 		1E5B8C091BA6B1DD002132E3 /* MyPlaylistCollectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5B8C081BA6B1DD002132E3 /* MyPlaylistCollectionHeaderCell.swift */; };
 		1E8FAB271BA52FD000026055 /* SelectMoodModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FAB261BA52FD000026055 /* SelectMoodModalViewController.swift */; };
@@ -75,6 +78,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E54A52C1BAA554800A31079 /* mplus-1c-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "mplus-1c-light.ttf"; path = "../mplus-1c-light.ttf"; sourceTree = "<group>"; };
+		1E54A52D1BAA554800A31079 /* mplus-1c-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "mplus-1c-regular.ttf"; path = "../mplus-1c-regular.ttf"; sourceTree = "<group>"; };
+		1E54A5301BAA57AD00A31079 /* mplus-1m-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "mplus-1m-bold.ttf"; path = "../mplus-1m-bold.ttf"; sourceTree = "<group>"; };
 		1E5B8C041BA68861002132E3 /* MyPlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
 		1E5B8C081BA6B1DD002132E3 /* MyPlaylistCollectionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPlaylistCollectionHeaderCell.swift; sourceTree = "<group>"; };
 		1E8FAB261BA52FD000026055 /* SelectMoodModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMoodModalViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +226,9 @@
 		A4B20C511BA1926E00BA531F /* TachDesiginKyotoInaka */ = {
 			isa = PBXGroup;
 			children = (
+				1E54A5301BAA57AD00A31079 /* mplus-1m-bold.ttf */,
+				1E54A52C1BAA554800A31079 /* mplus-1c-light.ttf */,
+				1E54A52D1BAA554800A31079 /* mplus-1c-regular.ttf */,
 				1EFD21431BA9BAD500F5C6EB /* MYRIADPRO-REGULAR.OTF */,
 				1EFD21441BA9BAD500F5C6EB /* MYRIADPRO-SEMIBOLD.OTF */,
 				1EFD21471BA9BBFF00F5C6EB /* Fonts */,
@@ -453,6 +462,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E54A5311BAA57AD00A31079 /* mplus-1m-bold.ttf in Resources */,
+				1E54A52E1BAA554800A31079 /* mplus-1c-light.ttf in Resources */,
+				1E54A52F1BAA554800A31079 /* mplus-1c-regular.ttf in Resources */,
 				1EFD21451BA9BAD500F5C6EB /* MYRIADPRO-REGULAR.OTF in Resources */,
 				1EFD21461BA9BAD500F5C6EB /* MYRIADPRO-SEMIBOLD.OTF in Resources */,
 				1E8FAB391BA548D900026055 /* SelectSongTableViewSectionCell.xib in Resources */,

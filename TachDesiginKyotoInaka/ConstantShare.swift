@@ -24,4 +24,5 @@ class ConstantShare {
     static let featureColorString = "ed524a"
     static let buttonColorString = "333333"
     static let buttonBorderColorString = "666666"
+    static let unActiveTextColorString = "cccccc"
 }
