@@ -421,6 +421,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDI-ec-0b0">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Mn4-h5-5St">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
+                                </variation>
+                            </visualEffectView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="I8E-BK-4Tp">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="deviceWhite"/>
@@ -637,6 +648,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="bDI-ec-0b0"/>
                                 <exclude reference="I8E-BK-4Tp"/>
                                 <exclude reference="ANs-LJ-mmo"/>
                                 <exclude reference="SQj-4R-f84"/>
@@ -644,6 +656,7 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
+                                <include reference="bDI-ec-0b0"/>
                                 <include reference="I8E-BK-4Tp"/>
                                 <include reference="ANs-LJ-mmo"/>
                                 <include reference="SQj-4R-f84"/>
@@ -652,6 +665,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="backgroundBlur" destination="bDI-ec-0b0" id="PuV-mg-TN2"/>
                         <outlet property="createButton" destination="ANs-LJ-mmo" id="3Vp-aU-hsQ"/>
                         <outlet property="createButtonImage" destination="SQj-4R-f84" id="nXi-ES-R7Z"/>
                         <outlet property="playlistCollectionView" destination="I8E-BK-4Tp" id="Ved-Pk-eiQ"/>

@@ -19,6 +19,8 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
     @IBOutlet weak var playlistCollectionView: UICollectionView!
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var backgroundBlur: UIVisualEffectView!
+    
     var modalView: CreatePlaylistViewController! = nil
 
     override func viewDidLoad() {
@@ -26,7 +28,7 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         
         self.playlistCollectionView.dataSource = self
         self.playlistCollectionView.delegate = self
-        let backgroundImage: UIImage = UIImage(named: "backgroundImage")!
+        let backgroundImage: UIImage = UIImage(named: "backgroundImage2")!
         let ui = UIImageView()
         ui.image = backgroundImage
         ui.frame = self.view.frame
@@ -87,6 +89,11 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
 
         view.layer.insertSublayer(gradientLayer, atIndex: 0)
     }
+    
+    func setNavOpacity(opacity: CGFloat) {
+        //blurNavbar.alpha = opacity
+        backgroundBlur.alpha = opacity
+    }
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -141,4 +148,22 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myPlaylistRepository.getPlaylists().count + 1;
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        /*var opacity: CGFloat
+        var scrollValue = scrollView.contentOffset.y
+        opacity = (scrollValue - 60)/200
+        if(opacity > 1){
+            opacity = 1.0
+        }else if(opacity < 0){
+            opacity = 0
+        }
+        self.setNavOpacity(opacity)*/
+        var scrollValue = scrollView.contentOffset.y
+        var opacity: CGFloat
+        opacity = (scrollValue - 60)/200
+        self.setNavOpacity(opacity)
+        
+    }
+    
 }
