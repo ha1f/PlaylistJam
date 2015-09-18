@@ -30,6 +30,7 @@
 		A42F2EF31BA7DCD40060552A /* PageControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F2EF21BA7DCD40060552A /* PageControlCell.swift */; };
 		A42F2EF71BA7DDA90060552A /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F2EF61BA7DDA90060552A /* PageControl.swift */; };
 		A45EC8D41BAA5DE90018AC01 /* splush.png in Resources */ = {isa = PBXBuildFile; fileRef = A45EC8D31BAA5DE90018AC01 /* splush.png */; };
+		A45EC8DA1BAB0A810018AC01 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45EC8D91BAB0A810018AC01 /* Util.swift */; };
 		A4B025911BA565540056D5E2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B025901BA565540056D5E2 /* HomeViewController.swift */; };
 		A4B20C551BA1926E00BA531F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B20C541BA1926E00BA531F /* AppDelegate.swift */; };
 		A4B20C5A1BA1926E00BA531F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B20C581BA1926E00BA531F /* Main.storyboard */; };
@@ -101,6 +102,7 @@
 		A42F2EF21BA7DCD40060552A /* PageControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlCell.swift; sourceTree = "<group>"; };
 		A42F2EF61BA7DDA90060552A /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		A45EC8D31BAA5DE90018AC01 /* splush.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splush.png; sourceTree = "<group>"; };
+		A45EC8D91BAB0A810018AC01 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = ../Util.swift; sourceTree = "<group>"; };
 		A4B025901BA565540056D5E2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A4B20C4F1BA1926E00BA531F /* TachDesiginKyotoInaka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TachDesiginKyotoInaka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4B20C531BA1926E00BA531F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				A4B20C541BA1926E00BA531F /* AppDelegate.swift */,
+				A45EC8D91BAB0A810018AC01 /* Util.swift */,
 				A45EC8D81BAA767B0018AC01 /* Constant */,
 				A45EC8D71BAA76620018AC01 /* Manager */,
 				A45EC8D51BAA73F70018AC01 /* Media */,
@@ -575,6 +578,7 @@
 				1E8FAB2E1BA5425500026055 /* SelectSongTableViewCell.swift in Sources */,
 				A4B20C961BA2608C00BA531F /* SongListViewController.swift in Sources */,
 				A4ECA6691BA7C24300784B0A /* SearchViewController.swift in Sources */,
+				A45EC8DA1BAB0A810018AC01 /* Util.swift in Sources */,
 				1E8FAB311BA543C300026055 /* CheckButton.swift in Sources */,
 				A4B20C841BA192A600BA531F /* MyPlaylist.swift in Sources */,
 				A4B20C811BA192A600BA531F /* ItunesApi.swift in Sources */,

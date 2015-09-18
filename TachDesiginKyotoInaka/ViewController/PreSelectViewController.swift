@@ -37,6 +37,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     static let tabHeight: CGFloat = 60.0
     static let subTabHeight: CGFloat = 50.0
     let navigationBarHeight: CGFloat = 64.0
+    let searchBarHeight: CGFloat = 44.0
 
     //100->200
 
@@ -81,20 +82,21 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                 self.createView()
 
                 //TODO navigationBarの高さを取得する
-                self.pageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight, self.view.frame.width, PreSelectViewController.tabHeight), mode: "bar")
+                self.subPageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.subTabHeight), mode: PageControl.SelectedViewType.triangle)
+                self.subPageControl.setPages(["Playlists", "Tracks"])
+                self.subPageControl.setFontSize(13)
+                self.subPageControl.setIdentity(1)
+                self.subPageControl.delegate = self
+                self.subPageControl.backgroundColor = UIColor.colorFromRGB(ConstantShare.backColorString, alpha: 1.0)
+                self.view.addSubview(self.subPageControl)
+                
+                self.pageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight, self.view.frame.width, PreSelectViewController.tabHeight), mode: PageControl.SelectedViewType.bar)
                 self.pageControl.setPages(["Favorite", "History", "My Playlists", "Search"])
                 self.pageControl.setIdentity(0)
                 self.pageControl.delegate = self
-                self.pageControl.setFontSize(16, isBold: false)
+                self.pageControl.setFontSize(16)
                 self.pageControl.backgroundColor = UIColor.colorFromRGB(ConstantShare.tabColorString, alpha: 1.0)
                 self.view.addSubview(self.pageControl)
-
-                self.subPageControl = PageControl(frame: CGRectMake(0, self.navigationBarHeight + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.subTabHeight), mode: "triangle")
-                self.subPageControl.setPages(["Playlists", "Tracks"])
-                self.subPageControl.setFontSize(13, isBold: false)
-                self.subPageControl.setIdentity(1)
-                self.subPageControl.delegate = self
-                self.view.addSubview(self.subPageControl)
 
                 self.updateTab()
                 }
@@ -116,17 +118,16 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
     //ページのタブが押された時に移動させる
     func pageSelected(identity: Int, page: Int) {
-        let currentPage = self.getCurrentPageIndex()
-        println("\(identity),\(page)")
+        println("pageSelect:\(identity),\(page)")
         //大カテゴリ
         var targetPage: Int! = nil
         if identity == 0 {
             targetPage = self.largePage[page]
         //小カテゴリ
         } else if identity == 1 {
+            let currentPage = self.getCurrentPageIndex()
             targetPage = getLargeCategory(currentPage) + page
             if (targetPage >= 5) {
-                self.subPageControl.setCurrentPage(page)
                 targetPage = 5
             }
         }
@@ -150,7 +151,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         return self.largePage[getLargeCategoryIndex(page)]
     }
 
-    //特定のページヘ移動
+    //特定のページヘ移動、この時は
     func moveTargetPage(targetPageTmp: Int) {
         var targetPage = targetPageTmp > 5 ? 5 : targetPageTmp
         if targetPage != self.getCurrentPageIndex() {
@@ -158,8 +159,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
             let viewControllers: NSArray = NSArray(array: [dataViewController])
             let direction:UIPageViewControllerNavigationDirection = targetPage > self.getCurrentPageIndex() ? UIPageViewControllerNavigationDirection.Forward : UIPageViewControllerNavigationDirection.Reverse
 
-            self.pageViewController?.setViewControllers(viewControllers as [AnyObject], direction: direction, animated: true, completion: {(Bool) -> Void in self.updateTab()})
-            updateTab()
+            self.pageViewController?.setViewControllers(viewControllers as [AnyObject], direction: direction, animated: true, completion: {(Bool) in self.updateTab()})
         }
     }
 
@@ -190,37 +190,34 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         super.didReceiveMemoryWarning()
     }
 
+    //tabの表示・非表示や位置を変更
     func updateTab() {
         let currentPage = getCurrentPageIndex()
         let largeCategoryIndex = getLargeCategoryIndex(currentPage)
 
-        //my playlist
-        if largeCategoryIndex == 2 {
-            self.subPageControl.hidden = true
-        } else {
-            self.subPageControl.hidden = false
-        }
-
         //search
         if largeCategoryIndex == 3 {
             self.subPageControl.setPages(["Artists", "Playlists", "Tracks"])
-            self.subPageControl.frame = CGRectMake(0, 64 + PreSelectViewController.tabHeight + 44, self.view.frame.width, PreSelectViewController.subTabHeight)
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
+                self.subPageControl.frame = CGRectMake(0, 64 + PreSelectViewController.tabHeight + self.searchBarHeight, self.view.frame.width, PreSelectViewController.subTabHeight)
+            })
+        } else if largeCategoryIndex == 2 {
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
+                self.subPageControl.frame = CGRectMake(0, 64 + PreSelectViewController.tabHeight - PreSelectViewController.subTabHeight, self.view.frame.width, PreSelectViewController.subTabHeight)
+            })
         } else {
             self.subPageControl.setPages(["Playlists", "Tracks"])
-            self.subPageControl.frame = CGRectMake(0, 64 + 1 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.subTabHeight)
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
+                self.subPageControl.frame = CGRectMake(0, 64 + PreSelectViewController.tabHeight, self.view.frame.width, PreSelectViewController.subTabHeight)
+            })
         }
-
+        
         self.pageControl.setCurrentPage(largeCategoryIndex)
-        if largeCategoryIndex == 3 {
-
-        } else {
-            self.subPageControl.setCurrentPage(currentPage - self.largePage[largeCategoryIndex])
-        }
+        self.subPageControl.setCurrentPage(currentPage - self.largePage[largeCategoryIndex])
     }
 
-    //ページ遷移アニメーション完了後
+    //ページ遷移アニメーション完了後、スワイプの時のみしか呼ばれない
     override func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
-        //self.pageControl.currentPage = self.dataController.indexOfViewController(self.pageViewController!.viewControllers[0] as! PageCellViewController)
         updateTab()
     }
 

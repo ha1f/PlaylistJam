@@ -14,42 +14,76 @@ protocol PageControlDelegate {
 
 class PageControl: UIView {
     private var pageCells: [PageControlCell] = []
-    private var currentPage:Int? = nil
-    //タグ的な
-    private var identity = 0
+    private var bar: UIImageView = UIImageView()
+    
+    private var currentPage: Int = 0 //現在のページ
+    private var identity = 0 //タグ的な、複数設置した時のため
     
     var delegate: PageControlDelegate!
     
-    var bar: UIImageView! = nil
+    var selectedViewType = PageControl.SelectedViewType.bar
+    
+    //設定
     private var barHeight: CGFloat = 3
     private var bottomOffset: CGFloat = 0
+    private var fontsize: CGFloat = 12
     
-    var barMode: String = ""
-    
-    var fontsize: CGFloat! = nil
+    //選択されたセルの表示
+    enum SelectedViewType {
+        case triangle
+        case bar
+        case none
+    }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, mode: String) {
+    init(frame: CGRect, mode: PageControl.SelectedViewType) {
         super.init(frame: frame)
+        self.selectedViewType = mode
         self.currentPage = 0
-        self.barMode = mode
+        self.addSubview(self.bar)
     }
     
-    func setFontSize(size: CGFloat, isBold: Bool) {
+    func setCellBold(cell: PageControlCell, isBold: Bool) {
+        var color: UIColor!
+        var font: UIFont!
+        if self.selectedViewType == PageControl.SelectedViewType.bar {
+            if isBold {
+                color = UIColor.blackColor()
+                font = UIFont(name: "MyriadPro-Semibold", size: self.fontsize)
+            } else {
+                color = UIColor.colorFromRGB(ConstantShare.unActiveTextColorString, alpha: 1)
+                font = UIFont(name: "MyriadPro-Regular", size: self.fontsize)
+            }
+        }else if self.selectedViewType == PageControl.SelectedViewType.triangle {
+            if isBold {
+                color = UIColor.blackColor()
+                font = UIFont(name: "mplus-1m-bold", size: self.fontsize)
+            } else {
+                color = UIColor.colorFromRGB(ConstantShare.unActiveTextColorString, alpha: 1)
+                font = UIFont(name: "mplus-1c-light", size: self.fontsize)
+            }
+        }
+        
+        cell.setFont(font, color: color)
+        
+    }
+
+    func setFontSize(size: CGFloat) {
         self.fontsize = size
         for pageCell in self.pageCells {
-            pageCell.setFontSize(size, isBold: isBold, barMode: self.barMode)
+            setCellBold(pageCell, isBold: false)
         }
     }
     
+    //indexから場所を生成
     func pointIndex(index: Int) -> CGPoint {
         let width = self.frame.width / CGFloat(self.pageCells.count)
         let height = self.frame.height - self.bottomOffset
         
-        let pointX: CGFloat = CGFloat(Double(index) * Double(width))
+        let pointX: CGFloat = CGFloat(index) * width
         return CGPoint(x: pointX + width/2, y: (height - barHeight/2))
     }
     
@@ -57,79 +91,51 @@ class PageControl: UIView {
         var tmpCells: [PageControlCell] = []
         let width = self.frame.width / CGFloat(data.count)
         let height = self.frame.height
-        var offsetX: CGFloat = 0
-        //何番目か
-        var index = 0
+        
+        //一旦消す
+        for view in self.pageCells {
+            view.removeFromSuperview()
+        }
+ 
+        var index = 0 //何番目か
         for datum in data {
-            let pageCell = PageControlCell(frame: CGRectMake(offsetX, 0, width, height))
+            let pageCell = PageControlCell(frame: CGRectMake(width * CGFloat(index), 0, width, height))
             pageCell.setTitle(datum, forState: UIControlState.Normal)
             pageCell.backgroundColor = UIColor.clearColor()
             pageCell.addTarget(self, action: "pageSelected:", forControlEvents: UIControlEvents.TouchUpInside)
             pageCell.tag = index
-            if let size = self.fontsize {
-                pageCell.titleLabel?.font = UIFont.systemFontOfSize(size)
-            }
+            setCellBold(pageCell, isBold: false)
+            self.addSubview(pageCell)
             tmpCells.append(pageCell)
-            offsetX += width
             index++
         }
-        
         self.pageCells = tmpCells
         
-        //一旦消す
-        for subview in self.subviews {
-            if let subviewAsImageView = (subview as? UIImageView) {
-                if subviewAsImageView == self.bar {
-                    continue
-                }
-            }
-            subview.removeFromSuperview()
-        }
-        //そしてadd
-        for page in pageCells {
-            self.addSubview(page)
-        }
+        self.initBar()
         
         //初期ページ
-        setCurrentPage(0)
-        
-        updateBar()
+        setCurrentPage(self.currentPage)
     }
     
-    func updateBar() {
+    func initBar() {
+        if self.pageCells.count == 0 {
+            println("must be initialized")
+            return
+        }
         let width = self.frame.width / CGFloat(self.pageCells.count)
-        if self.barMode == "bar" {
+        if self.selectedViewType == SelectedViewType.bar {
             self.barHeight = 3
             self.bottomOffset = 0
-            if self.bar == nil {
-                self.bar = UIImageView(frame: CGRectMake(0, 0, width, barHeight))
-                self.bar.image = nil
-                self.bar.backgroundColor = UIColor.colorFromRGB(ConstantShare.featureColorString, alpha: 1.0)
-
-                //if self.bar.superview != self {
-                    self.addSubview(self.bar)
-                //}
-                self.bar.layer.position = pointIndex(0)
-            } else {
-                self.bar.frame = CGRectMake(0, 0, width, barHeight)
-                self.bar.layer.position = pointIndex(0)
-            }
-        } else if self.barMode == "triangle" {
+            self.bar.resize(width, height: self.barHeight)
+            self.bar.image = nil
+            self.bar.backgroundColor = UIColor.colorFromRGB(ConstantShare.featureColorString, alpha: 1.0)
+        } else if self.selectedViewType == SelectedViewType.triangle {
             self.bottomOffset = 8
-            if self.bar == nil {
-                self.barHeight = 6
-                self.bar = UIImageView(frame: CGRectMake(0, 0, width, barHeight))
-                self.bar.backgroundColor = UIColor.clearColor()
-                self.bar.image = UIImage(named: "TabArrow")
-                self.bar.contentMode = UIViewContentMode.ScaleAspectFit
-                //if self.bar.superview != self {
-                self.addSubview(self.bar)
-                    //}
-                self.bar.layer.position = pointIndex(0)
-            } else {
-                self.bar.frame = CGRectMake(0, 0, width, barHeight)
-                self.bar.layer.position = pointIndex(0)
-            }
+            self.barHeight = 6
+            self.bar.resize(width, height: self.barHeight)
+            self.bar.backgroundColor = UIColor.clearColor()
+            self.bar.image = UIImage(named: "TabArrow")
+            self.bar.contentMode = UIViewContentMode.ScaleAspectFit
         }
     }
     
@@ -142,48 +148,44 @@ class PageControl: UIView {
     }
     
     func pageSelected(sender: PageControlCell!) {
+        setCurrentPage(sender.tag)
         self.delegate.pageSelected(self.identity, page: sender.tag)
     }
     
-    func setCurrentPage(page: Int) {
-        var newPage = page
-        if newPage > self.pageCells.count - 1 {
-            newPage = self.pageCells.count - 1
+    private func isValidPage(page: Int) -> Bool {
+        if (page < self.pageCells.count) && (page >= 0) {
+            return true
         }
-        
-        if let oldPage = self.currentPage {
-            if oldPage < self.pageCells.count {
-                moveEmphasis(oldPage, newPage: newPage)
-            }
-        }
-        self.currentPage = newPage
+        return false
     }
     
-    func moveEmphasis(oldPage: Int, newPage: Int) {
-        if self.pageCells.count > 0 {
-            if let size = self.fontsize {
-                self.pageCells[oldPage].setFontSize(size, isBold: false, barMode: self.barMode)
-                self.pageCells[newPage].setFontSize(size, isBold: true, barMode: self.barMode)
-            }
+    //currentPageをセット＆表示を変化させる
+    func setCurrentPage(page: Int) {
+        if !isValidPage(page) {
+            println("InValid page")
+            return
         }
-        if self.barMode == "bar" {
-            if self.bar == nil {
-                updateBar()
-            }
-            UIView.animateWithDuration(0.1, animations: { () -> Void in
-                    self.bar.layer.position = self.pointIndex(newPage)
-            })
-        } else if self.barMode == "triangle" {
-            if self.bar == nil {
-                updateBar()
-            }
-            UIView.animateWithDuration(0.1, animations: { () -> Void in
-                self.bar.layer.position = self.pointIndex(newPage)
-            })
+        
+        moveEmphasis(self.currentPage, newPage: page)
+            
+        self.currentPage = page
+    }
+    
+    //強調のスタイルを適用
+    private func moveEmphasis(oldPage: Int, newPage: Int) {
+        if isValidPage(oldPage) {
+            setCellBold(self.pageCells[oldPage], isBold: false)
         }
+        if isValidPage(newPage) {
+            setCellBold(self.pageCells[newPage], isBold: true)
+        }
+        
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.bar.layer.position = self.pointIndex(newPage)
+        })
     }
     
     func getCurrentPage() -> Int {
-        return self.currentPage!
+        return self.currentPage
     }
 }
