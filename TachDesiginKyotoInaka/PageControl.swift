@@ -46,10 +46,35 @@ class PageControl: UIView {
         self.addSubview(self.bar)
     }
     
+    func setCellBold(cell: PageControlCell, isBold: Bool) {
+        var color: UIColor!
+        var font: UIFont!
+        if self.selectedViewType == PageControl.SelectedViewType.bar {
+            if isBold {
+                color = UIColor.blackColor()
+                font = UIFont(name: "MyriadPro-Semibold", size: self.fontsize)
+            } else {
+                color = UIColor.colorFromRGB(ConstantShare.unActiveTextColorString, alpha: 1)
+                font = UIFont(name: "MyriadPro-Regular", size: self.fontsize)
+            }
+        }else if self.selectedViewType == PageControl.SelectedViewType.triangle {
+            if isBold {
+                color = UIColor.blackColor()
+                font = UIFont(name: "mplus-1m-bold", size: self.fontsize)
+            } else {
+                color = UIColor.colorFromRGB(ConstantShare.unActiveTextColorString, alpha: 1)
+                font = UIFont(name: "mplus-1c-light", size: self.fontsize)
+            }
+        }
+        
+        cell.setFont(font, color: color)
+        
+    }
+
     func setFontSize(size: CGFloat) {
         self.fontsize = size
         for pageCell in self.pageCells {
-            pageCell.setFontSize(size, isBold: false, barMode: self.selectedViewType)
+            setCellBold(pageCell, isBold: false)
         }
     }
     
@@ -79,7 +104,7 @@ class PageControl: UIView {
             pageCell.backgroundColor = UIColor.clearColor()
             pageCell.addTarget(self, action: "pageSelected:", forControlEvents: UIControlEvents.TouchUpInside)
             pageCell.tag = index
-            pageCell.titleLabel?.font = UIFont.systemFontOfSize(self.fontsize)
+            setCellBold(pageCell, isBold: false)
             self.addSubview(pageCell)
             tmpCells.append(pageCell)
             index++
@@ -89,7 +114,7 @@ class PageControl: UIView {
         self.initBar()
         
         //初期ページ
-        setCurrentPage(0)
+        setCurrentPage(self.currentPage)
     }
     
     func initBar() {
@@ -122,7 +147,7 @@ class PageControl: UIView {
         return self.identity
     }
     
-    private func pageSelected(sender: PageControlCell!) {
+    func pageSelected(sender: PageControlCell!) {
         setCurrentPage(sender.tag)
         self.delegate.pageSelected(self.identity, page: sender.tag)
     }
@@ -149,10 +174,10 @@ class PageControl: UIView {
     //強調のスタイルを適用
     private func moveEmphasis(oldPage: Int, newPage: Int) {
         if isValidPage(oldPage) {
-            self.pageCells[oldPage].setFontSize(self.fontsize, isBold: false, barMode: self.selectedViewType)
+            setCellBold(self.pageCells[oldPage], isBold: false)
         }
         if isValidPage(newPage) {
-            self.pageCells[newPage].setFontSize(self.fontsize, isBold: true, barMode: self.selectedViewType)
+            setCellBold(self.pageCells[newPage], isBold: true)
         }
         
         UIView.animateWithDuration(0.1, animations: { () -> Void in
