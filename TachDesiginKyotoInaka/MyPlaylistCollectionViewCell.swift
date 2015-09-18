@@ -70,7 +70,7 @@ class MyPlaylistCollectionViewCell: UICollectionViewCell {
             self.sub2ArtworkImageView.image = defaultArtwork
         }
 
-        println( parent )
+        print( parent )
 
         if index == parent.playingList {
             if player.isPausing() {

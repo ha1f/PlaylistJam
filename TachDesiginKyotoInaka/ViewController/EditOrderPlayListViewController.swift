@@ -54,7 +54,7 @@ class EditOrderSongViewController: UIViewController {
     func finishEditting(sender: UIBarButtonItem!) {
         if updateButtonEnable() {
             Playlist.createWithSongAndInit([
-                "title": titleField.text,
+                "title": titleField.text!,
                 "desc": checkDesc(descField.text)
             ], songs: manager.selectedSongs())
             sharedFlag.isPlaylistCreated = true
@@ -65,7 +65,7 @@ class EditOrderSongViewController: UIViewController {
     private func checkDesc(desc: String) -> String {
         var ret = ""
         if desc == "" {
-            ret = join("/", map(manager.selectedSongs()) { return $0.title })
+            ret = manager.selectedSongs().map({ return $0.title }).joinWithSeparator("/")
         } else {
             ret = desc
         }
@@ -158,7 +158,7 @@ extension EditOrderSongViewController: UITableViewDataSource, UITableViewDelegat
     //高さを計算したいけどとりあえず放置
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let height :CGFloat! = ConstantShare.songCellHeight
-        println("height => \(height)");
+        print("height => \(height)");
         // heightがnilの場合、とりあえず高さ40で設定 TODO
         if let h = height {
             return h
@@ -189,7 +189,7 @@ extension EditOrderSongViewController: SelectMoodModalViewControllerDelegate {
     func modalDidFinished(mood: Int?){
         self.selectMoodModalViewController.dismissViewControllerAnimated(true, completion: nil)
         if mood != nil{
-            var moodText: String? = ConstantShare.moodList[mood!]
+            let moodText: String? = ConstantShare.moodList[mood!]
             self.moodBtn.setTitle(moodText!, forState: UIControlState.Normal)
         }
     }
@@ -219,7 +219,7 @@ extension EditOrderSongViewController: UITextViewDelegate, UITextFieldDelegate {
     }
     
     func textViewDidChange(textView: UITextView) {
-        println("change:\(textView.tag)")
+        print("change:\(textView.tag)")
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -242,7 +242,7 @@ extension EditOrderSongViewController: UITextViewDelegate, UITextFieldDelegate {
     //完了ボタンが押せるかどうか更新
     func updateButtonEnable() -> Bool{
         var isNotEmpty: Bool = false
-        isNotEmpty = (count(self.titleField.text) > 0)
+        isNotEmpty = ((self.titleField.text?.characters.count) > 0)
         self.finishBarButton.enabled = isNotEmpty
         return isNotEmpty
     }

@@ -119,7 +119,7 @@ class PageControl: UIView {
     
     func initBar() {
         if self.pageCells.count == 0 {
-            println("must be initialized")
+            print("must be initialized")
             return
         }
         let width = self.frame.width / CGFloat(self.pageCells.count)
@@ -162,7 +162,7 @@ class PageControl: UIView {
     //currentPageをセット＆表示を変化させる
     func setCurrentPage(page: Int) {
         if !isValidPage(page) {
-            println("InValid page")
+            print("InValid page")
             return
         }
         

@@ -9,10 +9,10 @@ class SongListViewController: PageCellViewController {
     @IBOutlet var songTableView: UITableView!
 
     override func setDataObject(dataObject: AnyObject?){
-        if let tmpDataObject: AnyObject = dataObject {
-            self.songList = dataObject as! [Song]
+        if let data: AnyObject = dataObject {
+            self.songList = data as! [Song]
         }else{
-            println("DataObject is nil")
+            print("DataObject is nil")
         }
     }
     
@@ -42,14 +42,14 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let v = tableView.cellForRowAtIndexPath(indexPath) as! SongCell
         v.check()
-        println("selected: \(indexPath.row)")
+        print("selected: \(indexPath.row)")
         appendSelectedItem(indexPath.row)
     }
 
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let v = tableView.cellForRowAtIndexPath(indexPath) as! SongCell
         v.unCheck()
-        println("deselected: \(indexPath.row)")
+        print("deselected: \(indexPath.row)")
         removeSelectedItem(indexPath.row)
     }
 
@@ -62,7 +62,7 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("SongCell") as! SongCell
         cell.setup(self.songList[indexPath.row])
         
-        if contains(self.parent!.selectedItemIndexes[self.getIndex()!], indexPath.row) {
+        if self.parent!.selectedItemIndexes[self.getIndex()!].contains(indexPath.row) {
             cell.check()
         } else {
             cell.unCheck()

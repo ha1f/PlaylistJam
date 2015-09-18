@@ -17,7 +17,7 @@ class SearchViewController: PageCellViewController, UISearchBarDelegate {
         if let tmpDataObject: AnyObject = dataObject {
             self.data = tmpDataObject as? String
         }else{
-            println("DataObject is nil")
+            print("DataObject is nil")
         }
     }
     

@@ -2,12 +2,12 @@ import Foundation
 import RealmSwift
 
 class Playlist: Object {
-    static let realm = Realm()
+    static let realm = try! Realm()
 
     dynamic var id = 1
     dynamic var title = ""
     dynamic var desc = ""
-    dynamic var songs =  List<Song>()
+    var songs =  List<Song>()
 
     override static func primaryKey() -> String? {
         return "id"
@@ -24,7 +24,7 @@ class Playlist: Object {
         return playlist
     }
 
-    static func createWithSongAndInit(config: [String: String], songs: [Song]) -> Playlist {
+    static func createWithSongAndInit(config: [String:String], songs: [Song]) -> Playlist {
         let playlist = Playlist()
         playlist.title = config["title"] ?? ""
         playlist.desc = config["desc"]  ?? ""
@@ -42,7 +42,7 @@ class Playlist: Object {
             playlist.songs.append(ss)
         }
 
-        realm.write {
+        try! realm.write {
             self.realm.add(playlist)
         }
         return playlist
@@ -61,7 +61,7 @@ class Playlist: Object {
             playlist.songs.append(s)
         }
 
-        realm.write {
+        try! realm.write {
             self.realm.add(playlist)
         }
         return playlist

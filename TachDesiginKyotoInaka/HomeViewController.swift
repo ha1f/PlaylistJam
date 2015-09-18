@@ -34,7 +34,7 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         ui.frame = self.view.frame
         self.view.addSubview(ui)
 
-        initViewProp()
+        //initViewProp()
         createButton.addTarget(self, action: "createPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
         
     }
@@ -72,14 +72,14 @@ class HomeViewController: UIViewController, ModalViewControllerDelegate {
         self.performSegueWithIdentifier(nextSegue, sender: nil)
     }
 
-    func initViewProp(){
+    /*func initViewProp(){
         createButton.backgroundColor = UIColor.colorFromRGB(ConstantShare.featureColorString, alpha: 1.0)
         var colorList: [CGColor] = [
             UIColor.colorFromRGB("333333", alpha: 1).CGColor,
             UIColor.colorFromRGB("303030", alpha: 1).CGColor
         ]
         var locations: [CGFloat] = [0.0, 1.0]
-    }
+    }*/
 
     func setGradient(view: UIView, colorList: [CGColor]?, locations: [CGFloat]){
         let gradientColors: [CGColor]? = colorList
@@ -110,12 +110,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             cellID = "MyPlaylistCollectionViewCell"
             playlist = myPlaylistRepository.getPlaylists()[indexPath.row - 1]
         }
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) 
 
         if let list = playlist {
             (cell as! MyPlaylistCollectionViewCell).parent = self
             (cell as! MyPlaylistCollectionViewCell).index = indexPath.row - 1
-            (cell as! MyPlaylistCollectionViewCell).setup(playlist!)
+            (cell as! MyPlaylistCollectionViewCell).setup(list)
         }
 
         return cell
@@ -123,7 +123,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 
-        var size: CGSize = CGSize.zeroSize
+        var size: CGSize = CGSize.zero
         if(indexPath.row == 0){
             size = CGSize(width: 360, height: 80)
         }else{
@@ -133,14 +133,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println("select: \(indexPath.row)")
+        //print("select: \(indexPath.row)")
         if indexPath.row > 0 {
             self.performSegueWithIdentifier("showMyplaylistDetail", sender: (indexPath.row-1))
         }
     }
 
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        println("deselect: \(indexPath.row)")
+        //print("deselect: \(indexPath.row)")
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -161,7 +161,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             opacity = 0
         }
         self.setNavOpacity(opacity)*/
-        var scrollValue = scrollView.contentOffset.y
+        let scrollValue = scrollView.contentOffset.y
         var opacity: CGFloat
         opacity = (scrollValue - 60)/200
         self.setNavOpacity(opacity)

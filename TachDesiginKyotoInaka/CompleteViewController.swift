@@ -12,7 +12,7 @@ class CompleteViewController: BlurModalViewController {
     var delegate: ModalViewControllerDelegate!
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
     }
     
@@ -32,7 +32,7 @@ class CompleteViewController: BlurModalViewController {
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapped:")
         self.view.addGestureRecognizer(tapGesture)
         
-        let timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: true)
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("onUpdate:"), userInfo: nil, repeats: true)
     }
     
     func kill() {

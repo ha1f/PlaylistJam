@@ -3,17 +3,22 @@ import RealmSwift
 import ObjectMapper
 
 class Song: Object {
-    static let realm = Realm()
+    static let realm = try! Realm()
 
     dynamic var id = 1
     dynamic var title = ""
     dynamic var artist = ""
     dynamic var artworkUrl = ""
     dynamic var itunesTrackId = ""       // trackID in iTunes API JSON
+    
     dynamic var previewUrl = ""
 
     override static func primaryKey() -> String? {
         return "id"
+    }
+    
+    required convenience init?(_ map: Map) {
+        self.init()
     }
 
     static func lastId() -> Int {
@@ -42,6 +47,7 @@ extension Song: Selectable {
 }
 
 extension Song: Mappable {
+    
     static func newInstance(map: Map) -> Mappable? {
         return Song()
     }

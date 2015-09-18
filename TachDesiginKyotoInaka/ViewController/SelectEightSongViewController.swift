@@ -38,7 +38,7 @@ class SelectEightSongViewController: UIViewController {
         selectSongTableView.tableFooterView = UIView()
 
         //同じ回数分
-        for i in 0..<appendedSongCount {
+        for _ in 0..<appendedSongCount {
             self.checkFlags.append(false)
         }
 
@@ -66,7 +66,7 @@ class SelectEightSongViewController: UIViewController {
 
     func clickedCheckButton(sender: CheckBox!) {
 
-        println("select!!!!!")
+        print("select!!!!!")
         if self.selectedSongCount < 8 {
             sender.isChecked = !sender.isChecked
             checkFlags[sender.tag] = sender.isChecked
@@ -91,9 +91,9 @@ class SelectEightSongViewController: UIViewController {
     }
 
     func scrollToNewer(){
-        var areaSize: CGSize = selectedCollection.frame.size
+        //_: CGSize = selectedCollection.frame.size
 
-        var point = CGPointMake( selectedCollection.contentSize.width - selectedCollection.frame.size.width+90,0)
+        let point = CGPointMake( selectedCollection.contentSize.width - selectedCollection.frame.size.width+90,0)
 
         selectedCollection.setContentOffset(point, animated: true)
 
@@ -140,7 +140,7 @@ extension SelectEightSongViewController: UITableViewDataSource, UITableViewDeleg
 
     //セルが選択された時
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("didselect!!!!!!")
+        print("didselect!!!!!!")
         self.clickedCheckButton((tableView.cellForRowAtIndexPath(indexPath) as! SelectSongTableViewCell).checkBox)
     }
 }
@@ -151,28 +151,28 @@ extension SelectEightSongViewController: UICollectionViewDataSource_Draggable, U
     }
 
     //それを動かしていいか
-    func collectionView(collectionView: UICollectionView!, canMoveItemAtIndexPath indexPath: NSIndexPath!) -> Bool {
+    func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
 
-    func collectionView(collectionView: UICollectionView!, moveItemAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
-        println("drag")
+    func collectionView(collectionView: UICollectionView, moveItemAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+        print("drag")
         manager.moveSelectedSongInfo(fromIndexPath.row, to: toIndexPath.row)
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        println("\(indexPath.row)")
+        print("\(indexPath.row)")
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("selectedSongCell", forIndexPath: indexPath) as! SelectedSongCell
         cell.setSong(manager.findFormSelectedSongInfo(indexPath.row).song)
         return cell
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println("select: \(indexPath.row)")
+        print("select: \(indexPath.row)")
     }
 
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        println("deselect: \(indexPath.row)")
+        print("deselect: \(indexPath.row)")
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

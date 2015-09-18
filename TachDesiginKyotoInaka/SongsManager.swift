@@ -7,9 +7,9 @@ class SongsManager {
 
     func appendPlaylists(playlists: [Playlist]) {
         for playlist in playlists {
-            self.appendedSongInfos += map(playlist.songs) {
+            self.appendedSongInfos += playlist.songs.map({
                 AppendedSongInfo(song: $0, playlistName: playlist.title, playlistId: playlist.id)
-            }
+            })
         }
     }
 
@@ -22,7 +22,7 @@ class SongsManager {
     }
 
     func appendedSongs() -> [Song] {
-        return map(appendedSongInfos) { return $0.song }
+        return appendedSongInfos.map({ return $0.song })
     }
 
     func appendedSongCount() -> Int {
@@ -39,11 +39,11 @@ class SongsManager {
     }
 
     func selectedSongInfo() -> [AppendedSongInfo] {
-        return map(selectedIds) { return self.appendedSongInfos[$0] }
+        return selectedIds.map({ return self.appendedSongInfos[$0] })
     }
 
     func selectedSongs() -> [Song] {
-        return map(selectedSongInfo()) { return $0.song }
+        return selectedSongInfo().map({ return $0.song })
     }
 
     func selectedSongCount() -> Int {
@@ -61,14 +61,14 @@ class SongsManager {
 
     private func isExistSongs(song: AppendedSongInfo) -> Bool {
         if song.song.id != 0 {
-            let ids = map(appendedSongInfos) { return $0.song.id }
-            return contains(ids, song.song.id)
+            let ids = appendedSongInfos.map({ return $0.song.id })
+            return ids.contains(song.song.id)
         }
         return false
     }
 
     func removeSongInfo(selectedId: Int) {
-        if let idx = find(selectedIds, selectedId) {
+        if let idx = selectedIds.indexOf(selectedId) {
             self.selectedIds.removeAtIndex(idx)
         }
     }

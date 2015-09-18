@@ -22,7 +22,7 @@ extension UIColor {
     static func colorFromRGB(rgbString: String, alpha: CGFloat) -> UIColor {
         var rgb = rgbString
         if rgbString[rgbString.startIndex] == "#" {
-            rgb = rgbString.substringFromIndex(advance(rgbString.startIndex, 1))
+            rgb = rgbString.substringFromIndex(rgbString.startIndex.advancedBy(1))
         }
         
         
