@@ -17,23 +17,24 @@ extension UIView {
 }
 
 
-//RGB文字列からUIColorを生成する関数
 extension UIColor {
-    static func colorFromRGB(rgbString: String, alpha: CGFloat) -> UIColor {
-        var rgb = rgbString
-        if rgbString[rgbString.startIndex] == "#" {
-            rgb = rgbString.substringFromIndex(rgbString.startIndex.advancedBy(1))
+    //RGB文字列からUIColorを生成する関数
+    class func colorFromRGB(rgb: String, alpha: CGFloat) -> UIColor {
+        var rgbString = rgb
+        if rgb[rgbString.startIndex] == "#" {
+            rgbString = rgb.substringFromIndex(rgb.startIndex.advancedBy(1))
         }
         
-        
-        let scanner = NSScanner(string: rgb)
+        let scanner = NSScanner(string: rgbString)
         var rgbInt: UInt32 = 0
-        scanner.scanHexInt(&rgbInt)
-        
-        let r = CGFloat(((rgbInt & 0xFF0000) >> 16)) / 255.0
-        let g = CGFloat(((rgbInt & 0x00FF00) >> 8)) / 255.0
-        let b = CGFloat(rgbInt & 0x0000FF) / 255.0
-        
-        return UIColor(red: r, green: g, blue: b, alpha: alpha)
+        if scanner.scanHexInt(&rgbInt) {
+            return UIColor(
+                red: CGFloat(((rgbInt & 0xFF0000) >> 16)) / 255.0,
+                green: CGFloat(((rgbInt & 0x00FF00) >> 8)) / 255.0,
+                blue: CGFloat(rgbInt & 0x0000FF) / 255.0, alpha: alpha
+            )
+        }
+        //Illegal format
+        return UIColor.blackColor()
     }
 }
