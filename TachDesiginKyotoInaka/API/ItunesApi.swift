@@ -18,6 +18,7 @@ class ItunesApi {
         client.get(ItunesApi.url, parameters: params, completion: { (response: MusicTrackResponse?, error: NSError?) in
             if let songs = response?.songs {
                 completion(songs: songs)
+                print(songs.first?.artworkUrl)
             }
         })
     }
