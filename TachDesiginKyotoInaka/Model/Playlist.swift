@@ -2,12 +2,12 @@ import Foundation
 import RealmSwift
 
 class Playlist: Object {
-    static let realm = Realm()
+    static let realm = try! Realm()
 
     dynamic var id = 1
     dynamic var title = ""
     dynamic var desc = ""
-    dynamic var songs =  List<Song>()
+    var songs =  List<Song>()
 
     override static func primaryKey() -> String? {
         return "id"
@@ -38,11 +38,11 @@ class Playlist: Object {
             ss.artworkUrl = s.artworkUrl
             ss.previewUrl = s.previewUrl
             ss.id = i
-            i++
+            i += 1
             playlist.songs.append(ss)
         }
 
-        realm.write {
+        try! realm.write {
             self.realm.add(playlist)
         }
         return playlist
@@ -57,11 +57,11 @@ class Playlist: Object {
         var i = Song.lastId()
         for s in songs {
             s.id = i
-            i++
+            i += 1
             playlist.songs.append(s)
         }
 
-        realm.write {
+        try! realm.write {
             self.realm.add(playlist)
         }
         return playlist

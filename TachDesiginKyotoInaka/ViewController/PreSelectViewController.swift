@@ -59,7 +59,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         self.view.addSubview(self.loadingView)
         
         nextButton.target = self
-        nextButton.action = "toReduceEight:"
+        nextButton.action = #selector(PreSelectViewController.toReduceEight(_:))
         nextButton.enabled = false
         
         self.automaticallyAdjustsScrollViewInsets = false
@@ -109,7 +109,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         self.navigationOrientation = UIPageViewControllerNavigationOrientation.Horizontal
 
         exitButton.target = self
-        exitButton.action = "exitButtonClicked:"
+        exitButton.action = #selector(PreSelectViewController.exitButtonClicked(_:))
     }
 
     func exitButtonClicked(sender: UIBarButtonItem!) {
@@ -118,7 +118,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
     //ページのタブが押された時に移動させる
     func pageSelected(identity: Int, page: Int) {
-        println("pageSelect:\(identity),\(page)")
+        print("pageSelect:\(identity),\(page)")
         //大カテゴリ
         var targetPage: Int! = nil
         if identity == 0 {
@@ -141,7 +141,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
             if page >= i {
                 return index
             }
-            index--
+            index -= 1
         }
         return 0
     }
@@ -153,13 +153,13 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
 
     //特定のページヘ移動、この時は
     func moveTargetPage(targetPageTmp: Int) {
-        var targetPage = targetPageTmp > 5 ? 5 : targetPageTmp
+        let targetPage = targetPageTmp > 5 ? 5 : targetPageTmp
         if targetPage != self.getCurrentPageIndex() {
             let dataViewController: PageCellViewController = self.dataController.viewControllerAtIndex(targetPage)!
             let viewControllers: NSArray = NSArray(array: [dataViewController])
             let direction:UIPageViewControllerNavigationDirection = targetPage > self.getCurrentPageIndex() ? UIPageViewControllerNavigationDirection.Forward : UIPageViewControllerNavigationDirection.Reverse
 
-            self.pageViewController?.setViewControllers(viewControllers as [AnyObject], direction: direction, animated: true, completion: {(Bool) in self.updateTab()})
+            self.pageViewController?.setViewControllers(viewControllers as [AnyObject] as? [UIViewController], direction: direction, animated: true, completion: {(Bool) in self.updateTab()})
         }
     }
 
@@ -169,7 +169,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
         var index = 0
         for indexes in controller!.selectedItemIndexes {
             let tmpDataList: AnyObject = self.pageData[index]
-            let tmpDatas = map(indexes){ return tmpDataList[$0] }
+            let tmpDatas = indexes.map{ return tmpDataList[$0] }
             if !tmpDatas.isEmpty {
                 //型判定
                 if tmpDatas[0] is Playlist {
@@ -178,7 +178,7 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
                     manager.appendSongs(tmpDatas as! [Song])
                 }
             }
-            index++
+            index += 1
         }
     }
 
@@ -217,12 +217,12 @@ class PreSelectViewController: PagingViewController, PageControlDelegate {
     }
 
     //ページ遷移アニメーション完了後、スワイプの時のみしか呼ばれない
-    override func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+    override func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         updateTab()
     }
 
     func getCurrentPageIndex() -> Int! {
-        return self.dataController.indexOfViewController(self.pageViewController!.viewControllers[0] as! PageCellViewController)
+        return self.dataController.indexOfViewController(self.pageViewController!.viewControllers![0] as! PageCellViewController)
     }
 }
 
@@ -241,10 +241,10 @@ class PreSelectDataController: PagingDataController {
         let sendData: AnyObject = self.pageProperty[index]
 
         // SongかPlaylistか判定してViewControllerを切り替え
-        if let tmp = sendData[0] as? Song {
+        if (sendData[0] as? Song) != nil {
             dataViewController = storyboard.instantiateViewControllerWithIdentifier("SongListViewController") as! SongListViewController
 
-        } else if let tmp = sendData[0] as? Playlist {
+        } else if (sendData[0] as? Playlist) != nil {
             dataViewController = storyboard.instantiateViewControllerWithIdentifier("PlaylistListViewController") as! PlaylistListViewController
         } else {
             dataViewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as! SearchViewController
@@ -260,14 +260,14 @@ class PreSelectDataController: PagingDataController {
 
     func appendSelectedItem(pageIndex: Int, itemIndex: Int) {
         self.selectedItemIndexes[pageIndex].append(itemIndex)
-        println(self.selectedItemIndexes)
+        print(self.selectedItemIndexes)
     }
 
     func removeSelectedItem(pageIndex: Int, itemIndex: Int) {
-        if let idx = find(self.selectedItemIndexes[pageIndex], itemIndex) {
+        if let idx = self.selectedItemIndexes[pageIndex].indexOf(itemIndex) {
             self.selectedItemIndexes[pageIndex].removeAtIndex(idx)
         }
-        println(self.selectedItemIndexes)
+        print(self.selectedItemIndexes)
     }
 
     func getSelectedItem(pageIndex: Int) -> [Int] {
@@ -275,7 +275,7 @@ class PreSelectDataController: PagingDataController {
     }
 
     func contain(pageIndex: Int, itemIndex: Int) ->  Bool {
-        return contains(self.selectedItemIndexes[pageIndex], itemIndex)
+        return self.selectedItemIndexes[pageIndex].contains(itemIndex)
     }
 
     private func initIfNeed(i: Int) {

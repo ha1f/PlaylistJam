@@ -66,7 +66,7 @@ class PagingViewController: UIViewController, UIPageViewControllerDelegate{
     func pageViewController(pageViewController: UIPageViewController, spineLocationForInterfaceOrientation orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
         if (orientation == .Portrait) || (orientation == .PortraitUpsideDown) || (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
             // In portrait orientation or on iPhone: Set the spine position to "min" and the page view controller's view controllers array to contain just one view controller. Setting the spine position to 'UIPageViewControllerSpineLocationMid' in landscape orientation sets the doubleSided property to YES, so set it to NO here.
-            let currentViewController = self.pageViewController!.viewControllers[0] as! UIViewController
+            let currentViewController = self.pageViewController!.viewControllers![0]
             //let currentViewController = self.PagingDataController.viewControllerAtIndex(0)!
             let viewControllers = [currentViewController]
             self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: {done in })
@@ -75,8 +75,8 @@ class PagingViewController: UIViewController, UIPageViewControllerDelegate{
         }
         
         // 見開きモード(viewControllersには2つ入る)
-        let currentViewController = self.pageViewController!.viewControllers[0] as! PageCellViewController
-        var viewControllers: [AnyObject]
+        let currentViewController = self.pageViewController!.viewControllers![0] as! PageCellViewController
+        var viewControllers: [UIViewController]
         
         let indexOfCurrentViewController = self.dataController.indexOfViewController(currentViewController)
         if (indexOfCurrentViewController == 0) || (indexOfCurrentViewController % 2 == 0) {
@@ -97,7 +97,7 @@ class PagingViewController: UIViewController, UIPageViewControllerDelegate{
     }*/
     
     //ページ遷移アニメーション完了後
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         //println(self.PagingDataController.indexOfViewController(previousViewControllers[0] as! ImagePageCellViewController))
         //その時のページをPageControlにセット
     }

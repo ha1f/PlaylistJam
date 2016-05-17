@@ -10,4 +10,9 @@ class MusicTrackResponse: Mappable {
     static func newInstance(map: Map) -> Mappable? {
         return MusicTrackResponse()
     }
+    
+    required convenience init?(_ map: Map) {
+        self.init()
+        mapping(map)
+    }
 }

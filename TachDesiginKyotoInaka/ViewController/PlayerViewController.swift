@@ -64,7 +64,7 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
         self.playingTime = NSTimer.scheduledTimerWithTimeInterval(
             0.1,
             target: self,
-            selector: "updatePlayingState",
+            selector: #selector(PlayerViewController.updatePlayingState),
             userInfo: nil,
             repeats: true
         )

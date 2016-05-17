@@ -132,11 +132,11 @@ class PlayerManager: NSObject {
         } else {
             let song = songs[i]
             self.players[i] = Player(song: song)
-            println(listener)
+            print(listener)
 
             NSNotificationCenter.defaultCenter().addObserver(
                 (listener ?? self),
-                selector: "finishedPlaying:",
+                selector: #selector(PlayerManager.finishedPlaying(_:)),
                 name: AVPlayerItemDidPlayToEndTimeNotification,
                 object: self.players[i]?.playerItem
             )
@@ -226,15 +226,12 @@ class Player{
     private func createAVPlayer() {
         let url = NSURL(string: song.previewUrl)!
         self.asset = AVURLAsset(URL: url, options: [:])
-        self.playerItem = AVPlayerItem(asset: self.asset)
+        self.playerItem = AVPlayerItem(asset: self.asset!)
 
-        if let p = AVPlayer(playerItem: playerItem) {
-            println(url)
-            self.player = p
-            self.isPausing = false
-        } else {
-            println("failed generating player")
-        }
+        let p = AVPlayer(playerItem: playerItem!)
+        print(url)
+        self.player = p
+        self.isPausing = false
     }
 }
 

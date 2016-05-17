@@ -102,12 +102,12 @@ class PageControl: UIView {
             let pageCell = PageControlCell(frame: CGRectMake(width * CGFloat(index), 0, width, height))
             pageCell.setTitle(datum, forState: UIControlState.Normal)
             pageCell.backgroundColor = UIColor.clearColor()
-            pageCell.addTarget(self, action: "pageSelected:", forControlEvents: UIControlEvents.TouchUpInside)
+            pageCell.addTarget(self, action: #selector(PageControl.pageSelected(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             pageCell.tag = index
             setCellBold(pageCell, isBold: false)
             self.addSubview(pageCell)
             tmpCells.append(pageCell)
-            index++
+            index += 1
         }
         self.pageCells = tmpCells
         
@@ -119,7 +119,7 @@ class PageControl: UIView {
     
     func initBar() {
         if self.pageCells.count == 0 {
-            println("must be initialized")
+            print("must be initialized")
             return
         }
         let width = self.frame.width / CGFloat(self.pageCells.count)
@@ -162,7 +162,7 @@ class PageControl: UIView {
     //currentPageをセット＆表示を変化させる
     func setCurrentPage(page: Int) {
         if !isValidPage(page) {
-            println("InValid page")
+            print("InValid page")
             return
         }
         

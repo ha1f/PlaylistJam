@@ -123,7 +123,7 @@ extension PlaylistDetailViewController: UITableViewDataSource, UITableViewDelega
             }
         }
         lastPlayedId = indexPath.row
-        println("selected: \(indexPath.row)")
+        print("selected: \(indexPath.row)")
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

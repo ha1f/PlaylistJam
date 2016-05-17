@@ -42,7 +42,7 @@ class PagingDataController: NSObject, UIPageViewControllerDataSource {
             return nil
         }
         
-        index--
+        index -= 1
         return self.viewControllerAtIndex(index)
     }
     
@@ -52,7 +52,7 @@ class PagingDataController: NSObject, UIPageViewControllerDataSource {
             return nil
         }
         
-        index++
+        index += 1
         if index == self.pageProperty.count {
             return nil
         }

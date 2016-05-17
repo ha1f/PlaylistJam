@@ -22,12 +22,12 @@ class PlaylistRepository {
 
     // 保存する
     func fetchSongsWithTermWith(term: String, completion: (playlists: [Playlist], songs: [Song]?) -> Void) {
-        var playlists: [Playlist] = []
-        var i = 0
+        let playlists: [Playlist] = []
+        _ = 0
 
         if self.playlists.count < 1 {
             ItunesApi.api.fetchSongsWithTerm(term, completion: { (songs) in
-                self.playlists.extend(self.splitToPlaylist(songs))
+                self.playlists.appendContentsOf(self.splitToPlaylist(songs))
                 completion(playlists: playlists, songs: songs)
             })
         }
@@ -40,12 +40,12 @@ class PlaylistRepository {
 
     //しない
     func fetchSongsWithTerm(term: String, completion: (playlists: [Playlist], songs: [Song]?) -> Void) {
-        var playlists: [Playlist] = []
-        var i = 0
+        let playlists: [Playlist] = []
+        _ = 0
 
         if self.playlists.count < 1 {
             ItunesApi.api.fetchSongsWithTerm(term, completion: { (songs) in
-                self.playlists.extend(self.splitToPlaylistWithout(songs))
+                self.playlists.appendContentsOf(self.splitToPlaylistWithout(songs))
                 completion(playlists: playlists, songs: songs)
             })
         }
@@ -59,7 +59,7 @@ class PlaylistRepository {
         for s in songs {
             if i < self.maxPlaylistSongs {
                 _songs.append(s)
-                i++
+                i += 1
             } else {
                 playlists.append(Playlist.createWithSongs(_songs.last!.title, desc: createdesc(_songs), songs: _songs))
                 _songs = [s]
@@ -76,7 +76,7 @@ class PlaylistRepository {
         for s in songs {
             if i < self.maxPlaylistSongs {
                 _songs.append(s)
-                i++
+                i += 1
             } else {
                 let a = Playlist.createWithSong(
                     [
@@ -94,7 +94,7 @@ class PlaylistRepository {
     }
 
     private func createdesc(songs: [Song]) -> String {
-        return join("/", songs.map{ return $0.title })
+        return songs.map{ return $0.title }.joinWithSeparator("/")
     }
 
     func getPlaylists() -> [Playlist] {

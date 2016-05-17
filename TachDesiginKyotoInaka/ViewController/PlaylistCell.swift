@@ -31,9 +31,9 @@ class PlaylistCell:UICollectionViewCell {
         //コールバック登録
         self.topProtocol = topProtocol
         //各種イベント登録
-        let gesture = UITapGestureRecognizer(target:self, action: "goDetailPage")
+        let gesture = UITapGestureRecognizer(target:self, action: #selector(PlaylistCell.goDetailPage))
         self.addGestureRecognizer(gesture);
-        addButton.addTarget(self, action: "selectPlaylist", forControlEvents: UIControlEvents.TouchUpInside)
+        addButton.addTarget(self, action: #selector(PlaylistCell.selectPlaylist), forControlEvents: UIControlEvents.TouchUpInside)
 //        detailButton.addTarget(self, action: "goDetailPage", forControlEvents: UIControlEvents.TouchUpInside)
         self.index = index
 

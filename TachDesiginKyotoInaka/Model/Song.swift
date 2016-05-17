@@ -3,7 +3,7 @@ import RealmSwift
 import ObjectMapper
 
 class Song: Object {
-    static let realm = Realm()
+    static let realm = try! Realm()
 
     dynamic var id = 1
     dynamic var title = ""
@@ -33,6 +33,12 @@ class Song: Object {
         }
         return ret
     }
+    
+    required convenience init?(_ map: Map) {
+        self.init()
+        mapping(map)
+    }
+
 }
 
 extension Song: Selectable {
@@ -42,6 +48,7 @@ extension Song: Selectable {
 }
 
 extension Song: Mappable {
+    
     static func newInstance(map: Map) -> Mappable? {
         return Song()
     }

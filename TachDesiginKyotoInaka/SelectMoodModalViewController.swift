@@ -22,7 +22,7 @@ class SelectMoodModalViewController: UIViewController{
         //キャンセルボタンの見た目変更
         cancelBtn.layer.backgroundColor = UIColor.colorFromRGB("303030", alpha: 1).CGColor
         //キャンセルボタンのイベント登録
-        cancelBtn.addTarget(self, action: "cancel:", forControlEvents: .TouchUpInside)
+        cancelBtn.addTarget(self, action: #selector(SelectMoodModalViewController.cancel(_:)), forControlEvents: .TouchUpInside)
         //テーブルビューの背景透明に
         moodTableView.backgroundColor = UIColor.clearColor()
         moodTableView.separatorColor = UIColor.colorFromRGB("555555", alpha: 1)

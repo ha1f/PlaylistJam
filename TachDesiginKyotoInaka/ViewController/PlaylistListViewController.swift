@@ -11,7 +11,7 @@ class PlaylistListViewController: PageCellViewController {
         if let tmpDataObject: [Playlist] = dataObject as? [Playlist] {
             self.playlistList = tmpDataObject
         } else {
-            println("DataObject is nil")
+            print("DataObject is nil")
         }
     }
     
@@ -53,9 +53,8 @@ extension PlaylistListViewController: UICollectionViewDataSource, UICollectionVi
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlaylistCell", forIndexPath: indexPath) as! PlaylistCell
         //現在選択中のものを取得
-        var selectedIndexs: [Int] = getSelectedItem()
-        var index = indexPath.row
-        cell.setup(self.playlistList[indexPath.row], index: indexPath.row, isSelect: contains(selectedIndexs,indexPath.row),topProtocol: self)
+        let selectedIndexs: [Int] = getSelectedItem()
+        cell.setup(self.playlistList[indexPath.row], index: indexPath.row, isSelect: selectedIndexs.contains(indexPath.row),topProtocol: self)
         return cell
     }
     
@@ -64,7 +63,7 @@ extension PlaylistListViewController: UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        println("deselect: \(indexPath.row)")
+        print("deselect: \(indexPath.row)")
         removeSelectedItem(indexPath.row)
     }
     

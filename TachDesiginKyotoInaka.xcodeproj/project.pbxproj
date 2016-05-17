@@ -63,7 +63,7 @@
 		B47B52E51BA2A96F00F3A739 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B52E41BA2A96F00F3A739 /* ApiClient.swift */; };
 		B4BCD1781BA2C76600DD82F5 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCD1771BA2C76600DD82F5 /* PlayerViewController.swift */; };
 		B4BCD17A1BA2CEFA00DD82F5 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCD1791BA2CEFA00DD82F5 /* PlayerManager.swift */; };
-		D3680D152C7B109D3EA7D2AE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865CBE057C0A2E8E514A3FC3 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D3680D152C7B109D3EA7D2AE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865CBE057C0A2E8E514A3FC3 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -454,7 +454,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = NextVanguard;
 				TargetAttributes = {
 					A4B20C4E1BA1926E00BA531F = {
@@ -673,6 +673,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -747,6 +748,7 @@
 				INFOPLIST_FILE = TachDesiginKyotoInaka/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nextvanguard.ha1f.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -762,6 +764,7 @@
 				INFOPLIST_FILE = TachDesiginKyotoInaka/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nextvanguard.ha1f.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -781,6 +784,7 @@
 				);
 				INFOPLIST_FILE = TachDesiginKyotoInakaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nextvanguard.ha1f.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TachDesiginKyotoInaka.app/TachDesiginKyotoInaka";
 			};
@@ -796,6 +800,7 @@
 				);
 				INFOPLIST_FILE = TachDesiginKyotoInakaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nextvanguard.ha1f.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TachDesiginKyotoInaka.app/TachDesiginKyotoInaka";
 			};

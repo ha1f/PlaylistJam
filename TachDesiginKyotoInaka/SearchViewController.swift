@@ -17,14 +17,14 @@ class SearchViewController: PageCellViewController, UISearchBarDelegate {
         if let tmpDataObject: AnyObject = dataObject {
             self.data = tmpDataObject as? String
         }else{
-            println("DataObject is nil")
+            print("DataObject is nil")
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapped:")
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.tapped(_:)))
         self.view.addGestureRecognizer(tapGesture)
         
         searchBar.showsCancelButton = true
